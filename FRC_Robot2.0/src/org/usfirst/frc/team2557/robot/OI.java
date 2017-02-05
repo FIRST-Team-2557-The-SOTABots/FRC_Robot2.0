@@ -65,8 +65,31 @@ public class OI {
 	public JoystickButton RJ2;
 	
 	public void init(){
-		gamepad1 = new Joystick(1);
-		gamepad2 = new Joystick(2);
+		gamepad1 = new Joystick(0);
+		gamepad2 = new Joystick(1);
+		
+		a1 = new JoystickButton(gamepad1, 1);
+		b1 = new JoystickButton(gamepad1, 2);
+		x1 = new JoystickButton(gamepad1, 3);
+		y1 = new JoystickButton(gamepad1, 4);
+		LB1 = new JoystickButton(gamepad1,5);
+		RB1 = new JoystickButton(gamepad1, 6);
+		start1 = new JoystickButton(gamepad1, 7);
+		select1 = new JoystickButton(gamepad1, 8);
+		LJ1 = new JoystickButton(gamepad1, 9);
+		RJ1 = new JoystickButton(gamepad1, 10);
+
+		a2 = new JoystickButton(gamepad2, 1);
+		b2 = new JoystickButton(gamepad2, 2);
+		x2 = new JoystickButton(gamepad2, 3);
+		y2 = new JoystickButton(gamepad2, 4);
+		LB2 = new JoystickButton(gamepad2, 5);
+		RB2 = new JoystickButton(gamepad2, 6);
+		start2 = new JoystickButton(gamepad2, 7);
+		select2 = new JoystickButton(gamepad2, 8);
+		LJ2 = new JoystickButton(gamepad2, 9);
+		RJ2 = new JoystickButton(gamepad2, 10);
+
 	}
 	
 	

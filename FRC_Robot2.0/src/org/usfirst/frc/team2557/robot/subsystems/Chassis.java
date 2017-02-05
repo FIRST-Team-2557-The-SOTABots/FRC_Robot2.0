@@ -15,13 +15,18 @@ public class Chassis extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	RobotDrive robotDrive = RobotMap.robotDrive;
+	double x = .75;
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new ArcadeDrive_cmd());
     }
-    public void arcadeDrive(){
-    	robotDrive.arcadeDrive(Robot.oi.gamepad1.getRawAxis(1), Robot.oi.gamepad1.getRawAxis(5));
+    public void arcadeDrive_gear(){
+    	robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(0) *x, Robot.oi.gamepad1.getRawAxis(1) *x);
+    }
+    public void arcadeDrive_fuel(){
+    	robotDrive.arcadeDrive(-Robot.oi.gamepad2.getRawAxis(0) *x, -Robot.oi.gamepad2.getRawAxis(1) *x);
     }
     
 }

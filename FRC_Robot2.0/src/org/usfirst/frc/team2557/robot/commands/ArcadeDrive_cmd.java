@@ -9,6 +9,9 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ArcadeDrive_cmd extends Command {
 
+	public boolean driver = true;
+	
+	
     public ArcadeDrive_cmd() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -21,7 +24,17 @@ public class ArcadeDrive_cmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.chassis.arcadeDrive();
+    	if(Robot.oi.start1.get() && Robot.oi.select1.get()){
+    		driver = false;
+    	} else if(Robot.oi.start2.get() && Robot.oi.select2.get()){
+    		driver = true;
+    	}
+    	
+    	if(driver){
+    		Robot.chassis.arcadeDrive_fuel();
+    	} else if(driver == false){
+    		Robot.chassis.arcadeDrive_gear();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

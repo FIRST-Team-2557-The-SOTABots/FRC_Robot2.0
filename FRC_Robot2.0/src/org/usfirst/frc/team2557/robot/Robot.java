@@ -34,6 +34,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		RobotMap.init();
 		chassis = new Chassis();
 		
 		
