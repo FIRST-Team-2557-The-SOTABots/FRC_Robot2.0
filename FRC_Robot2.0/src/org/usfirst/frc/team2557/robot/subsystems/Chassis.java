@@ -28,6 +28,12 @@ public class Chassis extends Subsystem {
     public void arcadeDrive_fuel(){
     	robotDrive.arcadeDrive(-Robot.oi.gamepad2.getRawAxis(0) *x, -Robot.oi.gamepad2.getRawAxis(1) *x);
     }
+    public void tankDrive_gear(){
+    	robotDrive.tankDrive(-Robot.oi.gamepad1.getRawAxis(0) *x, Robot.oi.gamepad1.getRawAxis(5) *x);
+    }
+    public void tankDrive_fuel(){
+    	robotDrive.tankDrive(-Robot.oi.gamepad1.getRawAxis(0) *x, Robot.oi.gamepad1.getRawAxis(5) *x);
+    }
     
 }
 

@@ -27,29 +27,28 @@ public class RobotMap {
 	public static CANTalon BLdrive;
 	public static RobotDrive robotDrive;
 	
-//	public static CANTalon Lshooter;
-//	public static CANTalon Rshooter;
-//	public static CANTalon intake;
-//	
-//	public static DoubleSolenoid fuelGate;
-//	public static DoubleSolenoid shifter;
-//	public static DoubleSolenoid gearGrab;
+	public static CANTalon Lshooter;
+	public static CANTalon Rshooter;
+	public static CANTalon intake;
+	
+	public static DoubleSolenoid fuelGate;
+	public static DoubleSolenoid shifter;
+	public static DoubleSolenoid gearGrab;
 //	
 	public static void init(){
-		FRdrive = new CANTalon(8);
-		FLdrive = new CANTalon(7);
-		BRdrive = new CANTalon(5);
-		BLdrive = new CANTalon(6);
+		FRdrive = new CANTalon(1);
+		FLdrive = new CANTalon(2);
+		BRdrive = new CANTalon(3);
+		BLdrive = new CANTalon(4);
 		robotDrive = new RobotDrive(FLdrive, BLdrive, FRdrive, BRdrive);
-		FLdrive.setInverted(true);
-		BLdrive.setInverted(true);
-//		Lshooter = new CANTalon(5);
-//		Rshooter = new CANTalon(6);
-//		intake = new CANTalon(7);
-//		
-//		fuelGate = new DoubleSolenoid(0,1);
-//		shifter = new DoubleSolenoid(2,3);
-//		gearGrab = new DoubleSolenoid(4,5);
+
+		Lshooter = new CANTalon(5);
+		Rshooter = new CANTalon(6);
+		intake = new CANTalon(7);
+		
+		fuelGate = new DoubleSolenoid(0,1);
+		shifter = new DoubleSolenoid(2,3);
+		gearGrab = new DoubleSolenoid(4,5);
 		
 	}
 }
