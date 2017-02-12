@@ -7,12 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ArcadeDrive_cmd extends Command {
+public class GeminiDrive_cmd extends Command {
 
 	public boolean driver = true;
 	
 	
-    public ArcadeDrive_cmd() {
+    public GeminiDrive_cmd() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassis);

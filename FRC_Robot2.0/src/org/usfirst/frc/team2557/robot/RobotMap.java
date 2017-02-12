@@ -30,6 +30,8 @@ public class RobotMap {
 	public static CANTalon Lshooter;
 	public static CANTalon Rshooter;
 	public static CANTalon intake;
+	public static CANTalon climber;
+	public static CANTalon gearMotor;
 	
 	public static DoubleSolenoid fuelGate;
 	public static DoubleSolenoid shifter;
@@ -45,6 +47,8 @@ public class RobotMap {
 		Lshooter = new CANTalon(5);
 		Rshooter = new CANTalon(6);
 		intake = new CANTalon(7);
+		climber = new CANTalon(8);
+		gearMotor = new CANTalon(9);
 		
 		fuelGate = new DoubleSolenoid(0,1);
 		shifter = new DoubleSolenoid(2,3);

@@ -2,7 +2,7 @@ package org.usfirst.frc.team2557.robot.subsystems;
 
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
-import org.usfirst.frc.team2557.robot.commands.ArcadeDrive_cmd;
+import org.usfirst.frc.team2557.robot.commands.GeminiDrive_cmd;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class Chassis extends Subsystem {
+public class Chassis_sub extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -20,7 +20,7 @@ public class Chassis extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new ArcadeDrive_cmd());
+    	setDefaultCommand(new GeminiDrive_cmd());
     }
     public void arcadeDrive_gear(){
     	robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(0) *x, Robot.oi.gamepad1.getRawAxis(1) *x);
