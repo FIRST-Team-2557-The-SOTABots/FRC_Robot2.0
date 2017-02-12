@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2557.robot.subsystems.Chassis_sub;
+import org.usfirst.frc.team2557.robot.subsystems.Vision_sub;
+import org.usfirst.frc.team2557.robot.commands.Vision_cmd;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,8 +23,10 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	public static Chassis_sub chassis;
+	public static Vision_sub vision;
 
 	Command autonomousCommand;
+	Command Vision_cmd;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
@@ -33,7 +37,9 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		RobotMap.init();
 		chassis = new Chassis_sub();
+		vision = new Vision_sub();
 		
+		Vision_cmd = new Vision_cmd();
 		
 		
 		oi = new OI(); //"oi = new OI();" must be initialized after all subsystems and commands
@@ -107,6 +113,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		Vision_cmd.start();
 		Scheduler.getInstance().run();
 	}
 
