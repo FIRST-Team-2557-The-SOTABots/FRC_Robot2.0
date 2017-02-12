@@ -17,12 +17,12 @@ public class Intake_sub extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    public void fuelGate(){
-    	if(RobotMap.fuelGate.get() == Value.kReverse){
-			RobotMap.fuelGate.set(Value.kForward);
+    public void pistonUpDown(){
+    	if(RobotMap.pistonUpDown.get() == Value.kReverse){
+			RobotMap.pistonUpDown.set(Value.kForward);
 		}
-		else if (RobotMap.fuelGate.get() ==Value.kForward){
-			RobotMap.fuelGate.set(Value.kReverse);
+		else if (RobotMap.pistonUpDown.get() ==Value.kForward){
+			RobotMap.pistonUpDown.set(Value.kReverse);
 		}
     }
     public void intakeActive(){
