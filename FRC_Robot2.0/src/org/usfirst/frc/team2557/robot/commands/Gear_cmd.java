@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2557.robot.commands;
 
+import org.usfirst.frc.team2557.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -18,6 +20,7 @@ public class Gear_cmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.gearGrab.gearGrab();
     }
 
     // Make this return true when this Command no longer needs to run execute()

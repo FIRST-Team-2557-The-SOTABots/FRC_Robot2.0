@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2557.robot;
 
+import org.usfirst.frc.team2557.robot.commands.Gear_cmd;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -88,6 +90,8 @@ public class OI {
 		select2 = new JoystickButton(gamepad2, 8);
 		LJ2 = new JoystickButton(gamepad2, 9);
 		RJ2 = new JoystickButton(gamepad2, 10);
+		
+		x1.whileHeld(new Gear_cmd());
 
 	}
 	
