@@ -32,10 +32,9 @@ public class RobotMap {
 	public static CANTalon climber;
 	public static CANTalon gearMotor;
 	
-	public static DoubleSolenoid fuelGate;
 	public static DoubleSolenoid shifter;
 	public static DoubleSolenoid gearGrab;
-	public static DoubleSolenoid PistonUpdown;
+	public static DoubleSolenoid PistonUpDown; //FuelGate
 //	
 	public static void init(){
 		FRdrive = new CANTalon(1);
@@ -50,7 +49,7 @@ public class RobotMap {
 		climber = new CANTalon(8);
 		gearMotor = new CANTalon(9);
 		
-		fuelGate = new DoubleSolenoid(0,1);
+		PistonUpDown = new DoubleSolenoid(0,1);
 		shifter = new DoubleSolenoid(2,3);
 		gearGrab = new DoubleSolenoid(4,5);
 		
