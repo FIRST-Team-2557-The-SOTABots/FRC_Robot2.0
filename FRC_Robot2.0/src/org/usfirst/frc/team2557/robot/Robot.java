@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2557.robot.subsystems.Chassis_sub;
+import org.usfirst.frc.team2557.robot.subsystems.Gear_sub;
+import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Vision_sub;
 import org.usfirst.frc.team2557.robot.commands.Vision_cmd;
 
@@ -24,6 +26,8 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Chassis_sub chassis;
 	public static Vision_sub vision;
+	public static Gear_sub gearGrab;
+	public static Shooter_sub shooter;
 
 	Command autonomousCommand;
 	Command Vision_cmd;
@@ -38,8 +42,9 @@ public class Robot extends IterativeRobot {
 		RobotMap.init();
 		chassis = new Chassis_sub();
 		vision = new Vision_sub();
-		
 		Vision_cmd = new Vision_cmd();
+		gearGrab = new Gear_sub();
+		shooter = new Shooter_sub();
 		
 		
 		oi = new OI(); //"oi = new OI();" must be initialized after all subsystems and commands
