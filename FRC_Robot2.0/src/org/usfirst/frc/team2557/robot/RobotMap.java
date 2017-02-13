@@ -36,6 +36,9 @@ public class RobotMap {
 	public static DoubleSolenoid gearGrab;
 	public static DoubleSolenoid pistonUpDown; //FuelGate
 //	
+	
+	public static boolean gemini;
+	
 	public static void init(){
 		FRdrive = new CANTalon(1);
 		FLdrive = new CANTalon(2);
@@ -52,6 +55,10 @@ public class RobotMap {
 		pistonUpDown = new DoubleSolenoid(0,1);
 		shifter = new DoubleSolenoid(2,3);
 		gearGrab = new DoubleSolenoid(4,5);
+		
+		
+		gemini = true;
+		
 		
 	}
 }

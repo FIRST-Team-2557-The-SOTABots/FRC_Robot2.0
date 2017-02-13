@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2557.robot.commands;
 
 import org.usfirst.frc.team2557.robot.Robot;
+import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -9,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class GeminiDrive_cmd extends Command {
 
-	public boolean driver = true;
+
 	
 	
     public GeminiDrive_cmd() {
@@ -25,14 +26,14 @@ public class GeminiDrive_cmd extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(Robot.oi.start1.get() && Robot.oi.select1.get()){
-    		driver = false;
+    		RobotMap.gemini = false;
     	} else if(Robot.oi.start2.get() && Robot.oi.select2.get()){
-    		driver = true;
+    		RobotMap.gemini = true;
     	}
     	
-    	if(driver){
+    	if(RobotMap.gemini){
     		Robot.chassis.arcadeDrive_fuel();
-    	} else if(driver == false){
+    	} else if(RobotMap.gemini == false){
     		Robot.chassis.arcadeDrive_gear();
     	}
     }
