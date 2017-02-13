@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2557.robot.commands;
 
+import org.usfirst.frc.team2557.robot.Controller;
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
@@ -25,9 +26,11 @@ public class GeminiDrive_cmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.oi.start1.get() && Robot.oi.select1.get()){
+    	if(Robot.oi.getGamepad(0).getButton(Controller.BUTTONSTART).get()
+    			&& Robot.oi.getGamepad(0).getButton(Controller.BUTTONSELECT).get()){
     		RobotMap.gemini = false;
-    	} else if(Robot.oi.start2.get() && Robot.oi.select2.get()){
+    	} else if(Robot.oi.getGamepad(1).getButton(Controller.BUTTONSTART).get()
+    			&& Robot.oi.getGamepad(1).getButton(Controller.BUTTONSELECT).get()){
     		RobotMap.gemini = true;
     	}
     	

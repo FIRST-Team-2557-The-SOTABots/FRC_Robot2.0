@@ -23,16 +23,20 @@ public class Chassis_sub extends Subsystem {
     	setDefaultCommand(new GeminiDrive_cmd());
     }
     public void arcadeDrive_gear(){
-    	robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(0) *x, Robot.oi.gamepad1.getRawAxis(1) *x);
+    	robotDrive.arcadeDrive(-Robot.oi.getGamepad(0).getJoystick().getRawAxis(0) *x,
+    			Robot.oi.getGamepad(0).getJoystick().getRawAxis(1) *x);
     }
     public void arcadeDrive_fuel(){
-    	robotDrive.arcadeDrive(-Robot.oi.gamepad2.getRawAxis(0) *x, -Robot.oi.gamepad2.getRawAxis(1) *x);
+    	robotDrive.arcadeDrive(-Robot.oi.getGamepad(1).getJoystick().getRawAxis(0) *x,
+    			-Robot.oi.getGamepad(1).getJoystick().getRawAxis(1) *x);
     }
     public void tankDrive_gear(){
-    	robotDrive.tankDrive(-Robot.oi.gamepad1.getRawAxis(0) *x, Robot.oi.gamepad1.getRawAxis(5) *x);
+    	robotDrive.tankDrive(-Robot.oi.getGamepad(0).getJoystick().getRawAxis(0) *x,
+    			Robot.oi.getGamepad(0).getJoystick().getRawAxis(5) *x);
     }
     public void tankDrive_fuel(){
-    	robotDrive.tankDrive(-Robot.oi.gamepad1.getRawAxis(0) *x, Robot.oi.gamepad1.getRawAxis(5) *x);
+    	robotDrive.tankDrive(-Robot.oi.getGamepad(0).getJoystick().getRawAxis(0) *x,
+    			Robot.oi.getGamepad(0).getJoystick().getRawAxis(5) *x);
     }
     
 }

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2557.robot.subsystems;
 
+import org.usfirst.frc.team2557.robot.Controller;
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 import org.usfirst.frc.team2557.robot.commands.Climber_cmd;
@@ -22,7 +23,8 @@ public class Climber_sub extends Subsystem {
 
     public void climb(){
     	if(RobotMap.gemini){
-	    	if(Robot.oi.LJ1.get() && Robot.oi.RJ1.get()){
+    		if(Robot.oi.getGamepad(0).getButton(Controller.BUTTONLJ).get()
+    				&& Robot.oi.getGamepad(0).getButton(Controller.BUTTONRJ).get()){
 	        	RobotMap.climber.set(.5);
 	    	}
 	    	else{
@@ -30,7 +32,8 @@ public class Climber_sub extends Subsystem {
 	    	}
     	}
     	else if(RobotMap.gemini == false){
-    		if(Robot.oi.LJ2.get() && Robot.oi.RJ2.get()){
+    		if(Robot.oi.getGamepad(1).getButton(Controller.BUTTONLJ).get()
+    				&& Robot.oi.getGamepad(1).getButton(Controller.BUTTONRJ).get()){
     	    	RobotMap.climber.set(.5);
 	    	}
 	    	else{

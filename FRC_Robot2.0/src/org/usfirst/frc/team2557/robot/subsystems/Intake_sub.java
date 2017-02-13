@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2557.robot.subsystems;
 
+import org.usfirst.frc.team2557.robot.Controller;
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 import org.usfirst.frc.team2557.robot.commands.Intake_cmd;
@@ -23,10 +24,12 @@ public class Intake_sub extends Subsystem {
     
     public void intake(){
     	if(RobotMap.gemini){
-    		if(Robot.oi.RB2.get()){
+    		//if(Robot.oi.RB2.get()){
+    		if(Robot.oi.getGamepad(1).getButton(Controller.BUTTONRB).get()){
     			RobotMap.intake.set(.8);
     		}
-    		else if(Robot.oi.LB2.get()){
+    		//else if(Robot.oi.LB2.get()){
+    		else if(Robot.oi.getGamepad(1).getButton(Controller.BUTTONLB).get()){
     			RobotMap.intake.set(-.8);
     		}
     		else{
@@ -34,10 +37,10 @@ public class Intake_sub extends Subsystem {
     		}
     	}
     	else if(RobotMap.gemini == false){
-    		if(Robot.oi.RB1.get()){
+    		if(Robot.oi.getGamepad(0).getButton(Controller.BUTTONRB).get()){
     			RobotMap.intake.set(.8);
     		}
-    		else if(Robot.oi.LB1.get()){
+    		else if(Robot.oi.getGamepad(0).getButton(Controller.BUTTONLB).get()){
     			RobotMap.intake.set(-.8);
     		}
     		else{
@@ -55,7 +58,8 @@ public class Intake_sub extends Subsystem {
     }
     public void fuelGate(){ //Non-Toggle code
     	if(RobotMap.gemini){
-    		if(Robot.oi.gamepad1.getRawAxis(2) > 0.1){
+    		//if(Robot.oi.gamepad1.getRawAxis(2) > 0.1){
+    		if(Robot.oi.getGamepad(0).getJoystick().getRawAxis(2) > 0.1){
     			RobotMap.pistonUpDown.set(Value.kForward);
     		}
     		else{
@@ -63,7 +67,7 @@ public class Intake_sub extends Subsystem {
     		}
     	}
     	else if(RobotMap.gemini == false){
-    		if(Robot.oi.gamepad2.getRawAxis(2) > 0.1){
+    		if(Robot.oi.getGamepad(1).getJoystick().getRawAxis(2) > 0.1){
     			RobotMap.pistonUpDown.set(Value.kForward);
     		}
     		else{
