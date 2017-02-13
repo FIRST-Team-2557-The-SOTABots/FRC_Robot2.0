@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2557.robot.subsystems.Chassis_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Climber_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Gear_sub;
+import org.usfirst.frc.team2557.robot.subsystems.Intake_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Vision_sub;
 import org.usfirst.frc.team2557.robot.commands.Vision_cmd;
@@ -27,9 +28,10 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Chassis_sub chassis;
 	public static Vision_sub vision;
-	public static Gear_sub gearGrab;
+	public static Gear_sub gear;
 	public static Shooter_sub shooter;
 	public static Climber_sub climber;
+	public static Intake_sub intake;
 
 	Command autonomousCommand;
 	Command Vision_cmd;
@@ -45,9 +47,9 @@ public class Robot extends IterativeRobot {
 		chassis = new Chassis_sub();
 		vision = new Vision_sub();
 		Vision_cmd = new Vision_cmd();
-		gearGrab = new Gear_sub();
+		gear = new Gear_sub();
 		shooter = new Shooter_sub();
-		
+		intake = new Intake_sub();
 		
 		oi = new OI(); //"oi = new OI();" must be initialized after all subsystems and commands
 		oi.init();
