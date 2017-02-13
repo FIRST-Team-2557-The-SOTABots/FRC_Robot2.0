@@ -23,7 +23,7 @@ public class FuelGate_cmd extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(RobotMap.gemini){
-    		if(Robot.oi.LB1.get()){
+    		if(Robot.oi.gamepad1.getRawAxis(2) > 0.1){
     			RobotMap.pistonUpDown.set(Value.kForward);
     		}
     		else{
@@ -31,7 +31,7 @@ public class FuelGate_cmd extends Command {
     		}
     	}
     	else if(RobotMap.gemini == false){
-    		if(Robot.oi.LB2.get()){
+    		if(Robot.oi.gamepad2.getRawAxis(2) > 0.1){
     			RobotMap.pistonUpDown.set(Value.kForward);
     		}
     		else{

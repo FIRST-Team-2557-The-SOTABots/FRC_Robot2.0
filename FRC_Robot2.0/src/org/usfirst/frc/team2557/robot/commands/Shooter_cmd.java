@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2557.robot.commands;
 
 import org.usfirst.frc.team2557.robot.Robot;
+import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -20,7 +21,23 @@ public class Shooter_cmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.shooter.shootingActive();
+    	if(RobotMap.gemini){
+    		if(Robot.oi.gamepad1.getRawAxis(3) > 0.1){
+    			Robot.shooter.shootingActive();
+    		}
+    		else{
+    			Robot.shooter.shootingInactive();
+    		}
+    	}
+    	else if(RobotMap.gemini == false){
+    		if(Robot.oi.gamepad2.getRawAxis(3) > 0.1){
+    			Robot.shooter.shootingActive();
+    		}
+    		else{
+    			Robot.shooter.shootingInactive();
+    		}
+    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

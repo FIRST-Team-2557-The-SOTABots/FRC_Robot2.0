@@ -21,6 +21,10 @@ public class Shooter_sub extends Subsystem {
     	RobotMap.Lshooter.set(.65);
     	RobotMap.Rshooter.set(.65);
     }
+    public void shootingInactive(){
+    	RobotMap.Lshooter.set(0);
+    	RobotMap.Rshooter.set(0);
+    }
     
 }
 
