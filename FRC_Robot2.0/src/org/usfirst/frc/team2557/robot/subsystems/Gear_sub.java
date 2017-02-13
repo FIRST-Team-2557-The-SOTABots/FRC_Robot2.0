@@ -18,18 +18,18 @@ public class Gear_sub extends Subsystem {
     	}
     public void gearGrab(){
     	if(RobotMap.gemini){
-	    	if(Robot.oi.LB1.get() && RobotMap.gearGrab.get()==Value.kReverse){
+	    	if(Robot.oi.LB2.get() && RobotMap.gearGrab.get()==Value.kReverse){
 	    		RobotMap.gearGrab.set(Value.kForward);
 	    	}
-	    	else if(Robot.oi.LB1.get() && RobotMap.gearGrab.get()==Value.kForward){
+	    	else if(Robot.oi.LB2.get() && RobotMap.gearGrab.get()==Value.kForward){
 	    		RobotMap.gearGrab.set(Value.kReverse);
 	    	}
     	}
     	else if(RobotMap.gemini == false){
-    		if(Robot.oi.LB2.get() && RobotMap.gearGrab.get()==Value.kReverse){
+    		if(Robot.oi.LB1.get() && RobotMap.gearGrab.get()==Value.kReverse){
 	    		RobotMap.gearGrab.set(Value.kForward);
 	    	}
-	    	else if(Robot.oi.LB2.get() && RobotMap.gearGrab.get()==Value.kForward){
+	    	else if(Robot.oi.LB1.get() && RobotMap.gearGrab.get()==Value.kForward){
 	    		RobotMap.gearGrab.set(Value.kReverse);
 	    	}
     	}

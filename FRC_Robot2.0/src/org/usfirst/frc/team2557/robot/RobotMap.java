@@ -37,7 +37,7 @@ public class RobotMap {
 	public static DoubleSolenoid pistonUpDown; //FuelGate
 //	
 	
-	public static boolean gemini;
+	public static boolean gemini; //false = Fuel Forward and true = Gear Forward
 	
 	public static void init(){
 		FRdrive = new CANTalon(1);
