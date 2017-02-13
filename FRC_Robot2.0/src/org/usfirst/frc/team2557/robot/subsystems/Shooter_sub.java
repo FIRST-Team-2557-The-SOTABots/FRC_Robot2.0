@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2557.robot.subsystems;
 
+import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 import org.usfirst.frc.team2557.robot.commands.Shooter_cmd;
 
@@ -19,14 +20,27 @@ public class Shooter_sub extends Subsystem {
     	setDefaultCommand(new Shooter_cmd());
     }
     
-    public void shootingActive(){
-    	RobotMap.Lshooter.set(.65);
-    	RobotMap.Rshooter.set(.65);
+    public void shooting(){
+    	if(RobotMap.gemini){
+    		if(Robot.oi.gamepad1.getRawAxis(3) > 0.1){
+    	    	RobotMap.Lshooter.set(.65);
+    	    	RobotMap.Rshooter.set(.65);
+    		}
+    		else{
+    	    	RobotMap.Lshooter.set(0);
+    	    	RobotMap.Rshooter.set(0);
+    		}
+    	}
+    	else if(RobotMap.gemini == false){
+    		if(Robot.oi.gamepad2.getRawAxis(3) > 0.1){
+    	    	RobotMap.Lshooter.set(.65);
+    	    	RobotMap.Rshooter.set(.65);
+    		}
+    		else{
+    	    	RobotMap.Lshooter.set(0);
+    	    	RobotMap.Rshooter.set(0);
+    		}
+    	}
     }
-    public void shootingInactive(){
-    	RobotMap.Lshooter.set(0);
-    	RobotMap.Rshooter.set(0);
-    }
-    
 }
 

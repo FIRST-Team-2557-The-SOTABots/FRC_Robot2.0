@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2557.robot.subsystems;
 
+import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 import org.usfirst.frc.team2557.robot.commands.Climber_cmd;
 
@@ -18,11 +19,24 @@ public class Climber_sub extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new Climber_cmd());
     }
-    public void climberActive(){
-    	RobotMap.climber.set(.5);
-    }
-    public void climberInactive(){
-    	RobotMap.climber.set(0);
+
+    public void climb(){
+    	if(RobotMap.gemini){
+	    	if(Robot.oi.LJ1.get() && Robot.oi.RJ1.get()){
+	        	RobotMap.climber.set(.5);
+	    	}
+	    	else{
+	        	RobotMap.climber.set(0);
+	    	}
+    	}
+    	else if(RobotMap.gemini == false){
+    		if(Robot.oi.LJ2.get() && Robot.oi.RJ2.get()){
+    	    	RobotMap.climber.set(.5);
+	    	}
+	    	else{
+	        	RobotMap.climber.set(0);
+	    	}
+    	}
     }
 }
 

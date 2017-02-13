@@ -22,22 +22,7 @@ public class Climber_cmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(RobotMap.gemini){
-	    	if(Robot.oi.LJ1.get() && Robot.oi.RJ1.get()){
-	    		Robot.climber.climberActive();
-	    	}
-	    	else{
-	    		Robot.climber.climberInactive();
-	    	}
-    	}
-    	else if(RobotMap.gemini == false){
-    		if(Robot.oi.LJ2.get() && Robot.oi.RJ2.get()){
-	    		Robot.climber.climberActive();
-	    	}
-	    	else{
-	    		Robot.climber.climberInactive();
-	    	}
-    	}
+    	Robot.climber.climb();
     }
 
     // Make this return true when this Command no longer needs to run execute()
