@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2557.robot.subsystems.Chassis_sub;
+import org.usfirst.frc.team2557.robot.subsystems.Climber_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Gear_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Vision_sub;
@@ -28,6 +29,7 @@ public class Robot extends IterativeRobot {
 	public static Vision_sub vision;
 	public static Gear_sub gearGrab;
 	public static Shooter_sub shooter;
+	public static Climber_sub climber;
 
 	Command autonomousCommand;
 	Command Vision_cmd;
