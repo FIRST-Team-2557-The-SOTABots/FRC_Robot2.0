@@ -22,40 +22,18 @@ public class Chassis_sub extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new GeminiDrive_cmd());
     }
-//    public void arcadeDrive_gear(){
-//    	robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(1) *x, -Robot.oi.gamepad1.getRawAxis(0) *x);
-//    }
-//    public void arcadeDrive_fuel(){
-//    	robotDrive.arcadeDrive(Robot.oi.gamepad2.getRawAxis(1) *x, -Robot.oi.gamepad2.getRawAxis(0) *x);
-//    }
-//    public void tankDrive_gear(){
-//    	robotDrive.tankDrive(-Robot.oi.gamepad2.getRawAxis(1) *x, Robot.oi.gamepad2.getRawAxis(5) *x);
-//    }
-//    public void tankDrive_fuel(){
-//    	robotDrive.tankDrive(-Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(5) *x);
-//    }
-    public void arcadeDrive(){
-    	if(RobotMap.gemini){
-        	robotDrive.arcadeDrive(Robot.oi.gamepad2.getRawAxis(1) *x, -Robot.oi.gamepad2.getRawAxis(0) *x);
-    	}
-    	else if(RobotMap.gemini == false){
-    		robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(1) *x, -Robot.oi.gamepad1.getRawAxis(0) *x);
-    	}
+    public void arcadeDrive_gear(){
+    	robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(0) *x, Robot.oi.gamepad1.getRawAxis(1) *x);
     }
-    public void tankDrive(){
-    	if(RobotMap.gemini){
-        	robotDrive.tankDrive(Robot.oi.gamepad2.getRawAxis(1) *x, -Robot.oi.gamepad2.getRawAxis(5) *x);
-    	}
-    	else if(RobotMap.gemini == false){
-    		robotDrive.tankDrive(-Robot.oi.gamepad1.getRawAxis(1) *x, -Robot.oi.gamepad1.getRawAxis(5) *x);
-    	}
+    public void arcadeDrive_fuel(){
+    	robotDrive.arcadeDrive(-Robot.oi.gamepad2.getRawAxis(0) *x, -Robot.oi.gamepad2.getRawAxis(1) *x);
     }
-    public void gemini(){
-    	if(Robot.oi.start1.get() && Robot.oi.select1.get()){
-    		RobotMap.gemini = false;
-    	} else if(Robot.oi.start2.get() && Robot.oi.select2.get()){
-    		RobotMap.gemini = true;
-    	}
+    public void tankDrive_gear(){
+    	robotDrive.tankDrive(-Robot.oi.gamepad1.getRawAxis(0) *x, Robot.oi.gamepad1.getRawAxis(5) *x);
     }
+    public void tankDrive_fuel(){
+    	robotDrive.tankDrive(-Robot.oi.gamepad1.getRawAxis(0) *x, Robot.oi.gamepad1.getRawAxis(5) *x);
+    }
+    
 }
 
