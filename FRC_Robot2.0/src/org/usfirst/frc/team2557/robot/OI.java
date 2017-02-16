@@ -91,7 +91,7 @@ public class OI {
 		LJ2 = new JoystickButton(gamepad2, 9);
 		RJ2 = new JoystickButton(gamepad2, 10);
 		
-		x1.whileHeld(new Gear_cmd());
+//		x1.whileHeld(new Gear_cmd());
 
 	}
 	
