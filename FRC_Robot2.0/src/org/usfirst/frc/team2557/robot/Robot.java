@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2557.robot.autonomous.Main_auto;
+import org.usfirst.frc.team2557.robot.subsystems.Agitator_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Chassis_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Climber_sub;
 import org.usfirst.frc.team2557.robot.subsystems.FX_sub;
@@ -31,6 +32,7 @@ public class Robot extends IterativeRobot {
 	public static final Gear_sub gear = new Gear_sub();
 	public static final Climber_sub climber = new Climber_sub();
 	public static final FX_sub fx = new FX_sub();
+	public static final Agitator_sub agitator = new Agitator_sub();
 	public static OI oi;
 
 	Command autonomousCommand;

@@ -18,30 +18,30 @@ public class Gear_sub extends Subsystem {
     public void initDefaultCommand() {
     	setDefaultCommand(new Gear_cmd());
     }
-    public void gearGrab(){
-//    	if(RobotMap.gemini){
-//	    	if(Robot.oi.LB2.get() && RobotMap.gearGrab.get()==Value.kReverse){
+    public void gearGrab(){ 
+    	if(RobotMap.gemini){ //While gear is active
+	    	if(Robot.oi.RB2.get()){ // && RobotMap.gearGrab.get() == Value.kReverse){
+	    		RobotMap.gearGrab.set(Value.kForward);
+	    		return;
+	    	}
+	    	else if(Robot.oi.LB2.get()){// && RobotMap.gearGrab.get() == Value.kForward){
+	    		RobotMap.gearGrab.set(Value.kReverse);
+	    		return;
+	    	}
+    	}
+    	else if(RobotMap.gemini == false){ //While Fuel is active
+//    		if(Robot.oi.RB1.get() && RobotMap.gearGrab.get()==Value.kReverse){
 //	    		RobotMap.gearGrab.set(Value.kForward);
 //	    	}
-//	    	else if(Robot.oi.LB2.get() && RobotMap.gearGrab.get()==Value.kForward){
+//	    	else if(Robot.oi.RB1.get() && RobotMap.gearGrab.get()==Value.kForward){
 //	    		RobotMap.gearGrab.set(Value.kReverse);
 //	    	}
-//    	}
-//    	else if(RobotMap.gemini == false){
-//    		if(Robot.oi.LB1.get() && RobotMap.gearGrab.get()==Value.kReverse){
-//	    		RobotMap.gearGrab.set(Value.kForward);
-//	    	}
-//	    	else if(Robot.oi.LB1.get() && RobotMap.gearGrab.get()==Value.kForward){
-//	    		RobotMap.gearGrab.set(Value.kReverse);
-//	    	}
-    	//}
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+    	}
     }
     public void gearPosition(){
-    	if(RobotMap.gemini){
+    	if(RobotMap.gemini){ //While Gear Forward is active, run the gears
     		if(Robot.oi.gamepad2.getRawAxis(3) > .1){
-    			RobotMap.gearMotor.set(Robot.oi.gamepad2.getRawAxis(3) * .5);
+    			RobotMap.gearMotor.set(Robot.oi.gamepad2.getRawAxis(3) * .65);
     		}
     		else if(Robot.oi.gamepad2.getRawAxis(2) > .1){
     			RobotMap.gearMotor.set(-Robot.oi.gamepad2.getRawAxis(2) * .5);
@@ -50,17 +50,18 @@ public class Gear_sub extends Subsystem {
     			RobotMap.gearMotor.set(0);
     		}
     	}
-    	else if(RobotMap.gemini == false){
-    		if(Robot.oi.gamepad1.getRawAxis(3) > .1){
-    			RobotMap.gearMotor.set(Robot.oi.gamepad2.getRawAxis(3) * .5);
-    		}
-    		else if(Robot.oi.gamepad1.getRawAxis(2) > .1){
-    			RobotMap.gearMotor.set(-Robot.oi.gamepad2.getRawAxis(2) * .5);
-    		}
-    		else{
-    			RobotMap.gearMotor.set(0);
-    		}
+    	else if(RobotMap.gemini == false){ //While Fuel Forward is  active, don't run the gears
+//    		if(Robot.oi.gamepad1.getRawAxis(3) > .1){
+//    			RobotMap.gearMotor.set(Robot.oi.gamepad2.getRawAxis(3) * .5);
+//    		}
+//    		else if(Robot.oi.gamepad1.getRawAxis(2) > .1){
+//    			RobotMap.gearMotor.set(-Robot.oi.gamepad2.getRawAxis(2) * .5);
+//    		}
+//    		else{
+//    			RobotMap.gearMotor.set(0);
+//    		}
     	}
     }
+    
     
 }

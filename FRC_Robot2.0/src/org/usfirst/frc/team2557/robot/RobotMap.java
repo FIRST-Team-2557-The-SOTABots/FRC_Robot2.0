@@ -5,6 +5,8 @@ import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Talon;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -32,6 +34,7 @@ public class RobotMap {
 	public static CANTalon intake;
 	public static CANTalon climber;
 	public static CANTalon gearMotor;
+	public static SpeedController agitator;
 	
 	public static DoubleSolenoid shifter;
 	public static DoubleSolenoid gearGrab;
@@ -52,10 +55,12 @@ public class RobotMap {
 		intake = new CANTalon(7);
 		climber = new CANTalon(8);
 		gearMotor = new CANTalon(9);
+		agitator = new Talon(0);
 		
 		shifter = new DoubleSolenoid(0,1);
-		pistonUpDown = new DoubleSolenoid(2,3);
-		gearGrab = new DoubleSolenoid(4,5);
+		gearGrab = new DoubleSolenoid(2,3);
+		pistonUpDown = new DoubleSolenoid(6,7);
+		
 		
 		accelerator = new BuiltInAccelerometer();
 		

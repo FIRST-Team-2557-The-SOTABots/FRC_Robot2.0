@@ -30,12 +30,8 @@ public class Chassis_cmd extends Command {
     	} else if(Robot.oi.start2.get() && Robot.oi.select2.get()){
     		RobotMap.gemini = true;
     	}
-    	
-    	if(RobotMap.gemini){
-    		Robot.chassis.arcadeDrive_fuel();
-    	} else if(RobotMap.gemini == false){
-    		Robot.chassis.arcadeDrive_gear();
-    	}
+    	Robot.chassis.arcadeDrive();
+    	Robot.chassis.shift_non();
     }
 
     // Make this return true when this Command no longer needs to run execute()
