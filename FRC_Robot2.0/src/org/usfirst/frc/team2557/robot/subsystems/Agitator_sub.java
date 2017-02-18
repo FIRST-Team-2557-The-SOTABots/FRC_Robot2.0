@@ -19,7 +19,12 @@ public class Agitator_sub extends Subsystem {
     	setDefaultCommand(new Agitator_cmd());
     }
     public void passive(){
-    	RobotMap.agitator.set(.8);
+    	if((RobotMap.Rshooter.get() > 0.1 || RobotMap.Rshooter.get() < -0.1) && (RobotMap.Lshooter.get() > 0.1 || RobotMap.Lshooter.get() < -0.1)){
+    		RobotMap.agitator.set(.8);
+    	}
+    	else{
+    		RobotMap.agitator.set(0);
+    	}
     }
 }
 
