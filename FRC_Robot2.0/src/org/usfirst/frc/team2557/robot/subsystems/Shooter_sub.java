@@ -22,7 +22,7 @@ public class Shooter_sub extends Subsystem {
     
     public void shooting(){
     	if(RobotMap.gemini){
-    		if(Robot.oi.getGamepad(0).getJoystick().getRawAxis(3) > 0.1){
+    		if(Robot.oi.getGamepad(0).getRawAxis(3) > 0.1){
     	    	RobotMap.Lshooter.set(.65);
     	    	RobotMap.Rshooter.set(.65);
     		}
@@ -32,7 +32,7 @@ public class Shooter_sub extends Subsystem {
     		}
     	}
     	else if(RobotMap.gemini == false){
-    		if(Robot.oi.getGamepad(1).getJoystick().getRawAxis(3) > 0.1){
+    		if(Robot.oi.getGamepad(1).getRawAxis(3) > 0.1){
     	    	RobotMap.Lshooter.set(.65);
     	    	RobotMap.Rshooter.set(.65);
     		}

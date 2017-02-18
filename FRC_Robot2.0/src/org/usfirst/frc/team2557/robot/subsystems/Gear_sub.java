@@ -21,21 +21,21 @@ public class Gear_sub extends Subsystem {
     }
     public void gearGrab(){
     	if(RobotMap.gemini){
-	    	if(Robot.oi.getGamepad(1).getButton(Controller.BUTTONLB).get()
+	    	if(Robot.oi.getGamepad(1).getButtonEnabled(Controller.BUTTONLB)
 	    			&& RobotMap.gearGrab.get()==Value.kReverse){
 	    		RobotMap.gearGrab.set(Value.kForward);
 	    	}
-	    	else if(Robot.oi.getGamepad(1).getButton(Controller.BUTTONLB).get()
+	    	else if(Robot.oi.getGamepad(1).getButtonEnabled(Controller.BUTTONLB)
 	    			&& RobotMap.gearGrab.get()==Value.kForward){
 	    		RobotMap.gearGrab.set(Value.kReverse);
 	    	}
     	}
     	else if(RobotMap.gemini == false){
-    		if(Robot.oi.getGamepad(0).getButton(Controller.BUTTONLB).get()
+    		if(Robot.oi.getGamepad(0).getButtonEnabled(Controller.BUTTONLB)
     				&& RobotMap.gearGrab.get()==Value.kReverse){
 	    		RobotMap.gearGrab.set(Value.kForward);
 	    	}
-	    	else if(Robot.oi.getGamepad(0).getButton(Controller.BUTTONLB).get()
+	    	else if(Robot.oi.getGamepad(0).getButtonEnabled(Controller.BUTTONLB)
 	    			&& RobotMap.gearGrab.get()==Value.kForward){
 	    		RobotMap.gearGrab.set(Value.kReverse);
 	    	}
@@ -46,22 +46,22 @@ public class Gear_sub extends Subsystem {
     public void gearPosition(){
     	if(RobotMap.gemini){
     		//if(Robot.oi.gamepad2.getRawAxis(3) > .1){
-    		if(Robot.oi.getGamepad(1).getJoystick().getRawAxis(3) > .1){
-    			RobotMap.gearMotor.set(Robot.oi.getGamepad(1).getJoystick().getRawAxis(3) * .5);
+    		if(Robot.oi.getGamepad(1).getRawAxis(3) > .1){
+    			RobotMap.gearMotor.set(Robot.oi.getGamepad(1).getRawAxis(3) * .5);
     		}
-    		else if(Robot.oi.getGamepad(1).getJoystick().getRawAxis(2) > .1){
-    			RobotMap.gearMotor.set(-Robot.oi.getGamepad(1).getJoystick().getRawAxis(2) * .5);
+    		else if(Robot.oi.getGamepad(1).getRawAxis(2) > .1){
+    			RobotMap.gearMotor.set(-Robot.oi.getGamepad(1).getRawAxis(2) * .5);
     		}
     		else{
     			RobotMap.gearMotor.set(0);
     		}
     	}
     	else if(RobotMap.gemini == false){
-    		if(Robot.oi.getGamepad(0).getJoystick().getRawAxis(3) > .1){
-    			RobotMap.gearMotor.set(Robot.oi.getGamepad(1).getJoystick().getRawAxis(3) * .5);
+    		if(Robot.oi.getGamepad(0).getRawAxis(3) > .1){
+    			RobotMap.gearMotor.set(Robot.oi.getGamepad(1).getRawAxis(3) * .5);
     		}
-    		else if(Robot.oi.getGamepad(0).getJoystick().getRawAxis(2) > .1){
-    			RobotMap.gearMotor.set(-Robot.oi.getGamepad(1).getJoystick().getRawAxis(2) * .5);
+    		else if(Robot.oi.getGamepad(0).getRawAxis(2) > .1){
+    			RobotMap.gearMotor.set(-Robot.oi.getGamepad(1).getRawAxis(2) * .5);
     		}
     		else{
     			RobotMap.gearMotor.set(0);

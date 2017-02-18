@@ -2,6 +2,7 @@ package org.usfirst.frc.team2557.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 
 public class Controller {
 	/*
@@ -61,15 +62,22 @@ public class Controller {
 			buttons[i] = new JoystickButton(joystick, i+1);
 		}
 	}
+	
+	/*
+	 * Set the command for when a button is pressed.
+	 */
+	public void setButtonCommand(int button, Command command) {
+		buttons[button].whenPressed(command);
+	}
 
 	/*
-	 * Get a JoystickButton object.
+	 * Get the state of the button.
 	 */
-	public JoystickButton getButton(int button) {
-		return buttons[button];
-	}	
+	public boolean getButtonEnabled(int button) {
+		return buttons[button].get();
+	}
 	
-	public Joystick getJoystick() {
-		return joystick;
+	public double getRawAxis(int axis) {
+		return joystick.getRawAxis(axis);
 	}
 }

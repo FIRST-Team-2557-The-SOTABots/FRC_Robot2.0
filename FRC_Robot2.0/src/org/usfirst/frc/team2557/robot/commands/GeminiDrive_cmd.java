@@ -26,11 +26,11 @@ public class GeminiDrive_cmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.oi.getGamepad(0).getButton(Controller.BUTTONSTART).get()
-    			&& Robot.oi.getGamepad(0).getButton(Controller.BUTTONSELECT).get()){
+    	if(Robot.oi.getGamepad(0).getButtonEnabled(Controller.BUTTONSTART)
+    			&& Robot.oi.getGamepad(0).getButtonEnabled(Controller.BUTTONSELECT)){
     		RobotMap.gemini = false;
-    	} else if(Robot.oi.getGamepad(1).getButton(Controller.BUTTONSTART).get()
-    			&& Robot.oi.getGamepad(1).getButton(Controller.BUTTONSELECT).get()){
+    	} else if(Robot.oi.getGamepad(1).getButtonEnabled(Controller.BUTTONSTART)
+    			&& Robot.oi.getGamepad(1).getButtonEnabled(Controller.BUTTONSELECT)){
     		RobotMap.gemini = true;
     	}
     	
