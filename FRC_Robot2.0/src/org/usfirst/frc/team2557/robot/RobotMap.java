@@ -5,8 +5,6 @@ import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Sendable;
-import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -28,7 +26,6 @@ public class RobotMap {
 	public static CANTalon BRdrive;
 	public static CANTalon BLdrive;
 	public static RobotDrive robotDrive;
-	public static BuiltInAccelerometer accelerator;
 	
 	public static CANTalon Lshooter;
 	public static CANTalon Rshooter;
@@ -38,9 +35,9 @@ public class RobotMap {
 	
 	public static DoubleSolenoid shifter;
 	public static DoubleSolenoid gearGrab;
-	public static DoubleSolenoid pistonUpDown; //FuelGate
-//	
+	public static DoubleSolenoid pistonUpDown; //FuelGate aka Moses
 	
+	public static BuiltInAccelerometer accelerator;
 	public static boolean gemini; //false = Fuel Forward and true = Gear Forward
 	
 	public static void init(){
@@ -49,18 +46,18 @@ public class RobotMap {
 		BRdrive = new CANTalon(3);
 		BLdrive = new CANTalon(4);
 		robotDrive = new RobotDrive(FLdrive, BLdrive, FRdrive, BRdrive);
-		accelerator = new BuiltInAccelerometer();
-
+		robotDrive.setSafetyEnabled(false);
 		Lshooter = new CANTalon(5);
 		Rshooter = new CANTalon(6);
 		intake = new CANTalon(7);
 		climber = new CANTalon(8);
 		gearMotor = new CANTalon(9);
 		
-		pistonUpDown = new DoubleSolenoid(0,1);
-		shifter = new DoubleSolenoid(2,3);
+		shifter = new DoubleSolenoid(0,1);
+		pistonUpDown = new DoubleSolenoid(2,3);
 		gearGrab = new DoubleSolenoid(4,5);
 		
+		accelerator = new BuiltInAccelerometer();
 		
 		gemini = true;
 		

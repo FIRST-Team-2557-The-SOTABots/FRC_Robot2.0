@@ -2,20 +2,19 @@
 package org.usfirst.frc.team2557.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team2557.robot.autonomous.Main_auto;
 import org.usfirst.frc.team2557.robot.subsystems.Chassis_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Climber_sub;
+import org.usfirst.frc.team2557.robot.subsystems.FX_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Gear_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Intake_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
-import org.usfirst.frc.team2557.robot.subsystems.Vision_sub;
-import org.usfirst.frc.team2557.robot.commands.Vision_cmd;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,17 +25,15 @@ import org.usfirst.frc.team2557.robot.commands.Vision_cmd;
  */
 public class Robot extends IterativeRobot {
 
+	public static final Chassis_sub chassis = new Chassis_sub();
+	public static final Shooter_sub shooter = new Shooter_sub();
+	public static final Intake_sub intake = new Intake_sub();
+	public static final Gear_sub gear = new Gear_sub();
+	public static final Climber_sub climber = new Climber_sub();
+	public static final FX_sub fx = new FX_sub();
 	public static OI oi;
-	public static Chassis_sub chassis;
-	public static Vision_sub vision;
-	public static Gear_sub gear;
-	public static Shooter_sub shooter;
-	public static Climber_sub climber;
-	public static Intake_sub intake;
-	
 
 	Command autonomousCommand;
-	Command Vision_cmd;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
@@ -46,16 +43,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
-		chassis = new Chassis_sub();
-		vision = new Vision_sub();
-		Vision_cmd = new Vision_cmd();
-		gear = new Gear_sub();
-		shooter = new Shooter_sub();
-		intake = new Intake_sub();
-		
-		oi = new OI(); //"oi = new OI();" must be initialized after all subsystems and commands
+		oi = new OI();
 		oi.init();
-		Sendable chooser;
+		chooser.addDefault("Default Auto", new Main_auto());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 	}
@@ -125,7 +115,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Vision_cmd.start();
 		Scheduler.getInstance().run();
 	}
 

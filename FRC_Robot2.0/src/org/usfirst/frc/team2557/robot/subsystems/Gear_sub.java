@@ -19,22 +19,22 @@ public class Gear_sub extends Subsystem {
     	setDefaultCommand(new Gear_cmd());
     }
     public void gearGrab(){
-    	if(RobotMap.gemini){
-	    	if(Robot.oi.LB2.get() && RobotMap.gearGrab.get()==Value.kReverse){
-	    		RobotMap.gearGrab.set(Value.kForward);
-	    	}
-	    	else if(Robot.oi.LB2.get() && RobotMap.gearGrab.get()==Value.kForward){
-	    		RobotMap.gearGrab.set(Value.kReverse);
-	    	}
-    	}
-    	else if(RobotMap.gemini == false){
-    		if(Robot.oi.LB1.get() && RobotMap.gearGrab.get()==Value.kReverse){
-	    		RobotMap.gearGrab.set(Value.kForward);
-	    	}
-	    	else if(Robot.oi.LB1.get() && RobotMap.gearGrab.get()==Value.kForward){
-	    		RobotMap.gearGrab.set(Value.kReverse);
-	    	}
-    	}
+//    	if(RobotMap.gemini){
+//	    	if(Robot.oi.LB2.get() && RobotMap.gearGrab.get()==Value.kReverse){
+//	    		RobotMap.gearGrab.set(Value.kForward);
+//	    	}
+//	    	else if(Robot.oi.LB2.get() && RobotMap.gearGrab.get()==Value.kForward){
+//	    		RobotMap.gearGrab.set(Value.kReverse);
+//	    	}
+//    	}
+//    	else if(RobotMap.gemini == false){
+//    		if(Robot.oi.LB1.get() && RobotMap.gearGrab.get()==Value.kReverse){
+//	    		RobotMap.gearGrab.set(Value.kForward);
+//	    	}
+//	    	else if(Robot.oi.LB1.get() && RobotMap.gearGrab.get()==Value.kForward){
+//	    		RobotMap.gearGrab.set(Value.kReverse);
+//	    	}
+    	//}
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }

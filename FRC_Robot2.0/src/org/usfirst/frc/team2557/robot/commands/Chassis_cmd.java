@@ -8,12 +8,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class GeminiDrive_cmd extends Command {
+public class Chassis_cmd extends Command {
 
 
 	
 	
-    public GeminiDrive_cmd() {
+    public Chassis_cmd() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassis);

@@ -24,10 +24,10 @@ public class Intake_sub extends Subsystem {
     public void intake(){
     	if(RobotMap.gemini){
     		if(Robot.oi.RB2.get()){
-    			RobotMap.intake.set(.8);
+    			RobotMap.intake.set(-.8);
     		}
     		else if(Robot.oi.LB2.get()){
-    			RobotMap.intake.set(-.8);
+    			RobotMap.intake.set( .8);
     		}
     		else{
     			RobotMap.intake.set(0);
@@ -35,10 +35,10 @@ public class Intake_sub extends Subsystem {
     	}
     	else if(RobotMap.gemini == false){
     		if(Robot.oi.RB1.get()){
-    			RobotMap.intake.set(.8);
+    			RobotMap.intake.set(-.8);
     		}
     		else if(Robot.oi.LB1.get()){
-    			RobotMap.intake.set(-.8);
+    			RobotMap.intake.set(.8);
     		}
     		else{
     			RobotMap.intake.set(0);
