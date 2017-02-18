@@ -2,8 +2,11 @@ package org.usfirst.frc.team2557.robot;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Sendable;
+import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -25,6 +28,7 @@ public class RobotMap {
 	public static CANTalon BRdrive;
 	public static CANTalon BLdrive;
 	public static RobotDrive robotDrive;
+	public static BuiltInAccelerometer accelerator;
 	
 	public static CANTalon Lshooter;
 	public static CANTalon Rshooter;
@@ -45,6 +49,7 @@ public class RobotMap {
 		BRdrive = new CANTalon(3);
 		BLdrive = new CANTalon(4);
 		robotDrive = new RobotDrive(FLdrive, BLdrive, FRdrive, BRdrive);
+		accelerator = new BuiltInAccelerometer();
 
 		Lshooter = new CANTalon(5);
 		Rshooter = new CANTalon(6);

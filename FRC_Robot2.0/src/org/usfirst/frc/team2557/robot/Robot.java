@@ -2,6 +2,7 @@
 package org.usfirst.frc.team2557.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -32,6 +33,7 @@ public class Robot extends IterativeRobot {
 	public static Shooter_sub shooter;
 	public static Climber_sub climber;
 	public static Intake_sub intake;
+	
 
 	Command autonomousCommand;
 	Command Vision_cmd;
@@ -53,6 +55,7 @@ public class Robot extends IterativeRobot {
 		
 		oi = new OI(); //"oi = new OI();" must be initialized after all subsystems and commands
 		oi.init();
+		Sendable chooser;
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 	}
