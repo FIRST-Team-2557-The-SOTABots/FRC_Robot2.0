@@ -18,6 +18,15 @@ import org.usfirst.frc.team2557.robot.subsystems.Intake_sub;
 import org.usfirst.frc.team2557.robot.subsystems.PsuedoShooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
 
+import Vision.VisionArray;
+import Vision.VisionInitializer;
+import Vision.AreaInitializer;
+import Vision.HeightInitializer;
+import Vision.WidthInitializer;
+import Vision.CenterXInitializer;
+import Vision.CenterYInitializer;
+import Vision.InterpretCameraCommand;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -35,9 +44,18 @@ public class Robot extends IterativeRobot {
 	public static final FX_sub fx 					= new FX_sub();
 	public static final Agitator_sub agitator 		= new Agitator_sub();
 	public static final PsuedoShooter_sub psuedo 	= new PsuedoShooter_sub();
+	public static final VisionArray visionArray     = new VisionArray();
 	public static OI oi;
 
 	Command autonomousCommand;
+	Command VisionInitializer;
+	Command InterpretCameraCommand;
+	Command AreaInitializer;
+	Command HeightInitializer;
+	Command WidthInitializer;
+	Command CenterXInitializer;
+	Command CenterYInitializer;
+	
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
@@ -47,6 +65,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
+		
+		VisionInitializer = new VisionInitializer();
+		AreaInitializer = new 
+		
 		oi = new OI();
 		oi.init();
 		chooser.addDefault("Default Auto", new Main_auto());
