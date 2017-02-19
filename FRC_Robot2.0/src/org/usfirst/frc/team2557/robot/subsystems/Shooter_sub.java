@@ -34,8 +34,8 @@ public class Shooter_sub extends Subsystem {
     	}
     	else if(RobotMap.gemini == false){ //While fuel is active
     		if(Robot.oi.gamepad1.getRawAxis(3) > 0.1){
-    	    	RobotMap.Lshooter.set(-.65);
-    	    	RobotMap.Rshooter.set(.65);
+    	    	RobotMap.Lshooter.set(-1);
+    	    	RobotMap.Rshooter.set(1);
     		}
     		else{
     	    	RobotMap.Lshooter.set(0);

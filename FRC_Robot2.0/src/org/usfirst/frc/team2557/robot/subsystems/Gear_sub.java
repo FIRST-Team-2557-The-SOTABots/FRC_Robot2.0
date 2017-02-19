@@ -28,6 +28,10 @@ public class Gear_sub extends Subsystem {
 	    		RobotMap.gearGrab.set(Value.kReverse);
 	    		return;
 	    	}
+	    	else if(RobotMap.gearSwitch.get()){
+	    		RobotMap.gearGrab.set(Value.kForward);
+	    		return;
+	    	}
     	}
     	else if(RobotMap.gemini == false){ //While Fuel is active
 //    		if(Robot.oi.RB1.get() && RobotMap.gearGrab.get()==Value.kReverse){
@@ -36,6 +40,13 @@ public class Gear_sub extends Subsystem {
 //	    	else if(Robot.oi.RB1.get() && RobotMap.gearGrab.get()==Value.kForward){
 //	    		RobotMap.gearGrab.set(Value.kReverse);
 //	    	}
+    		
+    		
+    		
+    		if(RobotMap.gearSwitch.get()){
+	    		RobotMap.gearGrab.set(Value.kForward);
+	    		return;
+	    	}
     	}
     }
     public void gearPosition(){

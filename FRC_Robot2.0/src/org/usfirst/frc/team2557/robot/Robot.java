@@ -15,6 +15,7 @@ import org.usfirst.frc.team2557.robot.subsystems.Climber_sub;
 import org.usfirst.frc.team2557.robot.subsystems.FX_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Gear_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Intake_sub;
+import org.usfirst.frc.team2557.robot.subsystems.PsuedoShooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
 
 /**
@@ -26,13 +27,14 @@ import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
  */
 public class Robot extends IterativeRobot {
 
-	public static final Chassis_sub chassis = new Chassis_sub();
-	public static final Shooter_sub shooter = new Shooter_sub();
-	public static final Intake_sub intake = new Intake_sub();
-	public static final Gear_sub gear = new Gear_sub();
-	public static final Climber_sub climber = new Climber_sub();
-	public static final FX_sub fx = new FX_sub();
-	public static final Agitator_sub agitator = new Agitator_sub();
+	public static final Chassis_sub chassis 		= new Chassis_sub();
+	public static final Shooter_sub shooter 		= new Shooter_sub();
+	public static final Intake_sub intake 			= new Intake_sub();
+	public static final Gear_sub gear 				= new Gear_sub();
+	public static final Climber_sub climber 		= new Climber_sub();
+	public static final FX_sub fx 					= new FX_sub();
+	public static final Agitator_sub agitator 		= new Agitator_sub();
+	public static final PsuedoShooter_sub psuedo 	= new PsuedoShooter_sub();
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -118,6 +120,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("Lshooter encoder velocity: ", RobotMap.Lshooter.getEncVelocity());
+		SmartDashboard.putNumber("Rshooter encoder velocity: ", RobotMap.Rshooter.getEncVelocity());
 	}
 
 	/**

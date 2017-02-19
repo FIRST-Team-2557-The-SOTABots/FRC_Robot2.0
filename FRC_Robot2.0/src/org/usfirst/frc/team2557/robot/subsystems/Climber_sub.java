@@ -23,7 +23,7 @@ public class Climber_sub extends Subsystem {
     public void climb(){
     	if(RobotMap.gemini){
 	    	if(Robot.oi.LJ2.get() && Robot.oi.RJ2.get()){
-	        	RobotMap.climber.set(.75);
+	        	RobotMap.climber.set(.9);
 	    	}
 	    	else{
 	        	RobotMap.climber.set(0);
@@ -31,7 +31,7 @@ public class Climber_sub extends Subsystem {
     	}
     	else if(RobotMap.gemini == false){
     		if(Robot.oi.LJ1.get() && Robot.oi.RJ1.get()){
-    	    	RobotMap.climber.set(.75);
+    	    	RobotMap.climber.set(.9);
 	    	}
 	    	else{
 	        	RobotMap.climber.set(0);
