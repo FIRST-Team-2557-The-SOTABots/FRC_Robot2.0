@@ -73,6 +73,20 @@ public class Gear_sub extends Subsystem {
 //    		}
     	}
     }
+    public void autoGear(){
+//    	if(RobotMap.gearEnc.get() < -70){
+//    		
+//    	}
+//    	else if(RobotMap.gearEnc.get() <= -659){
+//    		RobotMap.gearMotor.set(.1);
+//    	}
+//    	else 
+    		while(RobotMap.gearSwitch.get() && RobotMap.gearEnc.get() > -660){
+    		RobotMap.gearMotor.set(.6);
+    	}
+    	
+    	
+    }
     
     
 }
