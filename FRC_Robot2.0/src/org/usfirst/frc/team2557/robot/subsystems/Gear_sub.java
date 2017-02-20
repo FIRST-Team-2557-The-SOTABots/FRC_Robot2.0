@@ -34,7 +34,7 @@ public class Gear_sub extends Subsystem {
 	    	}
     	}
     	else if(RobotMap.gemini == false){ //While Fuel is active
-//    		if(Robot.oi.RB1.get() && RobotMap.gearGrab.get()==Value.kReverse){
+    		if(Robot.oi.RB1.get() && RobotMap.gearGrab.get()==Value.kReverse){
 //	    		RobotMap.gearGrab.set(Value.kForward);
 //	    	}
 //	    	else if(Robot.oi.RB1.get() && RobotMap.gearGrab.get()==Value.kForward){
@@ -47,7 +47,9 @@ public class Gear_sub extends Subsystem {
 	    		RobotMap.gearGrab.set(Value.kForward);
 	    		return;
 	    	}
-    	}
+    		    }
+    		       }
+    	
     }
     public void gearPosition(){
     	if(RobotMap.gemini){ //While Gear Forward is active, run the gears
@@ -74,14 +76,14 @@ public class Gear_sub extends Subsystem {
     	}
     }
     public void autoGear(){
-//    	if(RobotMap.gearEnc.get() < -70){
-//    		
-//    	}
-//    	else if(RobotMap.gearEnc.get() <= -659){
-//    		RobotMap.gearMotor.set(.1);
-//    	}
-//    	else 
-    		while(RobotMap.gearSwitch.get() && RobotMap.gearEnc.get() > -660){
+   	if( RobotMap.gearEnc.get() >= -670){
+   		RobotMap.gearMotor.set(.8);
+    	}
+   	else if(RobotMap.gearEnc.get() <= -670){
+   		RobotMap.gearMotor.set(0);
+   	}
+    	else 
+    		while(RobotMap.gearSwitch.get() && ( RobotMap.gearEnc).get() > -660){
     		RobotMap.gearMotor.set(.6);
     	}
     	
