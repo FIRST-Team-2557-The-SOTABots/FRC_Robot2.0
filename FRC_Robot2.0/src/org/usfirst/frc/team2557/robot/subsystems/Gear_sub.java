@@ -20,11 +20,11 @@ public class Gear_sub extends Subsystem {
     }
     public void gearGrab(){ 
     	if(RobotMap.gemini){ //While gear is active
-	    	if(Robot.oi.RB2.get()){ // && RobotMap.gearGrab.get() == Value.kReverse){
+	    	if(Robot.oi.RB2.get()||Robot.oi.RB1.get()){ // && RobotMap.gearGrab.get() == Value.kReverse){
 	    		RobotMap.gearGrab.set(Value.kForward);
 	    		return;
 	    	}
-	    	else if(Robot.oi.LB2.get()){// && RobotMap.gearGrab.get() == Value.kForward){
+	    	else if(Robot.oi.LB2.get()||Robot.oi.LB1.get()){// && RobotMap.gearGrab.get() == Value.kForward){
 	    		RobotMap.gearGrab.set(Value.kReverse);
 	    		return;
 	    	}
