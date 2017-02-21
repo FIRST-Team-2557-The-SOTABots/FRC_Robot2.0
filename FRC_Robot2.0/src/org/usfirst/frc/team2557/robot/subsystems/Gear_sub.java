@@ -19,37 +19,24 @@ public class Gear_sub extends Subsystem {
     public void initDefaultCommand() {
     	setDefaultCommand(new Gear_cmd());
     }
+    
+    
     public void gearGrab(){ 
-    	if(RobotMap.gemini){ //While gear is active
-	    	if(Robot.oi.RB2.get()){ // && RobotMap.gearGrab.get() == Value.kReverse){
+	    	if(RobotMap.FALL){ // && RobotMap.gearGrab.get() == Value.kReverse){
 	    		RobotMap.gearGrab.set(Value.kForward);
-	    		return;
+	    		RobotMap.FALL = false;
 	    	}
-	    	else if(Robot.oi.LB2.get()){// && RobotMap.gearGrab.get() == Value.kForward){
+	    	else if(RobotMap.FALL == false){// && RobotMap.gearGrab.get() == Value.kForward){
 	    		RobotMap.gearGrab.set(Value.kReverse);
-	    		return;
+	    		RobotMap.FALL = true;
 	    	}
 	    	else if(RobotMap.gearSwitch.get()){
 	    		RobotMap.gearGrab.set(Value.kForward);
 	    		return;
 	    	}
-    	}
-    	else if(RobotMap.gemini == false){ //While Fuel is active
-    		if(Robot.oi.RB1.get() && RobotMap.gearGrab.get()==Value.kReverse){
-//	    		RobotMap.gearGrab.set(Value.kForward);
-//	    	}
-//	    	else if(Robot.oi.RB1.get() && RobotMap.gearGrab.get()==Value.kForward){
-//	    		RobotMap.gearGrab.set(Value.kReverse);
-//	    	}
-    		
-    		
-    		
-    		if(RobotMap.gearSwitch.get()){
-	    		RobotMap.gearGrab.set(Value.kForward);
-	    		return;
-	    	}
-    		    }
-    		       }
+    	
+    		    
+    		       
     	
     }
     public void gearPosition(){
@@ -64,29 +51,19 @@ public class Gear_sub extends Subsystem {
     			RobotMap.gearMotor.set(0);
     		}
     	}
-    	else if(RobotMap.gemini == false){ //While Fuel Forward is  active, don't run the gears
-//    		if(Robot.oi.gamepad1.getRawAxis(3) > .1){
-//    			RobotMap.gearMotor.set(Robot.oi.gamepad2.getRawAxis(3) * .5);
-//    		}
-//    		else if(Robot.oi.gamepad1.getRawAxis(2) > .1){
-//    			RobotMap.gearMotor.set(-Robot.oi.gamepad2.getRawAxis(2) * .5);
-//    		}
-//    		else{
-//    			RobotMap.gearMotor.set(0);
-//    		}
-    	}
+    	
     }
     public void autoGear(){
-   	if( RobotMap.gearEnc.get() >= -670){
-   		RobotMap.gearMotor.set(.8);
-    	}
-   	else if(RobotMap.gearEnc.get() <= -670){
-   		RobotMap.gearMotor.set(0);
-   	}
-    	else 
-    		while(RobotMap.gearSwitch.get() && ( RobotMap.gearEnc).get() > -660){
-    		RobotMap.gearMotor.set(.6);
-    	}
+//   	if( RobotMap.gearEnc.get() >= -670){
+//   		RobotMap.gearMotor.set(.8);
+//    	}
+//   	else if(RobotMap.gearEnc.get() <= -670){
+//   		RobotMap.gearMotor.set(0);
+//   	}
+//    	else 
+//    		while(RobotMap.gearSwitch.get() && ( RobotMap.gearEnc).get() > -660){
+//    		RobotMap.gearMotor.set(.6);
+//    	}
     	
     	
     }

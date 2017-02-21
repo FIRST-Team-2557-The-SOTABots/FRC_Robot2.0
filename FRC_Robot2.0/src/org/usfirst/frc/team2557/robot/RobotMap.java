@@ -45,6 +45,7 @@ public class RobotMap {
 	
 	public static BuiltInAccelerometer accelerator;
 	public static boolean gemini; //false = Fuel Forward and true = Gear Forward
+	public static boolean FALL;
 	public static DigitalInput gearSwitch;
 	public static Encoder gearEnc;
 	
@@ -76,6 +77,7 @@ public class RobotMap {
 		
 		accelerator = new BuiltInAccelerometer();
 		
+		FALL = false;
 		gemini = true;
 		
 		

@@ -34,10 +34,10 @@ public class Intake_sub extends Subsystem {
 //    		}
     	}
     	else if(RobotMap.gemini == false){ //While fuel is active
-    		if(Robot.oi.RB1.get()){
+    		if(Robot.oi.RB1.get() || Robot.oi.RB2.get()){
     			RobotMap.intake.set(-.8);
     		}
-    		else if(Robot.oi.LB1.get()){
+    		else if(Robot.oi.LB1.get()||Robot.oi.LB2.get()){
     			RobotMap.intake.set(.8);
     		}
     		else{
