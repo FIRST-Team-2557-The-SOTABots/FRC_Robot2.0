@@ -13,11 +13,11 @@ public class PsuedoShooter_sub extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public final double min_left 	= 16800;
-	public final double max_left 	= 21520;
+	public final double max_left 	= 20000;//21520;
 	public final double prime_left 	= 19160;
 	
 	public final double min_right 	= -17100;
-	public final double max_right 	= -21680;
+	public final double max_right 	= -20000;//-21680;
 	public final double prime_right = -19390;
    
 

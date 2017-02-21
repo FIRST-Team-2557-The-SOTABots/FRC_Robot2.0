@@ -1,7 +1,5 @@
 package Vision;
 
-package Vision;
-
 import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;

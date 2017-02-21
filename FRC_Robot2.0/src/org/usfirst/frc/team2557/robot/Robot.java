@@ -67,7 +67,12 @@ public class Robot extends IterativeRobot {
 		RobotMap.init();
 		
 		VisionInitializer = new VisionInitializer();
-		AreaInitializer = new 
+		AreaInitializer = new AreaInitializer();
+		HeightInitializer = new HeightInitializer();
+		WidthInitializer = new WidthInitializer();
+		CenterXInitializer = new CenterXInitializer();
+		CenterYInitializer = new CenterYInitializer();
+		InterpretCameraCommand = new InterpretCameraCommand();
 		
 		oi = new OI();
 		oi.init();
@@ -142,9 +147,16 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-//		SmartDashboard.putNumber("Lshooter encoder velocity: ", RobotMap.Lshooter.getEncVelocity());
-//		SmartDashboard.putNumber("Rshooter encoder velocity: ", RobotMap.Rshooter.getEncVelocity());
+		SmartDashboard.putNumber("Lshooter encoder velocity: ", RobotMap.Lshooter.getEncVelocity());
+		SmartDashboard.putNumber("Rshooter encoder velocity: ", RobotMap.Rshooter.getEncVelocity());
 		SmartDashboard.putNumber("Gear enc is: ", RobotMap.gearEnc.get());
+		VisionInitializer.start();
+		AreaInitializer.start();
+		HeightInitializer.start();
+		WidthInitializer.start();
+		CenterXInitializer.start();
+		CenterYInitializer.start();
+		InterpretCameraCommand.start();
 		//low was 52, high -673
 	}
 

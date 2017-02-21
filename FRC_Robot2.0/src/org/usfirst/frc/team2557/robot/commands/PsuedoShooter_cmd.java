@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2557.robot.commands;
 
 import org.usfirst.frc.team2557.robot.Robot;
+import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -21,9 +22,16 @@ public class PsuedoShooter_cmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//    	Robot.psuedo.speedChangeLeft();
-//    	Robot.psuedo.speedChangeRight();
-//    	Robot.psuedo.set();
+    	if(Robot.oi.gamepad1.getRawAxis(2) > 0.1){
+	    	Robot.psuedo.speedChangeLeft();
+	    	Robot.psuedo.speedChangeRight();
+	    	Robot.psuedo.set();
+    	}
+    	else{
+    		RobotMap.Lshooter.set(0);
+    		RobotMap.Rshooter.set(0);
+    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

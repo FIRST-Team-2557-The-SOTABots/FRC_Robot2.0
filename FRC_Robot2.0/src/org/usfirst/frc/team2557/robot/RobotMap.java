@@ -46,6 +46,7 @@ public class RobotMap {
 	public static Encoder 				gearEnc;
 	public static BuiltInAccelerometer 	accelerator;
 	public static boolean 				gemini; //false = Fuel Forward and true = Gear Forward
+	public static boolean               shootReq;
 	
 	public static void init(){
 		FRdrive 		= new CANTalon(1);	
@@ -71,7 +72,7 @@ public class RobotMap {
 		gearEnc 		= new Encoder(0,1);
 		accelerator 	= new BuiltInAccelerometer();
 		gemini 			= true;
-		
+		shootReq        = false;
 		
 	}
 }
