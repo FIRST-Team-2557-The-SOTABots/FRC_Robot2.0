@@ -26,5 +26,30 @@ public class Agitator_sub extends Subsystem {
     		RobotMap.agitator.set(0);
     	}
     }
+    
+    public void leftHopper(){
+    	
+    	if(RobotMap.leftAgitator.getAngle() >= 5 && RobotMap.leftAgitator.getAngle() <= -5){
+    		RobotMap.leftAgitator.setAngle(90);
+    	}
+    	
+    	else if(RobotMap.leftAgitator.getAngle() <= 85 && RobotMap.leftAgitator.getAngle() >= 95){
+    		RobotMap.leftAgitator.setAngle(0);
+    	}
+    	
+    }
+    
+    public void rightHopper(){
+        	
+        if(RobotMap.rightAgitator.getAngle() >= 5 && RobotMap.rightAgitator.getAngle() <= -5){
+        	RobotMap.rightAgitator.setAngle(90);
+        }
+        	
+        else if(RobotMap.rightAgitator.getAngle() <= 85 && RobotMap.rightAgitator.getAngle() >= 95){
+        	RobotMap.rightAgitator.setAngle(0);
+        }
+    	
+    }
+    
 }
 

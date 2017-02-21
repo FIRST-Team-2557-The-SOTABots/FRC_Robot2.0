@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 
@@ -47,6 +48,9 @@ public class RobotMap {
 	public static DigitalInput gearSwitch;
 	public static Encoder gearEnc;
 	
+	public static Servo leftAgitator;
+	public static Servo rightAgitator;
+	
 	public static void init(){
 		FRdrive = new CANTalon(1);
 		FLdrive = new CANTalon(2);
@@ -66,6 +70,8 @@ public class RobotMap {
 		shifter = new DoubleSolenoid(0,1);
 		gearGrab = new DoubleSolenoid(2,3);
 		pistonUpDown = new DoubleSolenoid(6,7);
+		leftAgitator = new Servo(1);
+		rightAgitator = new Servo(2);
 		
 		
 		accelerator = new BuiltInAccelerometer();
