@@ -38,23 +38,23 @@ public class Chassis_sub extends Subsystem {
     }
     public void shift_toggle(){
     	if(RobotMap.gemini){ //While gear forward is active
-	    	if(Robot.oi.y1.get() && RobotMap.shifter.get() == Value.kReverse){
-				RobotMap.shifter.set(Value.kForward);
-				return;
-			}
-			else if (Robot.oi.y1.get() && RobotMap.shifter.get() ==Value.kForward){
-				RobotMap.shifter.set(Value.kReverse);
-				return;
-			}
+    		if(RobotMap.shift){
+    			RobotMap.shifter.set(Value.kForward);
+    			RobotMap.shift = false;
+    		}
+    		else if (RobotMap.shift == false){
+    			RobotMap.shifter.set(Value.kReverse);
+    			RobotMap.shift = true;
+    		}
     	}
     	else if(RobotMap.gemini == false){ //While fuel forward is active
-    		if(Robot.oi.y2.get() && RobotMap.shifter.get() == Value.kReverse){
+    		if(RobotMap.shift){
     			RobotMap.shifter.set(Value.kForward);
-    			return;
+    			RobotMap.shift = false;
     		}
-    		else if (Robot.oi.y2.get() && RobotMap.shifter.get() ==Value.kForward){
+    		else if (RobotMap.shift == false){
     			RobotMap.shifter.set(Value.kReverse);
-    			return;
+    			RobotMap.shift = true;
     		}
     	}
     }

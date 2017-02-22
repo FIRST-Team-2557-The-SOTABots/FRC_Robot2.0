@@ -43,11 +43,13 @@ public class Shooter_sub extends Subsystem {
    		}
     }
     public void moses_toggle(){ //Toggle code
-   		if(Robot.oi.LB1.get() && RobotMap.pistonUpDown.get() == Value.kReverse){
+   		if(RobotMap.wall){
 			RobotMap.pistonUpDown.set(Value.kForward);
+			RobotMap.wall = false;
 		}
-		else if (Robot.oi.LB1.get() && RobotMap.pistonUpDown.get() ==Value.kForward){
+		else if (RobotMap.wall == false){
 			RobotMap.pistonUpDown.set(Value.kReverse);
+			RobotMap.wall = true;
 		}
     }
 }
