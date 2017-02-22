@@ -30,17 +30,8 @@ public class Gear_sub extends Subsystem {
 	    		RobotMap.gearGrab.set(Value.kReverse);
 	    		RobotMap.FALL = true;
 	    	}
-	    	else if(RobotMap.gearSwitch.get()){
-	    		RobotMap.gearGrab.set(Value.kForward);
-	    		return;
-	    	}
-    	
-    		    
-    		       
-    	
     }
     public void gearPosition(){
-    	if(RobotMap.gemini){ //While Gear Forward is active, run the gears
     		if(Robot.oi.gamepad2.getRawAxis(3) > .1){
     			RobotMap.gearMotor.set(Robot.oi.gamepad2.getRawAxis(3) * .65);
     		}
@@ -50,7 +41,6 @@ public class Gear_sub extends Subsystem {
     		else{
     			RobotMap.gearMotor.set(0);
     		}
-    	}
     	
     }
     

@@ -46,6 +46,8 @@ public class RobotMap {
 	public static BuiltInAccelerometer accelerator;
 	public static boolean gemini; //false = Fuel Forward and true = Gear Forward
 	public static boolean FALL;
+	public static boolean shift; //boolean for the super shifters on the drive train
+	public static boolean wall; //boolean for the backwall for the intake
 	public static DigitalInput gearSwitch;
 	public static Encoder gearEnc;
 	
@@ -79,6 +81,8 @@ public class RobotMap {
 		
 		FALL = false;
 		gemini = true;
+		shift = true;
+		wall = true;
 		
 		
 	}

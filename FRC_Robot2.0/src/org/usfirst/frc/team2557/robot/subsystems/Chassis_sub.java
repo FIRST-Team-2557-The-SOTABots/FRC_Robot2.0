@@ -22,23 +22,11 @@ public class Chassis_sub extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new Chassis_cmd());
     }
-//    public void arcadeDrive_gear(){
-//    	RobotMap.robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *x);
-//    }
-//    public void arcadeDrive_fuel(){
-//    	RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad2.getRawAxis(1) *x, -Robot.oi.gamepad2.getRawAxis(0) *x);
-//    }
-//    public void tankDrive_gear(){
-//    	RobotMap.robotDrive.tankDrive(-Robot.oi.gamepad1.getRawAxis(0) *x, Robot.oi.gamepad1.getRawAxis(5) *x);
-//    }
-//    public void tankDrive_fuel(){
-//    	RobotMap.robotDrive.tankDrive(-Robot.oi.gamepad1.getRawAxis(0) *x, Robot.oi.gamepad1.getRawAxis(5) *x);
-//    }
     public void arcadeDrive(){
     	if(RobotMap.gemini){
-        	RobotMap.robotDrive.arcadeDrive(-Robot.oi.gamepad2.getRawAxis(1) *x, -Robot.oi.gamepad2.getRawAxis(0) *x);
+        	RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad2.getRawAxis(1) *x, Robot.oi.gamepad2.getRawAxis(0) *x);
     	} else if(RobotMap.gemini == false){
-        	RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad1.getRawAxis(1) *x, -Robot.oi.gamepad1.getRawAxis(0) *x);
+        	RobotMap.robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *x);
     	}
     }
     public void tankDrive(){

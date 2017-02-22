@@ -22,28 +22,17 @@ public class Intake_sub extends Subsystem {
     }
     
     public void intake(){
-    	if(RobotMap.gemini){ //While Gear is active
-//    		if(Robot.oi.RB2.get()){
-//    			RobotMap.intake.set(-.8);
-//    		}
-//    		else if(Robot.oi.LB2.get()){
-//    			RobotMap.intake.set( .8);
-//    		}
-//    		else{
-//    			RobotMap.intake.set(0);
-//    		}
-    	}
-    	else if(RobotMap.gemini == false){ //While fuel is active
-    		if(Robot.oi.RB1.get() || Robot.oi.RB2.get()){
+
+    		if(Robot.oi.RB1.get()){
     			RobotMap.intake.set(-.8);
     		}
-    		else if(Robot.oi.LB1.get()||Robot.oi.LB2.get()){
-    			RobotMap.intake.set(.8);
+    		else if(Robot.oi.LB1.get()){
+    			RobotMap.intake.set(.65);
     		}
     		else{
     			RobotMap.intake.set(0);
     		}
-    	}
+    	
     }
     public void pistonUpDown(){ //Toggle Code
     	if(RobotMap.pistonUpDown.get() == Value.kReverse){
