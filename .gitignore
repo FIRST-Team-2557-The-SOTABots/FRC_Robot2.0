@@ -1,0 +1,7 @@
+# Built files don't need to be on the repo; they are built locally
+bin
+build
+dist
+
+# Files used locally on macOS to organize files in a folder
+.DS_Store
