@@ -22,64 +22,35 @@ public class Shooter_sub extends Subsystem {
     }
     
     public void shooting(){
-    	if(RobotMap.gemini){ //While gear is active
-//    		if(Robot.oi.gamepad1.getRawAxis(3) > 0.1){
-//    	    	RobotMap.Lshooter.set(-.65);
-//    	    	RobotMap.Rshooter.set(.65);
-//    		}
-//    		else{
-//    	    	RobotMap.Lshooter.set(0);
-//    	    	RobotMap.Rshooter.set(0);
-//    		}
-    	}
-    	else if(RobotMap.gemini == false){ //While fuel is active
-    		if(Robot.oi.gamepad1.getRawAxis(3) > 0.1){
-    	    	RobotMap.Lshooter.set(-1);
-    	    	RobotMap.Rshooter.set(1);
-    		}
-    		else{
-    	    	RobotMap.Lshooter.set(0);
-    	    	RobotMap.Rshooter.set(0);
-    		}
-    	}
+   		if(Robot.oi.gamepad1.getRawAxis(3) > 0.1){
+   	    	RobotMap.Lshooter.set(-.65);
+   	    	RobotMap.Rshooter.set(.65);
+   		}
+   		else{
+   	    	RobotMap.Lshooter.set(0);
+   	    	RobotMap.Rshooter.set(0);
+   		}
+    	
     }
     public void moses_non(){ //non-toggle code
-    	if(RobotMap.gemini){ //While gear is active
-//    		if(Robot.oi.gamepad1.getRawAxis(2) > 0.1){
-//    			RobotMap.pistonUpDown.set(Value.kForward);
-//    		}
-//    		else{
-//    			RobotMap.pistonUpDown.set(Value.kReverse);
-//    		}
-    	}
-    	else if(RobotMap.gemini == false){ //While fuel is active
-    		if(Robot.oi.a1.get()){
-    			RobotMap.pistonUpDown.set(Value.kForward);
-    			return;
-    		}
-    		else if(Robot.oi.x1.get()){
-    			RobotMap.pistonUpDown.set(Value.kReverse);
-    			return;
-    		}
-    	}
+   		if(Robot.oi.a1.get()){
+   			RobotMap.pistonUpDown.set(Value.kForward);
+   			return;
+   		}
+   		else if(Robot.oi.x1.get()){
+   			RobotMap.pistonUpDown.set(Value.kReverse);
+   			return;
+   		}
     }
     public void moses_toggle(){ //Toggle code
-    	if(RobotMap.gemini){ //While gear is active
-//	    	if(RobotMap.pistonUpDown.get() == Value.kReverse){
-//				RobotMap.pistonUpDown.set(Value.kForward);
-//			}
-//			else if (RobotMap.pistonUpDown.get() ==Value.kForward){
-//				RobotMap.pistonUpDown.set(Value.kReverse);
-//			}
-    	}
-    	else if(RobotMap.gemini == false){ //While fuel is active
-    		if(Robot.oi.LB1.get() && RobotMap.pistonUpDown.get() == Value.kReverse){
-				RobotMap.pistonUpDown.set(Value.kForward);
-			}
-			else if (Robot.oi.LB1.get() && RobotMap.pistonUpDown.get() ==Value.kForward){
-				RobotMap.pistonUpDown.set(Value.kReverse);
-			}
-    	}
+   		if(RobotMap.wall){
+			RobotMap.pistonUpDown.set(Value.kForward);
+			RobotMap.wall = false;
+		}
+		else if (RobotMap.wall == false){
+			RobotMap.pistonUpDown.set(Value.kReverse);
+			RobotMap.wall = true;
+		}
     }
 }
 

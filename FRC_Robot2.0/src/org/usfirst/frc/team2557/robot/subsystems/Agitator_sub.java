@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2557.robot.subsystems;
 
+import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
 
@@ -19,7 +20,7 @@ public class Agitator_sub extends Subsystem {
     	setDefaultCommand(new Agitator_cmd());
     }
     public void passive(){
-    	if((RobotMap.Rshooter.get() > 0.1 || RobotMap.Rshooter.get() < -0.1) && (RobotMap.Lshooter.get() > 0.1 || RobotMap.Lshooter.get() < -0.1)){
+    	if(-Robot.oi.gamepad1.getRawAxis(3) > 0.1 || -Robot.oi.gamepad1.getRawAxis(2) > 0.1){
     		RobotMap.agitator.set(.8);
     	}
     	else{
