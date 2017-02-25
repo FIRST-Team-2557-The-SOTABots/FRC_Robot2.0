@@ -23,18 +23,18 @@ public class Climber_sub extends Subsystem {
 
     public void climb(){
     	if(RobotMap.gemini){
-    		if(Robot.oi.getGamepad(0).getButtonEnabled(Controller.BUTTONLJ)
-    				&& Robot.oi.getGamepad(0).getButtonEnabled(Controller.BUTTONRJ)){
-	        	RobotMap.climber.set(.5);
+	    	if(Robot.oi.getGamepad(1).getButtonEnabled(Controller.BUTTONLJ)
+	    			&& Robot.oi.getGamepad(1).getButtonEnabled(Controller.BUTTONRJ)){
+	        	RobotMap.climber.set(.9);
 	    	}
 	    	else{
 	        	RobotMap.climber.set(0);
 	    	}
     	}
     	else if(RobotMap.gemini == false){
-    		if(Robot.oi.getGamepad(1).getButtonEnabled(Controller.BUTTONLJ)
-    				&& Robot.oi.getGamepad(1).getButtonEnabled(Controller.BUTTONRJ)){
-    	    	RobotMap.climber.set(.5);
+    		if(Robot.oi.getGamepad(0).getButtonEnabled(Controller.BUTTONLJ)
+    				&& Robot.oi.getGamepad(0).getButtonEnabled(Controller.BUTTONRJ)){
+    	    	RobotMap.climber.set(.9);
 	    	}
 	    	else{
 	        	RobotMap.climber.set(0);

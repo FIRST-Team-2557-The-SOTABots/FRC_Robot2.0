@@ -2,8 +2,13 @@ package org.usfirst.frc.team2557.robot;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.BuiltInAccelerometer;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Talon;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -20,45 +25,54 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
-	public static CANTalon FRdrive;
-	public static CANTalon FLdrive;
-	public static CANTalon BRdrive;
-	public static CANTalon BLdrive;
-	public static RobotDrive robotDrive;
+	public static CANTalon 				FRdrive;
+	public static CANTalon 				FLdrive;
+	public static CANTalon 				BRdrive;
+	public static CANTalon 				BLdrive;
+	public static RobotDrive 			robotDrive;
 	
-	public static CANTalon Lshooter;
-	public static CANTalon Rshooter;
-	public static CANTalon intake;
-	public static CANTalon climber;
-	public static CANTalon gearMotor;
+	public static CANTalon 				Lshooter; //Has an encoder on it
+	public static CANTalon 				Rshooter; //Has an encode on it
+	public static CANTalon 				intake;
+	public static CANTalon 				climber;
+	public static CANTalon 				gearMotor;
+	public static SpeedController 		agitator;
 	
-	public static DoubleSolenoid shifter;
-	public static DoubleSolenoid gearGrab;
-	public static DoubleSolenoid pistonUpDown; //FuelGate
-//	
+	public static DoubleSolenoid 		shifter;
+	public static DoubleSolenoid 		gearGrab;
+	public static DoubleSolenoid 		pistonUpDown; //FuelGate aka Moses
 	
-	public static boolean gemini; //false = Fuel Forward and true = Gear Forward
+	public static DigitalInput 			gearSwitch;
+	public static Encoder 				gearEnc;
+	public static BuiltInAccelerometer 	accelerator;
+	public static boolean 				gemini; //false = Fuel Forward and true = Gear Forward
+	public static boolean               shootReq;
 	
 	public static void init(){
-		FRdrive = new CANTalon(1);
-		FLdrive = new CANTalon(2);
-		BRdrive = new CANTalon(3);
-		BLdrive = new CANTalon(4);
-		robotDrive = new RobotDrive(FLdrive, BLdrive, FRdrive, BRdrive);
-
-		Lshooter = new CANTalon(5);
-		Rshooter = new CANTalon(6);
-		intake = new CANTalon(7);
-		climber = new CANTalon(8);
-		gearMotor = new CANTalon(9);
+		FRdrive 		= new CANTalon(1);	
+		FLdrive 		= new CANTalon(2);
+		BRdrive 		= new CANTalon(3);
+		BLdrive 		= new CANTalon(4);
+		robotDrive 		= new RobotDrive(FLdrive, BLdrive, FRdrive, BRdrive);
+		robotDrive.setSafetyEnabled(false);
 		
-		pistonUpDown = new DoubleSolenoid(0,1);
-		shifter = new DoubleSolenoid(2,3);
-		gearGrab = new DoubleSolenoid(4,5);
+		Lshooter 		= new CANTalon(5);
+		Rshooter 		= new CANTalon(6);
+		intake 			= new CANTalon(7);
+		climber 		= new CANTalon(8);
+		gearMotor 		= new CANTalon(9);
+		agitator 		= new Talon(0);
+		
+		shifter 		= new DoubleSolenoid(0,1);
+		gearGrab 		= new DoubleSolenoid(2,3);
+		pistonUpDown 	= new DoubleSolenoid(6,7);
 		
 		
-		gemini = true;
-		
+		gearSwitch 		= new DigitalInput(2);
+		gearEnc 		= new Encoder(0,1);
+		accelerator 	= new BuiltInAccelerometer();
+		gemini 			= true;
+		shootReq        = false;
 		
 	}
 }

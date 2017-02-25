@@ -23,6 +23,7 @@ public class Gear_cmd extends Command {
     protected void execute() {
     	Robot.gear.gearGrab();
     	Robot.gear.gearPosition();
+    	Robot.gear.autoGear();
     }
 
     // Make this return true when this Command no longer needs to run execute()

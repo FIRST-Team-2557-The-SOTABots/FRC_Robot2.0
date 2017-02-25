@@ -1,5 +1,8 @@
 package org.usfirst.frc.team2557.robot.subsystems;
 
+import org.usfirst.frc.team2557.robot.RobotMap;
+import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -13,6 +16,15 @@ public class Agitator_sub extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new Agitator_cmd());
+    }
+    public void passive(){
+    	if((RobotMap.Rshooter.get() > 0.1 || RobotMap.Rshooter.get() < -0.1) && (RobotMap.Lshooter.get() > 0.1 || RobotMap.Lshooter.get() < -0.1)){
+    		RobotMap.agitator.set(.8);
+    	}
+    	else{
+    		RobotMap.agitator.set(0);
+    	}
     }
 }
 

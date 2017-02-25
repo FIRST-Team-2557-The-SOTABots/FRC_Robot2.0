@@ -1,6 +1,5 @@
 package org.usfirst.frc.team2557.robot;
 
-import org.usfirst.frc.team2557.robot.commands.Gear_cmd;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -43,8 +42,6 @@ public class OI {
 		gamepad1 = new Controller();
 		gamepad2 = new Controller();
 		
-		gamepad1.setButtonCommand(Controller.BUTTONX, new Gear_cmd());
-
 	}
 	
 	public Controller getGamepad(int gamepad){

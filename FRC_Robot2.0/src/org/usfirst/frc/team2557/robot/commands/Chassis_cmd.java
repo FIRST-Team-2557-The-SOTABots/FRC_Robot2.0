@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class GeminiDrive_cmd extends Command {
+public class Chassis_cmd extends Command {
 
 
 	
 	
-    public GeminiDrive_cmd() {
+    public Chassis_cmd() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassis);
@@ -33,12 +33,8 @@ public class GeminiDrive_cmd extends Command {
     			&& Robot.oi.getGamepad(1).getButtonEnabled(Controller.BUTTONSELECT)){
     		RobotMap.gemini = true;
     	}
-    	
-    	if(RobotMap.gemini){
-    		Robot.chassis.arcadeDrive_fuel();
-    	} else if(RobotMap.gemini == false){
-    		Robot.chassis.arcadeDrive_gear();
-    	}
+    	Robot.chassis.arcadeDrive();
+    	Robot.chassis.shift_non();
     }
 
     // Make this return true when this Command no longer needs to run execute()
