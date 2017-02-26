@@ -81,35 +81,28 @@ public class VisionArray extends Subsystem {
 				}
 		}
 	public void interpretCamera(){
-	if(areaDataCount > 0 && widthDataCount > 0 && heightDataCount > 0 && centerXDataCount > 0 && centerYDataCount > 0){
 		
-		
-		
-		if(heights[0] > heights[1]){
-			if(heights[0] > 100 && heights[0] < 120){
-				boolean heightReq = true;
+		if(areaDataCount > 0 && widthDataCount > 0 && heightDataCount > 0
+				&& centerXDataCount > 0 && centerYDataCount > 0){
+			
+			if(heights[0] > heights[1]){
+				if(heights[0] > 100 && heights[0] < 120){
+					boolean heightReq = true;
+				}
+			}
+			
+			if(areas[0] > areas[1]){
+				if(areas[0] > 3000 && areas[0] < 3500){
+					boolean areaReq = true;
+				}
+			}
+			
+			if(heightReq && areaReq){
+				RobotMap.shootReq = true;
 			}
 		}
-		
-		
-		
-		if(areas[0] > areas[1]){
-			if(areas[0] > 3000 && areas[0] < 3500){
-				boolean areaReq = true;
-			}
-		}
-		
-		if(heightReq && areaReq){
-			RobotMap.shootReq = true;
-			
-			
-			
-			
-			
-		}
-	}
-	SmartDashboard.putBoolean("shootBool", RobotMap.shootReq);
-		
+
+        SmartDashboard.putBoolean("shootBool", RobotMap.shootReq);
 	}
 	
 	
