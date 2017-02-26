@@ -24,20 +24,23 @@ public class VisionArray extends Subsystem {
 	
 	
 	public void initializer(){
-	heightDataCount = 0;
-	areaDataCount = 0;
-	widthDataCount = 0;
-	centerXDataCount = 0;
-	centerYDataCount = 0;
-	heights = new double[heightDataCount];
-	
-	areas = new double[areaDataCount];
-	
-	centerXs = new double[centerXDataCount];
-	centerYs = new double[centerYDataCount];
-	widths = new double[widthDataCount];
-	table = NetworkTable.getTable("GRIP/myContoursReport");
+		heightDataCount = 0;
+		areaDataCount = 0;
+		widthDataCount = 0;
+		centerXDataCount = 0;
+		centerYDataCount = 0;
+		
+		heights = new double[heightDataCount];
+		
+		areas = new double[areaDataCount];
+		
+		centerXs = new double[centerXDataCount];
+		centerYs = new double[centerYDataCount];
+		widths = new double[widthDataCount];
+		
+		table = NetworkTable.getTable("GRIP/myContoursReport");
 	}
+	
 	public void findHeights(){
 		heights = table.getNumberArray("height", heights);
 			for(double height: heights){
@@ -46,38 +49,40 @@ public class VisionArray extends Subsystem {
 			
 		}
 	}
+
 	public void findWidths(){
 		widths = table.getNumberArray("width", widths);
-			for(double width: widths){
-				SmartDashboard.putNumber("width", width);
-				widthDataCount++;
-			}
+		for(double width: widths){
+			SmartDashboard.putNumber("width", width);
+			widthDataCount++;
 		}
+	}
 	
 	public void findCenterXs(){
-			heights = table.getNumberArray("centerX", heights);
-			for(double centerX: centerXs){
-				SmartDashboard.putNumber("centerX", centerX);
-				centerXDataCount++;
-			}
+		heights = table.getNumberArray("centerX", heights);
+		for(double centerX: centerXs){
+			SmartDashboard.putNumber("centerX", centerX);
+			centerXDataCount++;
 		}
+	}
 	
 	public void findCenterYs(){
-			centerYs = table.getNumberArray("centerY", centerYs);
-			for(double centerY: centerYs){
-				SmartDashboard.putNumber("centerY", centerY);
-				centerYDataCount++;
-				SmartDashboard.putNumber("centerYDataCount", centerYDataCount);
-			}
+		centerYs = table.getNumberArray("centerY", centerYs);
+		for(double centerY: centerYs){
+			SmartDashboard.putNumber("centerY", centerY);
+			centerYDataCount++;
+			SmartDashboard.putNumber("centerYDataCount", centerYDataCount);
 		}
+	}
 	
 	public void findAreas(){
-			areas = table.getNumberArray("area", areas);
-			for(double area: areas){
-				SmartDashboard.putNumber("area", area);
-				areaDataCount++;
-				}
-		}
+		areas = table.getNumberArray("area", areas);
+		for(double area: areas){
+			SmartDashboard.putNumber("area", area);
+			areaDataCount++;
+			}
+	}
+
 	public void interpretCamera(){
 		
 		boolean heightReq = false;
@@ -105,8 +110,6 @@ public class VisionArray extends Subsystem {
 
         SmartDashboard.putBoolean("shootBool", RobotMap.shootReq);
 	}
-	
-	
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
