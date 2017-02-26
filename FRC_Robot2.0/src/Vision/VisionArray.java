@@ -87,13 +87,13 @@ public class VisionArray extends Subsystem {
 			
 			if(heights[0] > heights[1]){
 				if(heights[0] > 100 && heights[0] < 120){
-					boolean heightReq = true;
+					heightReq = true;
 				}
 			}
 			
 			if(areas[0] > areas[1]){
 				if(areas[0] > 3000 && areas[0] < 3500){
-					boolean areaReq = true;
+					areaReq = true;
 				}
 			}
 			
