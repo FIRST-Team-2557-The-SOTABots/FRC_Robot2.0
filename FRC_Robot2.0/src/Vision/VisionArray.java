@@ -20,9 +20,7 @@ public class VisionArray extends Subsystem {
 	private double[] widths;
 	private double[] centerYs;
 	private double[] centerXs;
-	private boolean heightReq;
-	private boolean areaReq;
-	NetworkTable table;
+	private NetworkTable table;
 	
 	
 	public void initializer(){
@@ -81,6 +79,9 @@ public class VisionArray extends Subsystem {
 				}
 		}
 	public void interpretCamera(){
+		
+		boolean heightReq = false;
+		boolean areaReq = false;
 		
 		if(areaDataCount > 0 && widthDataCount > 0 && heightDataCount > 0
 				&& centerXDataCount > 0 && centerYDataCount > 0){
