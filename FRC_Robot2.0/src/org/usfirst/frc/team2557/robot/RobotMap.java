@@ -46,7 +46,7 @@ public class RobotMap {
 	public static DoubleSolenoid gearGrab;
 	public static DoubleSolenoid pistonUpDown; //FuelGate aka Moses
 	
-	public static AHRS accelerometer;
+	public static AHRS navX;
 	public static boolean gemini; //false = Fuel Forward and true = Gear Forward
 	public static boolean FALL;
 	public static boolean shift; //boolean for the super shifters on the drive train
@@ -83,7 +83,7 @@ public class RobotMap {
 		rightAgitator = new Servo(2);
 		
 		
-		accelerometer = new AHRS(SPI.Port.kMXP);
+		navX = new AHRS(SPI.Port.kMXP);
 		
 		FALL = false;
 		gemini = true;

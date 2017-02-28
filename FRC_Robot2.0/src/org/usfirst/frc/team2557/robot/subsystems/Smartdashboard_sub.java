@@ -23,9 +23,9 @@ public class Smartdashboard_sub extends Subsystem {
 //		SmartDashboard.putNumber("Rshooter encoder velocity: ", RobotMap.Rshooter.getEncVelocity());
 //		SmartDashboard.putNumber("Gear enc is: ", RobotMap.gearEnc.get());
 		//low was 52, high -673
-		SmartDashboard.putNumber("X Axis: ", RobotMap.accelerometer.getRawAccelX());
-		SmartDashboard.putNumber("Y Axis: ", RobotMap.accelerometer.getRawAccelY());
-		SmartDashboard.putNumber("Z Axis: ", RobotMap.accelerometer.getRawAccelZ());
+		SmartDashboard.putNumber("X Axis: ", RobotMap.navX.getRawAccelX());
+		SmartDashboard.putNumber("Y Axis: ", RobotMap.navX.getRawAccelY());
+		SmartDashboard.putNumber("Z Axis: ", RobotMap.navX.getRawAccelZ());
 		SmartDashboard.putNumber("Left Servo: ", RobotMap.leftAgitator.getAngle());
 		SmartDashboard.putNumber("Right Servo: ", RobotMap.rightAgitator.getAngle());
     }

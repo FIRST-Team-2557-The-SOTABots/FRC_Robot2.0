@@ -12,13 +12,17 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Drive_autoCmd extends Command {
 	
 	Timer timer;
-	double _required;
-	double _speed;
-    public Drive_autoCmd(double x, double y) {
+	double _required, _speed, _upperThreshold, _lowerThreshold;
+	boolean _rotate;
+    public Drive_autoCmd(double x, double a, double y, boolean z) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	_required = x;
+    	_upperThreshold = x + a;
+    	_lowerThreshold = x - a;
     	_speed = y;
+    	_rotate = z;
+    	
     }
 
     // Called just before this Command runs the first time
@@ -29,12 +33,22 @@ public class Drive_autoCmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.robotDrive.arcadeDrive(_speed,0);
+    	if(_rotate){
+    		RobotMap.robotDrive.arcadeDrive(0,_speed);
+    	}
+    	else if(_rotate == false){
+    		RobotMap.robotDrive.arcadeDrive(_speed,0);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.accel.feetPerSecond2X() * timer.get() > _required;
+    	if(_rotate == false){
+    		return Robot.accel.feetPerSecond2X() * timer.get() > _required;
+    	}
+    	else{
+    		return RobotMap.navX.getAngle() < _upperThreshold && RobotMap.navX.getAngle() > _lowerThreshold;
+    	}
         //return Robot.accel.feetPerSecond2Y() * timer.get() > _required;
     }
 
