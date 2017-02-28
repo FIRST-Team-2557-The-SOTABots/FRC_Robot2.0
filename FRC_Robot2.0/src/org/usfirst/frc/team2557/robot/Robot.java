@@ -21,6 +21,7 @@ import org.usfirst.frc.team2557.robot.subsystems.Gear_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Intake_sub;
 import org.usfirst.frc.team2557.robot.subsystems.PsuedoShooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
+import org.usfirst.frc.team2557.robot.subsystems.SmartDashboard_sub;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -40,6 +41,7 @@ public class Robot extends IterativeRobot {
 	public static final Agitator_sub 		agitator 	= new Agitator_sub();
 	public static final PsuedoShooter_sub 	psuedo 		= new PsuedoShooter_sub();
 	public static final Acceleration_sub 	accel		= new Acceleration_sub();
+	public static final SmartDashboard_sub  dashboard 	= new SmartDashboard_sub();
 	public static OI oi;
 
 	Command autonomousCommand;
