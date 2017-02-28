@@ -1,12 +1,14 @@
 package org.usfirst.frc.team2557.robot;
 
 import com.ctre.CANTalon;
+import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -37,17 +39,20 @@ public class RobotMap {
 	public static CANTalon intake;
 	public static CANTalon climber;
 	public static CANTalon gearMotor;
+	public static CANTalon copterAgitator;
 	public static SpeedController agitator;
 	
 	public static DoubleSolenoid shifter;
 	public static DoubleSolenoid gearGrab;
 	public static DoubleSolenoid pistonUpDown; //FuelGate aka Moses
 	
-	public static BuiltInAccelerometer accelerator;
+	public static AHRS accelerator;
 	public static boolean gemini; //false = Fuel Forward and true = Gear Forward
 	public static boolean FALL;
 	public static boolean shift; //boolean for the super shifters on the drive train
 	public static boolean wall; //boolean for the backwall for the intake
+	public static boolean drive; //boolean to switch the drive stick
+	public static boolean pass; //boolean to allow the momentary switch to trigger
 	public static DigitalInput gearSwitch;
 	public static Encoder gearEnc;
 	
@@ -66,6 +71,7 @@ public class RobotMap {
 		intake = new CANTalon(7);
 		climber = new CANTalon(8);
 		gearMotor = new CANTalon(9);
+		copterAgitator = new CANTalon(10);
 		agitator = new Talon(0);
 		gearSwitch = new DigitalInput(2);
 		gearEnc = new Encoder(0,1);
@@ -77,12 +83,14 @@ public class RobotMap {
 		rightAgitator = new Servo(2);
 		
 		
-		accelerator = new BuiltInAccelerometer();
+		accelerator = new AHRS(SPI.Port.kMXP);
 		
 		FALL = false;
 		gemini = true;
 		shift = true;
 		wall = true;
+		drive = true;
+		pass = true;
 		
 		
 	}

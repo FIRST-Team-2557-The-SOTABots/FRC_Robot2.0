@@ -122,8 +122,13 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 //		SmartDashboard.putNumber("Lshooter encoder velocity: ", RobotMap.Lshooter.getEncVelocity());
 //		SmartDashboard.putNumber("Rshooter encoder velocity: ", RobotMap.Rshooter.getEncVelocity());
-		SmartDashboard.putNumber("Gear enc is: ", RobotMap.gearEnc.get());
+//		SmartDashboard.putNumber("Gear enc is: ", RobotMap.gearEnc.get());
 		//low was 52, high -673
+		SmartDashboard.putNumber("X Axis: ", RobotMap.accelerator.getRawAccelX());
+		SmartDashboard.putNumber("Y Axis: ", RobotMap.accelerator.getRawAccelY());
+		SmartDashboard.putNumber("Z Axis: ", RobotMap.accelerator.getRawAccelZ());
+		SmartDashboard.putNumber("Left Servo: ", RobotMap.leftAgitator.getAngle());
+		SmartDashboard.putNumber("Right Servo: ", RobotMap.rightAgitator.getAngle());
 	}
 
 	/**

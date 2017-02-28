@@ -33,10 +33,10 @@ public class Gear_sub extends Subsystem {
     }
     public void gearPosition(){
     		if(Robot.oi.gamepad2.getRawAxis(3) > .1){
-    			RobotMap.gearMotor.set(Robot.oi.gamepad2.getRawAxis(3) * .65);
+    			RobotMap.gearMotor.set(Robot.oi.gamepad2.getRawAxis(3) * .75);
     		}
     		else if(Robot.oi.gamepad2.getRawAxis(2) > .1){
-    			RobotMap.gearMotor.set(-Robot.oi.gamepad2.getRawAxis(2) * .5);
+    			RobotMap.gearMotor.set(-Robot.oi.gamepad2.getRawAxis(2) * .9);
     		}
     		else{
     			RobotMap.gearMotor.set(0);

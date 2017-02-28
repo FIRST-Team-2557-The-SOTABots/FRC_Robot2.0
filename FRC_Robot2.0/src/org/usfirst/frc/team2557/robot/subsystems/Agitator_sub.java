@@ -19,14 +19,6 @@ public class Agitator_sub extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new Agitator_cmd());
     }
-    public void passive(){
-    	if(-Robot.oi.gamepad1.getRawAxis(3) > 0.1 || -Robot.oi.gamepad1.getRawAxis(2) > 0.1){
-    		RobotMap.agitator.set(.8);
-    	}
-    	else{
-    		RobotMap.agitator.set(0);
-    	}
-    }
     
     public void leftHopper(){
     	

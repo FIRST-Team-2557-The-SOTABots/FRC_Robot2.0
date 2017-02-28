@@ -24,10 +24,7 @@ public class Gear_cmd extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.gear.gearPosition();
-    	if(RobotMap.gearSwitch.get() == false){
-    		RobotMap.gearGrab.set(Value.kForward);
-    		return;
-    	}
+    	
 //    	Robot.gear.autoGear();
     }
 
