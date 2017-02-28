@@ -8,7 +8,11 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearCenter;
+import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeft;
+import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRight;
 import org.usfirst.frc.team2557.robot.autonomous.Main_auto;
+import org.usfirst.frc.team2557.robot.subsystems.Acceleration_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Agitator_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Chassis_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Climber_sub;
@@ -27,14 +31,15 @@ import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
  */
 public class Robot extends IterativeRobot {
 
-	public static final Chassis_sub chassis 		= new Chassis_sub();
-	public static final Shooter_sub shooter 		= new Shooter_sub();
-	public static final Intake_sub intake 			= new Intake_sub();
-	public static final Gear_sub gear 				= new Gear_sub();
-	public static final Climber_sub climber 		= new Climber_sub();
-	public static final FX_sub fx 					= new FX_sub();
-	public static final Agitator_sub agitator 		= new Agitator_sub();
-	public static final PsuedoShooter_sub psuedo 	= new PsuedoShooter_sub();
+	public static final Chassis_sub 		chassis 	= new Chassis_sub();
+	public static final Shooter_sub	 		shooter 	= new Shooter_sub();
+	public static final Intake_sub 			intake 		= new Intake_sub();
+	public static final Gear_sub 			gear 		= new Gear_sub();
+	public static final Climber_sub 		climber 	= new Climber_sub();
+	public static final FX_sub 				fx 			= new FX_sub();
+	public static final Agitator_sub 		agitator 	= new Agitator_sub();
+	public static final PsuedoShooter_sub 	psuedo 		= new PsuedoShooter_sub();
+	public static final Acceleration_sub 	accel		= new Acceleration_sub();
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -49,8 +54,10 @@ public class Robot extends IterativeRobot {
 		RobotMap.init();
 		oi = new OI();
 		oi.init();
-		chooser.addDefault("Default Auto", new Main_auto());
-		// chooser.addObject("My Auto", new MyAutoCommand());
+//		chooser.addDefault("Default Auto", new Main_auto());
+		 chooser.addObject("Autonomous_GearLeft: ", new Autonomous_GearLeft());
+		 chooser.addObject("Autonomus_GearCenter", new Autonomous_GearCenter());
+		 chooser.addObject("Autonomous_GearRight", new Autonomous_GearRight());
 		SmartDashboard.putData("Auto mode", chooser);
 	}
 
@@ -120,15 +127,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-//		SmartDashboard.putNumber("Lshooter encoder velocity: ", RobotMap.Lshooter.getEncVelocity());
-//		SmartDashboard.putNumber("Rshooter encoder velocity: ", RobotMap.Rshooter.getEncVelocity());
-//		SmartDashboard.putNumber("Gear enc is: ", RobotMap.gearEnc.get());
-		//low was 52, high -673
-		SmartDashboard.putNumber("X Axis: ", RobotMap.accelerator.getRawAccelX());
-		SmartDashboard.putNumber("Y Axis: ", RobotMap.accelerator.getRawAccelY());
-		SmartDashboard.putNumber("Z Axis: ", RobotMap.accelerator.getRawAccelZ());
-		SmartDashboard.putNumber("Left Servo: ", RobotMap.leftAgitator.getAngle());
-		SmartDashboard.putNumber("Right Servo: ", RobotMap.rightAgitator.getAngle());
 	}
 
 	/**

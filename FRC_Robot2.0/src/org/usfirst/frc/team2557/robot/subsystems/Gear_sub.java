@@ -15,7 +15,8 @@ public class Gear_sub extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-
+	final double _upAdjust 		= 1;
+	final double _downAdjust 	= 1;
     public void initDefaultCommand() {
     	setDefaultCommand(new Gear_cmd());
     }
@@ -33,10 +34,10 @@ public class Gear_sub extends Subsystem {
     }
     public void gearPosition(){
     		if(Robot.oi.gamepad2.getRawAxis(3) > .1){
-    			RobotMap.gearMotor.set(Robot.oi.gamepad2.getRawAxis(3) * .75);
+    			RobotMap.gearMotor.set(Robot.oi.gamepad2.getRawAxis(3) * _upAdjust);
     		}
     		else if(Robot.oi.gamepad2.getRawAxis(2) > .1){
-    			RobotMap.gearMotor.set(-Robot.oi.gamepad2.getRawAxis(2) * .9);
+    			RobotMap.gearMotor.set(-Robot.oi.gamepad2.getRawAxis(2) * _downAdjust);
     		}
     		else{
     			RobotMap.gearMotor.set(0);

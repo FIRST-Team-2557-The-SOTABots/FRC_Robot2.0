@@ -1,20 +1,22 @@
-package org.usfirst.frc.team2557.robot.commands;
+package org.usfirst.frc.team2557.robot.autonomous;
 
-import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class GearGrab2_toggle extends Command {
+public class Gear_autoCmd extends Command {
 
-    public GearGrab2_toggle() {
+	double _speed, _position;
+	boolean _direction;
+    public Gear_autoCmd(double x, double y, boolean z) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	_position = x;
+    	_speed = y;
+    	_direction = z;
     }
 
     // Called just before this Command runs the first time
@@ -23,27 +25,25 @@ public class GearGrab2_toggle extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.oi.RB2.get()){
-    		RobotMap.pass = false;
-    		return;
-    	}
-    	else if(RobotMap.pass == false && RobotMap.gearSwitch.get()){
-    		RobotMap.pass = true;
-    		Timer.delay(.5);
-    	}
-    	else if(RobotMap.gearSwitch.get() && RobotMap.pass){ //switch to false on the comp botx
-    		RobotMap.gearGrab.set(Value.kForward);
-    		return;
-    	}
+    	RobotMap.gearMotor.set(_speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	if(_direction){
+    		return RobotMap.gearEnc.get() < _position;
+    	}
+    	else if(_direction == false){
+    		return RobotMap.gearEnc.get() > _position;
+    	}
+    	else{
+    		return RobotMap.gearEnc.get() == _position;
+    	}
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	RobotMap.gearMotor.set(0);
     }
 
     // Called when another command which requires one or more of the same
