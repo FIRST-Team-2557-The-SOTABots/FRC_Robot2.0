@@ -31,7 +31,6 @@ public class Chassis_cmd extends Command {
     		RobotMap.gemini = true;
     	}
     	Robot.chassis.arcadeDrive();
-    	Robot.chassis.shift_non();
     }
 
     // Make this return true when this Command no longer needs to run execute()

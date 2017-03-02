@@ -31,6 +31,10 @@ public class Autonomous_GearCenter extends CommandGroup {
     	addSequential(new GearGrab_autoCmd(false)); 			//Open claw
     	addParallel(new Gear_autoCmd(-100, 10, -1)); 			//Bring claw down
     	addSequential(new Drive_autoCmd(-3, .1, -.75, false)); 	//Back away
+    	
+    	/*
+    	 * The Drive_autoCmd() does the same thing as the AutonomousTurn_cmd(). Granted AutonomousTurn_cmd is more straightforward
+    	 * */
     	addSequential(new AutonomousTurn_Cmd(90));                //TURNNNNNNN?
     	addSequential(new Drive_autoCmd(2.4, .1, .75, false));  //Again?? Drive??
     	addSequential(new AutonomousTurn_Cmd(0));           //Turn?????????????????? 

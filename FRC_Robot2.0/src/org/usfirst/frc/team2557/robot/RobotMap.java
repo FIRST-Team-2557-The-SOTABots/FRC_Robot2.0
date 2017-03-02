@@ -44,7 +44,6 @@ public class RobotMap {
 	
 	public static DoubleSolenoid shifter;
 	public static DoubleSolenoid gearGrab;
-	public static DoubleSolenoid pistonUpDown; //FuelGate aka Moses
 	
 	public static AHRS navX;
 	public static boolean gemini; //false = Fuel Forward and true = Gear Forward
@@ -79,7 +78,6 @@ public class RobotMap {
 		
 		shifter = new DoubleSolenoid(0,1);
 		gearGrab = new DoubleSolenoid(2,3);
-		pistonUpDown = new DoubleSolenoid(6,7);
 		leftAgitator = new Servo(1);
 		rightAgitator = new Servo(2);
 		

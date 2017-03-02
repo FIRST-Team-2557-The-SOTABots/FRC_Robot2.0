@@ -23,14 +23,22 @@ public class Gear_sub extends Subsystem {
     
     
     public void gearGrab(){ 
-	    	if(RobotMap.FALL){ // && RobotMap.gearGrab.get() == Value.kReverse){
-	    		RobotMap.gearGrab.set(Value.kForward);
-	    		RobotMap.FALL = false;
-	    	}
-	    	else if(RobotMap.FALL == false){// && RobotMap.gearGrab.get() == Value.kForward){
-	    		RobotMap.gearGrab.set(Value.kReverse);
-	    		RobotMap.FALL = true;
-	    	}
+	    if(RobotMap.FALL){ // && RobotMap.gearGrab.get() == Value.kReverse){
+	    	RobotMap.gearGrab.set(Value.kForward);
+	    	RobotMap.FALL = false;
+	    }
+	    else if(RobotMap.FALL == false){// && RobotMap.gearGrab.get() == Value.kForward){
+	    	RobotMap.gearGrab.set(Value.kReverse);
+	    	RobotMap.FALL = true;
+	    	RobotMap.pass = false;
+	    }
+	    
+    }
+    public void switchGrab(){
+    	if(RobotMap.pass && RobotMap.gearSwitch.get()){
+    		RobotMap.gearGrab.set(Value.kForward);
+    		RobotMap.pass = false;
+    	}
     }
     public void gearPosition(){
     		if(Robot.oi.gamepad2.getRawAxis(3) > .1){
