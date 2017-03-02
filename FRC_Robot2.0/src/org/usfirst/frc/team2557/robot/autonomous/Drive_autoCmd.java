@@ -14,6 +14,12 @@ public class Drive_autoCmd extends Command {
 	Timer timer;
 	double _required, _speed, _upperThreshold, _lowerThreshold;
 	boolean _rotate;
+	//x is for how far in feet you want to travel
+	// a is for the threshold above and below x
+	//y is for how fast you want to drive
+	// z is true means you are trying to turn, false means you want to drive straight
+	
+	
     public Drive_autoCmd(double x, double a, double y, boolean z) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -22,6 +28,8 @@ public class Drive_autoCmd extends Command {
     	_lowerThreshold = x - a;
     	_speed = y;
     	_rotate = z;
+    	
+    
     	
     }
 

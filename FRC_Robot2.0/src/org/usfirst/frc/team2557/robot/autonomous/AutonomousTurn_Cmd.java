@@ -1,16 +1,22 @@
 package org.usfirst.frc.team2557.robot.autonomous;
 
+import org.usfirst.frc.team2557.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class AutonomousTurn_Cmd extends Command {
-
-    public AutonomousTurn_Cmd() {
+	double ChanceTR;
+	
+    public AutonomousTurn_Cmd(double x) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	ChanceTR = x;
     }
+    
+
 
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -18,6 +24,11 @@ public class AutonomousTurn_Cmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	while(RobotMap.CAngle > 90){
+    		RobotMap.robotDrive.arcadeDrive(ChanceTR, 0);
+    	}
+    		
+    	
     	
     }
 

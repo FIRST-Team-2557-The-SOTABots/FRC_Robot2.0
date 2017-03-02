@@ -48,12 +48,12 @@ public class RobotMap {
 	
 	public static AHRS navX;
 	public static boolean gemini; //false = Fuel Forward and true = Gear Forward
-	public static boolean FALL; //used in gear command or subsystem(I forgot) somewhere
+	public static boolean FALL; //used in gear command or subsystem(I forgot) somewhere :)
 	public static boolean shift; //boolean for the super shifters on the drive train
 	public static boolean wall; //boolean for the backwall for the intake
 	public static boolean drive; //boolean to switch the drive stick
 	public static boolean pass; //boolean to allow the momentary switch to trigger
-	public static double CAngle; //??
+	public static double CAngle; //??? Auto Turn? :)
 	public static DigitalInput gearSwitch;
 	public static Encoder gearEnc;
 	

@@ -43,7 +43,10 @@ public class Acceleration_sub extends Subsystem {
     
     
     public void AutonomousTurn(){
-    	RobotMap.nax
+    	RobotMap.CAngle = RobotMap.navX.getAngle();
+    	
+    	
+
     }
     
 }
