@@ -3,7 +3,6 @@ package org.usfirst.frc.team2557.robot;
 
 import org.usfirst.frc.team2557.robot.commands.GearGrab_toggle;
 import org.usfirst.frc.team2557.robot.commands.GearSwitch_cmd;
-import org.usfirst.frc.team2557.robot.commands.Intake_toggle;
 import org.usfirst.frc.team2557.robot.commands.Shift_toggle;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;

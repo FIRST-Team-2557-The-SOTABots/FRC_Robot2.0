@@ -34,14 +34,7 @@ public class Intake_sub extends Subsystem {
     		}
     	
     }
-    public void pistonUpDown(){ //Toggle Code
-    	if(RobotMap.pistonUpDown.get() == Value.kReverse){
-			RobotMap.pistonUpDown.set(Value.kForward);
-		}
-		else if (RobotMap.pistonUpDown.get() ==Value.kForward){
-			RobotMap.pistonUpDown.set(Value.kReverse);
-		}
-    }
+    
     
 }
 

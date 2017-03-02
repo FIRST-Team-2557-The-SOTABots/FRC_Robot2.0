@@ -40,25 +40,6 @@ public class Shooter_sub extends Subsystem {
    		}
     	
     }
-    public void moses_non(){ //non-toggle code
-   		if(Robot.oi.a1.get()){
-   			RobotMap.pistonUpDown.set(Value.kForward);
-   			return;
-   		}
-   		else if(Robot.oi.x1.get()){
-   			RobotMap.pistonUpDown.set(Value.kReverse);
-   			return;
-   		}
-    }
-    public void moses_toggle(){ //Toggle code
-   		if(RobotMap.wall){
-			RobotMap.pistonUpDown.set(Value.kForward);
-			RobotMap.wall = false;
-		}
-		else if (RobotMap.wall == false){
-			RobotMap.pistonUpDown.set(Value.kReverse);
-			RobotMap.wall = true;
-		}
-    }
+   
 }
 
