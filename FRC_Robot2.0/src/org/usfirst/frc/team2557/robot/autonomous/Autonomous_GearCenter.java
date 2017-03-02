@@ -31,6 +31,7 @@ public class Autonomous_GearCenter extends CommandGroup {
     	addSequential(new GearGrab_autoCmd(false)); 			//Open claw
     	addParallel(new Gear_autoCmd(-100, 10, -1)); 			//Bring claw down
     	addSequential(new Drive_autoCmd(-3, .1, -.75, false)); 	//Back away
+    	
         
     	
     }

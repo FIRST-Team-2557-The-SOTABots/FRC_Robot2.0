@@ -40,5 +40,11 @@ public class Acceleration_sub extends Subsystem {
     	return (feetPerSecond2Y() /*time*/)/2;
     	//return (metersPerSecond2Y() /*time*/)/2;
     }
+    
+    
+    public void AutonomousTurn(){
+    	RobotMap.nax
+    }
+    
 }
 
