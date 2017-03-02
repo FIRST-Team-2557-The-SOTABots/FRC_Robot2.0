@@ -25,25 +25,21 @@ public class Chassis_sub extends Subsystem {
     }
     public void arcadeDrive(){
     	if(RobotMap.gemini){
-	    		if(RobotMap.drive){
-	    			RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad2.getRawAxis(1) *x, Robot.oi.gamepad2.getRawAxis(0) *x);
-	    		}
-	    		else if(RobotMap.drive == false){
-	    			RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad2.getRawAxis(5) *x, Robot.oi.gamepad2.getRawAxis(4) *x);
-	    		}
+	    			RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad2.getRawAxis(1) *x, Robot.oi.gamepad2.getRawAxis(0) *.9);
+	    		
     	} else if(RobotMap.gemini == false){
 	    		if(RobotMap.drive){
 	    			RobotMap.robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *x);
 	    		}
 	    		else if(RobotMap.drive == false){
-	    			RobotMap.robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(5) *x, Robot.oi.gamepad1.getRawAxis(4) *x);
+	    			RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *.8);
 	    		}
     	}
-    	if(Robot.oi.gamepad1.getPOV() == 0 || Robot.oi.gamepad2.getPOV() == 0){
+    	if(Robot.oi.gamepad1.getPOV() == 0){
     		RobotMap.drive = true;
     		return;
     	}
-    	else if(Robot.oi.gamepad1.getPOV() == 180 || Robot.oi.gamepad2.getPOV() == 180){
+    	else if(Robot.oi.gamepad1.getPOV() == 180){
     		RobotMap.drive = false;
     		return;
     	}
