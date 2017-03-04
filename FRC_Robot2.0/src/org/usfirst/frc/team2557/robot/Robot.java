@@ -12,6 +12,7 @@ import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearCenter;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeft;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRight;
 import org.usfirst.frc.team2557.robot.autonomous.Main_auto;
+import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
 import org.usfirst.frc.team2557.robot.subsystems.Acceleration_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Agitator_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Chassis_sub;
@@ -45,6 +46,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
 	Command autonomousCommand;
+	Command _agitate;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
@@ -54,6 +56,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
+		
+		
+		_agitate = new Agitator_cmd();
+		
 		oi = new OI();
 		oi.init();
 //		chooser.addDefault("Default Auto", new Main_auto());
@@ -129,6 +135,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
 	}
 
 	/**

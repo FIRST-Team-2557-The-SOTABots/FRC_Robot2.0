@@ -30,14 +30,23 @@ public class Gear_sub extends Subsystem {
 	    else if(RobotMap.FALL == false){// && RobotMap.gearGrab.get() == Value.kForward){
 	    	RobotMap.gearGrab.set(Value.kReverse);
 	    	RobotMap.FALL = true;
-	    	RobotMap.pass = false;
+	    }
+	    
+	    if(RobotMap.gearSwitch.get() && RobotMap._switch){
+	    	RobotMap.gearGrab.set(Value.kForward);
+	    	RobotMap.FALL = true;
+	    	RobotMap._switch = false; 
+	    	//^^This line might have to be taken out which would mean active/inactive would be manually controlled
+	    	//^^But if it is taken out then this statement might not break unless the controller deactivates the switch
 	    }
 	    
     }
-    public void switchGrab(){
-    	if(RobotMap.pass && RobotMap.gearSwitch.get()){
-    		RobotMap.gearGrab.set(Value.kForward);
-    		RobotMap.pass = false;
+    public void switchMode(){
+    	if(Robot.oi.gamepad2.getPOV() == 0){
+    		RobotMap._switch = true;
+    	}
+    	else if(Robot.oi.gamepad2.getPOV() == 180){
+    		RobotMap._switch = false;
     	}
     }
     public void gearPosition(){

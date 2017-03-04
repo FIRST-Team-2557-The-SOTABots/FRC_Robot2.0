@@ -52,7 +52,6 @@ public class Chassis_sub extends Subsystem {
     	}
     }
     public void shift_toggle(){
-    	if(RobotMap.gemini){ //While gear forward is active
     		if(RobotMap.shift){
     			RobotMap.shifter.set(Value.kForward);
     			RobotMap.shift = false;
@@ -61,17 +60,7 @@ public class Chassis_sub extends Subsystem {
     			RobotMap.shifter.set(Value.kReverse);
     			RobotMap.shift = true;
     		}
-    	}
-    	else if(RobotMap.gemini == false){ //While fuel forward is active
-    		if(RobotMap.shift){
-    			RobotMap.shifter.set(Value.kForward);
-    			RobotMap.shift = false;
-    		}
-    		else if (RobotMap.shift == false){
-    			RobotMap.shifter.set(Value.kReverse);
-    			RobotMap.shift = true;
-    		}
-    	}
+    	
     }
     public void shift_non(){
     	if(RobotMap.gemini){ //While gear forward is active

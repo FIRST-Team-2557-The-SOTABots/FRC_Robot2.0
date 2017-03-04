@@ -2,7 +2,6 @@ package org.usfirst.frc.team2557.robot;
 
 
 import org.usfirst.frc.team2557.robot.commands.GearGrab_toggle;
-import org.usfirst.frc.team2557.robot.commands.GearSwitch_cmd;
 import org.usfirst.frc.team2557.robot.commands.Shift_toggle;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -96,9 +95,7 @@ public class OI {
 		RJ2 = new JoystickButton(gamepad2, 10);
 		
 		RB2.whenPressed(new GearGrab_toggle());
-		if(RobotMap.gearGrab.get() == Value.kForward){
-			RB2.whenPressed(new GearSwitch_cmd());
-		}
+		
 		if(RobotMap.gemini){
 			y2.whenPressed(new Shift_toggle());
 		} else if (RobotMap.gemini == false){

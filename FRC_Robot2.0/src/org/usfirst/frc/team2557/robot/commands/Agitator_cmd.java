@@ -12,17 +12,20 @@ public class Agitator_cmd extends Command {
     public Agitator_cmd() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.agitator);
 
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.agitator._positionL = true;
+    	Robot.agitator._positionR = true;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-
+//    	Robot.agitator.leftHopper();
+//    	Robot.agitator.rightHopper();
+    	Robot.agitator.bothHoppers();
     }
 
     // Make this return true when this Command no longer needs to run execute()

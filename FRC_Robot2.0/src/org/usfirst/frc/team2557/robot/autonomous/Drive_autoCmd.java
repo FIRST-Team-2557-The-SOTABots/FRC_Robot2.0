@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Drive_autoCmd extends Command {
 	
-	Timer timer;
+
 	double _required, _speed, _upperThreshold, _lowerThreshold;
 	boolean _rotate;
 	//x is for how far in feet you want to travel
@@ -19,7 +19,7 @@ public class Drive_autoCmd extends Command {
 	//y is for how fast you want to drive
 	// z is true means you are trying to turn, false means you want to drive straight
 	
-	
+	Timer timer;
     public Drive_autoCmd(double x, double a, double y, boolean z) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
