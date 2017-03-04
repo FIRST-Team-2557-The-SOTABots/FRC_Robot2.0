@@ -34,14 +34,14 @@ public class Agitator_sub extends Subsystem {
     	if(RobotMap.leftAgitator.getAngle() == 90){
     		_positionL = false;
     	}
-    	if(RobotMap.leftAgitator.getAngle() == 0){
+    	else if(RobotMap.leftAgitator.getAngle() == 1){
     		_positionL = true;
     	}
-    	if(RobotMap.leftAgitator.getAngle() != 90 && _positionL == true){
-    		RobotMap.leftAgitator.setAngle(90);
+    	if(RobotMap.leftAgitator.getAngle() != 91 && _positionL == true){
+    		RobotMap.leftAgitator.setAngle(91);
     	}
     	
-    	if(RobotMap.leftAgitator.getAngle() != 0 && _positionL == false){
+    	else if(RobotMap.leftAgitator.getAngle() != 0 && _positionL == false){
     		RobotMap.leftAgitator.setAngle(0);
     	}
     	
