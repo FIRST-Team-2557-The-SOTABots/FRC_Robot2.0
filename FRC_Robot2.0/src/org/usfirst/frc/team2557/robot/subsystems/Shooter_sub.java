@@ -23,10 +23,10 @@ public class Shooter_sub extends Subsystem {
     
     public void shooting(){
    		if(Robot.oi.gamepad1.getRawAxis(3) > 0.1){
-   	    	RobotMap.Lshooter.set(-.65);
-   	    	RobotMap.Rshooter.set(.65);
+   	    	RobotMap.Lshooter.set(-.675);
+   	    	RobotMap.Rshooter.set(.675);
    	    	RobotMap.copterAgitator.set(1);
-   	    	RobotMap.agitator.set(-.8);
+   	    	RobotMap.agitator.set(-.65);
    		}
    		else if(Robot.oi.gamepad1.getRawAxis(2) > 0.1){
    			RobotMap.copterAgitator.set(-1);

@@ -37,6 +37,10 @@ public class Agitator_sub extends Subsystem {
     	else if(RobotMap.leftAgitator.getAngle() == 1){
     		_positionL = true;
     	}
+    	
+    	/*Test to see if taking out the first condition needs to be there.
+    	 * This might work with just the boolean change
+    	 * */
     	if(RobotMap.leftAgitator.getAngle() != 91 && _positionL == true){
     		RobotMap.leftAgitator.setAngle(91);
     	}
@@ -52,11 +56,15 @@ public class Agitator_sub extends Subsystem {
         if(RobotMap.rightAgitator.getAngle() == 90){
     		_positionR = false;
     	}
-    	if(RobotMap.rightAgitator.getAngle() == 0){
+    	if(RobotMap.rightAgitator.getAngle() == 1){
     		_positionR = true;
     	}
-    	if(RobotMap.rightAgitator.getAngle() != 90 && _positionR == true){
-    		RobotMap.rightAgitator.setAngle(90);
+    	
+    	/*Test to see if taking out the first condition needs to be there.
+    	 * This might work with just the boolean change
+    	 * */
+    	if(RobotMap.rightAgitator.getAngle() != 91 && _positionR == true){
+    		RobotMap.rightAgitator.setAngle(91);
     	}
     	
     	if(RobotMap.rightAgitator.getAngle() != 0 && _positionR == false){

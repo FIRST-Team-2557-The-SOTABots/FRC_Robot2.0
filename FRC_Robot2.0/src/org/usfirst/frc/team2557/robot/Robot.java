@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team2557.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -56,7 +57,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
-		
+		CameraServer.getInstance().startAutomaticCapture();
 		
 		_agitate = new Agitator_cmd();
 		
