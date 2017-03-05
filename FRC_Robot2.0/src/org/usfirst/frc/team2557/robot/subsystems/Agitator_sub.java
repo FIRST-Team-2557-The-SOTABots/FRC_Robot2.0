@@ -15,6 +15,7 @@ public class Agitator_sub extends Subsystem {
     // here. Call these from Commands.
 	public boolean _positionR;
 	public boolean _positionL;
+	public double _angle = 0;
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -41,12 +42,14 @@ public class Agitator_sub extends Subsystem {
     	/*Test to see if taking out the first condition needs to be there.
     	 * This might work with just the boolean change
     	 * */
-    	if(RobotMap.leftAgitator.getAngle() != 91 && _positionL == true){
-    		RobotMap.leftAgitator.setAngle(91);
+    	if(_positionL == true){
+    		RobotMap.leftAgitator.setAngle(_angle);
+    		_angle ++;
     	}
     	
-    	else if(RobotMap.leftAgitator.getAngle() != 0 && _positionL == false){
-    		RobotMap.leftAgitator.setAngle(0);
+    	else if(_positionL == false){
+    		RobotMap.leftAgitator.setAngle(_angle);
+    		_angle --;
     	}
     	
     }
@@ -63,12 +66,14 @@ public class Agitator_sub extends Subsystem {
     	/*Test to see if taking out the first condition needs to be there.
     	 * This might work with just the boolean change
     	 * */
-    	if(RobotMap.rightAgitator.getAngle() != 91 && _positionR == true){
-    		RobotMap.rightAgitator.setAngle(91);
+    	if(_positionR == true){
+    		RobotMap.rightAgitator.setAngle(_angle);
+    		_angle ++;
     	}
     	
-    	if(RobotMap.rightAgitator.getAngle() != 0 && _positionR == false){
-    		RobotMap.rightAgitator.setAngle(0);
+    	if(_positionR == false){
+    		RobotMap.rightAgitator.setAngle(_angle);
+    		_angle --;
     	}
     	
     }

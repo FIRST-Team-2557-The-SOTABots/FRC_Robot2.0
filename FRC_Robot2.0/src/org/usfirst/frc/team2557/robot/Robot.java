@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team2557.robot.autonomous.Autonomous_Baseline;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearCenter;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeft;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRight;
@@ -46,9 +47,10 @@ public class Robot extends IterativeRobot {
 	public static final SmartDashboard_sub  dashboard 	= new SmartDashboard_sub();
 	public static OI oi;
 
-	Command autonomousCommand;
-	Command _agitate;
-	SendableChooser<Command> chooser = new SendableChooser<>();
+	
+	Command _baseline;
+//	Command autonomousCommand;
+//	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -59,15 +61,15 @@ public class Robot extends IterativeRobot {
 		RobotMap.init();
 		CameraServer.getInstance().startAutomaticCapture();
 		
-		_agitate = new Agitator_cmd();
+		_baseline = new Autonomous_Baseline();
 		
 		oi = new OI();
 		oi.init();
-//		chooser.addDefault("Default Auto", new Main_auto());
-		 chooser.addObject("Autonomous_GearLeft: ", new Autonomous_GearLeft());
-		 chooser.addObject("Autonomus_GearCenter", new Autonomous_GearCenter());
-		 chooser.addObject("Autonomous_GearRight", new Autonomous_GearRight());
-		SmartDashboard.putData("Auto mode", chooser);
+//		chooser.addDefault("Autonomous_Basline", new Autonomous_Baseline());
+//		chooser.addObject("Autonomous_GearLeft: ", new Autonomous_GearLeft());
+//		chooser.addObject("Autonomus_GearCenter", new Autonomous_GearCenter());
+//		chooser.addObject("Autonomous_GearRight", new Autonomous_GearRight());
+//		SmartDashboard.putData("Auto mode", chooser);
 	}
 
 	/**
@@ -98,8 +100,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
-
+//		autonomousCommand = chooser.getSelected();
+		
+		_baseline.start();
+		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -108,8 +112,8 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
-			autonomousCommand.start();
+//		if (autonomousCommand != null)
+//			autonomousCommand.start();
 	}
 
 	/**
@@ -126,8 +130,8 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (autonomousCommand != null)
-			autonomousCommand.cancel();
+//		if (autonomousCommand != null)
+//			autonomousCommand.cancel();
 	}
 
 	/**
