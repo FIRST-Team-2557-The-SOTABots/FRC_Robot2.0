@@ -46,9 +46,11 @@ public class Robot extends IterativeRobot {
 	public static final Acceleration_sub 	accel		= new Acceleration_sub();
 	public static final SmartDashboard_sub  dashboard 	= new SmartDashboard_sub();
 	public static OI oi;
+	
 
 	
 	Command _baseline;
+	Command Main_auto;
 //	Command autonomousCommand;
 //	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -62,6 +64,7 @@ public class Robot extends IterativeRobot {
 		CameraServer.getInstance().startAutomaticCapture();
 		
 		_baseline = new Autonomous_Baseline();
+		Main_auto = new Main_auto();
 		
 		oi = new OI();
 		oi.init();
@@ -102,7 +105,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 //		autonomousCommand = chooser.getSelected();
 		
-		_baseline.start();
+		//_baseline.start();
+//		Main_auto.start();
 		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -112,8 +116,8 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-//		if (autonomousCommand != null)
-//			autonomousCommand.start();
+		if (Main_auto != null)
+			Main_auto.start();
 	}
 
 	/**
@@ -130,8 +134,8 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-//		if (autonomousCommand != null)
-//			autonomousCommand.cancel();
+		if (Main_auto != null)
+			Main_auto.cancel();
 	}
 
 	/**

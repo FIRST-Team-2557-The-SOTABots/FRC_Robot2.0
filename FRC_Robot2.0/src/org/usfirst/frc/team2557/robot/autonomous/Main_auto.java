@@ -8,6 +8,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Main_auto extends CommandGroup {
 
     public Main_auto() {
+    	
+    	addSequential(new TimedDrive(1.4,false,.75));
+    	addSequential(new TimedDrive(.5,true, .75));
+    	addParallel(new Autonomus_Shooter(.5));
+    	addSequential(new Auto_Shooter2(10));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
