@@ -57,6 +57,7 @@ public class RobotMap {
 	
 	public static Servo leftAgitator;
 	public static Servo rightAgitator;
+	public static Servo cameraServo;
 	
 	public static void init(){
 		FRdrive = new CANTalon(1);
@@ -79,6 +80,7 @@ public class RobotMap {
 		gearGrab = new DoubleSolenoid(2,3);
 		leftAgitator = new Servo(1);
 		rightAgitator = new Servo(2);
+		cameraServo = new Servo(3);
 		
 		
 		navX = new AHRS(SPI.Port.kMXP);

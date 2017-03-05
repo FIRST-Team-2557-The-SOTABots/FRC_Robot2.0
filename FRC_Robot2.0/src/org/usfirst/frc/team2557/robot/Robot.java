@@ -46,7 +46,7 @@ public class Robot extends IterativeRobot {
 	public static final Acceleration_sub 	accel		= new Acceleration_sub();
 	public static final SmartDashboard_sub  dashboard 	= new SmartDashboard_sub();
 	public static OI oi;
-	
+	public double x = 45;
 
 	
 	Command _baseline;
@@ -144,7 +144,16 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		
+		if(Robot.oi.gamepad2.getPOV() == 270){
+			x += 1;
+		}
+		else if(Robot.oi.gamepad2.getPOV() == 90){
+			x -=1;
+		}
+		else{		
+			x += 0;
+		}
+		RobotMap.cameraServo.setAngle(x);
 	}
 
 	/**
