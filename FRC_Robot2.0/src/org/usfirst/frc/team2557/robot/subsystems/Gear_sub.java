@@ -22,50 +22,18 @@ public class Gear_sub extends Subsystem {
     public void initDefaultCommand() {
     	setDefaultCommand(new Gear_cmd());
     }
-    
-    
     public void gearGrab(){ 
-	    if(RobotMap.FALL){ // && RobotMap.gearGrab.get() == Value.kReverse){
-	    	RobotMap.gearGrab.set(Value.kForward);
-	    	RobotMap.FALL = false;
-	    }
-	    else if(RobotMap.FALL == false){// && RobotMap.gearGrab.get() == Value.kForward){
-	    	RobotMap.gearGrab.set(Value.kReverse);
-	    	RobotMap.FALL = true;
-	    }
-    }
-    public void gearGrabTest(){ 
 	    if(_stage == 0){ // && RobotMap.gearGrab.get() == Value.kReverse){
 	    	RobotMap.gearGrab.set(Value.kForward);
 	    	_stage = 1;
 	    }
 	    else if(_stage == 1){// && RobotMap.gearGrab.get() == Value.kForward){
 	    	RobotMap.gearGrab.set(Value.kReverse);
-	    	_stage = 2;
-	    }
-	    else if(_stage == 2){
-	    	RobotMap.gearGrab.set(Value.kOff);
 	    	_stage = 0;
 	    }
+	    
     }
-    public void switchMode(){
-    	if(Robot.oi.gamepad2.getPOV() == 0){
-    		RobotMap._switch = true;
-    	}
-    	else if(Robot.oi.gamepad2.getPOV() == 180){
-    		RobotMap._switch = false;
-    	}
-    	
-    	 if(RobotMap.gearSwitch.get() && RobotMap._switch){
- 	    	RobotMap.gearGrab.set(Value.kForward);
- 	    	RobotMap.FALL = true;
-// 	    	return;
- 	    	RobotMap._switch = false; 
- 	    	//^^This line might have to be taken out which would mean active/inactive would be manually controlled
- 	    	//^^But if it is taken out then this statement might not break unless the controller deactivates the switch
- 	    }
-    }
-    public void gearPosition(){
+    public void gearIntake(){
     		if(Robot.oi.gamepad2.getRawAxis(3) > .1){
     			RobotMap.gearMotor.set(Robot.oi.gamepad2.getRawAxis(3) * _upAdjust);
     		}
@@ -90,28 +58,26 @@ public class Gear_sub extends Subsystem {
 		RobotMap.cameraServo.setAngle(_cam);
     }
     
-  
-    public void autoGear(){
-    	
-    	if(RobotMap.gearEnc.get() >= -550){
-    		RobotMap.gearMotor.set(-0.8);
-    	}
-    	else if(RobotMap.gearEnc.get() <= -550){
-    		RobotMap.gearMotor.set(0);
-    	}
-//   	if( RobotMap.gearEnc.get() >= -670){
-//   		RobotMap.gearMotor.set(.8);
-//    	}
-//   	else if(RobotMap.gearEnc.get() <= -670){
-//   		RobotMap.gearMotor.set(0);
-//   	}
-//    	else 
-//    		while(RobotMap.gearSwitch.get() && ( RobotMap.gearEnc).get() > -660){
-//    		RobotMap.gearMotor.set(.6);
-//    	}
-    	
-    	
-    }
+    /* Unused after the gear mechanism change
+ 	public void switchMode(){
+	if(Robot.oi.gamepad2.getPOV() == 0){
+		RobotMap._switch = true;
+	}
+	else if(Robot.oi.gamepad2.getPOV() == 180){
+		RobotMap._switch = false;
+	}
+	
+	 if(RobotMap.gearSwitch.get() && RobotMap._switch){
+	    	RobotMap.gearGrab.set(Value.kForward);
+	    	RobotMap.FALL = true;
+//	    	return;
+	    	RobotMap._switch = false; 
+	    	//^^This line might have to be taken out which would mean active/inactive would be manually controlled
+	    	//^^But if it is taken out then this statement might not break unless the controller deactivates the switch
+	    }
+}
+*/
+   
     
     
 }

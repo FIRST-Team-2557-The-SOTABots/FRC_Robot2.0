@@ -22,13 +22,13 @@ public class Shooter_sub extends Subsystem {
     }
     
     public void shooting(){
-   		if(Robot.oi.gamepad1.getRawAxis(3) > 0.1){
+   		if(Robot.oi.LB2.get()){
    	    	RobotMap.Lshooter.set(-.675);
    	    	RobotMap.Rshooter.set(.675);
    	    	RobotMap.copterAgitator.set(1);
    	    	RobotMap.agitator.set(-.65);
    		}
-   		else if(Robot.oi.gamepad1.getRawAxis(2) > 0.1){
+   		else if(Robot.oi.x2.get()){
    			RobotMap.copterAgitator.set(-1);
 			RobotMap.agitator.set(.8);
 			Robot.agitator.leftHopper();

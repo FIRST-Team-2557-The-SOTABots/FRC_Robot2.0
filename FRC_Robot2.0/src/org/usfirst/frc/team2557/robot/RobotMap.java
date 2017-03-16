@@ -46,7 +46,7 @@ public class RobotMap {
 	public static DoubleSolenoid gearGrab;
 	
 	public static AHRS navX;
-	public static boolean gemini; //false = Fuel Forward and true = Gear Forward
+	public static boolean _gemini; //false = Fuel Forward and true = Gear Forward
 	public static boolean FALL; //used in gear command or subsystem(I forgot) somewhere :)
 	public static boolean shift; //boolean for the super shifters on the drive train
 	public static boolean drive; //boolean to switch the drive stick
@@ -86,7 +86,7 @@ public class RobotMap {
 		navX = new AHRS(SPI.Port.kMXP);
 		
 		FALL = false;
-		gemini = true;
+		_gemini = false;
 		shift = true;
 		drive = true;
 		_switch = true;

@@ -24,17 +24,13 @@ public class Chassis_sub extends Subsystem {
     	setDefaultCommand(new Chassis_cmd());
     }
     public void arcadeDrive(){
-    	if(RobotMap.gemini){
-	    			RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad2.getRawAxis(1) *x, Robot.oi.gamepad2.getRawAxis(0) *.9);
-	    		
-    	} else if(RobotMap.gemini == false){
-	    		if(RobotMap.drive){
-	    			RobotMap.robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *x);
-	    		}
-	    		else if(RobotMap.drive == false){
-	    			RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *.8);
-	    		}
-    	}
+	    if(RobotMap.drive){
+	    	RobotMap.robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *x);
+	    }
+	    else if(RobotMap.drive == false){
+	    	RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *.8);
+	    }
+	    
     	if(Robot.oi.gamepad1.getPOV() == 0){
     		RobotMap.drive = true;
     		return;
@@ -42,13 +38,6 @@ public class Chassis_sub extends Subsystem {
     	else if(Robot.oi.gamepad1.getPOV() == 180){
     		RobotMap.drive = false;
     		return;
-    	}
-    }
-    public void tankDrive(){
-    	if(RobotMap.gemini){
-        	RobotMap.robotDrive.tankDrive(-Robot.oi.gamepad1.getRawAxis(0) *x, Robot.oi.gamepad1.getRawAxis(5) *x);
-    	} else if(RobotMap.gemini == false){
-        	RobotMap.robotDrive.tankDrive(-Robot.oi.gamepad1.getRawAxis(0) *x, Robot.oi.gamepad1.getRawAxis(5) *x);
     	}
     }
     public void shift_toggle(){
@@ -62,28 +51,17 @@ public class Chassis_sub extends Subsystem {
     		}
     	
     }
-    public void shift_non(){
-    	if(RobotMap.gemini){ //While gear forward is active
-	    	if(Robot.oi.y2.get()){// && RobotMap.shifter.get() == Value.kReverse){
-				RobotMap.shifter.set(Value.kForward);
-				return;
-			}
-			else if (Robot.oi.b2.get()){// && RobotMap.shifter.get() ==Value.kForward){
-				RobotMap.shifter.set(Value.kReverse);
-				return;
-			}
+    public void gemini(){
+    	if(Robot.oi.gamepad2.getPOV() == 0){
+    		RobotMap._gemini = true;
+    		return;
     	}
-    	else if(RobotMap.gemini == false){ //While fuel forward is active
-    		if(Robot.oi.y1.get()){// && RobotMap.shifter.get() == Value.kReverse){
-    			RobotMap.shifter.set(Value.kForward);
-    			return;
-    		}
-    		else if (Robot.oi.b1.get()){// && RobotMap.shifter.get() ==Value.kForward){
-    			RobotMap.shifter.set(Value.kReverse);
-    			return;
-    		}
+    	else if(Robot.oi.gamepad2.getPOV() == 180){
+    		RobotMap._gemini = false;
+    		return;
     	}
     }
+    
     
 }
 
