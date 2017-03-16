@@ -2,6 +2,7 @@
 package org.usfirst.frc.team2557.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -15,6 +16,7 @@ import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeft;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRight;
 import org.usfirst.frc.team2557.robot.autonomous.Main_auto;
 import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
+import org.usfirst.frc.team2557.robot.commands.PsuedoShooter_cmd;
 import org.usfirst.frc.team2557.robot.subsystems.Acceleration_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Agitator_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Chassis_sub;
@@ -49,8 +51,8 @@ public class Robot extends IterativeRobot {
 	public double x = 45;
 
 	
-	Command _baseline;
 	Command Main_auto;
+	Command fakePID;
 //	Command autonomousCommand;
 //	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -63,11 +65,11 @@ public class Robot extends IterativeRobot {
 		RobotMap.init();
 		CameraServer.getInstance().startAutomaticCapture();
 		
-		_baseline = new Autonomous_Baseline();
 		Main_auto = new Main_auto();
-		
+		fakePID = new PsuedoShooter_cmd();
 		oi = new OI();
 		oi.init();
+		
 //		chooser.addDefault("Autonomous_Basline", new Autonomous_Baseline());
 //		chooser.addObject("Autonomous_GearLeft: ", new Autonomous_GearLeft());
 //		chooser.addObject("Autonomus_GearCenter", new Autonomous_GearCenter());
@@ -103,10 +105,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-//		autonomousCommand = chooser.getSelected();
-		
-		//_baseline.start();
-//		Main_auto.start();
+//		autonomousCommand = (Command) chooser.getSelected();
+//		autonomousCommand.start();
 		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -134,6 +134,9 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+		
+//		if (autonomousCommand != null)
+//			autonomousCommand.cancle();
 		if (Main_auto != null)
 			Main_auto.cancel();
 	}
@@ -144,16 +147,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		if(Robot.oi.gamepad2.getPOV() == 270){
-			x += 1;
+		if(oi.gamepad1.getRawAxis(3) > 0.1){
+			fakePID.start();
 		}
-		else if(Robot.oi.gamepad2.getPOV() == 90){
-			x -=1;
-		}
-		else{		
-			x += 0;
-		}
-		RobotMap.cameraServo.setAngle(x);
 	}
 
 	/**

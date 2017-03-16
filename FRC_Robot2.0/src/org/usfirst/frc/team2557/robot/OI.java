@@ -96,11 +96,8 @@ public class OI {
 		
 		RB2.whenPressed(new GearGrab_toggle());
 		
-		if(RobotMap.gemini){
-			y2.whenPressed(new Shift_toggle());
-		} else if (RobotMap.gemini == false){
-			y1.whenPressed(new Shift_toggle());
-		}
+		y2.whenPressed(new Shift_toggle());
+		y1.whenPressed(new Shift_toggle());
 
 	}
 	

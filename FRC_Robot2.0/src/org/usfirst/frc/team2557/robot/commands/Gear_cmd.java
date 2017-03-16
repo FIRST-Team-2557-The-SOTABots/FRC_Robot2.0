@@ -25,6 +25,7 @@ public class Gear_cmd extends Command {
     protected void execute() {
     	Robot.gear.gearPosition();
     	Robot.gear.switchMode();
+    	Robot.gear.gearCamera();
     }
 
     // Make this return true when this Command no longer needs to run execute()

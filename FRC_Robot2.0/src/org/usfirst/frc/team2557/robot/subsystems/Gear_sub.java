@@ -17,6 +17,8 @@ public class Gear_sub extends Subsystem {
     // here. Call these from Commands.
 	final double _upAdjust 		= 1;
 	final double _downAdjust 	= 1;
+	public double _cam			= 45;
+	public int _stage			= 0;
     public void initDefaultCommand() {
     	setDefaultCommand(new Gear_cmd());
     }
@@ -31,9 +33,20 @@ public class Gear_sub extends Subsystem {
 	    	RobotMap.gearGrab.set(Value.kReverse);
 	    	RobotMap.FALL = true;
 	    }
-	    
-	   
-	    
+    }
+    public void gearGrabTest(){ 
+	    if(_stage == 0){ // && RobotMap.gearGrab.get() == Value.kReverse){
+	    	RobotMap.gearGrab.set(Value.kForward);
+	    	_stage = 1;
+	    }
+	    else if(_stage == 1){// && RobotMap.gearGrab.get() == Value.kForward){
+	    	RobotMap.gearGrab.set(Value.kReverse);
+	    	_stage = 2;
+	    }
+	    else if(_stage == 2){
+	    	RobotMap.gearGrab.set(Value.kOff);
+	    	_stage = 0;
+	    }
     }
     public void switchMode(){
     	if(Robot.oi.gamepad2.getPOV() == 0){
@@ -63,6 +76,18 @@ public class Gear_sub extends Subsystem {
     			RobotMap.gearMotor.set(0);
     		}
     	
+    }
+    public void gearCamera(){
+    	if(Robot.oi.gamepad2.getPOV() == 270){
+			_cam += 1;
+		}
+		else if(Robot.oi.gamepad2.getPOV() == 90){
+			_cam -=1;
+		}
+		else{		
+			_cam += 0;
+		}
+		RobotMap.cameraServo.setAngle(_cam);
     }
     
   
