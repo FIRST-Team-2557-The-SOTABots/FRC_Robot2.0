@@ -32,8 +32,8 @@ public class SmartDashboard_sub extends Subsystem {
 //		SmartDashboard.putNumber("Left Servo: ", RobotMap.leftAgitator.getAngle());
 //		SmartDashboard.putNumber("Right Servo: ", RobotMap.rightAgitator.getAngle());
 //		SmartDashboard.putBoolean("Gear Switch is: ", RobotMap.gearSwitch.get());
-    	SmartDashboard.putNumber("", RobotMap.cameraServo.getAngle());
-    	
+//    	SmartDashboard.putNumber("", RobotMap.cameraServo.getAngle());
+    	SmartDashboard.putNumber("Eulerrrrrrrr: ", RobotMap.euler.getDistance());
     	
     	if(RobotMap.gearGrab.get() == Value.kForward){
     		SmartDashboard.putBoolean("Is closed/open", true);

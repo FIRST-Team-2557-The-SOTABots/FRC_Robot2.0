@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2557.robot.commands;
 
 import org.usfirst.frc.team2557.robot.Robot;
+import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -21,7 +22,9 @@ public class Intake_cmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intake.intake();
+    	if(RobotMap._gemini == false){
+    		Robot.intake.intake();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

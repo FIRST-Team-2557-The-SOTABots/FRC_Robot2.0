@@ -62,7 +62,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
-		CameraServer.getInstance().startAutomaticCapture();
+//		CameraServer.getInstance().startAutomaticCapture();
 		
 		Main_auto = new Main_auto();
 		fakePID = new PsuedoShooter_cmd();
@@ -104,6 +104,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		RobotMap.euler.autoInit();
 //		autonomousCommand = (Command) chooser.getSelected();
 //		autonomousCommand.start();
 		
@@ -125,6 +126,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		RobotMap.euler.update();
 	}
 
 	@Override
@@ -146,9 +148,14 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		RobotMap.euler.update();
+		
 		if(oi.gamepad1.getRawAxis(3) > 0.1){
 			fakePID.start();
 		}
+		SmartDashboard.putNumber("Accel X = ", RobotMap.accel.getX() * 9.80662);
+		SmartDashboard.putNumber("Accel Y = ", RobotMap.accel.getY() * 9.80662);
+		SmartDashboard.putNumber("Accel Z = ", RobotMap.accel.getZ() * 9.80662);
 		
 	}
 
