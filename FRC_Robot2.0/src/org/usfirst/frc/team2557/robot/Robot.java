@@ -27,6 +27,7 @@ import org.usfirst.frc.team2557.robot.subsystems.Intake_sub;
 import org.usfirst.frc.team2557.robot.subsystems.PsuedoShooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.SmartDashboard_sub;
+import org.usfirst.frc.team2557.robot.vision.VisionArray_sub;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -47,6 +48,7 @@ public class Robot extends IterativeRobot {
 	public static final PsuedoShooter_sub 	psuedo 		= new PsuedoShooter_sub();
 	public static final Acceleration_sub 	accel		= new Acceleration_sub();
 	public static final SmartDashboard_sub  dashboard 	= new SmartDashboard_sub();
+	public static final VisionArray_sub		vision		= new VisionArray_sub();
 	public static OI oi;
 	public double x = 45;
 
@@ -64,6 +66,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		RobotMap.init();
 		CameraServer.getInstance().startAutomaticCapture();
+		vision.initializer();
 		
 		Main_auto = new Main_auto();
 		fakePID = new PsuedoShooter_cmd();

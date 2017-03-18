@@ -52,6 +52,7 @@ public class RobotMap {
 	public static boolean drive; //boolean to switch the drive stick
 	public static boolean _switch; //boolean to activate/deactivate the momentary switch for the gear grabber
 	public static double CAngle; //??? Auto Turn? :)
+	public static boolean shootReq;
 	public static DigitalInput gearSwitch;
 	public static Encoder gearEnc;
 	
@@ -91,6 +92,7 @@ public class RobotMap {
 		drive = true;
 		_switch = true;
 		CAngle = 0;
+		shootReq = false;
 		
 		
 	}
