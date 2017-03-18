@@ -16,12 +16,12 @@ import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeft;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRight;
 import org.usfirst.frc.team2557.robot.autonomous.Main_auto;
 import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
+import org.usfirst.frc.team2557.robot.commands.GearGrab_toggle;
 import org.usfirst.frc.team2557.robot.commands.PsuedoShooter_cmd;
 import org.usfirst.frc.team2557.robot.subsystems.Acceleration_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Agitator_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Chassis_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Climber_sub;
-import org.usfirst.frc.team2557.robot.subsystems.FX_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Gear_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Intake_sub;
 import org.usfirst.frc.team2557.robot.subsystems.PsuedoShooter_sub;
@@ -43,7 +43,6 @@ public class Robot extends IterativeRobot {
 	public static final Intake_sub 			intake 		= new Intake_sub();
 	public static final Gear_sub 			gear 		= new Gear_sub();
 	public static final Climber_sub 		climber 	= new Climber_sub();
-	public static final FX_sub 				fx 			= new FX_sub();
 	public static final Agitator_sub 		agitator 	= new Agitator_sub();
 	public static final PsuedoShooter_sub 	psuedo 		= new PsuedoShooter_sub();
 	public static final Acceleration_sub 	accel		= new Acceleration_sub();
@@ -108,6 +107,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		RobotMap.euler.autoInit();
 //		autonomousCommand = (Command) chooser.getSelected();
 //		autonomousCommand.start();
 		
@@ -129,6 +129,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		RobotMap.euler.update();
 	}
 
 	@Override
@@ -150,9 +151,15 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		if(oi.gamepad1.getRawAxis(3) > 0.1){
-			fakePID.start();
-		}
+		RobotMap.euler.update();
+		
+//		if(oi.gamepad1.getRawAxis(3) > 0.1){
+//			fakePID.start();
+//		}
+		SmartDashboard.putNumber("Accel X = ", RobotMap.accel.getX() * 9.80662);
+		SmartDashboard.putNumber("Accel Y = ", RobotMap.accel.getY() * 9.80662);
+		SmartDashboard.putNumber("Accel Z = ", RobotMap.accel.getZ() * 9.80662);
+		
 	}
 
 	/**

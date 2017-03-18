@@ -8,32 +8,34 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Shooter_cmd extends Command {
-
-    public Shooter_cmd() {
+public class DistanceDrive_cmd extends Command {
+	
+	public double _distance, _power;
+    public DistanceDrive_cmd(double distance, double power){
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.shooter);
+    	_distance = distance;
+    	_power = power;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	RobotMap.euler.reset();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(RobotMap._gemini == false){
-    		Robot.shooter.shooting();
-    	}
+    	RobotMap.robotDrive.arcadeDrive(_distance, _power);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return RobotMap.euler.getDistance() < _distance;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	RobotMap.robotDrive.arcadeDrive(0,0);
     }
 
     // Called when another command which requires one or more of the same

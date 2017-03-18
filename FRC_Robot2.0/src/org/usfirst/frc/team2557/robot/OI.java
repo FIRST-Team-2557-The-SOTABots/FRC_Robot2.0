@@ -95,9 +95,7 @@ public class OI {
 		RJ2 = new JoystickButton(gamepad2, 10);
 		
 		RB2.whenPressed(new GearGrab_toggle());
-		
-		y2.whenPressed(new Shift_toggle());
-		y1.whenPressed(new Shift_toggle());
+		RB1.whenPressed(new Shift_toggle());
 
 	}
 	

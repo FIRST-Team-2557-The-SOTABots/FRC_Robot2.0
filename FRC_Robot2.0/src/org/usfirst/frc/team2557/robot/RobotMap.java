@@ -1,4 +1,6 @@
 package org.usfirst.frc.team2557.robot;
+import org.usfirst.frc.team2557.robot.math.EulerDistanceEstimator;
+import org.usfirst.frc.team2557.robot.math.EulerDistanceEstimator.ForwardAxis;
 
 import com.ctre.CANTalon;
 import com.kauailabs.navx.frc.AHRS;
@@ -45,8 +47,9 @@ public class RobotMap {
 	public static DoubleSolenoid shifter;
 	public static DoubleSolenoid gearGrab;
 	
+	public static BuiltInAccelerometer accel;
 	public static AHRS navX;
-	public static boolean gemini; //false = Fuel Forward and true = Gear Forward
+	public static boolean _gemini; //false = Fuel Forward and true = Gear Forward
 	public static boolean FALL; //used in gear command or subsystem(I forgot) somewhere :)
 	public static boolean shift; //boolean for the super shifters on the drive train
 	public static boolean drive; //boolean to switch the drive stick
@@ -59,6 +62,7 @@ public class RobotMap {
 	public static Servo leftAgitator;
 	public static Servo rightAgitator;
 	public static Servo cameraServo;
+	public static EulerDistanceEstimator euler;
 	
 	public static void init(){
 		FRdrive = new CANTalon(1);
@@ -85,14 +89,19 @@ public class RobotMap {
 		
 		
 		navX = new AHRS(SPI.Port.kMXP);
+		accel = new BuiltInAccelerometer();
+		euler = new EulerDistanceEstimator(accel, ForwardAxis.NegX);
 		
+		shootReq = false;
 		FALL = false;
-		gemini = true;
+		_gemini = true;
 		shift = true;
-		drive = true;
+		drive = false;
 		_switch = true;
 		CAngle = 0;
 		shootReq = false;
+		
+		
 		
 		
 	}

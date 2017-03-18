@@ -25,12 +25,13 @@ public class Chassis_cmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.oi.start1.get() && Robot.oi.select1.get()){
-    		RobotMap.gemini = false;
-    	} else if(Robot.oi.start2.get() && Robot.oi.select2.get()){
-    		RobotMap.gemini = true;
-    	}
+//    	if(Robot.oi.start1.get() && Robot.oi.select1.get()){
+//    		RobotMap.gemini = false;
+//    	} else if(Robot.oi.start2.get() && Robot.oi.select2.get()){
+//    		RobotMap.gemini = true;
+//    	}
     	Robot.chassis.arcadeDrive();
+    	Robot.chassis.gemini();
     }
 
     // Make this return true when this Command no longer needs to run execute()

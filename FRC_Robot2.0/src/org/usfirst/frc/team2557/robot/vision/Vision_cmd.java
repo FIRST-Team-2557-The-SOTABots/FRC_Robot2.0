@@ -20,11 +20,11 @@ public class Vision_cmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.vision.findAreas();
     	Robot.vision.findCenterXs();
     	Robot.vision.findCenterYs();
     	Robot.vision.findWidths();
     	Robot.vision.findHeights();
+    	Robot.vision.findAreas();
     	Robot.vision.interpretCamera();
     }
 
