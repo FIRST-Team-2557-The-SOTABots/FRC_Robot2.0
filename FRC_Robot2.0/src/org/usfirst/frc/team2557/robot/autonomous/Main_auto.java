@@ -17,7 +17,7 @@ public class Main_auto extends CommandGroup {
 //    	addSequential(new Auto_Shooter2(10));
     	
     	
-    	addSequential(new DistanceDrive_cmd());
+    	addSequential(new DistanceDrive_cmd(150, .5));
     	
     	
         // Add Commands here:

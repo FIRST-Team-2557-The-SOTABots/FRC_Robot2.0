@@ -86,15 +86,17 @@ public class RobotMap {
 		rightAgitator = new Servo(2);
 		cameraServo = new Servo(3);
 		
+		
+		navX = new AHRS(SPI.Port.kMXP);
 		accel = new BuiltInAccelerometer();
 		euler = new EulerDistanceEstimator(accel, ForwardAxis.NegX);
 		
-		navX = new AHRS(SPI.Port.kMXP);
+		
 		
 		FALL = false;
-		_gemini = false;
+		_gemini = true;
 		shift = true;
-		drive = true;
+		drive = false;
 		_switch = true;
 		CAngle = 0;
 		

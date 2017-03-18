@@ -150,9 +150,9 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		RobotMap.euler.update();
 		
-		if(oi.gamepad1.getRawAxis(3) > 0.1){
-			fakePID.start();
-		}
+//		if(oi.gamepad1.getRawAxis(3) > 0.1){
+//			fakePID.start();
+//		}
 		SmartDashboard.putNumber("Accel X = ", RobotMap.accel.getX() * 9.80662);
 		SmartDashboard.putNumber("Accel Y = ", RobotMap.accel.getY() * 9.80662);
 		SmartDashboard.putNumber("Accel Z = ", RobotMap.accel.getZ() * 9.80662);

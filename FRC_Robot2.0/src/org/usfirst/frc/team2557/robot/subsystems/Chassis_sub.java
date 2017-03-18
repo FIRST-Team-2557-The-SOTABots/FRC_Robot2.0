@@ -24,10 +24,10 @@ public class Chassis_sub extends Subsystem {
     }
     public void arcadeDrive(){
 	    if(RobotMap.drive){
-	    	RobotMap.robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *x);
+	    	RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *.8);
 	    }
 	    else if(RobotMap.drive == false){
-	    	RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *.8);
+	    	RobotMap.robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *.8);
 	    }
     }
     public void shift_toggle(){
@@ -51,19 +51,19 @@ public class Chassis_sub extends Subsystem {
     		return;
     	}
     	
-    	if(Robot.oi.gamepad1.getPOV() == 0){
+    	if(Robot.oi.a1.get()){
     		RobotMap.drive = true;
     		return;
     	}
-    	else if(Robot.oi.gamepad1.getPOV() == 180){
+    	else if(Robot.oi.b1.get()){
     		RobotMap.drive = false;
     		return;
     	}
     }
     
-    public void distanceDrive(){
-    	if(RobotMap.euler.getDistance() < 150){
-    		RobotMap.robotDrive.arcadeDrive(-.5,0);
+    public void distanceDrive(double _distance, double _power){
+    	if(RobotMap.euler.getDistance() < _distance){
+    		RobotMap.robotDrive.arcadeDrive(_distance, -_power);
     	}
     	else{
     		RobotMap.robotDrive.arcadeDrive(0,0);

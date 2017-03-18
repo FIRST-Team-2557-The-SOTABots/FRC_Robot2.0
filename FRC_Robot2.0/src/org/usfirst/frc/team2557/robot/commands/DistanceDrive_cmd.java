@@ -9,10 +9,13 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DistanceDrive_cmd extends Command {
-
-    public DistanceDrive_cmd() {
+	
+	public double _distance, _power;
+    public DistanceDrive_cmd(double distance, double power){
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	_distance = distance;
+    	_power = power;
     }
 
     // Called just before this Command runs the first time
@@ -22,16 +25,17 @@ public class DistanceDrive_cmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.chassis.distanceDrive();
+    	RobotMap.robotDrive.arcadeDrive(_distance, _power);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return RobotMap.euler.getDistance() < _distance;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	RobotMap.robotDrive.arcadeDrive(0,0);
     }
 
     // Called when another command which requires one or more of the same
