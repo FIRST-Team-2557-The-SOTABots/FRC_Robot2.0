@@ -162,7 +162,12 @@ public class Robot extends IterativeRobot {
 //		if(oi.gamepad1.getRawAxis(3) > 0.1){
 //			fakePID.start();
 //		}
-		SmartDashboard.putNumber("NavX Angle is: ",RobotMap.navX.getAngle());
+		if(vision.interpretation()){
+			SmartDashboard.putBoolean("Status: ", true);
+		}
+		else{
+			SmartDashboard.putBoolean("Status: ", false);
+		}
 	}
 
 	/**

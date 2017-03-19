@@ -39,15 +39,10 @@ public class SmartDashboard_sub extends Subsystem {
     	SmartDashboard.putNumber("Front Right Drive is pulling current: ", RobotMap.FRdrive.getOutputCurrent());
     	SmartDashboard.putNumber("Back Left Drive is pulling current: ", RobotMap.BLdrive.getOutputCurrent());
     	SmartDashboard.putNumber("Back Right Drive is pulling current: ", RobotMap.BRdrive.getOutputCurrent());
-    	SmartDashboard.putNumber("The height is: ", Robot.vision.findHeights());
-    	SmartDashboard.putNumber("The X is: ", Robot.vision.findCenterXs());
-    	SmartDashboard.putNumber("The Y is: ", Robot.vision.findCenterYs());
-    	if(RobotMap.gearGrab.get() == Value.kForward){
-    		SmartDashboard.putBoolean("Is closed/open", true);
-    	}
-    	else if(RobotMap.gearGrab.get() == Value.kReverse){
-    		SmartDashboard.putBoolean("Is closed/open", false);
-    	}
+//    	SmartDashboard.putNumber("The height is: ", Robot.vision.findHeights());
+//    	SmartDashboard.putNumber("The X is: ", Robot.vision.findCenterXs());
+//    	SmartDashboard.putNumber("The Y is: ", Robot.vision.findCenterYs());
     }
+    
 }
 

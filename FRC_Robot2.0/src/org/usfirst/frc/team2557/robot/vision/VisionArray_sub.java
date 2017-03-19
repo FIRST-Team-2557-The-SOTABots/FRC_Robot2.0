@@ -175,7 +175,34 @@ public class VisionArray_sub extends Subsystem {
 	public void findIterations(){
 		
 	}
-			
+		
+	public boolean interpretation(){
+		boolean _height, _x, _y;
+		///////////
+		if(findHeights() < 39 && findHeights() > 19){
+			_height = true;
+		}
+		else{
+			_height = false;
+		}
+		///////////
+		if(findCenterXs() < 89 && findCenterXs() > 49){
+			_x = true;
+		}
+		else{
+			_x = false;
+		}
+		///////////
+		if(findCenterYs() < 151 && findCenterYs() > 111){
+			_y = true;
+		}
+		else{
+			_y = false;
+		}
+		
+		return _height && _x && _y;
+	}
+	
 //	public void interpretCamera(){
 //	if(areas.length > 0 && widthDataCount > 0 && heightDataCount > 0 && centerXDataCount > 0 && centerYDataCount > 0){
 //		
