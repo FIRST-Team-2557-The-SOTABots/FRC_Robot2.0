@@ -1,45 +1,33 @@
 package org.usfirst.frc.team2557.robot.autonomous;
 
-import org.usfirst.frc.team2557.robot.RobotMap;
+import org.usfirst.frc.team2557.robot.commands.GearGrab_toggle;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class Gear_autoCmd extends Command {
+public class Gear_autoCmd extends CommandGroup {
 
-	double _speed, _position, _upperThreshold, _lowerThreshold;
-    public Gear_autoCmd(double x, double a, double y) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	_position = x;
-    	_upperThreshold = x + a;
-    	_lowerThreshold = x - a;
-    	_speed = y;
-    }
+    public Gear_autoCmd() {
+        // Add Commands here:
+        // e.g. addSequential(new Command1());
+        //      addSequential(new Command2());
+        // these will run in order.
+    	addParallel(new TimedGear(.95, .75));
+    	addParallel(new GearToggle_autoCmd(false));
+    	addSequential(new TimedDrive(.5, false, 0));
+    	addSequential(new TimedDrive(1, false, .65));
+        // To run multiple commands at the same time,
+        // use addParallel()
+        // e.g. addParallel(new Command1());
+        //      addSequential(new Command2());
+        // Command1 and Command2 will run in parallel.
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	RobotMap.gearMotor.set(_speed);
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-    	return RobotMap.gearEnc.get() < _upperThreshold && RobotMap.gearEnc.get() > _lowerThreshold;
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    	RobotMap.gearMotor.set(0);
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
+        // A command group will require all of the subsystems that each member
+        // would require.
+        // e.g. if Command1 requires chassis, and Command2 requires arm,
+        // a CommandGroup containing them would require both the chassis and the
+        // arm.
     }
 }

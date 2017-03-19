@@ -1,4 +1,6 @@
 package org.usfirst.frc.team2557.robot.math;
+import org.usfirst.frc.team2557.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 
@@ -21,7 +23,7 @@ public class EulerDistanceEstimator {
         NegZ
     }
 
-    private Accelerometer _accelSensor;
+//    private Accelerometer _accelSensor;
     private ForwardAxis _forwardAxis;
 
     private double _velocity;
@@ -33,8 +35,8 @@ public class EulerDistanceEstimator {
      * @param accelerometer The accelerometer objects that is used to approximate
      * @param forwardAxis The axis of the accelerometer that points forward
      */
-    public EulerDistanceEstimator(Accelerometer accelerometer, ForwardAxis forwardAxis) {
-        this._accelSensor = accelerometer;
+    public EulerDistanceEstimator(ForwardAxis forwardAxis){ //Accelerometer accelerometer, ForwardAxis forwardAxis) {
+//        this._accelSensor = accelerometer;
         this._forwardAxis = forwardAxis;
 
         this._eTimer = new Timer();
@@ -45,9 +47,9 @@ public class EulerDistanceEstimator {
      * Gets the reference for the accelerometer used for approximation.
      * @return Accelerometer used for approximation
      */
-    public Accelerometer getAccelerometer() {
-        return this._accelSensor;
-    }
+//    public Accelerometer getAccelerometer() {
+//        return this._accelSensor;
+//    }
 
     /**
      * Updates the velocity and displacement. This should
@@ -56,10 +58,11 @@ public class EulerDistanceEstimator {
     public void update() {
         // d = v(dt) + (1/2)a(dt^2)
         this._displacement += this._velocity * this._eTimer.get()
-                + (this.getAcceleration() * Math.pow(this._eTimer.get(), 2)) / 2;
+                + (RobotMap.navX.getRawAccelX() * 9.80662 * Math.pow(this._eTimer.get(), 2)) / 2;
         // v = a(dt)
         // This is as close as we can get since we don't have jerk (the derivative of acceleration)
-        this._velocity += Math.round(this._accelSensor.getY() * 1000.0) / 1000.0 * this._eTimer.get();
+//        this._velocity += Math.round(this._accelSensor.getY() * 1000.0) / 1000.0 * this._eTimer.get();
+        this._velocity += Math.round(RobotMap.navX.getRawAccelX() * 9.80662 * 1000.0) / 1000.0 * this._eTimer.get();
         // Reset the timer for the next step (delta time)
         this._eTimer.reset();
     }
@@ -121,31 +124,31 @@ public class EulerDistanceEstimator {
      * per second.
      * @return Current acceleration in m/s/s
      */
-    public double getAcceleration() {
-        double Gs = 0;
-
-        switch(this._forwardAxis) {
-            case X:
-                Gs = this._accelSensor.getX();
-            case NegX:
-                Gs = this._accelSensor.getX() * -1;
-                break;
-            case Y:
-                Gs = this._accelSensor.getY();
-                break;
-            case NegY:
-                Gs = this._accelSensor.getY() * -1;
-                break;
-            case Z:
-                Gs = this._accelSensor.getZ();
-                break;
-            case NegZ:
-                Gs = this._accelSensor.getZ() * -1;
-                break;
-        }
-
-        // One "g" is 9.81m/s/s
-        return Gs * 9.81;
-    }
+//    public double getAcceleration() {
+//        double Gs = 0;
+//
+//        switch(this._forwardAxis) {
+//            case X:
+//                Gs = this._accelSensor.getX();
+//            case NegX:
+//                Gs = this._accelSensor.getX() * -1;
+//                break;
+//            case Y:
+//                Gs = this._accelSensor.getY();
+//                break;
+//            case NegY:
+//                Gs = this._accelSensor.getY() * -1;
+//                break;
+//            case Z:
+//                Gs = this._accelSensor.getZ();
+//                break;
+//            case NegZ:
+//                Gs = this._accelSensor.getZ() * -1;
+//                break;
+//        }
+//
+//        // One "g" is 9.81m/s/s
+//        return Gs * 9.81;
+//    }
 
 }

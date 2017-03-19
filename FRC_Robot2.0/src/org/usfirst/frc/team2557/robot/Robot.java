@@ -28,6 +28,7 @@ import org.usfirst.frc.team2557.robot.subsystems.PsuedoShooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.SmartDashboard_sub;
 import org.usfirst.frc.team2557.robot.vision.VisionArray_sub;
+import org.usfirst.frc.team2557.robot.vision.Vision_cmd;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -54,6 +55,7 @@ public class Robot extends IterativeRobot {
 	
 	Command Main_auto;
 	Command fakePID;
+	Command visionUpdate;
 //	Command autonomousCommand;
 //	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -64,9 +66,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
-		CameraServer.getInstance().startAutomaticCapture();
+//		CameraServer.getInstance().startAutomaticCapture();
 		vision.initializer();
 		
+		visionUpdate = new Vision_cmd();
 		Main_auto = new Main_auto();
 		fakePID = new PsuedoShooter_cmd();
 		oi = new OI();
@@ -108,6 +111,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		RobotMap.euler.autoInit();
+		Robot.chassis.resetDriveStraight();
 //		autonomousCommand = (Command) chooser.getSelected();
 //		autonomousCommand.start();
 		
@@ -130,6 +134,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		RobotMap.euler.update();
+		SmartDashboard.putNumber("NavX Angle is: ",RobotMap.navX.getAngle());
+		SmartDashboard.putNumber("DriveStraight Angle is: ",Robot.chassis.getDriveStraightAngle());
 	}
 
 	@Override
@@ -152,14 +158,11 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		RobotMap.euler.update();
-		
+		visionUpdate.start();
 //		if(oi.gamepad1.getRawAxis(3) > 0.1){
 //			fakePID.start();
 //		}
-		SmartDashboard.putNumber("Accel X = ", RobotMap.accel.getX() * 9.80662);
-		SmartDashboard.putNumber("Accel Y = ", RobotMap.accel.getY() * 9.80662);
-		SmartDashboard.putNumber("Accel Z = ", RobotMap.accel.getZ() * 9.80662);
-		
+		SmartDashboard.putNumber("NavX Angle is: ",RobotMap.navX.getAngle());
 	}
 
 	/**

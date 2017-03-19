@@ -2,19 +2,19 @@ package org.usfirst.frc.team2557.robot.autonomous;
 
 import org.usfirst.frc.team2557.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.TimedCommand;
 
 /**
  *
  */
-public class GearGrab_autoCmd extends Command {
+public class TimedGear extends TimedCommand {
 
-	boolean _claw;
-    public GearGrab_autoCmd(boolean x) {
+	public double _power;
+    public TimedGear(double timeout, double power) {
+        super(timeout);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	_claw = x;
+        _power = power;
     }
 
     // Called just before this Command runs the first time
@@ -23,21 +23,12 @@ public class GearGrab_autoCmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(_claw){
-    		RobotMap.gearGrab.set(Value.kForward);
-    	}
-    	else if(_claw == false){
-    		RobotMap.gearGrab.set(Value.kReverse);
-    	}
+    	RobotMap.gearMotor.set(_power);
     }
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return true;
-    }
-
-    // Called once after isFinished returns true
+    // Called once after timeout
     protected void end() {
+    	RobotMap.gearMotor.set(0);
     }
 
     // Called when another command which requires one or more of the same

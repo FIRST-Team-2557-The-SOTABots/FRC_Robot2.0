@@ -90,13 +90,13 @@ public class RobotMap {
 		
 		navX = new AHRS(SPI.Port.kMXP);
 		accel = new BuiltInAccelerometer();
-		euler = new EulerDistanceEstimator(accel, ForwardAxis.NegX);
+		euler = new EulerDistanceEstimator(ForwardAxis.NegX);
 		
 		shootReq = false;
 		FALL = false;
-		_gemini = true;
+		_gemini = false;
 		shift = true;
-		drive = false;
+		drive = true;
 		_switch = true;
 		CAngle = 0;
 		shootReq = false;

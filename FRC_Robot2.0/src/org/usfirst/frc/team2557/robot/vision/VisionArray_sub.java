@@ -48,37 +48,60 @@ public class VisionArray_sub extends Subsystem {
 	widths = new double[widthDataCount];
 	table = NetworkTable.getTable("GRIP/myContoursReport");
 	}
-	public void findHeights(){
+	public double findHeights(){
 		heights = table.getNumberArray("height", heights);
 			for(double height: heights){
 				SmartDashboard.putNumber("height", height);
 				heightDataCount++;
 				SmartDashboard.putNumber("HeightsDataCount", heights.length);
+			}
 			
-		}
+			try{
+				return heights[0];
+			} catch(IndexOutOfBoundsException e){
+				return 0;
+			}
 	}
-	public void findWidths(){
+	
+	public double findWidths(){
 		widths = table.getNumberArray("width", widths);
 			for(double width: widths){
 				SmartDashboard.putNumber("width", width);
 				widthDataCount++;
 			}
-		}
+			try{
+				return widths[0];
+			} catch(IndexOutOfBoundsException e){
+				return 0;
+			}
+	}
 	
-	public void findCenterXs(){
-			heights = table.getNumberArray("centerX", heights);
+	public double findCenterXs(){
+			centerXs = table.getNumberArray("centerX", heights);
 			for(double centerX: centerXs){
 				SmartDashboard.putNumber("centerX", centerX);
 				centerXDataCount++;
 			}
+			
+			try{
+				return centerXs[0];
+			} catch(IndexOutOfBoundsException e){
+				return 0;
+			}
 		}
 	
-	public void findCenterYs(){
+	public double findCenterYs(){
 			centerYs = table.getNumberArray("centerY", centerYs);
 			for(double centerY: centerYs){
 				SmartDashboard.putNumber("centerY", centerY);
 				centerYDataCount++;
 				SmartDashboard.putNumber("centerYDataCount", centerYDataCount);
+			}
+			
+			try{
+				return centerYs[0];
+			} catch(IndexOutOfBoundsException e){
+				return 0;
 			}
 		}
 	
@@ -153,37 +176,32 @@ public class VisionArray_sub extends Subsystem {
 		
 	}
 			
-	public void interpretCamera(){
-	if(areas.length > 0 && widthDataCount > 0 && heightDataCount > 0 && centerXDataCount > 0 && centerYDataCount > 0){
-		
-		
-		
-		if(heights[0] > heights[1]){
-			if(heights[0] > 100 && heights[0] < 120){
-				boolean heightReq = true;
-			}
-		}
-		
-		
-		
-		if(areas[0] > areas[1]){
-			if(areas[0] > 3000 && areas[0] < 3500){
-				boolean areaReq = true;
-			}
-		}
-		
-		if(heightReq && areaReq){
-			RobotMap.shootReq = true;
-			
-			
-			
-			
-			
-		}
-	}
-	SmartDashboard.putBoolean("shootBool", RobotMap.shootReq);
-		
-	}
+//	public void interpretCamera(){
+//	if(areas.length > 0 && widthDataCount > 0 && heightDataCount > 0 && centerXDataCount > 0 && centerYDataCount > 0){
+//		
+//		
+//		
+//		if(heights[0] > heights[1]){
+//			if(heights[0] > 100 && heights[0] < 120){
+//				boolean heightReq = true;
+//			}
+//		}
+//		
+//		
+//		
+//		if(areas[0] > areas[1]){
+//			if(areas[0] > 3000 && areas[0] < 3500){
+//				boolean areaReq = true;
+//			}
+//		}
+//		
+//		if(heightReq && areaReq){
+//			RobotMap.shootReq = true;
+//		}
+//	}
+//	SmartDashboard.putBoolean("shootBool", RobotMap.shootReq);
+//		
+//	}
 	
 	
 

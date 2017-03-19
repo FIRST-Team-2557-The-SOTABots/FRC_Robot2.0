@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2557.robot.autonomous;
 
-import org.usfirst.frc.team2557.robot.commands.DistanceDrive_cmd;
+import org.usfirst.frc.team2557.robot.commands.DriveStraight_cmd;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -16,9 +16,9 @@ public class Main_auto extends CommandGroup {
 //    	addParallel(new Autonomus_Shooter(.5));
 //    	addSequential(new Auto_Shooter2(10));
     	
-    	
-    	addSequential(new DistanceDrive_cmd(150, .5));
-    	
+    	addSequential(new DistanceDrive_cmd(1.82, -.615), 6);
+    	addSequential(new TimedDrive(.2, false, .85));
+    	addSequential(new Gear_autoCmd());
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());
