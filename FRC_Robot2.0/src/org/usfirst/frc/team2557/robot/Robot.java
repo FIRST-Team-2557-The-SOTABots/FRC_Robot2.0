@@ -162,12 +162,18 @@ public class Robot extends IterativeRobot {
 //		if(oi.gamepad1.getRawAxis(3) > 0.1){
 //			fakePID.start();
 //		}
-		if(vision.interpretation()){
-			SmartDashboard.putBoolean("Status: ", true);
-		}
-		else{
-			SmartDashboard.putBoolean("Status: ", false);
-		}
+		
+		if(Robot.oi.a2.get()) {
+    		if(vision.interpretation()){
+    			RobotMap.Lshooter.set(.75);
+    			RobotMap.Rshooter.set(.75);
+    		}
+    		else{
+    			RobotMap.Lshooter.set(0);
+    			RobotMap.Rshooter.set(0);
+    		}
+    		
+    	}
 	}
 
 	/**

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2557.robot.vision;
 
+import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -239,5 +240,7 @@ public class VisionArray_sub extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+    
 }
 
