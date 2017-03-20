@@ -180,21 +180,21 @@ public class VisionArray_sub extends Subsystem {
 	public boolean interpretation(){
 		boolean _height, _x, _y;
 		///////////
-		if(findHeights() < 39 && findHeights() > 19){
+		if(findHeights() < 50 && findHeights() > 15){
 			_height = true;
 		}
 		else{
 			_height = false;
 		}
 		///////////
-		if(findCenterXs() < 89 && findCenterXs() > 49){
+		if(findCenterXs() < 100 && findCenterXs() > 50){
 			_x = true;
 		}
 		else{
 			_x = false;
 		}
 		///////////
-		if(findCenterYs() < 151 && findCenterYs() > 111){
+		if(findCenterYs() < 160 && findCenterYs() > 100){
 			_y = true;
 		}
 		else{

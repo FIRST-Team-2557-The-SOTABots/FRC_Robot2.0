@@ -163,14 +163,20 @@ public class Robot extends IterativeRobot {
 //			fakePID.start();
 //		}
 		
-		if(Robot.oi.a2.get()) {
-    		if(vision.interpretation()){
-    			RobotMap.Lshooter.set(.75);
-    			RobotMap.Rshooter.set(.75);
+		if(oi.a2.get()) {
+    		if(vision.interpretation() == false){
+    			if(vision.findCenterYs() < 100){
+    				RobotMap.robotDrive.arcadeDrive(0,.5);
+    			}
+    			else if(vision.findCenterYs() > 120){
+    				RobotMap.robotDrive.arcadeDrive(0,-.5);
+    			}
+    			else{
+    				RobotMap.robotDrive.arcadeDrive(0,0);
+    			}
     		}
     		else{
-    			RobotMap.Lshooter.set(0);
-    			RobotMap.Rshooter.set(0);
+    			RobotMap.robotDrive.arcadeDrive(0,0);
     		}
     		
     	}
