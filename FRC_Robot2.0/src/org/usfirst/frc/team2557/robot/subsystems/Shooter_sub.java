@@ -14,7 +14,7 @@ public class Shooter_sub extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-
+	PsuedoShooter_sub psuedo = new PsuedoShooter_sub();
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -23,9 +23,14 @@ public class Shooter_sub extends Subsystem {
     
     public void shooting(){
    		if(Robot.oi.gamepad2.getRawAxis(3) > .1){
-   	    	RobotMap.Lshooter.set(-.57);
-   	    	RobotMap.Rshooter.set(.57);
+   	    	RobotMap.Lshooter.set(-.715); //-.675 at 3ft making shots like a boss, -.69 to -.715 at 4ft
+   	    	RobotMap.Rshooter.set(.715); //.675 at 3ft making shots like a boss, .69 to -.715 at 4ft
    	    	RobotMap.copterAgitator.set(1);
+   	    	RobotMap.agitator.set(-.65);
+   		}
+   		else if(Robot.oi.a2.get()){
+   			psuedo.set();
+   			RobotMap.copterAgitator.set(1);
    	    	RobotMap.agitator.set(-.65);
    		}
    		else if(Robot.oi.gamepad2.getRawAxis(2) > .1){

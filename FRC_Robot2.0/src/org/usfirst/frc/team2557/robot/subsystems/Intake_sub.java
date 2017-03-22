@@ -24,7 +24,7 @@ public class Intake_sub extends Subsystem {
     public void intake(){
 
     		if(Robot.oi.RB2.get()){
-    			RobotMap.intake.set(-.4);
+    			RobotMap.intake.set(-.5);
     		}
     		else if(Robot.oi.LB2.get()){
     			RobotMap.intake.set(.6);

@@ -21,7 +21,11 @@ public class SmartDashboard_cmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.dashboard.dashboard();
+//    	Robot.dashboard.shooter();
+//    	Robot.dashboard.vision();
+//    	Robot.dashboard.accelAngle();
+//    	Robot.dashboard.distance();
+//    	Robot.dashboard.currentDraw();
     }
 
     // Make this return true when this Command no longer needs to run execute()
