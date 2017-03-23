@@ -47,6 +47,31 @@ public class Shooter_sub extends Subsystem {
    		}
     	
     }
+    public void visionShooting(){
+   		if(Robot.oi.gamepad2.getRawAxis(3) > .1 && RobotMap.shootReq){
+   	    	RobotMap.Lshooter.set(-RobotMap.visionShooterSpeed);
+   	    	RobotMap.Rshooter.set(RobotMap.visionShooterSpeed);
+   	    	RobotMap.copterAgitator.set(1);
+   	    	RobotMap.agitator.set(-.65);
+   		}
+   		else if(Robot.oi.a2.get() && RobotMap.shootReq){
+   			psuedo.set();
+   			RobotMap.copterAgitator.set(1);
+   	    	RobotMap.agitator.set(-.65);
+   		}
+   		else if(Robot.oi.gamepad2.getRawAxis(2) > .1 && RobotMap.shootReq){
+   			RobotMap.copterAgitator.set(-1);
+			RobotMap.agitator.set(.8);
+			Robot.agitator.leftHopper();
+			Robot.agitator.rightHopper();
+   		}
+   		else{
+   			RobotMap.copterAgitator.set(0);
+   	    	RobotMap.Lshooter.set(0);
+   	    	RobotMap.Rshooter.set(0);
+   	    	RobotMap.agitator.set(0);
+   		}
+    }
    
 }
 
