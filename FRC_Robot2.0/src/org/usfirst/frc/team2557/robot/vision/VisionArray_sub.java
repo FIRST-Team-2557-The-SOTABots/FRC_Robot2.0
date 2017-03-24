@@ -173,11 +173,13 @@ public class VisionArray_sub extends Subsystem {
 		SmartDashboard.putNumber("filteredArea", filteredArea);
 	}
 	
-	public void findIterations(){
-		
+	public void shooterAdjustment(){
+		if(RobotMap.shootReq){
+			RobotMap.visionShooterSpeed = (((findHeights() - 15) * 2.86) + ((findCenterXs() - 50) * 2) + ((findCenterYs() - 100) * 1.67)) / 3;				
+		}
 	}
 		
-	public boolean interpretation(){
+	public boolean fuelInterpretation(){
 		boolean _height, _x, _y;
 		///////////
 		if(findHeights() < 50 && findHeights() > 15){
@@ -202,6 +204,25 @@ public class VisionArray_sub extends Subsystem {
 		}
 		
 		return _height && _x && _y;
+		if(_height && _x && _y){
+			RobotMap.shootReq = true;
+			
+		}
+	}
+	public boolean gearInterpretation(){
+		boolean tooLeft;
+		boolean tooRight;
+		boolean goodToGear;
+		if((heights[0] > heights[1] + 3 && centerXs[0] > centerXs[1] + 3 && centerYs[0] > centerYs[1] + 3) && heights[0] > 20/*to be determined*/ && heights[1] > 20/*to be determined*/){
+			tooLeft = true;
+		}
+		else if((heights[1] > heights[0] + 3 && centerXs[1] > centerXs[0] + 3 && centerYs[1] > centerYs[0] + 3) && heights[0] > 20/*to be determined*/ && heights[1] > 20/*to be determined*/){
+			tooRight = true;
+		}
+		else{
+			goodToGear = true;
+		}
+		return tooLeft && tooRight && goodToGear;
 	}
 	
 //	public void interpretCamera(){
