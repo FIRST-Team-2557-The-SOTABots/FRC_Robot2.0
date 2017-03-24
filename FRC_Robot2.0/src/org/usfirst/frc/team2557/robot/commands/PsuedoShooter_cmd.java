@@ -12,7 +12,7 @@ public class PsuedoShooter_cmd extends Command {
     public PsuedoShooter_cmd() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.psuedo);
+    	//requires(Robot.psuedoShooter);
     }
 
     // Called just before this Command runs the first time
@@ -21,8 +21,8 @@ public class PsuedoShooter_cmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.psuedo.speedChangeLeft();
-    	Robot.psuedo.speedChangeRight();
+    	Robot.psuedoShooter.speedChangeLeft();
+    	Robot.psuedoShooter.speedChangeRight();
 //    	Robot.psuedo.set();
     }
 

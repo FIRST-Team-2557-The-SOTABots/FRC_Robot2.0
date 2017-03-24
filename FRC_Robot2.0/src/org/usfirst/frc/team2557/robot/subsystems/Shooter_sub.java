@@ -23,27 +23,26 @@ public class Shooter_sub extends Subsystem {
     
     public void shooting(){
    		if(Robot.oi.gamepad2.getRawAxis(3) > .1){
-   	    	RobotMap.Lshooter.set(-.715); //-.675 at 3ft making shots like a boss, -.69 to -.715 at 4ft
-   	    	RobotMap.Rshooter.set(.715); //.675 at 3ft making shots like a boss, .69 to -.715 at 4ft
-   	    	RobotMap.copterAgitator.set(1);
-   	    	RobotMap.agitator.set(-.65);
+   	    	RobotMap.Lshooter.set(-.75); //-.675 at 3ft making shots like a boss, -.69 to -.715 at 4ft
+   	    	RobotMap.Rshooter.set(.75); //.675 at 3ft making shots like a boss, .69 to -.715 at 4ft
+//   	    	RobotMap.copterAgitator.set(1);
+//   	    	RobotMap.agitator.set(-.6);
    		}
-   		else if(Robot.oi.a2.get()){
+   		else if(Robot.oi.b2.get()){
    			psuedo.set();
-   			RobotMap.copterAgitator.set(1);
-   	    	RobotMap.agitator.set(-.65);
+//   			RobotMap.copterAgitator.set(1);
    		}
    		else if(Robot.oi.gamepad2.getRawAxis(2) > .1){
-   			RobotMap.copterAgitator.set(-1);
-			RobotMap.agitator.set(.8);
-			Robot.agitator.leftHopper();
-			Robot.agitator.rightHopper();
+//   			RobotMap.copterAgitator.set(-1);
+//			RobotMap.agitator.set(.8);
+//			Robot.agitator.leftHopper();
+//			Robot.agitator.rightHopper();
    		}
    		else{
-   			RobotMap.copterAgitator.set(0);
+//   			RobotMap.copterAgitator.set(0);
    	    	RobotMap.Lshooter.set(0);
    	    	RobotMap.Rshooter.set(0);
-   	    	RobotMap.agitator.set(0);
+//   	    	RobotMap.agitator.set(0);
    		}
     	
     }

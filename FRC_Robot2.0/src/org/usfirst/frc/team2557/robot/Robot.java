@@ -39,16 +39,16 @@ import org.usfirst.frc.team2557.robot.vision.Vision_cmd;
  */
 public class Robot extends IterativeRobot {
 
-	public static final Chassis_sub 		chassis 	= new Chassis_sub();
-	public static final Shooter_sub	 		shooter 	= new Shooter_sub();
-	public static final Intake_sub 			intake 		= new Intake_sub();
-	public static final Gear_sub 			gear 		= new Gear_sub();
-	public static final Climber_sub 		climber 	= new Climber_sub();
-	public static final Agitator_sub 		agitator 	= new Agitator_sub();
-	public static final PsuedoShooter_sub 	psuedo 		= new PsuedoShooter_sub();
-	public static final Acceleration_sub 	accel		= new Acceleration_sub();
-	public static final SmartDashboard_sub  dashboard 	= new SmartDashboard_sub();
-	public static final VisionArray_sub		vision		= new VisionArray_sub();
+	public static final Chassis_sub 		chassis 		= new Chassis_sub();
+	public static final Shooter_sub	 		shooter 		= new Shooter_sub();
+	public static final Intake_sub 			intake 			= new Intake_sub();
+	public static final Gear_sub 			gear 			= new Gear_sub();
+	public static final Climber_sub 		climber 		= new Climber_sub();
+	public static final Agitator_sub 		agitator 		= new Agitator_sub();
+	public static final PsuedoShooter_sub 	psuedoShooter 	= new PsuedoShooter_sub();
+	public static final Acceleration_sub 	accel			= new Acceleration_sub();
+	public static final SmartDashboard_sub  dashboard 		= new SmartDashboard_sub();
+	public static final VisionArray_sub		vision			= new VisionArray_sub();
 	public static OI oi;
 	public double x = 45;
 
@@ -56,6 +56,7 @@ public class Robot extends IterativeRobot {
 	Command Main_auto;
 	Command fakePID;
 	Command visionUpdate;
+	Command shooterUpdate;
 //	Command autonomousCommand;
 //	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -66,9 +67,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
-//		CameraServer.getInstance().startAutomaticCapture();
+		CameraServer.getInstance().startAutomaticCapture();
 		vision.initializer();
 		
+		shooterUpdate = new PsuedoShooter_cmd();
 		visionUpdate = new Vision_cmd();
 		Main_auto = new Main_auto();
 		fakePID = new PsuedoShooter_cmd();
@@ -159,6 +161,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		RobotMap.euler.update();
 		visionUpdate.start();
+		shooterUpdate.start();
 //		if(oi.gamepad1.getRawAxis(3) > 0.1){
 //			fakePID.start();
 //		}

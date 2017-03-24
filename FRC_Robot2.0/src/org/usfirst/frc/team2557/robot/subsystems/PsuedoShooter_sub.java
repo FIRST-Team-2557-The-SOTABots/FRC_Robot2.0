@@ -12,56 +12,80 @@ public class PsuedoShooter_sub extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	public final double min_left 	= 168.00;
-	public final double max_left 	= 215.20;
+	public final double leftMAX = 269;
+	public final double leftMIN = 168;
+	
+	public final double rightMAX = -271;
+	public final double rightMIN = -171;
+	
+	public final double lower_left 	= 168.00;
+	public final double upper_left 	= 215.20;
 	public final double prime_left 	= 191.60;
 	
-	public final double min_right 	= -171.00;
-	public final double max_right 	= -216.80;
+	public final double lower_right 	= -171.00;
+	public final double upper_right 	= -216.80;
 	public final double prime_right = -193.90;
    
 
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new PsuedoShooter_cmd());
+//    	setDefaultCommand(new PsuedoShooter_cmd());
     }
-    
+   
     public double speedChangeLeft(){
     	
-    	if(RobotMap.Lshooter.getEncVelocity() / 100 <= min_left){
-    		return RobotMap.Lshooter.get() - 0.007;
+    	if(-getLowerL(71) <= lower_left){
+    		return RobotMap.Lshooter.get() - 0.025;
     	}
-    	else if(RobotMap.Lshooter.getEncVelocity() / 100 >= max_left){
-    		return RobotMap.Lshooter.get() + 0.0025;
+    	else if(-getUpperL(79)>= upper_left){
+    		return RobotMap.Lshooter.get() + 0.005;
     	}
-    	else if(RobotMap.Lshooter.getEncVelocity() / 100 != prime_left){
-    		if(RobotMap.Lshooter.getEncVelocity() / 100 < prime_left){
-    			return RobotMap.Lshooter.get() - 0.0001;
+    	else if(-getPrimeL(75) != prime_left){
+    		if(-getPrimeL(75) < prime_left){
+    			return RobotMap.Lshooter.get() - 0.0025;
     		}
-    		else if(RobotMap.Lshooter.getEncVelocity() / 100 > prime_left){
-    			return RobotMap.Lshooter.get() + 0.0001;
+    		else if(-getPrimeL(75) > prime_left){
+    			return RobotMap.Lshooter.get() + 0.0015;
     		}
     	}
     	return RobotMap.Lshooter.get();
     }
-public double speedChangeRight(){
+    public double speedChangeRight(){
     	
-    	if(RobotMap.Rshooter.getEncVelocity() / 100 >= min_right){
-    		return RobotMap.Rshooter.get() + 0.007;
+    	if(getLowerR(71) <= lower_right){
+    		return RobotMap.Rshooter.get() + 0.025;
     	}
-    	else if(RobotMap.Rshooter.getEncVelocity() / 100 <= max_right){
-    		return RobotMap.Rshooter.get() - 0.0025;
+    	else if(getUpperR(79) >= upper_right){
+    		return RobotMap.Rshooter.get() - 0.005;
     	}
-    	else if(RobotMap.Rshooter.getEncVelocity() / 100 != prime_right){
-    		if(RobotMap.Rshooter.getEncVelocity() / 100 > prime_right){
-    			return RobotMap.Rshooter.get() + 0.00015;
+    	else if(getPrimeR(75) != prime_right){
+    		if(getPrimeR(75) < prime_right){
+    			return RobotMap.Rshooter.get() + 0.0025;
     		}
-    		else if(RobotMap.Rshooter.getEncVelocity() / 100 < prime_right){
-    			return RobotMap.Rshooter.get() - 0.00015;
+    		else if(getPrimeR(75) > prime_right){
+    			return RobotMap.Rshooter.get() - 0.0015;
     		}
     	}
     	return RobotMap.Rshooter.get();
+    }
+    public double getPrimeL(double _percent){
+    	return (leftMAX * _percent) * 100;
+    }
+    public double getPrimeR(double _percent){
+    	return (rightMAX * _percent) * 100;
+    }
+    public double getLowerL(double _percent){
+    	return (leftMAX * _percent) * 100;
+    }
+    public double getLowerR(double _percent){
+    	return (rightMAX * _percent) * 100;
+    }
+    public double getUpperL(double _percent){
+    	return (leftMAX * _percent) * 100;
+    }
+    public double getUpperR(double _percent){
+    	return (rightMAX * _percent) * 100;
     }
     public void set(){
     	RobotMap.Lshooter.set(speedChangeLeft());

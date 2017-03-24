@@ -26,7 +26,6 @@ public class Gear_cmd extends Command {
     	if(RobotMap._gemini){
     		Robot.gear.gearIntake();
     	}
-//    	Robot.gear.switchMode();
     	Robot.gear.gearCamera();
     }
 

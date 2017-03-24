@@ -22,7 +22,7 @@ public class SmartDashboard_sub extends Subsystem {
     	setDefaultCommand(new SmartDashboard_cmd());
     }
 
-    public void shooter(){
+    public void velocities(){
 		SmartDashboard.putNumber("Lshooter encoder velocity: ", RobotMap.Lshooter.getEncVelocity());
 		SmartDashboard.putNumber("Rshooter encoder velocity: ", RobotMap.Rshooter.getEncVelocity());
     }
