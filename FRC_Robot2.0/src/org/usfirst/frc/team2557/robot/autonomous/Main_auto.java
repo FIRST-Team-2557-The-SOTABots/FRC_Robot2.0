@@ -16,7 +16,7 @@ public class Main_auto extends CommandGroup {
 //    	addParallel(new Autonomus_Shooter(.5));
 //    	addSequential(new Auto_Shooter2(10));
     	
-    	addSequential(new DistanceDrive_cmd(1.82, -.615), 6);
+    	addSequential(new DistanceDrive_cmd(1.8, -.615), 6.5);
     	addSequential(new TimedDrive(.2, false, .85));
     	addSequential(new Gear_autoCmd());
     	

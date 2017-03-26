@@ -23,7 +23,7 @@ public class SmartDashboard_cmd extends Command {
     protected void execute() {
     	Robot.dashboard.velocities();
 //    	Robot.dashboard.vision();
-//    	Robot.dashboard.accelAngle();
+    	Robot.dashboard.accelAngle();
 //    	Robot.dashboard.distance();
 //    	Robot.dashboard.currentDraw();
     }

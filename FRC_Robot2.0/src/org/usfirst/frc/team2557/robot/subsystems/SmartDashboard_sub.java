@@ -41,12 +41,14 @@ public class SmartDashboard_sub extends Subsystem {
     	SmartDashboard.putNumber("Back Right Drive is pulling current: ", RobotMap.BRdrive.getOutputCurrent());
     }
     public void accelAngle(){
-		SmartDashboard.putNumber("X Axis: ", RobotMap.navX.getRawAccelX() * _convert);
-		SmartDashboard.putNumber("Y Axis: ", RobotMap.navX.getRawAccelY() * _convert);
-		SmartDashboard.putNumber("Z Axis: ", RobotMap.navX.getRawAccelZ() * _convert);
-		SmartDashboard.putNumber("Left Servo: ", RobotMap.leftAgitator.getAngle());
-		SmartDashboard.putNumber("Right Servo: ", RobotMap.rightAgitator.getAngle());
-    	SmartDashboard.putNumber("Camera Angle", RobotMap.cameraServo.getAngle());
+//		SmartDashboard.putNumber("X Axis: ", RobotMap.navX.getRawAccelX() * _convert);
+//		SmartDashboard.putNumber("Y Axis: ", RobotMap.navX.getRawAccelY() * _convert);
+//		SmartDashboard.putNumber("Z Axis: ", RobotMap.navX.getRawAccelZ() * _convert);
+//		SmartDashboard.putNumber("Left Servo: ", RobotMap.leftAgitator.getAngle());
+//		SmartDashboard.putNumber("Right Servo: ", RobotMap.rightAgitator.getAngle());
+//    	SmartDashboard.putNumber("Camera Angle", RobotMap.cameraServo.getAngle());
+    	SmartDashboard.putNumber("Robot Angle", RobotMap.navX.getAngle());
+    	
     }
 }
 

@@ -72,7 +72,13 @@ public class Robot extends IterativeRobot {
 		
 		shooterUpdate = new PsuedoShooter_cmd();
 		visionUpdate = new Vision_cmd();
+		
+		
 		Main_auto = new Main_auto();
+//		Main_auto = new Autonomous_GearLeft();
+//		Main_auto = new Autonomous_GearRight();
+		
+		
 		fakePID = new PsuedoShooter_cmd();
 		oi = new OI();
 		oi.init();
@@ -166,23 +172,23 @@ public class Robot extends IterativeRobot {
 //			fakePID.start();
 //		}
 		
-		if(oi.a2.get()) {
-    		if(vision.interpretation() == false){
-    			if(vision.findCenterYs() < 100){
-    				RobotMap.robotDrive.arcadeDrive(0,.5);
-    			}
-    			else if(vision.findCenterYs() > 120){
-    				RobotMap.robotDrive.arcadeDrive(0,-.5);
-    			}
-    			else{
-    				RobotMap.robotDrive.arcadeDrive(0,0);
-    			}
-    		}
-    		else{
-    			RobotMap.robotDrive.arcadeDrive(0,0);
-    		}
-    		
-    	}
+//		if(oi.a2.get()) {
+//    		if(vision.interpretation() == false){
+//    			if(vision.findCenterYs() < 100){
+//    				RobotMap.robotDrive.arcadeDrive(0,.5);
+//    			}
+//    			else if(vision.findCenterYs() > 120){
+//    				RobotMap.robotDrive.arcadeDrive(0,-.5);
+//    			}
+//    			else{
+//    				RobotMap.robotDrive.arcadeDrive(0,0);
+//    			}
+//    		}
+//    		else{
+//    			RobotMap.robotDrive.arcadeDrive(0,0);
+//    		}
+//    		
+//    	}
 	}
 
 	/**

@@ -35,17 +35,17 @@ public class PsuedoShooter_sub extends Subsystem {
    
     public double speedChangeLeft(){
     	
-    	if(-getLowerL(71) <= lower_left){
+    	if(RobotMap.Lshooter.getEncVelocity() <= -getLowerL(71)){
     		return RobotMap.Lshooter.get() - 0.025;
     	}
-    	else if(-getUpperL(79)>= upper_left){
+    	else if(RobotMap.Lshooter.getEncVelocity() >= -getUpperL(79)){
     		return RobotMap.Lshooter.get() + 0.005;
     	}
-    	else if(-getPrimeL(75) != prime_left){
+    	else if(RobotMap.Lshooter.getEncVelocity() != -getPrimeL(75)){
     		if(-getPrimeL(75) < prime_left){
     			return RobotMap.Lshooter.get() - 0.0025;
     		}
-    		else if(-getPrimeL(75) > prime_left){
+    		else if(RobotMap.Lshooter.getEncVelocity() > -getPrimeL(75)){
     			return RobotMap.Lshooter.get() + 0.0015;
     		}
     	}
@@ -53,17 +53,17 @@ public class PsuedoShooter_sub extends Subsystem {
     }
     public double speedChangeRight(){
     	
-    	if(getLowerR(71) <= lower_right){
+    	if( RobotMap.Rshooter.getEncVelocity() <= getLowerR(71)){
     		return RobotMap.Rshooter.get() + 0.025;
     	}
-    	else if(getUpperR(79) >= upper_right){
+    	else if(RobotMap.Rshooter.getEncVelocity() >= getUpperR(79)){
     		return RobotMap.Rshooter.get() - 0.005;
     	}
-    	else if(getPrimeR(75) != prime_right){
-    		if(getPrimeR(75) < prime_right){
+    	else if(RobotMap.Rshooter.getEncVelocity() != getPrimeR(75)){
+    		if(RobotMap.Rshooter.getEncVelocity() < getPrimeR(75)){
     			return RobotMap.Rshooter.get() + 0.0025;
     		}
-    		else if(getPrimeR(75) > prime_right){
+    		else if(RobotMap.Rshooter.getEncVelocity() > getPrimeR(75)){
     			return RobotMap.Rshooter.get() - 0.0015;
     		}
     	}

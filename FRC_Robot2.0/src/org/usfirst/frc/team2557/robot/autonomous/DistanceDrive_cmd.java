@@ -21,7 +21,7 @@ public class DistanceDrive_cmd extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	RobotMap.euler.reset();
-    	
+//    	RobotMap.navX.reset();
     }
 
     // Called repeatedly when this Command is scheduled to run

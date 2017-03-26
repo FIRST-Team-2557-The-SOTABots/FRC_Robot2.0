@@ -95,9 +95,9 @@ public class RobotMap {
 		
 		shootReq = false;
 		FALL = false;
-		_gemini = false;
+		_gemini = true; //boolean for manipulator, true = gear and false = fuel
 		shift = true;
-		drive = true;
+		drive = true; //boolean for driver, true = gear and false = fuel
 		_switch = true;
 		CAngle = 0;
 		visionShooterSpeed = 0;
