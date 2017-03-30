@@ -23,16 +23,16 @@ public class Intake_sub extends Subsystem {
     
     public void intake(){
 
-	    	if(Robot.oi.RB2.get() && (Robot.oi.gamepad2.getRawAxis(3) > 0.1 ) || Robot.oi.b2.get()){
-				RobotMap.copterAgitator.set(.5);
-				if((RobotMap.Rshooter.getEncVelocity() > Robot.psuedoShooter.getPrimeR(71) && RobotMap.Rshooter.getEncVelocity() < Robot.psuedoShooter.getPrimeR(79))
-   					|| (RobotMap.Lshooter.getEncVelocity() > Robot.psuedoShooter.getPrimeL(71)  && RobotMap.Lshooter.getEncVelocity() < Robot.psuedoShooter.getPrimeL(79)))
-				{
-					RobotMap.intake.set(-.6);
-					RobotMap.agitator.set(-.55);
-				}
-			}
-    		else if(Robot.oi.RB2.get()){
+//	    	if(Robot.oi.RB2.get() && (Robot.oi.gamepad2.getRawAxis(3) > 0.1 ) || Robot.oi.b2.get()){
+//				RobotMap.copterAgitator.set(.5);
+//				if((RobotMap.Rshooter.getEncVelocity() > Robot.psuedoShooter.getPrimeR(71) && RobotMap.Rshooter.getEncVelocity() < Robot.psuedoShooter.getPrimeR(79))
+//   					|| (RobotMap.Lshooter.getEncVelocity() > Robot.psuedoShooter.getPrimeL(71)  && RobotMap.Lshooter.getEncVelocity() < Robot.psuedoShooter.getPrimeL(79)))
+//				{
+//					RobotMap.intake.set(-.6);
+//					RobotMap.agitator.set(-.55);
+//				}
+//			}
+    		if(Robot.oi.RB2.get()){
     			RobotMap.intake.set(-.6);
     			RobotMap.agitator.set(-.55);
     			RobotMap.copterAgitator.set(.5);
