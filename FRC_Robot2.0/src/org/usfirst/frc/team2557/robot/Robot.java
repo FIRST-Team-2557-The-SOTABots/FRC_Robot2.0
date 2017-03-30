@@ -67,7 +67,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
-		CameraServer.getInstance().startAutomaticCapture();
+//		CameraServer.getInstance().startAutomaticCapture();
 		vision.initializer();
 		
 		shooterUpdate = new PsuedoShooter_cmd();

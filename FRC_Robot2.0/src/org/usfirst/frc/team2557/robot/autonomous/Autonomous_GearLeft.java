@@ -28,6 +28,6 @@ public class Autonomous_GearLeft extends CommandGroup {
     	addSequential(new TimedDrive(.2, false, .85));
     	addSequential(new GyroDrive_cmd(60, .65));
     	addSequential(new DistanceDrive_cmd(1, -.615), 3.5);
-    	addSequential(new Gear_autoCmd());
+//    	addSequential(new Gear_autoCmd());
     }
 }
