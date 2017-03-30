@@ -11,6 +11,6 @@
 	<classpathentry kind="lib" path="C:/Users/isado/wpilib/java/current/lib/NetworkTables.jar"/>
 	<classpathentry kind="lib" path="C:/Users/isado/wpilib/java/current/lib/opencv.jar"/>
 	<classpathentry kind="lib" path="C:/Users/isado/wpilib/java/current/lib/WPILib.jar"/>
-	<classpathentry kind="lib" path="C:/Users/isado/git/See/FRC_Robot2.01/build/jars/navx_frc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/isado/wpilib/user/java/lib/navx_frc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
