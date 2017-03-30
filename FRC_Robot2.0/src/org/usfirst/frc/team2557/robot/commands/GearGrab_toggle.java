@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2557.robot.commands;
 
-import org.usfirst.frc.team2557.robot.Robot;
+//import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -21,9 +21,9 @@ public class GearGrab_toggle extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(RobotMap._gemini){
-    		Robot.gear.gearGrab();
-    	}
+//    	if(RobotMap._gemini){
+//    		Robot.gear.gearGrab();
+//    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -22,27 +22,28 @@ public class Gear_sub extends Subsystem {
     public void initDefaultCommand() {
     	setDefaultCommand(new Gear_cmd());
     }
-    public void gearGrab(){ 
-	    if(_stage == 0){ // && RobotMap.gearGrab.get() == Value.kReverse){
-	    	RobotMap.gearGrab.set(Value.kForward);
-	    	_stage = 1;
-	    }
-	    else if(_stage == 1){// && RobotMap.gearGrab.get() == Value.kForward){
-	    	RobotMap.gearGrab.set(Value.kReverse);
-	    	_stage = 0;
-	    }
-	    
-    }
+//    public void gearGrab(){ 
+//	    if(_stage == 0){ // && RobotMap.gearGrab.get() == Value.kReverse){
+//	    	_stage = 1;
+//	    }
+//	    else if(_stage == 1){// && RobotMap.gearGrab.get() == Value.kForward){	
+//	    	_stage = 0;
+//	    }	    
     public void gearIntake(){
     		if(Robot.oi.gamepad2.getRawAxis(3) > .1){
     			RobotMap.gearMotor.set(Robot.oi.gamepad2.getRawAxis(3) * _upAdjust);
+    			RobotMap.gearGrab.set(Value.kForward);
     		}
     		else if(Robot.oi.gamepad2.getRawAxis(2) > .1){
     			RobotMap.gearMotor.set(-Robot.oi.gamepad2.getRawAxis(2) * _downAdjust);
+    			RobotMap.gearGrab.set(Value.kForward);
+    			
     		}
     		else{
     			RobotMap.gearMotor.set(0);
-    		}
+    			RobotMap.gearGrab.set(Value.kReverse);
+
+    	}
     	
     }
     public void gearCamera(){
