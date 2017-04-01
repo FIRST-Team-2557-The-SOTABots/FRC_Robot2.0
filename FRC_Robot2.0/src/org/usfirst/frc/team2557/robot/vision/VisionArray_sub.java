@@ -179,51 +179,51 @@ public class VisionArray_sub extends Subsystem {
 		}
 	}
 		
-//	public boolean fuelInterpretation(){
-//		boolean _height, _x, _y;
-//		///////////
-//		if(findHeights() < 50 && findHeights() > 15){
-//			_height = true;
-//		}
-//		else{
-//			_height = false;
-//		}
-//		///////////
-//		if(findCenterXs() < 100 && findCenterXs() > 50){
-//			_x = true;
-//		}
-//		else{
-//			_x = false;
-//		}
-//		///////////
-//		if(findCenterYs() < 160 && findCenterYs() > 100){
-//			_y = true;
-//		}
-//		else{
-//			_y = false;
-//		}
-//		
-//		return _height && _x && _y;
-//		if(_height && _x && _y){
-//			RobotMap.shootReq = true;
-//			
-//		}
-//	}
-//	public boolean gearInterpretation(){
-//		boolean tooLeft;
-//		boolean tooRight;
-//		boolean goodToGear;
-//		if((heights[0] > heights[1] + 3 && centerXs[0] > centerXs[1] + 3 && centerYs[0] > centerYs[1] + 3) && heights[0] > 20/*to be determined*/ && heights[1] > 20/*to be determined*/){
-//			tooLeft = true;
-//		}
-//		else if((heights[1] > heights[0] + 3 && centerXs[1] > centerXs[0] + 3 && centerYs[1] > centerYs[0] + 3) && heights[0] > 20/*to be determined*/ && heights[1] > 20/*to be determined*/){
-//			tooRight = true;
-//		}
-//		else{
-//			goodToGear = true;
-//		}
-//		return tooLeft && tooRight && goodToGear;
-//	}
+	public boolean fuelInterpretation(){
+		boolean _height, _x, _y;
+		///////////
+		if(findHeights() < 50 && findHeights() > 15){
+			_height = true;
+		}
+		else{
+			_height = false;
+		}
+		///////////
+		if(findCenterXs() < 100 && findCenterXs() > 50){
+			_x = true;
+		}
+		else{
+			_x = false;
+		}
+		///////////
+		if(findCenterYs() < 160 && findCenterYs() > 100){
+			_y = true;
+		}
+		else{
+			_y = false;
+		}
+		
+		return _height && _x && _y;
+		if(_height && _x && _y){
+			RobotMap.shootReq = true;
+			
+		}
+	}
+	public boolean gearInterpretation(){
+		boolean tooLeft = fals;
+		boolean tooRight = false;
+		boolean goodToGear = false;
+		if((heights[0] > heights[1] + 3 && centerXs[0] > centerXs[1] + 3 && centerYs[0] > centerYs[1] + 3) && heights[0] > 20/*to be determined*/ && heights[1] > 20/*to be determined*/){
+			tooLeft = true;
+		}
+		else if((heights[1] > heights[0] + 3 && centerXs[1] > centerXs[0] + 3 && centerYs[1] > centerYs[0] + 3) && heights[0] > 20/*to be determined*/ && heights[1] > 20/*to be determined*/){
+			tooRight = true;
+		}
+		else{
+			goodToGear = true;
+		}
+		return tooLeft && tooRight && goodToGear;
+	}
 	
 //	public void interpretCamera(){
 //	if(areas.length > 0 && widthDataCount > 0 && heightDataCount > 0 && centerXDataCount > 0 && centerYDataCount > 0){
