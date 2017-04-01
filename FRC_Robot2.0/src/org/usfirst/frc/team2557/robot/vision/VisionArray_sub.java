@@ -202,15 +202,15 @@ public class VisionArray_sub extends Subsystem {
 		else{
 			_y = false;
 		}
-		
-		return _height && _x && _y;
 		if(_height && _x && _y){
 			RobotMap.shootReq = true;
 			
 		}
+		return _height && _x && _y;
+		
 	}
 	public boolean gearInterpretation(){
-		boolean tooLeft = fals;
+		boolean tooLeft = false;
 		boolean tooRight = false;
 		boolean goodToGear = false;
 		if((heights[0] > heights[1] + 3 && centerXs[0] > centerXs[1] + 3 && centerYs[0] > centerYs[1] + 3) && heights[0] > 20/*to be determined*/ && heights[1] > 20/*to be determined*/){
