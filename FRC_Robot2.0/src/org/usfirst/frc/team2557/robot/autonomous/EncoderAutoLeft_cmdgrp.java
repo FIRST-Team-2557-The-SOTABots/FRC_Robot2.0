@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class EncoderAutoLeft_cmdgrp extends CommandGroup {
 
     public EncoderAutoLeft_cmdgrp() {
+    	
+    	
     	addSequential(new EncoderDrive_cmd(23.7, 23.67 ,true, .75));
     	addSequential(new GyroDrive_cmd(55, .75));
     	addSequential(new EncoderDrive_cmd(13.49, 13.37 ,true, .75));

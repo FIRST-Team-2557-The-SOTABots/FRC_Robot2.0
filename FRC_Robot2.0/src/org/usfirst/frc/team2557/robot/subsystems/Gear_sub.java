@@ -30,18 +30,24 @@ public class Gear_sub extends Subsystem {
 //	    	_stage = 0;
 //	    }	    
     public void gearIntake(){
-    		if(Robot.oi.gamepad2.getRawAxis(3) > .1){
-    			RobotMap.gearMotor.set(Robot.oi.gamepad2.getRawAxis(3) * _upAdjust);
-    			RobotMap.gearGrab.set(Value.kReverse);
-    		}
-    		else if(Robot.oi.gamepad2.getRawAxis(2) > .1){
-    			RobotMap.gearMotor.set(-Robot.oi.gamepad2.getRawAxis(2) * _downAdjust);
-    			RobotMap.gearGrab.set(Value.kReverse);
-    			
-    		}
-    		else{
-    			RobotMap.gearMotor.set(0);
-    			RobotMap.gearGrab.set(Value.kForward);
+    	if(Robot.oi.RB2.get()){
+    		RobotMap.gearMotor.set(.7);
+    	}
+    	else if(Robot.oi.LB2.get()){
+    		RobotMap.gearMotor.set(-.8);
+    	}
+    	else if(Robot.oi.gamepad2.getRawAxis(3) > .1){
+			RobotMap.gearMotor.set(Robot.oi.gamepad2.getRawAxis(3) * _upAdjust);
+			RobotMap.gearGrab.set(Value.kReverse);
+		}
+		else if(Robot.oi.gamepad2.getRawAxis(2) > .1){
+			RobotMap.gearMotor.set(-Robot.oi.gamepad2.getRawAxis(2) * _downAdjust);
+			RobotMap.gearGrab.set(Value.kReverse);
+			
+		}
+		else{
+			RobotMap.gearMotor.set(0);
+			RobotMap.gearGrab.set(Value.kForward);
 
     	}
     	

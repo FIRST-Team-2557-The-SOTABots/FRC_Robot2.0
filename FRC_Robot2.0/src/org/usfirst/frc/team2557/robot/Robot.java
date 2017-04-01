@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_Baseline;
-import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearCenter;
+import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearCenterShootRight;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeftShoot;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightShoot;
 import org.usfirst.frc.team2557.robot.autonomous.Main_auto;
@@ -75,8 +75,13 @@ public class Robot extends IterativeRobot {
 		
 		
 		Main_auto = new Main_auto();
-//		Main_auto = new Autonomous_GearLeft();
-//		Main_auto = new Autonomous_GearRight();
+//		Main_auto = new Autonomous_GearLeftHopper();
+//		Main_auto = new Autonomous_GearLeftShoot();
+//		Main_auto = new Autonomous_GearRightHopper();
+//		Main_auto = new Autonomous_GearRightShoot();
+//		Main_auto = new Autonomous_GearCenterShootLeft();
+//		Main_auto = new Autonomous_GearCenterShootRight();
+
 		
 		
 		fakePID = new PsuedoShooter_cmd();
