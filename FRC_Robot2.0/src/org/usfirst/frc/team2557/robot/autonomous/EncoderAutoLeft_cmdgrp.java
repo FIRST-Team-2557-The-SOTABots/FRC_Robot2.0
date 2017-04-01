@@ -8,19 +8,19 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class EncoderAutoLeft_cmdgrp extends CommandGroup {
 
     public EncoderAutoLeft_cmdgrp() {
-    	addSequential(new GyroDrive_cmd(-84, .75));
-    	addSequential(new EncoderDrive_cmd(0, .75, 1200));
-    	addSequential(new GyroDrive_cmd(151, .75));
-    	addSequential(new EncoderDrive_cmd(0, .75, 700));
+    	addSequential(new EncoderDrive_cmd(23.7, 23.67 ,true, .75));
+    	addSequential(new GyroDrive_cmd(55, .75));
+    	addSequential(new EncoderDrive_cmd(13.49, 13.37 ,true, .75));
     	addSequential(new Gear_autoCmd());
     	
-    	addSequential(new EncoderDrive_cmd(0, .75, -900));
-    	addSequential(new GyroDrive_cmd(151, .75));
-    	addSequential(new EncoderDrive_cmd(0, .75, 400));
-    	addSequential(new GyroDrive_cmd(-6, .75));
-    	addSequential(new EncoderDrive_cmd(0, .75, 300));
-    	addSequential(new GyroDrive_cmd(144, .75));
-    	addSequential(new Auto_Shooter2(4));
+    	addSequential(new GyroDrive_cmd(0, -.75));
+    	addSequential(new EncoderDrive_cmd(27.25, 26.7, true, .75));
+    	addSequential(new GyroDrive_cmd(90, .75));
+    	addSequential(new EncoderDrive_cmd(-20.54, -20.31 , false, -.75));
+    	addSequential(new TimedDrive(.5, false, 0));
+    	addSequential(new EncoderDrive_cmd(20.54, 20.31 , true, .75));
+    	addSequential(new GyroDrive_cmd(10, -.75));
+    	addSequential(new EncoderDrive_cmd(13, 13 , true, .75));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

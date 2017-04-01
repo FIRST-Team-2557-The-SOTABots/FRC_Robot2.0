@@ -1,24 +1,18 @@
 package org.usfirst.frc.team2557.robot.autonomous;
 
-import org.usfirst.frc.team2557.robot.commands.GearGrab_toggle;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class Gear_autoCmd extends CommandGroup {
+public class Autonomous_GearRightHopper extends CommandGroup {
 
-    public Gear_autoCmd() {
+    public Autonomous_GearRightHopper() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addParallel(new TimedGear(2, .75));
-    	addParallel(new GearToggle_autoCmd(false));
-    	addSequential(new TimedDrive(.5, false, 0));
-    	addSequential(new EncoderDrive_cmd(-13, -13 ,false, .75));
-    	addParallel(new GearToggle_autoCmd(true));
+
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());

@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Autonomous_GearRight extends CommandGroup {
+public class Autonomous_GearLeftShoot extends CommandGroup {
 
-    public Autonomous_GearRight() {
+    public Autonomous_GearLeftShoot() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -26,8 +26,8 @@ public class Autonomous_GearRight extends CommandGroup {
         // arm.
     	addSequential(new DistanceDrive_cmd(1.8, -.615), 6.5);
     	addSequential(new TimedDrive(.2, false, .85));
-    	addSequential(new GyroDrive_cmd(-60, -.6));
+    	addSequential(new GyroDrive_cmd(60, .65));
     	addSequential(new DistanceDrive_cmd(1, -.615), 3.5);
-    	addSequential(new Gear_autoCmd());
+//    	addSequential(new Gear_autoCmd());
     }
 }
