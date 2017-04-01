@@ -35,10 +35,17 @@ public class SmartDashboard_sub extends Subsystem {
     	SmartDashboard.putNumber("Eulerrrrrrrr: ", RobotMap.euler.getDistance());
     }
     public void currentDraw(){
-    	SmartDashboard.putNumber("Front Left Drive is pulling current: ", RobotMap.FLdrive.getOutputCurrent());
-    	SmartDashboard.putNumber("Front Right Drive is pulling current: ", RobotMap.FRdrive.getOutputCurrent());
-    	SmartDashboard.putNumber("Back Left Drive is pulling current: ", RobotMap.BLdrive.getOutputCurrent());
-    	SmartDashboard.putNumber("Back Right Drive is pulling current: ", RobotMap.BRdrive.getOutputCurrent());
+    	//Current Draw via Talons
+    	SmartDashboard.putNumber("Front Left Drive is pulling current (talon): ", RobotMap.FLdrive.getOutputCurrent());
+    	SmartDashboard.putNumber("Front Right Drive is pulling current (talon): ", RobotMap.FRdrive.getOutputCurrent());
+    	SmartDashboard.putNumber("Back Left Drive is pulling current (talon): ", RobotMap.BLdrive.getOutputCurrent());
+    	SmartDashboard.putNumber("Back Right Drive is pulling current (talon): ", RobotMap.BRdrive.getOutputCurrent());
+    	
+    	//Current Draw via PDP
+    	SmartDashboard.putNumber("Front Left Drive is pulling current (pdp): ", RobotMap.pdp.getCurrent(13));
+    	SmartDashboard.putNumber("Front Right Drive is pulling current (pdp): ", RobotMap.pdp.getCurrent(3));
+    	SmartDashboard.putNumber("Back Left Drive is pulling current (pdp): ", RobotMap.pdp.getCurrent(15));
+    	SmartDashboard.putNumber("Back Right Drive is pulling current (pdp): ", RobotMap.pdp.getCurrent(2));
     }
     public void accelAngle(){
 //		SmartDashboard.putNumber("X Axis: ", RobotMap.navX.getRawAccelX() * _convert);

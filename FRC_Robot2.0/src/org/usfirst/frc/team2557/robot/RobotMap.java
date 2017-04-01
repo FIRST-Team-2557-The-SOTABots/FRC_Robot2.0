@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Servo;
@@ -44,6 +45,8 @@ public class RobotMap {
 	public static CANTalon copterAgitator;
 	public static SpeedController agitator;
 	
+	
+	public static PowerDistributionPanel pdp;
 	public static DoubleSolenoid shifter;
 	public static DoubleSolenoid gearGrab;
 	
@@ -88,7 +91,7 @@ public class RobotMap {
 		rightAgitator = new Servo(2);
 		cameraServo = new Servo(3);
 		
-		
+		pdp = new PowerDistributionPanel(0);
 		navX = new AHRS(SPI.Port.kMXP);
 		accel = new BuiltInAccelerometer();
 		euler = new EulerDistanceEstimator(ForwardAxis.NegX);

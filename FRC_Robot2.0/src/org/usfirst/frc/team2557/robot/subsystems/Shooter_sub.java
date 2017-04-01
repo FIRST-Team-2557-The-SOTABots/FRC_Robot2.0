@@ -23,8 +23,8 @@ public class Shooter_sub extends Subsystem {
     
     public void shooting(){
    		if(Robot.oi.gamepad2.getRawAxis(3) > .1){
-   	    	RobotMap.Lshooter.set(-1); //-.675 at 3ft making shots like a boss, -.69 to -.715 at 4ft
-   	    	RobotMap.Rshooter.set(1); //.675 at 3ft making shots like a boss, .69 to -.715 at 4ft
+   	    	RobotMap.Lshooter.set(-.65); //-.675 at 3ft making shots like a boss, -.69 to -.715 at 4ft
+   	    	RobotMap.Rshooter.set(.65); //.675 at 3ft making shots like a boss, .69 to -.715 at 4ft
 //   	    	RobotMap.copterAgitator.set(1);
 //   	    	RobotMap.agitator.set(-.6);
    		}

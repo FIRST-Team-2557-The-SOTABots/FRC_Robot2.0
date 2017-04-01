@@ -33,7 +33,7 @@ public class Intake_sub extends Subsystem {
 //				}
 //			}
     		if(Robot.oi.RB2.get()){
-    			RobotMap.intake.set(-.6);
+    			RobotMap.intake.set(-.75);
     			RobotMap.agitator.set(-.55);
     			RobotMap.copterAgitator.set(.5);
     		}
