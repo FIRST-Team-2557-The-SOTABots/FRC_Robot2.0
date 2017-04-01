@@ -2,6 +2,6 @@
 bin
 build
 dist
-
+.classpath
 # Files used locally on macOS to organize files in a folder
 .DS_Store
