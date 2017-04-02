@@ -2,6 +2,7 @@ package org.usfirst.frc.team2557.robot.autonomous;
 
 import org.usfirst.frc.team2557.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.TimedCommand;
 
 /**
@@ -24,11 +25,13 @@ public class TimedGear extends TimedCommand {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	RobotMap.gearMotor.set(_power);
+    	RobotMap.gearGrab.set(Value.kReverse);
     }
 
     // Called once after timeout
     protected void end() {
     	RobotMap.gearMotor.set(0);
+    	RobotMap.gearGrab.set(Value.kForward);
     }
 
     // Called when another command which requires one or more of the same

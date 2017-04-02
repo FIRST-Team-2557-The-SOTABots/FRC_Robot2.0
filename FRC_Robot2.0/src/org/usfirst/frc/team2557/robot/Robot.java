@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_Baseline;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearCenterShootRight;
+import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeftHopper;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeftShoot;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightShoot;
 import org.usfirst.frc.team2557.robot.autonomous.Main_auto;
@@ -67,15 +68,15 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
-//		CameraServer.getInstance().startAutomaticCapture();
+		CameraServer.getInstance().startAutomaticCapture();
 		vision.initializer();
 		
 		shooterUpdate = new PsuedoShooter_cmd();
 		visionUpdate = new Vision_cmd();
 		
 		
-		Main_auto = new Main_auto();
-//		Main_auto = new Autonomous_GearLeftHopper();
+//		Main_auto = new Main_auto();
+		Main_auto = new Autonomous_GearLeftHopper();
 //		Main_auto = new Autonomous_GearLeftShoot();
 //		Main_auto = new Autonomous_GearRightHopper();
 //		Main_auto = new Autonomous_GearRightShoot();
@@ -125,6 +126,9 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		RobotMap.euler.autoInit();
 		Robot.chassis.resetDriveStraight();
+		RobotMap.FLdrive.setEncPosition(0);
+		RobotMap.BRdrive.setEncPosition(0);
+		RobotMap.navX.reset();
 //		autonomousCommand = (Command) chooser.getSelected();
 //		autonomousCommand.start();
 		
@@ -173,6 +177,11 @@ public class Robot extends IterativeRobot {
 		RobotMap.euler.update();
 		visionUpdate.start();
 		shooterUpdate.start();
+		if(oi.x1.get()){
+			RobotMap.FLdrive.setEncPosition(0);
+			RobotMap.BRdrive.setEncPosition(0);
+			RobotMap.navX.reset();
+		}
 //		if(oi.gamepad1.getRawAxis(3) > 0.1){
 //			fakePID.start();
 //		}

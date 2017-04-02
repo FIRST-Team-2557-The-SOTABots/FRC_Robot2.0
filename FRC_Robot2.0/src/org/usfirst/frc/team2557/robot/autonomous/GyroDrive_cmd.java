@@ -36,7 +36,6 @@ public class GyroDrive_cmd extends Command {
     protected void end() {
     	RobotMap.robotDrive.arcadeDrive(0,0);
     	RobotMap.euler.reset();
-    	RobotMap.navX.reset();
     }
 
     // Called when another command which requires one or more of the same

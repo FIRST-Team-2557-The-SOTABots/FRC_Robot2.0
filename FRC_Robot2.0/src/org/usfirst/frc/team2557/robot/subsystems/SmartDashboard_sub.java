@@ -22,9 +22,12 @@ public class SmartDashboard_sub extends Subsystem {
     	setDefaultCommand(new SmartDashboard_cmd());
     }
 
-    public void velocities(){
+    public void encoders(){
 		SmartDashboard.putNumber("Lshooter encoder velocity: ", RobotMap.Lshooter.getEncVelocity());
 		SmartDashboard.putNumber("Rshooter encoder velocity: ", RobotMap.Rshooter.getEncVelocity());
+		
+		SmartDashboard.putNumber("Left encoder: ", (double) (RobotMap.FLdrive.getEncPosition()) / 1000);
+		SmartDashboard.putNumber("Right encoder: ", (double) (RobotMap.BRdrive.getEncPosition()) / 1000);
     }
     public void vision(){
     	SmartDashboard.putNumber("The height is: ", Robot.vision.findHeights());
