@@ -9,10 +9,11 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class EncoderDrive_cmd extends Command {
-	private double _encGoalLeft, _encGoalRight, _power;
+	private double _encGoalLeft, _encGoalRight, _power, _turn;
 	private boolean _forward;
-    public EncoderDrive_cmd(double encGoalLeft, double encGoalRight, boolean forward, double power) {
+    public EncoderDrive_cmd(double encGoalLeft, double encGoalRight, boolean forward, double power, double turn) {
     	_power = power;
+    	_turn = turn;
     	_encGoalLeft = encGoalLeft;
     	_encGoalRight = encGoalRight;
     	_forward = forward;
@@ -29,7 +30,7 @@ public class EncoderDrive_cmd extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 //    	Robot.chassis.driveStraight(-_power);
-    	RobotMap.robotDrive.arcadeDrive(-_power,0);
+    	RobotMap.robotDrive.arcadeDrive(-_power, _turn);
     }
 
     // Make this return true when this Command no longer needs to run execute()

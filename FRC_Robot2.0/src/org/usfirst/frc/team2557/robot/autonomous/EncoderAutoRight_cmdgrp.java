@@ -8,20 +8,20 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class EncoderAutoRight_cmdgrp extends CommandGroup {
 
     public EncoderAutoRight_cmdgrp() {
-    	addSequential(new EncoderDrive_cmd(0,0,true,0));
+    	addSequential(new EncoderDrive_cmd(0,0,true,0, .001));
     	addSequential(new GyroDrive_cmd(84, .75));
-    	addSequential(new EncoderDrive_cmd(0,0,true,0));
+    	addSequential(new EncoderDrive_cmd(0,0,true,0, .001));
     	addSequential(new GyroDrive_cmd(-151, .75));
-    	addSequential(new EncoderDrive_cmd(0,0,true,0));
+    	addSequential(new EncoderDrive_cmd(0,0,true,0, .001));
     	addSequential(new Gear_autoCmd());
     	
     	
     	
-    	addSequential(new EncoderDrive_cmd(0,0,true,0));
+    	addSequential(new EncoderDrive_cmd(0,0,true,0, .001));
     	addSequential(new GyroDrive_cmd(180, .75));
-    	addSequential(new EncoderDrive_cmd(0,0,true,0));
+    	addSequential(new EncoderDrive_cmd(0,0,true,0, .001));
     	addSequential(new GyroDrive_cmd(61, .75));
-    	addSequential(new EncoderDrive_cmd(0,0,true,0));
+    	addSequential(new EncoderDrive_cmd(0,0,true,0, .001));
     	addSequential(new GyroDrive_cmd(-144, .75));
     	addSequential(new Auto_Shooter2(4));
         // Add Commands here:

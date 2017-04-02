@@ -13,7 +13,7 @@ public class Gear_autoCmd extends CommandGroup {
     	addParallel(new TimedGear(2, .75));
 //    	addParallel(new GearToggle_autoCmd(false));
 //    	addSequential(new TimedDrive(.5, false, 0));
-    	addSequential(new EncoderDrive_cmd(-13, -13 ,false, -.85));
+    	addSequential(new EncoderDrive_cmd(-13, -13 ,false, -.85, 0));
 //    	addParallel(new GearToggle_autoCmd(true));
     }
 }

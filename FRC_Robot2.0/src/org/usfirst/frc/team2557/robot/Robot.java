@@ -14,6 +14,7 @@ import org.usfirst.frc.team2557.robot.autonomous.Autonomous_Baseline;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearCenterShootRight;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeftHopper;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeftShoot;
+import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightHopper;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightShoot;
 import org.usfirst.frc.team2557.robot.autonomous.Main_auto;
 import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
