@@ -23,7 +23,6 @@ public class EncoderAutoRight_cmdgrp extends CommandGroup {
     	addSequential(new GyroDrive_cmd(61, .75));
     	addSequential(new EncoderDrive_cmd(0,0,true,0, .001));
     	addSequential(new GyroDrive_cmd(-144, .75));
-    	addSequential(new Auto_Shooter2(4));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

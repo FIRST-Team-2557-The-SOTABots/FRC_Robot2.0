@@ -10,14 +10,12 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team2557.robot.autonomous.Autonomous_Baseline;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearCenterShootLeft;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearCenterShootRight;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeftHopper;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeftShoot;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightHopper;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightShoot;
-import org.usfirst.frc.team2557.robot.autonomous.Main_auto;
 import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
 import org.usfirst.frc.team2557.robot.commands.GearGrab_toggle;
 import org.usfirst.frc.team2557.robot.commands.PsuedoShooter_cmd;
