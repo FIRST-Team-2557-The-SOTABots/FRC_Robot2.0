@@ -9,11 +9,10 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class EncoderDrive_cmd extends Command {
-	private double _encGoalLeft, _encGoalRight, _power, _turn;
+	private double _encGoalLeft, _encGoalRight, _power;
 	private boolean _forward;
-    public EncoderDrive_cmd(double encGoalLeft, double encGoalRight, boolean forward, double power, double turn) {
+    public EncoderDrive_cmd(double encGoalLeft, double encGoalRight, boolean forward, double power) {
     	_power = power;
-    	_turn = turn;
     	_encGoalLeft = encGoalLeft;
     	_encGoalRight = encGoalRight;
     	_forward = forward;
