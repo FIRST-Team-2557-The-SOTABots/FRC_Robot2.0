@@ -20,7 +20,7 @@ public class TimedGear extends TimedCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-//    	RobotMap.gearGrab.set(Value.kReverse);
+    	RobotMap.gearGrab.set(Value.kReverse);
     }
 
     // Called repeatedly when this Command is scheduled to run

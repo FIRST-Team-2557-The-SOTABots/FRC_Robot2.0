@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_Baseline;
+import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearCenterShootLeft;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearCenterShootRight;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeftHopper;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeftShoot;
@@ -69,7 +70,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
-		CameraServer.getInstance().startAutomaticCapture();
+//		CameraServer.getInstance().startAutomaticCapture();
 		vision.initializer();
 		
 		shooterUpdate = new PsuedoShooter_cmd();
@@ -77,8 +78,8 @@ public class Robot extends IterativeRobot {
 		
 		
 //		Main_auto = new Main_auto();
-		Main_auto = new Autonomous_GearLeftHopper();
-//		Main_auto = new Autonomous_GearLeftShoot();
+//		Main_auto = new Autonomous_GearLeftHopper();
+		Main_auto = new Autonomous_GearLeftShoot();
 //		Main_auto = new Autonomous_GearRightHopper();
 //		Main_auto = new Autonomous_GearRightShoot();
 //		Main_auto = new Autonomous_GearCenterShootLeft();
