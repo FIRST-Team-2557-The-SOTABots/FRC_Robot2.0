@@ -77,10 +77,10 @@ public class Robot extends IterativeRobot {
 		
 //		Main_auto = new Main_auto();
 //		Main_auto = new Autonomous_GearLeftHopper();
-		Main_auto = new Autonomous_GearLeftShoot();
+//		Main_auto = new Autonomous_GearLeftShoot();
 //		Main_auto = new Autonomous_GearRightHopper();
 //		Main_auto = new Autonomous_GearRightShoot();
-//		Main_auto = new Autonomous_GearCenterShootLeft();
+		Main_auto = new Autonomous_GearCenterShootLeft();
 //		Main_auto = new Autonomous_GearCenterShootRight();
 
 		

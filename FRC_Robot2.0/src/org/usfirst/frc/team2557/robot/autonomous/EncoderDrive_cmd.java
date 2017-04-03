@@ -30,7 +30,8 @@ public class EncoderDrive_cmd extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 //    	Robot.chassis.driveStraight(-_power);
-    	RobotMap.robotDrive.arcadeDrive(-_power, _turn);
+//    	RobotMap.robotDrive.arcadeDrive(-_power, _turn);
+    	Robot.chassis.encoderDrive(-_power);
     }
 
     // Make this return true when this Command no longer needs to run execute()

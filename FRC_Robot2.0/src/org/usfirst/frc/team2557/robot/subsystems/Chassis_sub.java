@@ -69,6 +69,7 @@ public class Chassis_sub extends Subsystem {
     		RobotMap.robotDrive.arcadeDrive(0,0);
     	}
     }
+    
     private double gyroOffset = 0;
     public void resetDriveStraight(){
     	gyroOffset = RobotMap.navX.getAngle();
@@ -78,6 +79,22 @@ public class Chassis_sub extends Subsystem {
     }
     public double getDriveStraightAngle() {
     	return RobotMap.navX.getAngle() - gyroOffset;
+    }
+
+    private double _powerLeft, _powerRight;
+    public void encoderDrive(double speed){
+    	_powerLeft = speed;
+    	_powerRight = speed;
+    	if(-RobotMap.BRdrive.getEncVelocity() > RobotMap.FLdrive.getEncVelocity()){
+    		_powerRight -= .000125;
+    	}
+    	else if(-RobotMap.BRdrive.getEncVelocity() < RobotMap.FLdrive.getEncVelocity()){
+    		_powerRight += .000125;
+    	}
+    	else{
+    		_powerRight += 0;
+    	}
+    	RobotMap.robotDrive.tankDrive(_powerLeft, _powerRight);
     }
     
 }
