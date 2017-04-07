@@ -22,32 +22,29 @@ public class EncoderDrive_cmd extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	RobotMap.FLdrive.setEncPosition(0);
-    	RobotMap.BRdrive.setEncPosition(0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 //    	Robot.chassis.driveStraight(-_power);
 //    	RobotMap.robotDrive.arcadeDrive(-_power, _turn);
+    	
     	Robot.chassis.encoderDrive(-_power);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         if(_forward){
-    		return (double) (RobotMap.FLdrive.getEncPosition()) / 1000 >= _encGoalLeft && (double)(-RobotMap.BRdrive.getEncPosition()) / 1000 >= _encGoalRight;
+    		return ((double) (RobotMap.FLdrive.getEncPosition()) / 1000 >= _encGoalLeft && (double)(-RobotMap.FRdrive.getEncPosition()) / 1000 >= _encGoalRight) || (double)RobotMap.FLdrive.getEncPosition() / 1000 >= _encGoalLeft + (_encGoalLeft *.25);
     	}
         else{
-    		return (double) (RobotMap.FLdrive.getEncPosition()) / 1000 <= _encGoalLeft && (double) (-RobotMap.BRdrive.getEncPosition()) / 1000 <= _encGoalRight;
+    		return ((double) (RobotMap.FLdrive.getEncPosition()) / 1000 <= _encGoalLeft && (double) (-RobotMap.FRdrive.getEncPosition()) / 1000 <= _encGoalRight) || (double)RobotMap.FLdrive.getEncPosition() / 1000 <= _encGoalLeft + (_encGoalLeft *.25);
     	}
     }
 
     // Called once after isFinished returns true
     protected void end() {
 //    	Robot.chassis.driveStraight(0);
-    	RobotMap.FLdrive.setEncPosition(0);
-    	RobotMap.BRdrive.setEncPosition(0);
     	RobotMap.robotDrive.arcadeDrive(0,0);
     }
 

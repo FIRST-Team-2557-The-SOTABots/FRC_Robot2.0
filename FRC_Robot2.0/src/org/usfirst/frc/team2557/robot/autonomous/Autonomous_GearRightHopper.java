@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Autonomous_GearRightHopper extends CommandGroup {
 
     public Autonomous_GearRightHopper() {
-    	addSequential(new EncoderDrive_cmd(22, 22.07 ,true, .8));
+    	addSequential(new EncoderDrive_cmd(22, 22.07 ,true, .8), 4);
     	addSequential(new GyroDrive_cmd(-54, -.85));
     	addSequential(new EncoderDrive_cmd(13.49, 13.37 ,true, .75), 2);
     	addSequential(new Gear_autoCmd());

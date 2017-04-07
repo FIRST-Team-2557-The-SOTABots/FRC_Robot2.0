@@ -53,7 +53,7 @@ public class RobotMap {
 	public static BuiltInAccelerometer accel;
 	public static AHRS navX;
 	public static boolean _gemini; //false = Fuel Forward and true = Gear Forward
-	public static boolean FALL; //used in gear command or subsystem(I forgot) somewhere :)
+	public static boolean _stage; //used in gear command or subsystem(I forgot) somewhere :)
 	public static boolean shift; //boolean for the super shifters on the drive train
 	public static boolean drive; //boolean to switch the drive stick
 	public static boolean _switch; //boolean to activate/deactivate the momentary switch for the gear grabber
@@ -97,7 +97,7 @@ public class RobotMap {
 		euler = new EulerDistanceEstimator(ForwardAxis.NegX);
 		
 		shootReq = false;
-		FALL = false;
+		_stage = true;
 		_gemini = true; //boolean for manipulator, true = gear and false = fuel
 		shift = true;
 		drive = true; //boolean for driver, true = gear and false = fuel

@@ -8,12 +8,29 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Autonomous_GearLeftShoot extends CommandGroup {
 
     public Autonomous_GearLeftShoot() {
-    	addSequential(new EncoderDrive_cmd(23.7, 23.67 ,true, .85));
-    	addSequential(new GyroDrive_cmd(51, .85));
-    	addSequential(new EncoderDrive_cmd(13.49, 13.37 ,true, .85), 2);
-    	addSequential(new Gear_autoCmd());
+    	addSequential(new SensorReset_autoCmd(3)); //Reset gyro angle to zero and encoders to zero
+    	addSequential(new EncoderDrive_cmd(23.7, 23.67 ,true, .85), 4); //Drive forward
     	
-    	addSequential(new GyroDrive_cmd(197, .71));
+    	addSequential(new GyroDrive_cmd(51, .85)); //Turn to face the gear peg
+    	
+    	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
+    	addSequential(new EncoderDrive_cmd(13.49, 13.37 ,true, .85), 2); //Drive onto the gear peg
+    	
+    	addSequential(new GearToggle_autoCmd(false)); //Put the gear mech to the floor
+    	
+    	addParallel(new SensorReset_autoCmd(2)); //Reset the encoders to zero
+    	addSequential(new TimedDrive(.05, false, 0)); //Pause to give the encoders time to reset
+    	
+    	addParallel(new TimedGear(2, .75)); //Run gear wheels
+    	addSequential(new EncoderDrive_cmd(-13, -13 ,false, -.85)); //Drive backwards away from the peg
+    	
+    	addSequential(new GearToggle_autoCmd(true)); //Bring the gear mech up
+    	
+    	addParallel(new Autonomous_Shooter(2.25, 1)); //Bring the flywheels up to speed
+    	addSequential(new GyroDrive_cmd(197, .71)); //Turn the robot to face the boiler
+    	
+    	addSequential(new Autonomous_Shooter(3.5, 2)); //Actuate the other shooting pieces
+    	
 //    	addSequential(new EncoderDrive_cmd(8.76, 8.58, true, .75, .001));
     }
 }

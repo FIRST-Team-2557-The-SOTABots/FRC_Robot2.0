@@ -68,19 +68,18 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
-//		CameraServer.getInstance().startAutomaticCapture();
+		CameraServer.getInstance().startAutomaticCapture();
 		vision.initializer();
 		
 		shooterUpdate = new PsuedoShooter_cmd();
 		visionUpdate = new Vision_cmd();
 		
 		
-//		Main_auto = new Main_auto();
-//		Main_auto = new Autonomous_GearLeftHopper();
+		Main_auto = new Autonomous_GearLeftHopper();
 //		Main_auto = new Autonomous_GearLeftShoot();
 //		Main_auto = new Autonomous_GearRightHopper();
 //		Main_auto = new Autonomous_GearRightShoot();
-		Main_auto = new Autonomous_GearCenterShootLeft();
+//		Main_auto = new Autonomous_GearCenterShootLeft();
 //		Main_auto = new Autonomous_GearCenterShootRight();
 
 		
@@ -151,8 +150,18 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		RobotMap.euler.update();
+		SmartDashboard.putNumber("Left Encoder: ", RobotMap.FLdrive.getEncPosition());
+		SmartDashboard.putNumber("Right Encoder: ", RobotMap.BRdrive.getEncPosition());
 		SmartDashboard.putNumber("NavX Angle is: ",RobotMap.navX.getAngle());
 		SmartDashboard.putNumber("DriveStraight Angle is: ",Robot.chassis.getDriveStraightAngle());
+		
+		if(RobotMap._stage){
+			RobotMap.gearGrab.set(Value.kForward);
+		}
+		else if (RobotMap._stage == false){
+			RobotMap.gearGrab.set(Value.kReverse);
+		}
+		
 	}
 
 	@Override
@@ -166,6 +175,7 @@ public class Robot extends IterativeRobot {
 //			autonomousCommand.cancle();
 		if (Main_auto != null)
 			Main_auto.cancel();
+		
 	}
 
 	/**
@@ -179,7 +189,7 @@ public class Robot extends IterativeRobot {
 		shooterUpdate.start();
 		if(oi.x1.get()){
 			RobotMap.FLdrive.setEncPosition(0);
-			RobotMap.BRdrive.setEncPosition(0);
+			RobotMap.FRdrive.setEncPosition(0);
 			RobotMap.navX.reset();
 		}
 //		if(oi.gamepad1.getRawAxis(3) > 0.1){

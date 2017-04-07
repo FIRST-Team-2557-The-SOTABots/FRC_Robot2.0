@@ -54,10 +54,10 @@ public class Gear_sub extends Subsystem {
     }
     public void gearCamera(){
     	if(Robot.oi.gamepad1.getRawAxis(5) > .25 || Robot.oi.gamepad2.getRawAxis(5) > .25){
-			_cam -= 1;
+			_cam += 1;
 		}
 		else if(Robot.oi.gamepad1.getRawAxis(5) < -.25 || Robot.oi.gamepad2.getRawAxis(5) < -.25){
-			_cam +=1;
+			_cam -=1;
 		}
 		else{		
 			_cam += 0;

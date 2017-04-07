@@ -8,15 +8,15 @@ import edu.wpi.first.wpilibj.command.TimedCommand;
 /**
  *
  */
-public class Autonomus_Shooter extends TimedCommand {
+public class Autonomous_Shooter extends TimedCommand {
 	
 	
-
-    public Autonomus_Shooter(double timeout) {
+	private int _stage;
+    public Autonomous_Shooter(double timeout, int stage) {
     	super(timeout);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	
+    	_stage = stage;
     	
     }
 
@@ -27,12 +27,29 @@ public class Autonomus_Shooter extends TimedCommand {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.Lshooter.set(-.675);
-    	RobotMap.Rshooter.set(.675);
+    	if(_stage == 0){
+    		RobotMap.agitator.set(.4);
+    		RobotMap.Lshooter.set(-.805);
+    		RobotMap.Rshooter.set(.755);
+    	}
+    	else if (_stage == 1){
+    		RobotMap.Lshooter.set(-.805);
+    		RobotMap.Rshooter.set(.755);
+    	}
+    	else{
+    		RobotMap.Lshooter.set(-.805);
+    		RobotMap.Rshooter.set(.755);
+    		RobotMap.intake.set(-.695);
+    		RobotMap.agitator.set(-.4);
+    	}
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	RobotMap.Lshooter.set(0);
+		RobotMap.Rshooter.set(0);
+		RobotMap.intake.set(0);
+		RobotMap.agitator.set(0);
     }
 
     // Called when another command which requires one or more of the same

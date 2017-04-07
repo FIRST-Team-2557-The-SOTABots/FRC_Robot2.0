@@ -20,19 +20,16 @@ public class TimedGear extends TimedCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	RobotMap.gearGrab.set(Value.kReverse);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	RobotMap.gearMotor.set(_power);
-    	RobotMap.gearGrab.set(Value.kReverse);
     }
 
     // Called once after timeout
     protected void end() {
     	RobotMap.gearMotor.set(0);
-    	RobotMap.gearGrab.set(Value.kForward);
     }
 
     // Called when another command which requires one or more of the same

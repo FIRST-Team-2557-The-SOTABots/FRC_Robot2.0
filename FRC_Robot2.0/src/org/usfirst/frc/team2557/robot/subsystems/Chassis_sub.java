@@ -81,20 +81,34 @@ public class Chassis_sub extends Subsystem {
     	return RobotMap.navX.getAngle() - gyroOffset;
     }
 
-    private double _powerLeft, _powerRight;
+    private double _power, _turn1, _turn2;
     public void encoderDrive(double speed){
-    	_powerLeft = speed;
-    	_powerRight = speed;
-    	if(-RobotMap.BRdrive.getEncVelocity() > RobotMap.FLdrive.getEncVelocity()){
-    		_powerRight -= .000125;
+    	_power = speed;
+    	_turn1 = 0;
+    	_turn2 = 0;
+//    	if(-RobotMap.FRdrive.getEncVelocity() > RobotMap.FLdrive.getEncVelocity()){
+//    		_turn1 -= .000075;
+//    	}
+//    	else if(-RobotMap.FRdrive.getEncVelocity() < RobotMap.FLdrive.getEncVelocity()){
+//    		_turn1 += .000075;
+//    	}
+//    	else{
+//    		_turn1 += 0;
+//    	}
+    	
+    	if(RobotMap.navX.getAngle() > 1){
+    		_turn2 -= .0025;
     	}
-    	else if(-RobotMap.BRdrive.getEncVelocity() < RobotMap.FLdrive.getEncVelocity()){
-    		_powerRight += .000125;
+    	else if(RobotMap.navX.getAngle() < -1){
+    		_turn2 += .0025;
+    		
     	}
     	else{
-    		_powerRight += 0;
+    		_turn2 += 0;
+
     	}
-    	RobotMap.robotDrive.tankDrive(_powerLeft, _powerRight);
+    	RobotMap.robotDrive.arcadeDrive(_power, _turn1 + _turn2);
+    	
     }
     
 }
