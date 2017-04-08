@@ -8,19 +8,46 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Autonomous_GearRightHopper extends CommandGroup {
 
     public Autonomous_GearRightHopper() {
-    	addSequential(new EncoderDrive_cmd(22, 22.07 ,true, .8), 4);
-    	addSequential(new GyroDrive_cmd(-54, -.85));
-    	addSequential(new EncoderDrive_cmd(13.49, 13.37 ,true, .75), 2);
-    	addSequential(new Gear_autoCmd());
+    	addSequential(new SensorReset_autoCmd(3)); //Reset gyro angle to zero and encoders to zero
+    	addSequential(new TimedDrive(.2, false, 0)); //Pause to allow encoders to reset
+    	addSequential(new EncoderDrive_cmd(22.7, 22.67 ,true, .85)); //Drive forward
     	
-    	addSequential(new GyroDrive_cmd(-5, .8));
-    	addSequential(new ShiftToggle_autoCmd(false));
-    	addSequential(new EncoderDrive_cmd(20.25, 19.7, true, .85));
-    	addSequential(new GyroDrive_cmd(-90, -.75));
-    	addSequential(new EncoderDrive_cmd(-10.54, -10.31 , false, -.87), 1.25);
-    	addSequential(new TimedDrive(.5, false, 0));
-    	addSequential(new EncoderDrive_cmd(20.34, 20.11 , true, .9));
-    	addSequential(new GyroDrive_cmd(-25, .85));
-    	addSequential(new EncoderDrive_cmd(5, 5 , true, .8), 1);
+    	addSequential(new GyroDrive_cmd(-54, -.85)); //Turn to face the peg
+    	
+    	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
+    	addSequential(new TimedDrive(.2, false, 0)); //Pause to allow encoders to reset
+    	addSequential(new EncoderDrive_cmd(15.49, 15.37 ,true, .85), 2);//Drive onto the gear peg
+    	
+    	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
+    	addSequential(new TimedDrive(.2, false, 0)); //Pause to allow encoders to reset
+    	addSequential(new GearToggle_autoCmd(false)); //Put the gear mech to the floor
+    	addParallel(new TimedGear(2, .75)); //Run gear wheels
+    	addSequential(new EncoderDrive_cmd(-13, -13 ,false, -.85));// Drive backwards away from the peg
+    	
+    	/*
+    	addSequential(new GyroDrive_cmd(-1, .8)); //Turn to face forward again
+    	
+    	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
+    	addSequential(new TimedDrive(.2, false, 0)); //Pause to allow encoders to reset
+    	addSequential(new ShiftToggle_autoCmd(false)); //Shift into high gear
+    	addSequential(new EncoderDrive_cmd(20.25, 19.7, true, .85)); //Drive forward to line up perpendicular to hopper
+    	
+    	addSequential(new GyroDrive_cmd(-90, -.75)); //Turn right to face away from the hopper
+    	
+    	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
+    	addSequential(new TimedDrive(.15, false, 0)); //Pause to allow encoders to reset
+    	addSequential(new EncoderDrive_cmd(-10.54, -10.31 , false, -.87), 1.25); //Back into the hopper
+    	
+    	addSequential(new TimedDrive(.3, false, 0)); //Allow time to slow down
+    	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
+    	addSequential(new TimedDrive(.2, false, 0)); //Allow time to reset the encoders
+    	addSequential(new EncoderDrive_cmd(20.34, 20.11 , true, .9)); //Drive away from hopper
+
+    	addSequential(new GyroDrive_cmd(5, .85)); //Turn right to face the general direction of the loading station
+    	
+    	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
+    	addSequential(new TimedDrive(.2, false, 0)); //Pause to allow time for the encoders to reset
+    	addSequential(new EncoderDrive_cmd(5, 5 , true, .8), 1); //Drive a short distance in the direction of the loding station
+*/
     }
 }

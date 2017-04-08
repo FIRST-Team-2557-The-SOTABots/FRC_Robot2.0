@@ -13,6 +13,7 @@ public class Autonomous_GearRightShoot extends CommandGroup {
     	
     	addSequential(new GyroDrive_cmd(-54, -.85)); //Turn left to face the gear
     	
+    	/*
     	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
     	addSequential(new EncoderDrive_cmd(13.49, 13.37 ,true, .75), 2); //Drive onto the peg
 
@@ -31,7 +32,7 @@ public class Autonomous_GearRightShoot extends CommandGroup {
     	
     	addSequential(new Autonomous_Shooter(3.5, 2)); //Shoot all of the balls in the hopper
     	
-    	
+    	*/
     	
 //    	addSequential(new EncoderDrive_cmd(8.76, 8.58, true, .75, .001));
     }

@@ -1,4 +1,4 @@
-
+//2.82 counts per foot
 package org.usfirst.frc.team2557.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
@@ -16,6 +16,7 @@ import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeftHopper;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeftShoot;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightHopper;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightShoot;
+import org.usfirst.frc.team2557.robot.autonomous.ShiftToggle_autoCmd;
 import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
 import org.usfirst.frc.team2557.robot.commands.GearGrab_toggle;
 import org.usfirst.frc.team2557.robot.commands.PsuedoShooter_cmd;
@@ -53,7 +54,8 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public double x = 45;
 
-	
+	Command shiftUp;
+	Command shiftDown;
 	Command Main_auto;
 	Command fakePID;
 	Command visionUpdate;
@@ -73,13 +75,16 @@ public class Robot extends IterativeRobot {
 		
 		shooterUpdate = new PsuedoShooter_cmd();
 		visionUpdate = new Vision_cmd();
-		
-		
-		Main_auto = new Autonomous_GearLeftHopper();
+		shiftUp = new ShiftToggle_autoCmd(true);
+		shiftDown = new ShiftToggle_autoCmd(false);
+//		Main_auto = new Autonomous_GearLeftHopper();
 //		Main_auto = new Autonomous_GearLeftShoot();
 //		Main_auto = new Autonomous_GearRightHopper();
-//		Main_auto = new Autonomous_GearRightShoot();
-//		Main_auto = new Autonomous_GearCenterShootLeft();
+		
+//		Main_auto = new Autonomous_GearRightShoot(); //GearLine up right
+		Main_auto = new Autonomous_GearCenterShootLeft(); //GearCenter
+		
+		
 //		Main_auto = new Autonomous_GearCenterShootRight();
 
 		
@@ -191,6 +196,14 @@ public class Robot extends IterativeRobot {
 			RobotMap.FLdrive.setEncPosition(0);
 			RobotMap.FRdrive.setEncPosition(0);
 			RobotMap.navX.reset();
+		}
+		if(oi.RB1.get()){
+			shiftUp.start();
+			return;
+		}
+		else if(oi.LB1.get()){
+			shiftDown.start();
+			return;
 		}
 //		if(oi.gamepad1.getRawAxis(3) > 0.1){
 //			fakePID.start();

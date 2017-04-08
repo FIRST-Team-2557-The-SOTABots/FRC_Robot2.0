@@ -11,7 +11,7 @@ public class Autonomous_GearLeftHopper extends CommandGroup {
     	addSequential(new SensorReset_autoCmd(3)); //Reset gyro angle to zero and encoders to zero
     	addSequential(new EncoderDrive_cmd(23.7, 23.67 ,true, .85)); //Drive forward
     	
-    	addSequential(new GyroDrive_cmd(51, .85)); //Turn to the gear peg
+    	addSequential(new GyroDrive_cmd(54, .85)); //Turn to the gear peg
     	
     	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
     	addSequential(new TimedDrive(.25, false, 0)); //Pause to allow time for encoders to reset
@@ -22,7 +22,7 @@ public class Autonomous_GearLeftHopper extends CommandGroup {
     	addSequential(new GearToggle_autoCmd(false)); //Put the gear mech to the floor
     	addParallel(new TimedGear(2, .75)); //Run gear wheels
     	addSequential(new EncoderDrive_cmd(-13, -13 ,false, -.85));// Drive backwards away from the peg
-    	
+    	/*
     	addSequential(new GyroDrive_cmd(5, -.8)); //Turn to face forward again
     	
     	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
@@ -41,5 +41,6 @@ public class Autonomous_GearLeftHopper extends CommandGroup {
 
     	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
     	addSequential(new EncoderDrive_cmd(13, 13 , true, .8)); //Drive away from our side and set up for teleop
+    	*/
     }
 }

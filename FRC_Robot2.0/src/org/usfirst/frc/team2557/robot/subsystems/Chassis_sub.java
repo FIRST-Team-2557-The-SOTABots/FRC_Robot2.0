@@ -86,28 +86,28 @@ public class Chassis_sub extends Subsystem {
     	_power = speed;
     	_turn1 = 0;
     	_turn2 = 0;
-//    	if(-RobotMap.FRdrive.getEncVelocity() > RobotMap.FLdrive.getEncVelocity()){
-//    		_turn1 -= .000075;
-//    	}
-//    	else if(-RobotMap.FRdrive.getEncVelocity() < RobotMap.FLdrive.getEncVelocity()){
-//    		_turn1 += .000075;
-//    	}
-//    	else{
-//    		_turn1 += 0;
-//    	}
+    	if(-RobotMap.FRdrive.getEncVelocity() > RobotMap.FLdrive.getEncVelocity()){
+    		_turn1 += .0002;
+    	}
+    	else if(-RobotMap.FRdrive.getEncVelocity() < RobotMap.FLdrive.getEncVelocity()){
+    		_turn1 -= .0002;
+    	}
+    	else{
+    		_turn1 += 0;
+    	}
     	
     	if(RobotMap.navX.getAngle() > 1){
-    		_turn2 -= .0025;
+    		_turn2 += .0005;
     	}
     	else if(RobotMap.navX.getAngle() < -1){
-    		_turn2 += .0025;
+    		_turn2 -= .0005;
     		
     	}
     	else{
     		_turn2 += 0;
 
     	}
-    	RobotMap.robotDrive.arcadeDrive(_power, _turn1 + _turn2);
+    	RobotMap.robotDrive.arcadeDrive(_power, _turn2); // _turn1 + _turn2);
     	
     }
     
