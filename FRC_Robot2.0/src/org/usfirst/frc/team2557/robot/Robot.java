@@ -18,6 +18,7 @@ import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightHopper;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightShoot;
 import org.usfirst.frc.team2557.robot.autonomous.ShiftToggle_autoCmd;
 import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
+import org.usfirst.frc.team2557.robot.commands.DriveToTarget_cmd;
 import org.usfirst.frc.team2557.robot.commands.GearGrab_toggle;
 import org.usfirst.frc.team2557.robot.commands.PsuedoShooter_cmd;
 import org.usfirst.frc.team2557.robot.subsystems.Acceleration_sub;
@@ -54,12 +55,14 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public double x = 45;
 
+	Command driveTo;
 	Command shiftUp;
 	Command shiftDown;
 	Command Main_auto;
 	Command fakePID;
 	Command visionUpdate;
 	Command shooterUpdate;
+	Command driveToTarget;
 //	Command autonomousCommand;
 //	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -72,7 +75,6 @@ public class Robot extends IterativeRobot {
 		RobotMap.init();
 		CameraServer.getInstance().startAutomaticCapture();
 		vision.initializer();
-		
 		shooterUpdate = new PsuedoShooter_cmd();
 		visionUpdate = new Vision_cmd();
 		shiftUp = new ShiftToggle_autoCmd(true);
@@ -90,6 +92,7 @@ public class Robot extends IterativeRobot {
 		
 		
 		fakePID = new PsuedoShooter_cmd();
+		driveToTarget = new DriveToTarget_cmd();
 		oi = new OI();
 		oi.init();
 		
@@ -175,7 +178,7 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		
+//		driveToTarget.start();
 //		if (autonomousCommand != null)
 //			autonomousCommand.cancle();
 		if (Main_auto != null)

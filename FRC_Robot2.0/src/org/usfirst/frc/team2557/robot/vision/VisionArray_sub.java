@@ -11,22 +11,22 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class VisionArray_sub extends Subsystem {
-	private int widthDataCount;
-	private int heightDataCount;
-	private int centerXDataCount;
-	private int centerYDataCount;
-//	private int areaDataCount;
-//	private int coveredElements;
-	private int areaImageTotal;
-	private double filteredArea;
-	private double[] areaLoop;
-	private double[] heights;
-	private double[] areas;
-	private double[] widths;
-	private double[] centerYs;
-	private double[] centerXs;
-	private boolean heightReq;
-	private boolean areaReq;
+	public int widthDataCount;
+	public int heightDataCount;
+	public int centerXDataCount;
+	public int centerYDataCount;
+//	public int areaDataCount;
+//	public int coveredElements;
+	public int areaImageTotal;
+	public double filteredArea;
+	public double[] areaLoop;
+	public double[] heights;
+	public static double[] areas;
+	public static double[] widths;
+	public double[] centerYs;
+	public double[] centerXs;
+	public boolean heightReq;
+	public boolean areaReq;
 	NetworkTable table;
 	
 	
