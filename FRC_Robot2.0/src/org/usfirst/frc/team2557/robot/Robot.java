@@ -223,20 +223,37 @@ public class Robot extends IterativeRobot {
 //			fakePID.start();
 //		}
 		
-		if(oi.a2.get()) {
-    		if(vision.interpretation(2, 0, 0, 162, 0, .05) == false){
-    			if(vision.findCenterXs(0) < 162){
-    				RobotMap.robotDrive.arcadeDrive(0,.5);
+//		if(oi.a1.get()) {
+//    		if(vision.averageInterpretation(2, 0, 0, 167, 0, .05) == false){
+//    			if(vision.findCenterXs(0) < 167){
+//    				RobotMap.robotDrive.tankDrive(-.5,.7); //-.52
+//    			}
+//    			else if(vision.findCenterXs(0) > 167){
+//    				RobotMap.robotDrive.tankDrive(-.5,-.7); //.52
+//    			}
+//    			else{
+//    				RobotMap.robotDrive.tankDrive(0,0);
+//    			}
+//    		}
+//    		else{
+//    			RobotMap.robotDrive.tankDrive(-.6,-.6);
+//    		}
+//    		
+//    	}
+		if(oi.a1.get()) {
+    		if(vision.averageInterpretation(2, 0, 0, 147, 0, .05) == false){
+    			if(vision.findCenterXs(0) < 147){
+    				RobotMap.robotDrive.arcadeDrive(-.7,-.75); //-.52
     			}
-    			else if(vision.findCenterXs(0) > 162){
-    				RobotMap.robotDrive.arcadeDrive(0,-.5);
+    			else if(vision.findCenterXs(0) > 147){
+    				RobotMap.robotDrive.arcadeDrive(-.7,.75); //.52
     			}
     			else{
     				RobotMap.robotDrive.arcadeDrive(0,0);
     			}
     		}
     		else{
-    			RobotMap.robotDrive.arcadeDrive(0,0);
+    			RobotMap.robotDrive.arcadeDrive(-.6,0);
     		}
     		
     	}

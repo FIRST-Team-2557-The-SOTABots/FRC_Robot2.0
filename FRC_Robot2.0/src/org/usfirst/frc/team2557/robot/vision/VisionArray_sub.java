@@ -185,7 +185,7 @@ public class VisionArray_sub extends Subsystem {
  correct position. Right now I (Antonio) am trying to figure out how to make the thresholds modular  
   
  */
-	public boolean interpretation(int x, int n, double hPrime, double xPrime, double yPrime, double offset){
+	public boolean singleInterpretation(int x, int n, double hPrime, double xPrime, double yPrime, double offset){
 		boolean _height, _x, _y;
 		///////////
 		if(findHeights(n) < hPrime + (hPrime * offset) && findHeights(n) > hPrime - (hPrime * offset)){
@@ -196,6 +196,42 @@ public class VisionArray_sub extends Subsystem {
 		}
 		///////////
 		if(findCenterXs(n) < xPrime + (xPrime * offset) && findCenterXs(n) > xPrime - (xPrime * offset)){
+			_x = true;
+		}
+		else{
+			_x = false;
+		}
+		///////////
+		if(findCenterYs(n) < yPrime + (yPrime * offset) && findCenterYs(n) > yPrime - (yPrime * offset)){
+			_y = true;
+		}
+		else{
+			_y = false;
+		}
+		
+		
+		switch(x){
+			default:
+				return _x && _y && _height;
+			case 1:
+				return _height;
+			case 2:
+				return _x;
+			case 3:
+				return _y;
+		}
+	}
+	public boolean averageInterpretation(int x, int n, double hPrime, double xPrime, double yPrime, double offset){
+		boolean _height, _x, _y;
+		///////////
+		if(findHeights(n) < hPrime + (hPrime * offset) && findHeights(n) > hPrime - (hPrime * offset)){
+			_height = true;
+		}
+		else{
+			_height = false;
+		}
+		///////////
+		if((findCenterXs(n) + findCenterXs(n + 1))/2 < xPrime + (xPrime * offset) && (findCenterXs(n) + findCenterXs(n + 1))/2 > xPrime - (xPrime * offset)){
 			_x = true;
 		}
 		else{

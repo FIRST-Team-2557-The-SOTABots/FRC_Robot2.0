@@ -23,10 +23,7 @@ public class Chassis_sub extends Subsystem {
     	setDefaultCommand(new Chassis_cmd());
     }
     public void arcadeDrive(){
-    	if(Robot.oi.y1.get()){
-			Robot.leftX_gear.start();
-		}
-    	else if(RobotMap.drive){
+    	if(RobotMap.drive){
 	    	RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *.8);
 	    }
 	    else if(RobotMap.drive == false){
