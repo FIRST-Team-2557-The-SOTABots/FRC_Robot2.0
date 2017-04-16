@@ -1,15 +1,16 @@
 package org.usfirst.frc.team2557.robot.vision;
 
 import org.usfirst.frc.team2557.robot.Robot;
+import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Vision_cmd extends Command {
+public class centerX_gear extends Command {
 
-    public Vision_cmd() {
+    public centerX_gear() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -20,26 +21,29 @@ public class Vision_cmd extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.vision.findCenterXs(0);
-    	Robot.vision.findCenterYs(0);
-    	Robot.vision.findWidths(0);
-    	Robot.vision.findHeights(0);
+    	if(Robot.vision.findCenterXs(0) > 172){
+    		RobotMap.robotDrive.arcadeDrive(0,-.75);
+    		RobotMap._leftX_gear = false;
+    	}
+    	else if(Robot.vision.findCenterXs(0) < 152){
+    		RobotMap.robotDrive.arcadeDrive(0,.75);
+    		RobotMap._leftX_gear = false;
+    	}
+    	else{
+    		RobotMap.robotDrive.arcadeDrive(0,0);
+    		RobotMap._leftX_gear = true;
+    	}
     	
-//    	Robot.vision.findCenterXs(1);
-//    	Robot.vision.findCenterYs(1);
-//    	Robot.vision.findWidths(1);
-//    	Robot.vision.findHeights(1);
-
-//    	Robot.vision.interpretCamera();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return RobotMap._leftX_gear;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	RobotMap.robotDrive.arcadeDrive(0,0);
     }
 
     // Called when another command which requires one or more of the same

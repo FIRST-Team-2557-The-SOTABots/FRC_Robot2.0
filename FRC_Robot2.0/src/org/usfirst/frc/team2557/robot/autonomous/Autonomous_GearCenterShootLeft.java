@@ -9,6 +9,7 @@ public class Autonomous_GearCenterShootLeft extends CommandGroup {
 
     public Autonomous_GearCenterShootLeft() {
     	addSequential(new SensorReset_autoCmd(3)); //Reset both encoders and gyro to zero
+    	addSequential(new TimedDrive(.25, false, 0)); //Allow time for the sensors to reset
     	addSequential(new EncoderDrive_cmd(22.24, 21.39, true, .85), 4); //Drive forward
     	
     	addSequential(new GearToggle_autoCmd(false)); //Put the gear mech to the floor

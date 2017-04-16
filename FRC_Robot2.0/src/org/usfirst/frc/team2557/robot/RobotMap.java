@@ -62,6 +62,7 @@ public class RobotMap {
 	public static boolean shootReq;
 	public static DigitalInput gearSwitch;
 	public static Encoder gearEnc;
+	public static boolean _leftX_gear;
 	
 	public static Servo leftAgitator;
 	public static Servo rightAgitator;
@@ -96,6 +97,8 @@ public class RobotMap {
 		accel = new BuiltInAccelerometer();
 		euler = new EulerDistanceEstimator(ForwardAxis.NegX);
 		
+		
+		_leftX_gear = true;
 		shootReq = false;
 		_stage = true;
 		_gemini = true; //boolean for manipulator, true = gear and false = fuel

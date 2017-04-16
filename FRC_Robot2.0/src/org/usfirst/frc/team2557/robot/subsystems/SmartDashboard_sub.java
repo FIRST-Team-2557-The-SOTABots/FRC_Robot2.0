@@ -29,11 +29,11 @@ public class SmartDashboard_sub extends Subsystem {
 		SmartDashboard.putNumber("Left encoder: ", (double) (RobotMap.FLdrive.getEncPosition()) / 1000);
 		SmartDashboard.putNumber("Right encoder: ", (double) (-RobotMap.FRdrive.getEncPosition()) / 1000);
     }
-    public void vision(){
-    	SmartDashboard.putNumber("The height is: ", Robot.vision.findHeights());
-    	SmartDashboard.putNumber("The X is: ", Robot.vision.findCenterXs());
-    	SmartDashboard.putNumber("The Y is: ", Robot.vision.findCenterYs());
-    }
+//    public void vision(){
+//    	SmartDashboard.putNumber("The height is: ", Robot.vision.findHeights());
+//    	SmartDashboard.putNumber("The X is: ", Robot.vision.findCenterXs());
+//    	SmartDashboard.putNumber("The Y is: ", Robot.vision.findCenterYs());
+//    }
     public void distance(){
     	SmartDashboard.putNumber("Eulerrrrrrrr: ", RobotMap.euler.getDistance());
     }

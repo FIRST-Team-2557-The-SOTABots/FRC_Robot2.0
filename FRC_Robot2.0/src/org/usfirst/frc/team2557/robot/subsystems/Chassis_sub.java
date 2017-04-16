@@ -23,7 +23,10 @@ public class Chassis_sub extends Subsystem {
     	setDefaultCommand(new Chassis_cmd());
     }
     public void arcadeDrive(){
-	    if(RobotMap.drive){
+    	if(Robot.oi.y1.get()){
+			Robot.leftX_gear.start();
+		}
+    	else if(RobotMap.drive){
 	    	RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *.8);
 	    }
 	    else if(RobotMap.drive == false){
@@ -75,7 +78,7 @@ public class Chassis_sub extends Subsystem {
     	gyroOffset = RobotMap.navX.getAngle();
     }
     public void driveStraight(double speed){
-    	RobotMap.robotDrive.arcadeDrive(speed, -(RobotMap.navX.getAngle() - gyroOffset) * 0.35);
+    	RobotMap.robotDrive.arcadeDrive(speed, -(RobotMap.navX.getAngle() - gyroOffset) * 0.2);
     }
     public double getDriveStraightAngle() {
     	return RobotMap.navX.getAngle() - gyroOffset;

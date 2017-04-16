@@ -49,7 +49,7 @@ public class VisionArray_sub extends Subsystem {
 	widths = new double[widthDataCount];
 	table = NetworkTable.getTable("GRIP/myContoursReport");
 	}
-	public double findHeights(){
+	public double findHeights(int n){
 		heights = table.getNumberArray("height", heights);
 			for(double height: heights){
 				SmartDashboard.putNumber("height", height);
@@ -58,26 +58,26 @@ public class VisionArray_sub extends Subsystem {
 			}
 			
 			try{
-				return heights[0];
+				return heights[n];
 			} catch(IndexOutOfBoundsException e){
 				return 0;
 			}
 	}
 	
-	public double findWidths(){
+	public double findWidths(int n){
 		widths = table.getNumberArray("width", widths);
 			for(double width: widths){
 				SmartDashboard.putNumber("width", width);
 				widthDataCount++;
 			}
 			try{
-				return widths[0];
+				return widths[n];
 			} catch(IndexOutOfBoundsException e){
 				return 0;
 			}
 	}
 	
-	public double findCenterXs(){
+	public double findCenterXs(int n){
 			centerXs = table.getNumberArray("centerX", heights);
 			for(double centerX: centerXs){
 				SmartDashboard.putNumber("centerX", centerX);
@@ -85,13 +85,13 @@ public class VisionArray_sub extends Subsystem {
 			}
 			
 			try{
-				return centerXs[0];
+				return centerXs[n];
 			} catch(IndexOutOfBoundsException e){
 				return 0;
 			}
 		}
 	
-	public double findCenterYs(){
+	public double findCenterYs(int n){
 			centerYs = table.getNumberArray("centerY", centerYs);
 			for(double centerY: centerYs){
 				SmartDashboard.putNumber("centerY", centerY);
@@ -100,12 +100,12 @@ public class VisionArray_sub extends Subsystem {
 			}
 			
 			try{
-				return centerYs[0];
+				return centerYs[n];
 			} catch(IndexOutOfBoundsException e){
 				return 0;
 			}
 		}
-	
+/*	
 	public void findAreas(){
 		int areaDataCount = 0;
 		int coveredElements = 0;
@@ -140,7 +140,7 @@ public class VisionArray_sub extends Subsystem {
 				}
 			}
 		}
-		
+
 //		isElse = true;
 		SmartDashboard.putNumber("areaImageTotal", areaImageTotal);
 		
@@ -172,58 +172,85 @@ public class VisionArray_sub extends Subsystem {
 //		}
 		SmartDashboard.putNumber("filteredArea", filteredArea);
 	}
+*/
+//	public void shooterAdjustment(){
+//		if(RobotMap.shootReq){
+//			RobotMap.visionShooterSpeed = (((findHeights() - 15) * 2.86) + ((findCenterXs() - 50) * 2) + ((findCenterYs() - 100) * 1.67)) / 3;				
+//		}
+//	}
+//		
 	
-	public void shooterAdjustment(){
-		if(RobotMap.shootReq){
-			RobotMap.visionShooterSpeed = (((findHeights() - 15) * 2.86) + ((findCenterXs() - 50) * 2) + ((findCenterYs() - 100) * 1.67)) / 3;				
-		}
-	}
-		
-	public boolean fuelInterpretation(){
+/*
+ The Code below can be used to look at any one contour to determine if it is within the
+ correct position. Right now I (Antonio) am trying to figure out how to make the thresholds modular  
+  
+ */
+	public boolean interpretation(int x, int n){
 		boolean _height, _x, _y;
 		///////////
-		if(findHeights() < 50 && findHeights() > 15){
+		if(findHeights(n) < 50 && findHeights(n) > 15){
 			_height = true;
 		}
 		else{
 			_height = false;
 		}
 		///////////
-		if(findCenterXs() < 100 && findCenterXs() > 50){
+		if(findCenterXs(n) < 100 && findCenterXs(n) > 50){
 			_x = true;
 		}
 		else{
 			_x = false;
 		}
 		///////////
-		if(findCenterYs() < 160 && findCenterYs() > 100){
+		if(findCenterYs(n) < 160 && findCenterYs(n) > 100){
 			_y = true;
 		}
 		else{
 			_y = false;
 		}
-		if(_height && _x && _y){
-			RobotMap.shootReq = true;
-			
-		}
-		return _height && _x && _y;
 		
+		
+		switch(x){
+			default:
+				return _x && _y && _height;
+			case 1:
+				return _height;
+			case 2:
+				return _x;
+			case 3:
+				return _y;
+		}
 	}
-	public boolean gearInterpretation(){
-		boolean tooLeft = false;
-		boolean tooRight = false;
-		boolean goodToGear = false;
-		if((heights[0] > heights[1] + 3 && centerXs[0] > centerXs[1] + 3 && centerYs[0] > centerYs[1] + 3) && heights[0] > 20/*to be determined*/ && heights[1] > 20/*to be determined*/){
-			tooLeft = true;
-		}
-		else if((heights[1] > heights[0] + 3 && centerXs[1] > centerXs[0] + 3 && centerYs[1] > centerYs[0] + 3) && heights[0] > 20/*to be determined*/ && heights[1] > 20/*to be determined*/){
-			tooRight = true;
-		}
-		else{
-			goodToGear = true;
-		}
-		return tooLeft && tooRight && goodToGear;
-	}
+	
+	
+/* 
+ The code below should be manipulated in order to thoroughly compare
+ two or more contours 
+ */
+//	public boolean gearInterpretation(){
+//		boolean tooLeft = false;
+//		boolean tooRight = false;
+//		boolean goodToGear = false;
+//		if((heights[0] > heights[1] + 3 && centerXs[0] > centerXs[1] + 3 && centerYs[0] > centerYs[1] + 3) && heights[0] > 20/*to be determined*/ && heights[1] > 20/*to be determined*/){
+//			tooLeft = true;
+//		}
+//		else if((heights[1] > heights[0] + 3 && centerXs[1] > centerXs[0] + 3 && centerYs[1] > centerYs[0] + 3) && heights[0] > 20/*to be determined*/ && heights[1] > 20/*to be determined*/){
+//			tooRight = true;
+//		}
+//		else{
+//			goodToGear = true;
+//		}
+//		return tooLeft && tooRight && goodToGear;
+//	}
+//	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 //	public void interpretCamera(){
 //	if(areas.length > 0 && widthDataCount > 0 && heightDataCount > 0 && centerXDataCount > 0 && centerYDataCount > 0){

@@ -32,6 +32,7 @@ import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.SmartDashboard_sub;
 import org.usfirst.frc.team2557.robot.vision.VisionArray_sub;
 import org.usfirst.frc.team2557.robot.vision.Vision_cmd;
+import org.usfirst.frc.team2557.robot.vision.centerX_gear;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -63,8 +64,10 @@ public class Robot extends IterativeRobot {
 	Command visionUpdate;
 	Command shooterUpdate;
 	Command driveToTarget;
-//	Command autonomousCommand;
-//	SendableChooser<Command> chooser = new SendableChooser<>();
+	public static Command leftX_gear;
+	
+	Command autonomousCommand;
+	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -79,12 +82,13 @@ public class Robot extends IterativeRobot {
 		visionUpdate = new Vision_cmd();
 		shiftUp = new ShiftToggle_autoCmd(true);
 		shiftDown = new ShiftToggle_autoCmd(false);
+		leftX_gear = new centerX_gear();
 //		Main_auto = new Autonomous_GearLeftHopper();
 //		Main_auto = new Autonomous_GearLeftShoot();
 //		Main_auto = new Autonomous_GearRightHopper();
 		
 //		Main_auto = new Autonomous_GearRightShoot(); //GearLine up right
-		Main_auto = new Autonomous_GearCenterShootLeft(); //GearCenter
+//		Main_auto = new Autonomous_GearCenterShootLeft(); //GearCenter
 		
 		
 //		Main_auto = new Autonomous_GearCenterShootRight();
@@ -96,11 +100,14 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		oi.init();
 		
-//		chooser.addDefault("Autonomous_Basline", new Autonomous_Baseline());
-//		chooser.addObject("Autonomous_GearLeft: ", new Autonomous_GearLeft());
-//		chooser.addObject("Autonomus_GearCenter", new Autonomous_GearCenter());
-//		chooser.addObject("Autonomous_GearRight", new Autonomous_GearRight());
-//		SmartDashboard.putData("Auto mode", chooser);
+		SmartDashboard.putData("Auto mode", chooser);
+		chooser.addObject("Autonomous_GearLeftShoot: ", new Autonomous_GearLeftShoot());
+		chooser.addObject("Autonomous_GearLeftHopper: ", new Autonomous_GearLeftHopper());
+		chooser.addObject("Autonomous_GearRightShoot: ", new Autonomous_GearRightShoot());
+		chooser.addObject("Autonomous_GearRightHopper: ", new Autonomous_GearRightHopper());
+		chooser.addObject("Autonomous_GearCenterShootLeft: ", new Autonomous_GearCenterShootLeft());		
+		chooser.addObject("Autonomous_GearCenterShootRight: ", new Autonomous_GearCenterShootRight());
+		
 	}
 
 	/**
@@ -136,9 +143,6 @@ public class Robot extends IterativeRobot {
 		RobotMap.FLdrive.setEncPosition(0);
 		RobotMap.BRdrive.setEncPosition(0);
 		RobotMap.navX.reset();
-//		autonomousCommand = (Command) chooser.getSelected();
-//		autonomousCommand.start();
-		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -146,9 +150,12 @@ public class Robot extends IterativeRobot {
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
 
+		autonomousCommand = (Command) chooser.getSelected();
+		autonomousCommand.start();
+		
 		// schedule the autonomous command (example)
-		if (Main_auto != null)
-			Main_auto.start();
+		if (autonomousCommand != null)
+			autonomousCommand.start();
 	}
 
 	/**
@@ -181,8 +188,8 @@ public class Robot extends IterativeRobot {
 //		driveToTarget.start();
 //		if (autonomousCommand != null)
 //			autonomousCommand.cancle();
-		if (Main_auto != null)
-			Main_auto.cancel();
+		if (autonomousCommand != null)
+			autonomousCommand.cancel();
 		
 	}
 
@@ -208,27 +215,31 @@ public class Robot extends IterativeRobot {
 			shiftDown.start();
 			return;
 		}
+		
+		
+		
+		
 //		if(oi.gamepad1.getRawAxis(3) > 0.1){
 //			fakePID.start();
 //		}
 		
-//		if(oi.a2.get()) {
-//    		if(vision.interpretation() == false){
-//    			if(vision.findCenterYs() < 100){
-//    				RobotMap.robotDrive.arcadeDrive(0,.5);
-//    			}
-//    			else if(vision.findCenterYs() > 120){
-//    				RobotMap.robotDrive.arcadeDrive(0,-.5);
-//    			}
-//    			else{
-//    				RobotMap.robotDrive.arcadeDrive(0,0);
-//    			}
-//    		}
-//    		else{
-//    			RobotMap.robotDrive.arcadeDrive(0,0);
-//    		}
-//    		
-//    	}
+		if(oi.a2.get()) {
+    		if(vision.interpretation(0, 0) == false){
+    			if(vision.findCenterYs(0) < 100){
+    				RobotMap.robotDrive.arcadeDrive(0,.5);
+    			}
+    			else if(vision.findCenterYs(0) > 120){
+    				RobotMap.robotDrive.arcadeDrive(0,-.5);
+    			}
+    			else{
+    				RobotMap.robotDrive.arcadeDrive(0,0);
+    			}
+    		}
+    		else{
+    			RobotMap.robotDrive.arcadeDrive(0,0);
+    		}
+    		
+    	}
 	}
 
 	/**
