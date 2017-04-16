@@ -27,7 +27,7 @@ public class Autonomous_GearRightHopper extends CommandGroup {
     	addSequential(new GearToggle_autoCmd(false)); //Put the gear mech to the floor
     	addParallel(new TimedGear(2, .75)); //Run gear wheels
     	addSequential(new EncoderDrive_cmd(-13, -13 ,false, -.85));// Drive backwards away from the peg
-    	
+    	addSequential(new GearToggle_autoCmd(true)); //Put the gear mech to the top
     	
     	
     	
