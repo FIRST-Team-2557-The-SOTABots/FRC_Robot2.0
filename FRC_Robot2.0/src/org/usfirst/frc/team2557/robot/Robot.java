@@ -241,19 +241,19 @@ public class Robot extends IterativeRobot {
 //    		
 //    	}
 		if(oi.a1.get()) {
-    		if(vision.averageInterpretation(2, 0, 0, 147, 0, .05) == false){
-    			if(vision.findCenterXs(0) < 147){
-    				RobotMap.robotDrive.arcadeDrive(-.7,-.75); //-.52
+    		if(vision.averageInterpretation(2, 0, 0, 217, 0, .08) == false){
+    			if(vision.findCenterXs(0) < 217){
+    				RobotMap.robotDrive.arcadeDrive(-.9,-.7); //-.52
     			}
-    			else if(vision.findCenterXs(0) > 147){
-    				RobotMap.robotDrive.arcadeDrive(-.7,.75); //.52
+    			else if(vision.findCenterXs(0) > 217){
+    				RobotMap.robotDrive.arcadeDrive(-.9,.7); //.52
     			}
     			else{
     				RobotMap.robotDrive.arcadeDrive(0,0);
     			}
     		}
     		else{
-    			RobotMap.robotDrive.arcadeDrive(-.6,0);
+    			RobotMap.robotDrive.arcadeDrive(-.8,0);
     		}
     		
     	}
