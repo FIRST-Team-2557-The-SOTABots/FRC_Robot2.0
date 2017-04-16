@@ -16,13 +16,22 @@ public class Autonomous_GearRightHopper extends CommandGroup {
     	
     	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
     	addSequential(new TimedDrive(.2, false, 0)); //Pause to allow encoders to reset
-    	addSequential(new EncoderDrive_cmd(15.49, 15.37 ,true, .85), 2);//Drive onto the gear peg
+    	addSequential(new TimedVision(3)); //Run the vision gear code
+    	
+    	
+    	
+    	
     	
     	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
     	addSequential(new TimedDrive(.2, false, 0)); //Pause to allow encoders to reset
     	addSequential(new GearToggle_autoCmd(false)); //Put the gear mech to the floor
     	addParallel(new TimedGear(2, .75)); //Run gear wheels
     	addSequential(new EncoderDrive_cmd(-13, -13 ,false, -.85));// Drive backwards away from the peg
+    	
+    	
+    	
+    	
+    	
     	
     	/*
     	addSequential(new GyroDrive_cmd(-1, .8)); //Turn to face forward again
