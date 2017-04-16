@@ -138,11 +138,11 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		RobotMap.euler.autoInit();
-		Robot.chassis.resetDriveStraight();
+//		RobotMap.euler.autoInit();
+//		Robot.chassis.resetDriveStraight();
 		RobotMap.FLdrive.setEncPosition(0);
 		RobotMap.BRdrive.setEncPosition(0);
-		RobotMap.navX.reset();
+//		RobotMap.navX.reset();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand

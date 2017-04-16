@@ -9,6 +9,10 @@ public class Autonomous_GearLeftHopper extends CommandGroup {
 
     public Autonomous_GearLeftHopper() {
     	addSequential(new SensorReset_autoCmd(3)); //Reset gyro angle to zero and encoders to zero
+    	addSequential(new SensorReset_autoCmd(1));
+    	addSequential(new SensorReset_autoCmd(1));
+    	addParallel(new SensorReset_autoCmd(1));
+    	addSequential(new TimedDrive(1, false, 0));
     	addSequential(new EncoderDrive_cmd(23.7, 23.67 ,true, .85)); //Drive forward
     	
     	addSequential(new GyroDrive_cmd(54, .85)); //Turn to the gear peg
@@ -18,18 +22,20 @@ public class Autonomous_GearLeftHopper extends CommandGroup {
     	//addSequential(new EncoderDrive_cmd(15.49, 15.37 ,true, .85), 2);//Drive onto the gear peg
     	addSequential(new TimedVision(3));//A new, better way to drive onto the gear peg using vision.
 
-    	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
-    	
+    	addSequential(new SensorReset_autoCmd(3)); //Reset the encoders to zero
+    	addSequential(new TimedDrive(.6, false, 0));
     	addSequential(new GearToggle_autoCmd(false)); //Put the gear mech to the floor
     	addParallel(new TimedGear(2, .75)); //Run gear wheels
     	addSequential(new EncoderDrive_cmd(-13, -13 ,false, -.85));// Drive backwards away from the peg
-    	/*
-    	addSequential(new GyroDrive_cmd(5, -.8)); //Turn to face forward again
+    	addSequential(new GearToggle_autoCmd(true));
+    	
+    	addSequential(new GyroDrive_cmd(-54, -.8)); //Turn to face forward again
     	
     	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
     	addSequential(new ShiftToggle_autoCmd(false)); //Shift into high gear
-    	addSequential(new EncoderDrive_cmd(24.25, 23.7, true, .8)); //Drive forward
+    	addSequential(new EncoderDrive_cmd(24.25, 23.7, true, 1)); //Drive forward
     	
+    	/*
     	addSequential(new GyroDrive_cmd(90, .775)); //Turn to face directly away from the hopper
     	
     	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
