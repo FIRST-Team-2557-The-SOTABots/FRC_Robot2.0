@@ -224,11 +224,11 @@ public class Robot extends IterativeRobot {
 //		}
 		
 		if(oi.a2.get()) {
-    		if(vision.interpretation(0, 0) == false){
-    			if(vision.findCenterYs(0) < 100){
+    		if(vision.interpretation(2, 0, 0, 162, 0, .05) == false){
+    			if(vision.findCenterXs(0) < 162){
     				RobotMap.robotDrive.arcadeDrive(0,.5);
     			}
-    			else if(vision.findCenterYs(0) > 120){
+    			else if(vision.findCenterXs(0) > 162){
     				RobotMap.robotDrive.arcadeDrive(0,-.5);
     			}
     			else{

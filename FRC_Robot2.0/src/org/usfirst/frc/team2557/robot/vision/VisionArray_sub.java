@@ -185,24 +185,24 @@ public class VisionArray_sub extends Subsystem {
  correct position. Right now I (Antonio) am trying to figure out how to make the thresholds modular  
   
  */
-	public boolean interpretation(int x, int n){
+	public boolean interpretation(int x, int n, double hPrime, double xPrime, double yPrime, double offset){
 		boolean _height, _x, _y;
 		///////////
-		if(findHeights(n) < 50 && findHeights(n) > 15){
+		if(findHeights(n) < hPrime + (hPrime * offset) && findHeights(n) > hPrime - (hPrime * offset)){
 			_height = true;
 		}
 		else{
 			_height = false;
 		}
 		///////////
-		if(findCenterXs(n) < 100 && findCenterXs(n) > 50){
+		if(findCenterXs(n) < xPrime + (xPrime * offset) && findCenterXs(n) > xPrime - (xPrime * offset)){
 			_x = true;
 		}
 		else{
 			_x = false;
 		}
 		///////////
-		if(findCenterYs(n) < 160 && findCenterYs(n) > 100){
+		if(findCenterYs(n) < yPrime + (yPrime * offset) && findCenterYs(n) > yPrime - (yPrime * offset)){
 			_y = true;
 		}
 		else{
@@ -221,6 +221,8 @@ public class VisionArray_sub extends Subsystem {
 				return _y;
 		}
 	}
+
+
 	
 	
 /* 
