@@ -15,7 +15,8 @@ public class Autonomous_GearLeftHopper extends CommandGroup {
     	
     	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
     	addSequential(new TimedDrive(.25, false, 0)); //Pause to allow time for encoders to reset
-    	addSequential(new EncoderDrive_cmd(15.49, 15.37 ,true, .85), 2);//Drive onto the gear peg
+    	//addSequential(new EncoderDrive_cmd(15.49, 15.37 ,true, .85), 2);//Drive onto the gear peg
+    	addSequential(new TimedVision(3));//A new, better way to drive onto the gear peg using vision.
 
     	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
     	

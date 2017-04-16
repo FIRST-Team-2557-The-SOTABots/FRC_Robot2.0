@@ -16,7 +16,8 @@ public class Autonomous_GearLeftShoot extends CommandGroup {
     	
     	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
     	addSequential(new TimedDrive(.15, false, 0)); //Pause to allow for encoders to reset
-    	addSequential(new EncoderDrive_cmd(13.49, 13.37 ,true, .85), 2); //Drive onto the gear peg
+    	//addSequential(new EncoderDrive_cmd(13.49, 13.37 ,true, .85), 2); //Drive onto the gear peg
+    	addSequential(new TimedVision(3));//A new, better way to drive onto the gear peg using vision.
     	
     	addSequential(new GearToggle_autoCmd(false)); //Put the gear mech to the floor
     	
