@@ -9,8 +9,7 @@ public class Autonomous_GearRightHopper extends CommandGroup {
 
     public Autonomous_GearRightHopper() {
     	addSequential(new SensorReset_autoCmd(2)); //Reset gyro angle to zero and encoders to zero
-    	addSequential(new SensorReset_autoCmd(1)); //Reset gyro angle to zero and encoders to zero
-    	addSequential(new TimedDrive(.6, false, 0)); //Pause to allow encoders to reset
+    	addSequential(new TimedDrive(.25, false, 0)); //Pause to allow encoders to reset
     	addSequential(new EncoderDrive_cmd(22.7, 22.67 ,true, .85)); //Drive forward
     	
     	addSequential(new GyroDrive_cmd(-54, -.85)); //Turn to face the peg
@@ -18,10 +17,6 @@ public class Autonomous_GearRightHopper extends CommandGroup {
     	addSequential(new SensorReset_autoCmd(3)); //Reset the encoders to zero
     	addSequential(new TimedDrive(.25, false, 0)); //Pause to allow encoders to reset
     	addSequential(new TimedVision(3)); //Run the vision gear code
-    	
-    	
-    	
-    	
     	
     	addSequential(new SensorReset_autoCmd(3)); //Reset the encoders to zero
     	addSequential(new TimedDrive(.25, false, 0)); //Pause to allow encoders to reset

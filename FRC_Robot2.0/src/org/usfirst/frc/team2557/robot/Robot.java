@@ -83,9 +83,9 @@ public class Robot extends IterativeRobot {
 		shiftUp = new ShiftToggle_autoCmd(true);
 		shiftDown = new ShiftToggle_autoCmd(false);
 		leftX_gear = new centerX_gear();
-//		Main_auto = new Autonomous_GearLeftHopper();
+//		Main_auto = new Autonomous_GearLeftHopper(); //GearLeft
 //		Main_auto = new Autonomous_GearLeftShoot();
-//		Main_auto = new Autonomous_GearRightHopper();
+//		Main_auto = new Autonomous_GearRightHopper(); //GearRight
 		
 //		Main_auto = new Autonomous_GearRightShoot(); //GearLine up right
 //		Main_auto = new Autonomous_GearCenterShootLeft(); //GearCenter
@@ -101,12 +101,12 @@ public class Robot extends IterativeRobot {
 		oi.init();
 		
 		SmartDashboard.putData("Auto mode", chooser);
-		chooser.addObject("Autonomous_GearLeftShoot: ", new Autonomous_GearLeftShoot());
-		chooser.addObject("Autonomous_GearLeftHopper: ", new Autonomous_GearLeftHopper());
-		chooser.addObject("Autonomous_GearRightShoot: ", new Autonomous_GearRightShoot());
-		chooser.addObject("Autonomous_GearRightHopper: ", new Autonomous_GearRightHopper());
-		chooser.addObject("Autonomous_GearCenterShootLeft: ", new Autonomous_GearCenterShootLeft());		
-		chooser.addObject("Autonomous_GearCenterShootRight: ", new Autonomous_GearCenterShootRight());
+//		chooser.addObject("Autonomous_GearLeftShoot: ", new Autonomous_GearLeftShoot());
+		chooser.addObject("Autonomous_GearLeft (Hopper): ", new Autonomous_GearLeftHopper());
+//		chooser.addObject("Autonomous_GearRightShoot: ", new Autonomous_GearRightShoot());
+		chooser.addObject("Autonomous_GearRight (Hopper): ", new Autonomous_GearRightHopper());
+		chooser.addObject("Autonomous_GearCenter (ShootLeft): ", new Autonomous_GearCenterShootLeft());		
+//		chooser.addObject("Autonomous_GearCenterShootRight: ", new Autonomous_GearCenterShootRight());
 		
 	}
 

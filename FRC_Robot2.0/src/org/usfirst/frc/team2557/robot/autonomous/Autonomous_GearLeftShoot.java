@@ -9,13 +9,13 @@ public class Autonomous_GearLeftShoot extends CommandGroup {
 
     public Autonomous_GearLeftShoot() {
     	addSequential(new SensorReset_autoCmd(3)); //Reset gyro angle to zero and encoders to zero
-    	addSequential(new TimedDrive(.15, false, 0)); //Pause to allow for encoders to reset
+    	addSequential(new TimedDrive(.25, false, 0)); //Pause to allow for encoders to reset
     	addSequential(new EncoderDrive_cmd(23.7, 23.67 ,true, .85)); //Drive forward
     	
     	addSequential(new GyroDrive_cmd(54, .85)); //Turn to the gear peg
     	
     	addSequential(new SensorReset_autoCmd(2)); //Reset the encoders to zero
-    	addSequential(new TimedDrive(.15, false, 0)); //Pause to allow for encoders to reset
+    	addSequential(new TimedDrive(.25, false, 0)); //Pause to allow for encoders to reset
     	//addSequential(new EncoderDrive_cmd(13.49, 13.37 ,true, .85), 2); //Drive onto the gear peg
     	addSequential(new TimedVision(3));//A new, better way to drive onto the gear peg using vision.
     	
