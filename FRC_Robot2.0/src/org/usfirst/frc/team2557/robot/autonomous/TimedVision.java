@@ -22,12 +22,12 @@ public class TimedVision extends TimedCommand {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.vision.averageInterpretation(2, 0, 0, 217, 0, .08) == false){
+    	if(Robot.vision.averageInterpretation(2, 0, 0, 217, 0, .02) == false){
 			if(Robot.vision.findCenterXs(0) < 217){
-				RobotMap.robotDrive.arcadeDrive(-.9,-.7); //-.52
+				RobotMap.robotDrive.arcadeDrive(-.8,-.5);
 			}
 			else if(Robot.vision.findCenterXs(0) > 217){
-				RobotMap.robotDrive.arcadeDrive(-.9,.7); //.52
+				RobotMap.robotDrive.arcadeDrive(-.8,.5);
 			}
 			else{
 				RobotMap.robotDrive.arcadeDrive(0,0);
