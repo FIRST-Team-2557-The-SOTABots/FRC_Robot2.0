@@ -1,5 +1,12 @@
 package org.usfirst.frc.team2557.robot.vision;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+import javax.lang.model.element.Element;
+
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
@@ -19,19 +26,39 @@ public class VisionArray_sub extends Subsystem {
 //	private int coveredElements;
 	private int areaImageTotal;
 	private double filteredArea;
-	private double[] areaLoop;
+	//private ArrayList<double> areaLoop;
 	private double[] heights;
 	private double[] areas;
 	private double[] widths;
 	private double[] centerYs;
 	private double[] centerXs;
+	private double[] areaLoop;
+	private boolean inRange;
+	private double maxArea;
+//	private boolean _height;
+//	private boolean _x;
+//	private boolean _y;
+//	private boolean goodToGear;
+//	private boolean tooLeft;
+//	private boolean tooRight;
 	private boolean heightReq;
 	private boolean areaReq;
+	private boolean readyToShoot;
 	NetworkTable table;
+	
+
 	
 	
 	public void initializer(){
-	heightDataCount = 0;
+	readyToShoot = false;
+	inRange = false;
+//	_height = false;
+//	_x = false;
+//	_y = false;
+//	goodToGear = false;
+//	tooLeft = false;
+//	tooRight = false;
+//	heightDataCount = 0;
 //	areaDataCount = 0;
 	widthDataCount = 0;
 	centerXDataCount = 0;
@@ -39,7 +66,8 @@ public class VisionArray_sub extends Subsystem {
 //	coveredElements = 0;
 	areaImageTotal = 0;
 	filteredArea = 0;
-	areaLoop = new double[3];
+	//areaLoop = new ArrayList<double>();
+	
 	heights = new double[heightDataCount];
 	
 	areas = new double[100];
@@ -122,9 +150,31 @@ public class VisionArray_sub extends Subsystem {
 		}
 		
 		SmartDashboard.putNumber("areaImageTotal", areaImageTotal);
+		
 
 		if (areaImageTotal > 2) {
-		    filteredArea = (areaLoop[0] + areaLoop[1] + areaLoop[2]) / 3;
+			double[] areaLoopCopy = new double[6];
+			double maxNumber = areaLoop[0];
+			for(int i = 1; i < areaLoop.length; i++){
+				if(areaLoop[i] > maxNumber){
+					maxNumber = areaLoop[i];
+					areaLoop[i] = 0.0;
+					System.arraycopy(areaLoop, 1-8, areaLoopCopy, 1-6, 6);
+				}
+				double minNumber = areaLoop[0];
+				for(int j = 1; j < areaLoop.length; j++){
+					if(areaLoop[j] < minNumber){
+						minNumber = areaLoop[j];
+						
+					}
+				}
+			}
+			double minNumber
+			Math.max(areaLoop[0], areaLoop[1], areaLoop[2], areaLoop[3], areaLoop[4], areaLoop[5], areaLoop[6], areaLoop[7]);
+			Math.max(1, ,)
+			//int minimumPoint = areaLoop.indexOf(Collections.min(areaLoop));
+		    filteredArea = (areaLoop[0] + areaLoop[1] + areaLoop[2] / 3);
+		    
 		    areaImageTotal = 0;
 		}
 		else {
@@ -179,7 +229,7 @@ public class VisionArray_sub extends Subsystem {
 		}
 	}
 		
-	public boolean fuelInterpretation(){
+	public void fuelInterpretation(){
 		boolean _height, _x, _y;
 		///////////
 		if(findHeights() < 50 && findHeights() > 15){
@@ -206,13 +256,18 @@ public class VisionArray_sub extends Subsystem {
 			RobotMap.shootReq = true;
 			
 		}
-		return _height && _x && _y;
+		//return _height && _x && _y;
+		if(_height && _x && _y){
+			readyToShoot = true;
+			SmartDashboard.putBoolean("in shooting range!", readyToShoot);
+		}
 		
 	}
-	public boolean gearInterpretation(){
-		boolean tooLeft = false;
-		boolean tooRight = false;
-		boolean goodToGear = false;
+	public void gearInterpretation(){
+		boolean tooLeft = false, tooRight = false, goodToGear = false;
+		//boolean tooLeft = false;
+		//boolean tooRight = false;
+		//boolean goodToGear = false;
 		if((heights[0] > heights[1] + 3 && centerXs[0] > centerXs[1] + 3 && centerYs[0] > centerYs[1] + 3) && heights[0] > 20/*to be determined*/ && heights[1] > 20/*to be determined*/){
 			tooLeft = true;
 		}
@@ -222,8 +277,13 @@ public class VisionArray_sub extends Subsystem {
 		else{
 			goodToGear = true;
 		}
-		return tooLeft && tooRight && goodToGear;
+		//return tooLeft && tooRight && goodToGear;
+		if(goodToGear && tooLeft == false && tooRight == false){
+			inRange = true;
+			SmartDashboard.putBoolean("You are now good to place a gear.", inRange);
+		}
 	}
+	
 	
 //	public void interpretCamera(){
 //	if(areas.length > 0 && widthDataCount > 0 && heightDataCount > 0 && centerXDataCount > 0 && centerYDataCount > 0){
