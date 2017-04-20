@@ -4,6 +4,7 @@ package org.usfirst.frc.team2557.robot;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -99,7 +100,7 @@ public class Robot extends IterativeRobot {
 		driveToTarget = new DriveToTarget_cmd();
 		oi = new OI();
 		oi.init();
-		
+		/*
 		SmartDashboard.putData("Auto mode", chooser);
 //		chooser.addObject("Autonomous_GearLeftShoot: ", new Autonomous_GearLeftShoot());
 		chooser.addObject("Autonomous_GearLeft (Hopper): ", new Autonomous_GearLeftHopper());
@@ -107,7 +108,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Autonomous_GearRight (Hopper): ", new Autonomous_GearRightHopper());
 		chooser.addObject("Autonomous_GearCenter (ShootLeft): ", new Autonomous_GearCenterShootLeft());		
 //		chooser.addObject("Autonomous_GearCenterShootRight: ", new Autonomous_GearCenterShootRight());
-		
+		*/
 	}
 
 	/**
@@ -150,7 +151,16 @@ public class Robot extends IterativeRobot {
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
 
-		autonomousCommand = (Command) chooser.getSelected();
+		//autonomousCommand = (Command) chooser.getSelected();
+		switch(SmartDashboard.getString("Auto", "0")){
+			default:
+			case "L":
+				autonomousCommand = new Autonomous_GearLeftHopper();
+			case "C":
+				autonomousCommand = new Autonomous_GearCenterShootLeft();
+			case "R":
+				autonomousCommand = new Autonomous_GearRightHopper();
+		}
 		autonomousCommand.start();
 		
 		// schedule the autonomous command (example)
