@@ -16,6 +16,7 @@ import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeftHopper;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeftShoot;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightHopper;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightShoot;
+import org.usfirst.frc.team2557.robot.autonomous.Autonomous_Shooter;
 import org.usfirst.frc.team2557.robot.autonomous.ShiftToggle_autoCmd;
 import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
 import org.usfirst.frc.team2557.robot.commands.DriveToTarget_cmd;
@@ -64,6 +65,13 @@ public class Robot extends IterativeRobot {
 	Command visionUpdate;
 	Command shooterUpdate;
 	Command driveToTarget;
+	Command gcsl;
+	Command gcsr;
+	Command glh;
+	Command gls;
+	Command grh;
+	Command grs;
+	Command shoot;
 	public static Command leftX_gear;
 	
 	Command autonomousCommand;
@@ -97,6 +105,14 @@ public class Robot extends IterativeRobot {
 		
 		fakePID = new PsuedoShooter_cmd();
 		driveToTarget = new DriveToTarget_cmd();
+		gcsl = new Autonomous_GearCenterShootLeft();
+		gcsr = new Autonomous_GearCenterShootRight();
+		glh = new Autonomous_GearLeftHopper();
+		gls = new Autonomous_GearLeftShoot();
+		grh = new Autonomous_GearRightHopper();
+		grs = new Autonomous_GearRightShoot();
+	//	shoot = new Autonomous_Shooter();
+		
 		oi = new OI();
 		oi.init();
 		
@@ -148,8 +164,29 @@ public class Robot extends IterativeRobot {
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
+		 */		
+int autoChoice = SmartDashboard.getNumber("Auto Here", );
+		
+	switch(autoChoice){
+	case 1: gcsl.start();
+	break;
+	case 2: gcsr.start();
+	break;
+	case 3: glh.start();
+	break;
+	case 4: gls.start();
+	break;
+	case 5: grh.start();
+	break;
+	case 6: grs.start();
+	break;
+	case 7: shoot.start(); //don't use this one :) I'm like 99.87% sure it's not going to work
+	}
+	
+	
+	//we might need to return something.........But also maybe not :)
+	
+	
 		autonomousCommand = (Command) chooser.getSelected();
 		autonomousCommand.start();
 		
