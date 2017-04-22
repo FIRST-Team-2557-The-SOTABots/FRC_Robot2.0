@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Autonomous_GearRightHopper extends CommandGroup {
 
     public Autonomous_GearRightHopper() {
+    	
     	addSequential(new SensorReset_autoCmd(2)); //Reset gyro angle to zero and encoders to zero
     	addSequential(new TimedDrive(.25, false, 0)); //Pause to allow encoders to reset
     	addSequential(new EncoderDrive_cmd(22.7, 22.67 ,true, .85)); //Drive forward
@@ -24,18 +25,19 @@ public class Autonomous_GearRightHopper extends CommandGroup {
     	addParallel(new TimedGear(2, .75)); //Run gear wheels
     	addSequential(new EncoderDrive_cmd(-13, -13 ,false, -.85));// Drive backwards away from the peg
     	addSequential(new GearToggle_autoCmd(true)); //Put the gear mech to the top
-    	
-    	
-    	
-    	
-    	
-    	
+    	 
     	addSequential(new GyroDrive_cmd(54, .8)); //Turn to face forward again
     	
     	addSequential(new SensorReset_autoCmd(3)); //Reset the encoders to zero
     	addSequential(new TimedDrive(.25, false, 0)); //Pause to allow encoders to reset
     	addSequential(new ShiftToggle_autoCmd(false)); //Shift into high gear
     	addSequential(new EncoderDrive_cmd(20.25, 19.7, true, .85)); //Drive forward to line up perpendicular to hopper
+    	
+    	
+    	
+    	
+    	
+    	
     	
 //    	addSequential(new GyroDrive_cmd(-90, -.75)); //Turn right to face away from the hopper
 //    	

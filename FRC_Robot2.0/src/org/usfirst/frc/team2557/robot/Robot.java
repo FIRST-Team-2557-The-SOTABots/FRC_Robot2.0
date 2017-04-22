@@ -4,6 +4,7 @@ package org.usfirst.frc.team2557.robot;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -56,7 +57,6 @@ public class Robot extends IterativeRobot {
 	public static final VisionArray_sub		vision			= new VisionArray_sub();
 	public static OI oi;
 	public double x = 45;
-
 	Command driveTo;
 	Command shiftUp;
 	Command shiftDown;
@@ -65,7 +65,10 @@ public class Robot extends IterativeRobot {
 	Command visionUpdate;
 	Command shooterUpdate;
 	Command driveToTarget;
+	
 	public static Command leftX_gear;
+	public static Preferences prefs;
+	public int _auto;
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -78,12 +81,17 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		RobotMap.init();
 		CameraServer.getInstance().startAutomaticCapture();
+		prefs = Preferences.getInstance();
 		vision.initializer();
 		shooterUpdate = new PsuedoShooter_cmd();
 		visionUpdate = new Vision_cmd();
 		shiftUp = new ShiftToggle_autoCmd(true);
 		shiftDown = new ShiftToggle_autoCmd(false);
 		leftX_gear = new centerX_gear();
+		
+		
+		
+		
 //		Main_auto = new Autonomous_GearLeftHopper(); //GearLeft
 //		Main_auto = new Autonomous_GearLeftShoot();
 //		Main_auto = new Autonomous_GearRightHopper(); //GearRight
@@ -100,14 +108,15 @@ public class Robot extends IterativeRobot {
 		driveToTarget = new DriveToTarget_cmd();
 		oi = new OI();
 		oi.init();
+		
 		/*
-		SmartDashboard.putData("Auto mode", chooser);
 //		chooser.addObject("Autonomous_GearLeftShoot: ", new Autonomous_GearLeftShoot());
 		chooser.addObject("Autonomous_GearLeft (Hopper): ", new Autonomous_GearLeftHopper());
 //		chooser.addObject("Autonomous_GearRightShoot: ", new Autonomous_GearRightShoot());
 		chooser.addObject("Autonomous_GearRight (Hopper): ", new Autonomous_GearRightHopper());
 		chooser.addObject("Autonomous_GearCenter (ShootLeft): ", new Autonomous_GearCenterShootLeft());		
 //		chooser.addObject("Autonomous_GearCenterShootRight: ", new Autonomous_GearCenterShootRight());
+		SmartDashboard.putData("Auto mode", chooser);
 		*/
 	}
 
@@ -150,22 +159,24 @@ public class Robot extends IterativeRobot {
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
-
-		//autonomousCommand = (Command) chooser.getSelected();
-		switch(SmartDashboard.getString("Auto", "0")){
-			default:
-			case "L":
-				autonomousCommand = new Autonomous_GearLeftHopper();
-			case "C":
-				autonomousCommand = new Autonomous_GearCenterShootLeft();
-			case "R":
-				autonomousCommand = new Autonomous_GearRightHopper();
-		}
-		autonomousCommand.start();
 		
+//		autonomousCommand = (Command) chooser.getSelected();
+//		autonomousCommand.start();
+		
+		_auto = prefs.getInt("Auto", 0);
+		if(_auto == 1){
+			autonomousCommand = new Autonomous_GearLeftHopper();
+		}
+		else if(_auto == 2){
+			autonomousCommand = new Autonomous_GearRightHopper();
+		}
+		else{
+			autonomousCommand = new Autonomous_GearCenterShootLeft();
+		}
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+			
 	}
 
 	/**
@@ -209,6 +220,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+//		SmartDashboard.putNumber("Auto", (int) SmartDashboard.getNumber("Auto", 0.0));
 		RobotMap.euler.update();
 		visionUpdate.start();
 		shooterUpdate.start();
@@ -250,12 +262,12 @@ public class Robot extends IterativeRobot {
 //    		}
 //    		
 //    	}
-		if(oi.a1.get()) {
-    		if(vision.averageInterpretation(2, 0, 0, 217, 0, .02) == false){
-    			if(vision.findCenterXs(0) < 217){
+		if(oi.y1.get()) {
+    		if(vision.averageInterpretation(2, 0, 0, 220, 0, .02) == false){
+    			if(vision.findCenterXs(0) < 221){
     				RobotMap.robotDrive.arcadeDrive(-.8,-.5);
     			}
-    			else if(vision.findCenterXs(0) > 217){
+    			else if(vision.findCenterXs(0) > 221){
     				RobotMap.robotDrive.arcadeDrive(-.8,.5);
     			}
     			else{
