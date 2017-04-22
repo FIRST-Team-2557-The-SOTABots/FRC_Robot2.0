@@ -31,6 +31,11 @@ import org.usfirst.frc.team2557.robot.subsystems.Intake_sub;
 import org.usfirst.frc.team2557.robot.subsystems.PsuedoShooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.SmartDashboard_sub;
+import org.usfirst.frc.team2557.robot.vision.CameraInitializer2_cmd;
+import org.usfirst.frc.team2557.robot.vision.CameraSwitcher;
+import org.usfirst.frc.team2557.robot.vision.CameraSwitcherSub;
+import org.usfirst.frc.team2557.robot.vision.SimpleInterpretation_cmd;
+import org.usfirst.frc.team2557.robot.vision.Vision2_cmd;
 import org.usfirst.frc.team2557.robot.vision.VisionArray_sub;
 import org.usfirst.frc.team2557.robot.vision.Vision_cmd;
 import org.usfirst.frc.team2557.robot.vision.centerX_gear;
@@ -54,6 +59,7 @@ public class Robot extends IterativeRobot {
 	public static final Acceleration_sub 	accel			= new Acceleration_sub();
 	public static final SmartDashboard_sub  dashboard 		= new SmartDashboard_sub();
 	public static final VisionArray_sub		vision			= new VisionArray_sub();
+	public static final CameraSwitcherSub   camSwitch       = new CameraSwitcherSub();
 	public static OI oi;
 	public double x = 45;
 
@@ -65,6 +71,10 @@ public class Robot extends IterativeRobot {
 	Command visionUpdate;
 	Command shooterUpdate;
 	Command driveToTarget;
+	Command cameraSwitcher;
+	Command simpleInterpretation;
+	Command initializer2;
+	Command vision2;
 	public static Command leftX_gear;
 	
 	Command autonomousCommand;
@@ -84,6 +94,7 @@ public class Robot extends IterativeRobot {
 		shiftUp = new ShiftToggle_autoCmd(true);
 		shiftDown = new ShiftToggle_autoCmd(false);
 		leftX_gear = new centerX_gear();
+		cameraSwitcher = new CameraSwitcher();
 //		Main_auto = new Autonomous_GearLeftHopper(); //GearLeft
 //		Main_auto = new Autonomous_GearLeftShoot();
 //		Main_auto = new Autonomous_GearRightHopper(); //GearRight
@@ -98,6 +109,9 @@ public class Robot extends IterativeRobot {
 		
 		fakePID = new PsuedoShooter_cmd();
 		driveToTarget = new DriveToTarget_cmd();
+		simpleInterpretation = new SimpleInterpretation_cmd();
+		vision2 = new Vision2_cmd();
+		initializer2 = new CameraInitializer2_cmd();
 		oi = new OI();
 		oi.init();
 		/*
@@ -161,6 +175,7 @@ public class Robot extends IterativeRobot {
 			case "R":
 				autonomousCommand = new Autonomous_GearRightHopper();
 		}
+		
 		autonomousCommand.start();
 		
 		// schedule the autonomous command (example)
@@ -208,10 +223,15 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		
 		Scheduler.getInstance().run();
+		vision2.start();
+		initializer2.start();
+		simpleInterpretation.start();
 		RobotMap.euler.update();
 		visionUpdate.start();
 		shooterUpdate.start();
+		cameraSwitcher.start();
 		if(oi.x1.get()){
 			RobotMap.FLdrive.setEncPosition(0);
 			RobotMap.FRdrive.setEncPosition(0);

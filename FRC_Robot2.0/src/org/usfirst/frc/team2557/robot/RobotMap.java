@@ -63,6 +63,7 @@ public class RobotMap {
 	public static DigitalInput gearSwitch;
 	public static Encoder gearEnc;
 	public static boolean _leftX_gear;
+	public static boolean cameraMode;
 	
 	public static Servo leftAgitator;
 	public static Servo rightAgitator;
@@ -108,6 +109,7 @@ public class RobotMap {
 		CAngle = 0;
 		visionShooterSpeed = 0;
 		shootReq = false;
+		cameraMode = false;
 		
 		
 		
