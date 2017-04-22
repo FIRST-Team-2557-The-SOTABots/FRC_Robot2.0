@@ -63,6 +63,7 @@ public class RobotMap {
 	public static DigitalInput gearSwitch;
 	public static Encoder gearEnc;
 	public static boolean _leftX_gear;
+	public static boolean _shootBool;
 	
 	public static Servo leftAgitator;
 	public static Servo rightAgitator;

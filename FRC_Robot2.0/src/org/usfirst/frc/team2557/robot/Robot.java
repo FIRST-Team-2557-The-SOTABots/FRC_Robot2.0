@@ -32,6 +32,9 @@ import org.usfirst.frc.team2557.robot.subsystems.Intake_sub;
 import org.usfirst.frc.team2557.robot.subsystems.PsuedoShooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.SmartDashboard_sub;
+import org.usfirst.frc.team2557.robot.vision.CenterShooting_cmd;
+import org.usfirst.frc.team2557.robot.vision.Initializer2_cmd;
+import org.usfirst.frc.team2557.robot.vision.Vision2_cmd;
 import org.usfirst.frc.team2557.robot.vision.VisionArray_sub;
 import org.usfirst.frc.team2557.robot.vision.Vision_cmd;
 import org.usfirst.frc.team2557.robot.vision.centerX_gear;
@@ -65,6 +68,9 @@ public class Robot extends IterativeRobot {
 	Command visionUpdate;
 	Command shooterUpdate;
 	Command driveToTarget;
+	Command initializer2;
+	Command vision2;
+	Command centerShooting;
 	
 	public static Command leftX_gear;
 	public static Preferences prefs;
@@ -88,6 +94,9 @@ public class Robot extends IterativeRobot {
 		shiftUp = new ShiftToggle_autoCmd(true);
 		shiftDown = new ShiftToggle_autoCmd(false);
 		leftX_gear = new centerX_gear();
+		centerShooting = new CenterShooting_cmd();
+		initializer2 = new Initializer2_cmd();
+		vision2 = new Vision2_cmd();
 		
 		
 		
@@ -219,6 +228,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		centerShooting.start();
+		vision2.start();
+		initializer2.start();
 		Scheduler.getInstance().run();
 //		SmartDashboard.putNumber("Auto", (int) SmartDashboard.getNumber("Auto", 0.0));
 		RobotMap.euler.update();
@@ -279,6 +291,24 @@ public class Robot extends IterativeRobot {
     		}
     		
     	}
+	
+	if(oi.y1.get()) {
+		if(vision.averageInterpretation2(2, 0, 0, 220, 0, .02) == false){
+			if(vision.findCenterXs(0) < 199){
+				RobotMap.robotDrive.arcadeDrive(-.8,-.5);
+			}
+			else if(vision.findCenterXs2(0) > 199){
+				RobotMap.robotDrive.arcadeDrive(-.8,.5);
+			}
+			else{
+				RobotMap.robotDrive.arcadeDrive(0,0);
+			}
+		}
+		else{
+			RobotMap.robotDrive.arcadeDrive(-.8,0);
+		}
+		
+	}
 	}
 
 	/**
