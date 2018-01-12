@@ -2,7 +2,7 @@ package org.usfirst.frc.team2557.robot;
 import org.usfirst.frc.team2557.robot.math.EulerDistanceEstimator;
 import org.usfirst.frc.team2557.robot.math.EulerDistanceEstimator.ForwardAxis;
 
-import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
@@ -10,11 +10,12 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -31,18 +32,20 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
-	public static CANTalon FRdrive;
-	public static CANTalon FLdrive;
-	public static CANTalon BRdrive;
-	public static CANTalon BLdrive;
-	public static RobotDrive robotDrive;
+	public static WPI_TalonSRX FRdrive;
+	public static WPI_TalonSRX FLdrive;
+	public static WPI_TalonSRX BRdrive;
+	public static WPI_TalonSRX BLdrive;
+	public static SpeedControllerGroup Left;
+	public static SpeedControllerGroup Right;
+	public static DifferentialDrive robotDrive;
 	
-	public static CANTalon Lshooter;
-	public static CANTalon Rshooter;
-	public static CANTalon intake;
-	public static CANTalon climber;
-	public static CANTalon gearMotor;
-	public static CANTalon copterAgitator;
+	public static WPI_TalonSRX Lshooter;
+	public static WPI_TalonSRX Rshooter;
+	public static WPI_TalonSRX intake;
+	public static WPI_TalonSRX climber;
+	public static WPI_TalonSRX gearMotor;
+	public static WPI_TalonSRX copterAgitator;
 	public static SpeedController agitator;
 	
 	
@@ -70,18 +73,20 @@ public class RobotMap {
 	public static EulerDistanceEstimator euler;
 	
 	public static void init(){
-		FRdrive = new CANTalon(1);
-		FLdrive = new CANTalon(2);
-		BRdrive = new CANTalon(3);
-		BLdrive = new CANTalon(4);
-		robotDrive = new RobotDrive(FLdrive, BLdrive, FRdrive, BRdrive);
+		FRdrive = new WPI_TalonSRX(1);
+		FLdrive = new WPI_TalonSRX(2);
+		BRdrive = new WPI_TalonSRX(3);
+		BLdrive = new WPI_TalonSRX(4);
+		Left = new SpeedControllerGroup(FLdrive, BLdrive);
+		Right = new SpeedControllerGroup(FRdrive, BRdrive);
+		robotDrive = new DifferentialDrive(Left, Right);
 		robotDrive.setSafetyEnabled(false);
-		Lshooter = new CANTalon(5);
-		Rshooter = new CANTalon(6);
-		intake = new CANTalon(7);
-		climber = new CANTalon(8);
-		gearMotor = new CANTalon(9);
-		copterAgitator = new CANTalon(10);
+		Lshooter = new WPI_TalonSRX(5);
+		Rshooter = new WPI_TalonSRX(6);
+		intake = new WPI_TalonSRX(7);
+		climber = new WPI_TalonSRX(8);
+		gearMotor = new WPI_TalonSRX(9);
+		copterAgitator = new WPI_TalonSRX(10);
 		agitator = new Talon(0);
 		gearSwitch = new DigitalInput(2);
 		gearEnc = new Encoder(0,1);

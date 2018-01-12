@@ -86,10 +86,10 @@ public class Chassis_sub extends Subsystem {
     	_power = speed;
     	_turn1 = 0;
     	_turn2 = 0;
-    	if(-RobotMap.FRdrive.getEncVelocity() > RobotMap.FLdrive.getEncVelocity()){
+    	if(-RobotMap.FRdrive.getSensorCollection().getQuadratureVelocity() > RobotMap.FLdrive.getSensorCollection().getQuadratureVelocity()){
     		_turn1 += .0002;
     	}
-    	else if(-RobotMap.FRdrive.getEncVelocity() < RobotMap.FLdrive.getEncVelocity()){
+    	else if(-RobotMap.FRdrive.getSensorCollection().getQuadratureVelocity() < RobotMap.FLdrive.getSensorCollection().getQuadratureVelocity()){
     		_turn1 -= .0002;
     	}
     	else{

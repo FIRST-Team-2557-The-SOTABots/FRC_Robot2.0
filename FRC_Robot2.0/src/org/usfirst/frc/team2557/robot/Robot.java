@@ -150,8 +150,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 //		RobotMap.euler.autoInit();
 //		Robot.chassis.resetDriveStraight();
-		RobotMap.FLdrive.setEncPosition(0);
-		RobotMap.BRdrive.setEncPosition(0);
+		RobotMap.FLdrive.getSensorCollection().setQuadraturePosition(0, 10);
+		RobotMap.BRdrive.getSensorCollection().setQuadraturePosition(0, 10);
 //		RobotMap.navX.reset();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -186,8 +186,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		RobotMap.euler.update();
-		SmartDashboard.putNumber("Left Encoder: ", RobotMap.FLdrive.getEncPosition());
-		SmartDashboard.putNumber("Right Encoder: ", RobotMap.BRdrive.getEncPosition());
+		SmartDashboard.putNumber("Left Encoder: ", RobotMap.FLdrive.getSensorCollection().getQuadraturePosition());
+		SmartDashboard.putNumber("Right Encoder: ", RobotMap.BRdrive.getSensorCollection().getQuadraturePosition());
 		SmartDashboard.putNumber("NavX Angle is: ",RobotMap.navX.getAngle());
 		SmartDashboard.putNumber("DriveStraight Angle is: ",Robot.chassis.getDriveStraightAngle());
 		
@@ -225,8 +225,8 @@ public class Robot extends IterativeRobot {
 		visionUpdate.start();
 		shooterUpdate.start();
 		if(oi.x1.get()){
-			RobotMap.FLdrive.setEncPosition(0);
-			RobotMap.FRdrive.setEncPosition(0);
+			RobotMap.FLdrive.getSensorCollection().setQuadraturePosition(0, 10);
+			RobotMap.FRdrive.getSensorCollection().setQuadraturePosition(0, 10);
 			RobotMap.navX.reset();
 		}
 		if(oi.RB1.get()){

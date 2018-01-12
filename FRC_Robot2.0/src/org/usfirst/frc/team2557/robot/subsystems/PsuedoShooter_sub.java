@@ -35,17 +35,17 @@ public class PsuedoShooter_sub extends Subsystem {
    
     public double speedChangeLeft(){
     	
-    	if(RobotMap.Lshooter.getEncVelocity() <= -getLowerL(71)){
+    	if(RobotMap.Lshooter.getSensorCollection().getQuadratureVelocity() <= -getLowerL(71)){
     		return RobotMap.Lshooter.get() - 0.025;
     	}
-    	else if(RobotMap.Lshooter.getEncVelocity() >= -getUpperL(79)){
+    	else if(RobotMap.Lshooter.getSensorCollection().getQuadratureVelocity() >= -getUpperL(79)){
     		return RobotMap.Lshooter.get() + 0.005;
     	}
-    	else if(RobotMap.Lshooter.getEncVelocity() != -getPrimeL(75)){
+    	else if(RobotMap.Lshooter.getSensorCollection().getQuadratureVelocity() != -getPrimeL(75)){
     		if(-getPrimeL(75) < prime_left){
     			return RobotMap.Lshooter.get() - 0.0025;
     		}
-    		else if(RobotMap.Lshooter.getEncVelocity() > -getPrimeL(75)){
+    		else if(RobotMap.Lshooter.getSensorCollection().getQuadratureVelocity() > -getPrimeL(75)){
     			return RobotMap.Lshooter.get() + 0.0015;
     		}
     	}
@@ -53,17 +53,17 @@ public class PsuedoShooter_sub extends Subsystem {
     }
     public double speedChangeRight(){
     	
-    	if( RobotMap.Rshooter.getEncVelocity() <= getLowerR(71)){
+    	if( RobotMap.Rshooter.getSensorCollection().getQuadratureVelocity() <= getLowerR(71)){
     		return RobotMap.Rshooter.get() + 0.025;
     	}
-    	else if(RobotMap.Rshooter.getEncVelocity() >= getUpperR(79)){
+    	else if(RobotMap.Rshooter.getSensorCollection().getQuadratureVelocity() >= getUpperR(79)){
     		return RobotMap.Rshooter.get() - 0.005;
     	}
-    	else if(RobotMap.Rshooter.getEncVelocity() != getPrimeR(75)){
-    		if(RobotMap.Rshooter.getEncVelocity() < getPrimeR(75)){
+    	else if(RobotMap.Rshooter.getSensorCollection().getQuadratureVelocity() != getPrimeR(75)){
+    		if(RobotMap.Rshooter.getSensorCollection().getQuadratureVelocity() < getPrimeR(75)){
     			return RobotMap.Rshooter.get() + 0.0025;
     		}
-    		else if(RobotMap.Rshooter.getEncVelocity() > getPrimeR(75)){
+    		else if(RobotMap.Rshooter.getSensorCollection().getQuadratureVelocity() > getPrimeR(75)){
     			return RobotMap.Rshooter.get() - 0.0015;
     		}
     	}

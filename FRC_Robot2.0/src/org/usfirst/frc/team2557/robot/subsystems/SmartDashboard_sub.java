@@ -23,11 +23,11 @@ public class SmartDashboard_sub extends Subsystem {
     }
 
     public void encoders(){
-		SmartDashboard.putNumber("Lshooter encoder velocity: ", RobotMap.Lshooter.getEncVelocity());
-		SmartDashboard.putNumber("Rshooter encoder velocity: ", RobotMap.Rshooter.getEncVelocity());
+		SmartDashboard.putNumber("Lshooter encoder velocity: ", RobotMap.Lshooter.getSensorCollection().getQuadratureVelocity());
+		SmartDashboard.putNumber("Rshooter encoder velocity: ", RobotMap.Rshooter.getSensorCollection().getQuadratureVelocity());
 		
-		SmartDashboard.putNumber("Left encoder: ", (double) (RobotMap.FLdrive.getEncPosition()) / 1000);
-		SmartDashboard.putNumber("Right encoder: ", (double) (-RobotMap.FRdrive.getEncPosition()) / 1000);
+		SmartDashboard.putNumber("Left encoder: ", (double) (RobotMap.FLdrive.getSensorCollection().getQuadraturePosition()) / 1000);
+		SmartDashboard.putNumber("Right encoder: ", (double) (-RobotMap.FRdrive.getSensorCollection().getQuadraturePosition()) / 1000);
     }
 //    public void vision(){
 //    	SmartDashboard.putNumber("The height is: ", Robot.vision.findHeights());
