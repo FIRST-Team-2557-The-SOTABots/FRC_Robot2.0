@@ -54,7 +54,7 @@ public class RobotMap {
 	public static DoubleSolenoid gearGrab;
 	
 	public static BuiltInAccelerometer accel;
-	public static AHRS navX;
+//	public static AHRS navX;
 	public static boolean _gemini; //false = Fuel Forward and true = Gear Forward
 	public static boolean _stage; //used in gear command or subsystem(I forgot) somewhere :)
 	public static boolean shift; //boolean for the super shifters on the drive train
@@ -98,7 +98,7 @@ public class RobotMap {
 		cameraServo = new Servo(3);
 		
 		pdp = new PowerDistributionPanel(0);
-		navX = new AHRS(SPI.Port.kMXP);
+//		navX = new AHRS(SPI.Port.kMXP);
 		accel = new BuiltInAccelerometer();
 		euler = new EulerDistanceEstimator(ForwardAxis.NegX);
 		
