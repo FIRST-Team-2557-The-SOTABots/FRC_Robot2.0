@@ -45,7 +45,7 @@ import org.usfirst.frc.team2557.robot.vision.centerX_gear;
  */
 public class Robot extends IterativeRobot {
 
-	public static final Chassis_sub 		chassis 		= new Chassis_sub();
+	public static final Chassis_sub 		chassis 		= new Chassis_sub(null, null, null, null);
 	public static final Shooter_sub	 		shooter 		= new Shooter_sub();
 	public static final Intake_sub 			intake 			= new Intake_sub();
 	public static final Gear_sub 			gear 			= new Gear_sub();
@@ -189,7 +189,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Left Encoder: ", RobotMap.FLdrive.getSensorCollection().getQuadraturePosition());
 		SmartDashboard.putNumber("Right Encoder: ", RobotMap.BRdrive.getSensorCollection().getQuadraturePosition());
 		SmartDashboard.putNumber("NavX Angle is: ",RobotMap.navX.getAngle());
-		SmartDashboard.putNumber("DriveStraight Angle is: ",Robot.chassis.getDriveStraightAngle());
+		//SmartDashboard.putNumber("DriveStraight Angle is: ",Robot.chassis.getDriveStraightAngle());
 		
 		if(RobotMap._stage){
 			RobotMap.gearGrab.set(Value.kForward);

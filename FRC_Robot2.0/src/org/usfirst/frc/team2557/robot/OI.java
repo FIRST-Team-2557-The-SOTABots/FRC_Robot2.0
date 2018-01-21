@@ -1,12 +1,12 @@
 package org.usfirst.frc.team2557.robot;
 
 
-import org.usfirst.frc.team2557.robot.commands.GearGrab_toggle;
-import org.usfirst.frc.team2557.robot.commands.Shift_toggle;
+//import org.usfirst.frc.team2557.robot.commands.GearGrab_toggle;
+//import org.usfirst.frc.team2557.robot.commands.Shift_toggle;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+//import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
+//import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 
@@ -97,6 +97,21 @@ public class OI {
 //		RB2.whenPressed(new GearGrab_toggle());
 		//RB1.whenPressed(new Shift_toggle());
 
+	}
+
+	public boolean isFrontDeployed() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public Object getThrottle() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object getTurn() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
