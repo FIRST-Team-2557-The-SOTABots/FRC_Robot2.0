@@ -32,6 +32,7 @@ import org.usfirst.frc.team2557.robot.subsystems.Intake_sub;
 import org.usfirst.frc.team2557.robot.subsystems.PsuedoShooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.SmartDashboard_sub;
+import org.usfirst.frc.team2557.robot.subsystems.Solenoid_sub;
 import org.usfirst.frc.team2557.robot.vision.VisionArray_sub;
 import org.usfirst.frc.team2557.robot.vision.Vision_cmd;
 import org.usfirst.frc.team2557.robot.vision.centerX_gear;
@@ -48,6 +49,7 @@ public class Robot extends IterativeRobot {
 	public static final Chassis_sub 		chassis 		= new Chassis_sub();
 	public static final Shooter_sub	 		shooter 		= new Shooter_sub();
 	public static final Intake_sub 			intake 			= new Intake_sub();
+	public static final Solenoid_sub		solenoid		= new Solenoid_sub();
 	public static final Gear_sub 			gear 			= new Gear_sub();
 	public static final Climber_sub 		climber 		= new Climber_sub();
 	public static final Agitator_sub 		agitator 		= new Agitator_sub();

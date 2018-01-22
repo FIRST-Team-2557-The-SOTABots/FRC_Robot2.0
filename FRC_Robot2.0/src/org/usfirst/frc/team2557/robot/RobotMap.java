@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -39,7 +40,7 @@ public class RobotMap {
 	public static SpeedControllerGroup Left;
 	public static SpeedControllerGroup Right;
 	public static DifferentialDrive robotDrive;
-	
+	public static MecanumDrive mecDrive;
 	public static WPI_TalonSRX Lshooter;
 	public static WPI_TalonSRX Rshooter;
 	public static WPI_TalonSRX intake;
@@ -73,14 +74,16 @@ public class RobotMap {
 	public static EulerDistanceEstimator euler;
 	
 	public static void init(){
-		FRdrive = new WPI_TalonSRX(1);
-		FLdrive = new WPI_TalonSRX(2);
-		BRdrive = new WPI_TalonSRX(3);
-		BLdrive = new WPI_TalonSRX(4);
+		FRdrive = new WPI_TalonSRX(3);
+		FLdrive = new WPI_TalonSRX(1);
+		BRdrive = new WPI_TalonSRX(4);
+		BLdrive = new WPI_TalonSRX(2);
 		Left = new SpeedControllerGroup(FLdrive, BLdrive);
 		Right = new SpeedControllerGroup(FRdrive, BRdrive);
 		robotDrive = new DifferentialDrive(Left, Right);
 		robotDrive.setSafetyEnabled(false);
+		mecDrive = new MecanumDrive(FLdrive, BLdrive, FRdrive, BRdrive);
+		mecDrive.setSafetyEnabled(false);
 		Lshooter = new WPI_TalonSRX(5);
 		Rshooter = new WPI_TalonSRX(6);
 		intake = new WPI_TalonSRX(7);

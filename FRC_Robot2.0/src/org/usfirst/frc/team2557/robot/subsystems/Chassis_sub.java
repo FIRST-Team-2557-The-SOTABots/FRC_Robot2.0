@@ -22,6 +22,18 @@ public class Chassis_sub extends Subsystem {
         // Set the default command for a subsystem here.
     	setDefaultCommand(new Chassis_cmd());
     }
+    
+    
+    public void butterflyDrive() {
+    	if(RobotMap.shift) {
+    		RobotMap.robotDrive.tankDrive(-Robot.oi.gamepad1.getRawAxis(1), -Robot.oi.gamepad1.getRawAxis(5));
+    	}
+    	else {
+    		RobotMap.mecDrive.driveCartesian(Robot.oi.gamepad1.getRawAxis(0), -Robot.oi.gamepad1.getRawAxis(1),
+    				Robot.oi.gamepad1.getRawAxis(4));
+    	}
+    }
+    
     public void arcadeDrive(){
     	if(RobotMap.drive){
 	    	RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *.8);
@@ -29,17 +41,6 @@ public class Chassis_sub extends Subsystem {
 	    else if(RobotMap.drive == false){
 	    	RobotMap.robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(1) *x, Robot.oi.gamepad1.getRawAxis(0) *.8);
 	    }
-    }
-    public void shift_toggle(){
-    		if(RobotMap.shift){
-    			RobotMap.shifter.set(Value.kForward);
-    			RobotMap.shift = false;
-    		}
-    		else if (RobotMap.shift == false){
-    			RobotMap.shifter.set(Value.kReverse);
-    			RobotMap.shift = true;
-    		}
-    	
     }
     public void gemini(){
     	if(Robot.oi.gamepad2.getPOV() == 0){
