@@ -61,8 +61,10 @@ public class Chassis_sub extends Subsystem {
 	public void shift_toggle() {
 		if (RobotMap.shift) {
 			RobotMap.shifter.set(Value.kForward);
-		} else {
+			RobotMap.shift = false;
+		} else if(!RobotMap.shift){
 			RobotMap.shifter.set(Value.kReverse);
+			RobotMap.shift = true;
 		}
 	}
 
