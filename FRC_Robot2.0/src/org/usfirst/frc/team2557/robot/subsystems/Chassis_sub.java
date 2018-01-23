@@ -25,10 +25,10 @@ public class Chassis_sub extends Subsystem {
 
 	public void butterflyDrive() {
 		if (RobotMap.shifter.get() == Value.kReverse) {
-			RobotMap.robotDrive.tankDrive(-Robot.oi.gamepad1.getRawAxis(1), -Robot.oi.gamepad1.getRawAxis(5));
+			RobotMap.robotDrive.tankDrive(Robot.oi.gamepad1.getRawAxis(1)*0.8, Robot.oi.gamepad1.getRawAxis(5)*0.8);
 		} else if (RobotMap.shifter.get() == Value.kForward) {
-			RobotMap.mecDrive.driveCartesian(-Robot.oi.gamepad1.getRawAxis(1), Robot.oi.gamepad1.getRawAxis(0),
-					Robot.oi.gamepad1.getRawAxis(4));
+			RobotMap.mecDrive.driveCartesian(-Robot.oi.gamepad1.getRawAxis(0)*0.8, Robot.oi.gamepad1.getRawAxis(1)*0.8,
+    				Robot.oi.gamepad1.getRawAxis(4)*0.8);
 		}
 	}
 

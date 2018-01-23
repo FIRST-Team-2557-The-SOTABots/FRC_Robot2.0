@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2557.robot;
 
 
-import org.usfirst.frc.team2557.robot.commands.GearGrab_toggle;
 import org.usfirst.frc.team2557.robot.commands.Shift_toggle;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;

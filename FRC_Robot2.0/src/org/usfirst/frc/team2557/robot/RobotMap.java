@@ -47,7 +47,7 @@ public class RobotMap {
 	public static WPI_TalonSRX climber;
 	public static WPI_TalonSRX gearMotor;
 	public static WPI_TalonSRX copterAgitator;
-	public static SpeedController agitator;
+	public static WPI_TalonSRX agitator;
 	
 	
 	public static PowerDistributionPanel pdp;
@@ -90,12 +90,12 @@ public class RobotMap {
 		climber = new WPI_TalonSRX(8);
 		gearMotor = new WPI_TalonSRX(9);
 		copterAgitator = new WPI_TalonSRX(10);
-		agitator = new Talon(0);
+		agitator = new WPI_TalonSRX(0);
 		gearSwitch = new DigitalInput(2);
 		gearEnc = new Encoder(0,1);
 		
-		shifter = new DoubleSolenoid(0,1);
-		gearGrab = new DoubleSolenoid(2,3);
+		shifter = new DoubleSolenoid(1, 0,1);
+		gearGrab = new DoubleSolenoid(1, 2,3);
 		leftAgitator = new Servo(1);
 		rightAgitator = new Servo(2);
 		cameraServo = new Servo(3);

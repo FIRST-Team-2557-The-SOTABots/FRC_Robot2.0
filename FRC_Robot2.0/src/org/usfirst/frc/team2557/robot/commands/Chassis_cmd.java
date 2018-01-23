@@ -30,8 +30,6 @@ public class Chassis_cmd extends Command {
 //    	} else if(Robot.oi.start2.get() && Robot.oi.select2.get()){
 //    		RobotMap.gemini = true;
 //    	}
-//    	Robot.chassis.arcadeDrive();
-//    	Robot.chassis.gemini();
     	Robot.chassis.butterflyDrive();
     	
     }
