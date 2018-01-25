@@ -72,6 +72,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		RobotMap.init();
 		CameraServer.getInstance().startAutomaticCapture();
+		RobotMap.shifter.set(Value.kReverse);
 		prefs = Preferences.getInstance();
 		vision.initializer();
 		shooterUpdate = new PsuedoShooter_cmd();
