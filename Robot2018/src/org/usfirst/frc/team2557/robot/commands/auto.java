@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class auto extends CommandGroup {
 
     public auto() {
-    	addSequential(new auto_cmd(0.5,0.8,1));
-    	addSequential(new auto_cmd(-1,0.3,3));
-    	
+    	addSequential(new auto_cmd(1, -0.3, false)); // robot drives forward three seconds
+    //	addSequential(new auto_cmd(0.25,0,false)); //robot pauses for 0.25 seconds
+    //	addSequential(new auto_cmd(1,0.8,false)); // robot drives forward for one second
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -31,12 +32,12 @@ public class Robot extends IterativeRobot {
 	public static Timer 					timer 			= new Timer();
 	public static OI oi;
 	
+	CommandGroup auto;
 	Command auto_cmd;
 	Command driveTo;
 	Command shiftUp;
 	Command shiftDown;
 	Command Main_auto;
-	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -50,6 +51,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto Mode", chooser);
 		RobotMap.init();
 		RobotMap.shifter.set(Value.kReverse);
+		auto = new auto();
 		shiftUp = new ShiftToggle_autoCmd(true);
 		shiftDown = new ShiftToggle_autoCmd(false);
 		
@@ -87,6 +89,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
 		timer.start();
+		auto = new auto(); 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
