@@ -15,11 +15,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2557.robot.autonomous.ShiftToggle_autoCmd;
 import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
 import org.usfirst.frc.team2557.robot.commands.DriveToTarget_cmd;
+import org.usfirst.frc.team2557.robot.commands.GetLatencyCommand;
 import org.usfirst.frc.team2557.robot.commands.PsuedoShooter_cmd;
 import org.usfirst.frc.team2557.robot.subsystems.Acceleration_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Agitator_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Chassis_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Climber_sub;
+import org.usfirst.frc.team2557.robot.subsystems.GetLatency;
 import org.usfirst.frc.team2557.robot.subsystems.Intake_sub;
 import org.usfirst.frc.team2557.robot.subsystems.PsuedoShooter_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
@@ -46,6 +48,7 @@ public class Robot extends IterativeRobot {
 	public static final Acceleration_sub 	accel			= new Acceleration_sub();
 	public static final SmartDashboard_sub  dashboard 		= new SmartDashboard_sub();
 	public static final VisionArray_sub		vision			= new VisionArray_sub();
+	public static final GetLatency          getLatency      = new GetLatency();
 	public static OI oi;
 	public double x = 45;
 	Command driveTo;
@@ -56,6 +59,7 @@ public class Robot extends IterativeRobot {
 	Command visionUpdate;
 	Command shooterUpdate;
 	Command driveToTarget;
+	Command getLatencyCommand;
 	
 	public static Command leftX_gear;
 	public static Preferences prefs;
@@ -75,6 +79,7 @@ public class Robot extends IterativeRobot {
 		RobotMap.shifter.set(Value.kReverse);
 		prefs = Preferences.getInstance();
 		vision.initializer();
+		getLatencyCommand = new GetLatencyCommand();
 		shooterUpdate = new PsuedoShooter_cmd();
 		visionUpdate = new Vision_cmd();
 		shiftUp = new ShiftToggle_autoCmd(true);
@@ -211,6 +216,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 //		SmartDashboard.putNumber("Auto", (int) SmartDashboard.getNumber("Auto", 0.0));
 		RobotMap.euler.update();
+		getLatencyCommand.start();
 		visionUpdate.start();
 		shooterUpdate.start();
 		if(oi.x1.get()){
