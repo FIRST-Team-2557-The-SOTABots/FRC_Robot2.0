@@ -22,6 +22,14 @@ public class Chassis_sub extends Subsystem {
 		// Set the default command for a subsystem here.
 		setDefaultCommand(new Chassis_cmd());
 	}
+	public void matchEncVelocities(){
+		if(Math.abs(RobotMap.BLdrive.getSensorCollection().getQuadratureVelocity()) >= RobotMap.BRdrive.getSensorCollection().getQuadratureVelocity() + 5){
+		}
+		
+		RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad1.getRawAxis(1) * 0.8, Robot.oi.gamepad1.getRawAxis(0) * .8);
+		SmartDashboard.putNumber("EncVelocityLeft", RobotMap.BLdrive.getSensorCollection().getQuadratureVelocity());
+		SmartDashboard.putNumber("EncVelocityRight", RobotMap.BRdrive.getSensorCollection().getQuadratureVelocity());
+	}
 
 	public void butterflyDrive() {
 		if (RobotMap.shifter.get() == Value.kReverse) {

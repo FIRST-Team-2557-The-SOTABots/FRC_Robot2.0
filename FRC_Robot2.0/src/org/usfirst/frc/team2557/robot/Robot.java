@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2557.robot.autonomous.ShiftToggle_autoCmd;
 import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
 import org.usfirst.frc.team2557.robot.commands.DriveToTarget_cmd;
+import org.usfirst.frc.team2557.robot.commands.EqualizeEncodersCommand;
 import org.usfirst.frc.team2557.robot.commands.GetLatencyCommand;
 import org.usfirst.frc.team2557.robot.commands.PsuedoShooter_cmd;
 import org.usfirst.frc.team2557.robot.subsystems.Acceleration_sub;
@@ -60,6 +61,7 @@ public class Robot extends IterativeRobot {
 	Command shooterUpdate;
 	Command driveToTarget;
 	Command getLatencyCommand;
+	Command equalizeEncodersCommand;
 	
 	public static Command leftX_gear;
 	public static Preferences prefs;
@@ -80,6 +82,7 @@ public class Robot extends IterativeRobot {
 		prefs = Preferences.getInstance();
 		vision.initializer();
 		getLatencyCommand = new GetLatencyCommand();
+		equalizeEncodersCommand = new EqualizeEncodersCommand();
 		shooterUpdate = new PsuedoShooter_cmd();
 		visionUpdate = new Vision_cmd();
 		shiftUp = new ShiftToggle_autoCmd(true);
@@ -215,65 +218,66 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 //		SmartDashboard.putNumber("Auto", (int) SmartDashboard.getNumber("Auto", 0.0));
-		RobotMap.euler.update();
-		getLatencyCommand.start();
-		visionUpdate.start();
-		shooterUpdate.start();
-		if(oi.x1.get()){
-			RobotMap.FLdrive.getSensorCollection().setQuadraturePosition(0, 10);
-			RobotMap.FRdrive.getSensorCollection().setQuadraturePosition(0, 10);
-			RobotMap.navX.reset();
-		}
-		if(oi.RB1.get()){
-			shiftUp.start();
-			return;
-		}
-		else if(oi.LB1.get()){
-			shiftDown.start();
-			return;
-		}
-		
-		
-		
-		
-//		if(oi.gamepad1.getRawAxis(3) > 0.1){
-//			fakePID.start();
+//		RobotMap.euler.update();
+//		//getLatencyCommand.start();
+		equalizeEncodersCommand.start();
+//		visionUpdate.start();
+//		shooterUpdate.start();
+//		if(oi.x1.get()){
+//			RobotMap.FLdrive.getSensorCollection().setQuadraturePosition(0, 10);
+//			RobotMap.FRdrive.getSensorCollection().setQuadraturePosition(0, 10);
+//			RobotMap.navX.reset();
 //		}
-		
-//		if(oi.a1.get()) {
-//    		if(vision.averageInterpretation(2, 0, 0, 167, 0, .05) == false){
-//    			if(vision.findCenterXs(0) < 167){
-//    				RobotMap.robotDrive.tankDrive(-.5,.7); //-.52
+//		if(oi.RB1.get()){
+//			shiftUp.start();
+//			return;
+//		}
+//		else if(oi.LB1.get()){
+//			shiftDown.start();
+//			return;
+//		}
+//		
+//		
+//		
+//		
+////		if(oi.gamepad1.getRawAxis(3) > 0.1){
+////			fakePID.start();
+////		}
+//		
+////		if(oi.a1.get()) {
+////    		if(vision.averageInterpretation(2, 0, 0, 167, 0, .05) == false){
+////    			if(vision.findCenterXs(0) < 167){
+////    				RobotMap.robotDrive.tankDrive(-.5,.7); //-.52
+////    			}
+////    			else if(vision.findCenterXs(0) > 167){
+////    				RobotMap.robotDrive.tankDrive(-.5,-.7); //.52
+////    			}
+////    			else{
+////    				RobotMap.robotDrive.tankDrive(0,0);
+////    			}
+////    		}
+////    		else{
+////    			RobotMap.robotDrive.tankDrive(-.6,-.6);
+////    		}
+////    		
+////    	}
+//		if(oi.y1.get()) {
+//    		if(vision.averageInterpretation(2, 0, 0, 220, 0, .02) == false){
+//    			if(vision.findCenterXs(0) < 221){
+//    				RobotMap.robotDrive.arcadeDrive(-.8,-.5);
 //    			}
-//    			else if(vision.findCenterXs(0) > 167){
-//    				RobotMap.robotDrive.tankDrive(-.5,-.7); //.52
+//    			else if(vision.findCenterXs(0) > 221){
+//    				RobotMap.robotDrive.arcadeDrive(-.8,.5);
 //    			}
 //    			else{
-//    				RobotMap.robotDrive.tankDrive(0,0);
+//    				RobotMap.robotDrive.arcadeDrive(0,0);
 //    			}
 //    		}
 //    		else{
-//    			RobotMap.robotDrive.tankDrive(-.6,-.6);
+//    			RobotMap.robotDrive.arcadeDrive(-.8,0);
 //    		}
 //    		
 //    	}
-		if(oi.y1.get()) {
-    		if(vision.averageInterpretation(2, 0, 0, 220, 0, .02) == false){
-    			if(vision.findCenterXs(0) < 221){
-    				RobotMap.robotDrive.arcadeDrive(-.8,-.5);
-    			}
-    			else if(vision.findCenterXs(0) > 221){
-    				RobotMap.robotDrive.arcadeDrive(-.8,.5);
-    			}
-    			else{
-    				RobotMap.robotDrive.arcadeDrive(0,0);
-    			}
-    		}
-    		else{
-    			RobotMap.robotDrive.arcadeDrive(-.8,0);
-    		}
-    		
-    	}
 	}
 
 	/**
