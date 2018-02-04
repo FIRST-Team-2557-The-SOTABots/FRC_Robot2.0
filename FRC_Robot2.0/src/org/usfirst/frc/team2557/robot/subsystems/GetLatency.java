@@ -27,6 +27,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class GetLatency extends Subsystem {
+	private static String address = new String("EMPTY");
+	private static String maskAddress = new String("EMPTY");
+
 	private static String messageBuffer;
 	public static final int maxBufferLength = 500;
 	/*public static String Mem;
@@ -111,23 +114,56 @@ public class GetLatency extends Subsystem {
 	public void getDriverStation(){
 		SmartDashboard.putString("gotThere", "You made it!");
 		final IcmpPingRequest request = IcmpPingUtil.createIcmpPingRequest ();
-		request.setHost ("169.254.153.224");
+		request.setHost (address);
 		
 		try{
-		Process p = Runtime.getRuntime().exec("/sbin/ifconfig eth0");
+		Process p = Runtime.getRuntime().exec("/sbin/ifconfig eth0");  //| grep netmask | cut -f 2 -d 't' | cut -f 2 -d ' '
 		
 		if (p.waitFor(1, TimeUnit.SECONDS) == true) {
 			InputStream inputStream = p.getInputStream();
+			
+				
+			
+			
+			
+			
 			int currentChar = inputStream.read();
+			String InputString = new String();
+			
 			while (currentChar >= 0) {
+				if ((char)currentChar != '\n') {
+					InputString += (char) currentChar;
+					
+				}
+				else{
+					int indexOfAddr = InputString.indexOf("inet addr:");//InputString.contains("inet addr:")
+					if (indexOfAddr >= 0) {
+						//address = InputString.substring(indexOfAddr);
+						address = InputString.substring(InputString.indexOf(":") + 1);
+						address = address.substring(0, address.indexOf(" "));
+						
+						
+//					int indexOfMaskAddr = InputString.indexOf("Mask:");
+//					if(indexOfMaskAddr >= 0){
+//						maskAddress = InputString.substring(InputString.indexOf("k:") + 1);
+//						maskAddress = address.substring(0, maskAddress.indexOf(" "));
+//					}
+//					} else {
+//						InputString = new String();
+//					}
+					
+					
+				}
 				System.out.print((char)currentChar);
 				currentChar = inputStream.read();
 			}
 			System.out.println();
+			System.out.println("found address " + address);
+			System.out.println("Found mask address " + maskAddress);
 		}
 		String IPList = p.getOutputStream().toString();
 		logMessage(IPList);
-		
+		}
 		
 		}
 		catch(IOException e){
