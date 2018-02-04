@@ -219,8 +219,8 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 //		SmartDashboard.putNumber("Auto", (int) SmartDashboard.getNumber("Auto", 0.0));
 //		RobotMap.euler.update();
-//		//getLatencyCommand.start();
-		equalizeEncodersCommand.start();
+        getLatencyCommand.start();
+//		equalizeEncodersCommand.start();
 //		visionUpdate.start();
 //		shooterUpdate.start();
 //		if(oi.x1.get()){

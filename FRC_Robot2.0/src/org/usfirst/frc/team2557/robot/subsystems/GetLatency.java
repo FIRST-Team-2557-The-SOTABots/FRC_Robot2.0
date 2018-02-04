@@ -6,12 +6,14 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.nio.charset.*;
 
 import org.icmp4j.IcmpPingRequest;
@@ -36,40 +38,41 @@ public class GetLatency extends Subsystem {
 		if(messageBuffer == null){
 			messageBuffer = new String();
 		}
-		messageBuffer += message + "/r/n";
+		messageBuffer += (message + "/r/n");
 		System.out.println("messageBufferLength: " + messageBuffer.length());
+		System.out.println("Current log message: \"" + message + "\"");
 		
 		if(messageBuffer.length() > maxBufferLength || DriverStation.getInstance().getMatchTime() < 5){
-		FileWriter logFile;
-		//PrintWriter logWriter;
-		
-		try {
-			String CompetitionName = DriverStation.getInstance().getEventName();
-			int matchNumberInt = DriverStation.getInstance().getMatchNumber();
-			
-			String matchNumber = Integer.toString(matchNumberInt);
-			
-			String superString = "/C/" + CompetitionName + matchNumber;
-			//FileWriter logFile;
-			logFile = new FileWriter(superString, true);
-			//logWriter = new PrintWriter(logFile);
-		} catch (IOException e) {
-			System.out.println(e);
-			e.printStackTrace();
-			return;
-		}
-		try {
-			logFile.write(message + "\r\n");
-			logFile.flush();
-			logFile.close();
-		} catch (IOException e) {
-			System.out.println(e);
-		}
-		messageBuffer = new String();
+			FileWriter logFile;
+			//PrintWriter logWriter;
 
-		//logWriter.println(message);
-		System.out.println(message);
-	}
+			try {
+				String CompetitionName = DriverStation.getInstance().getEventName();
+				int matchNumberInt = DriverStation.getInstance().getMatchNumber();
+
+				String matchNumber = Integer.toString(matchNumberInt);
+
+				String superString = "/C/" + CompetitionName + matchNumber;
+				//FileWriter logFile;
+				logFile = new FileWriter(superString, true);
+				//logWriter = new PrintWriter(logFile);
+			} catch (IOException e) {
+				System.out.println(e);
+				e.printStackTrace();
+				return;
+			}
+			try {
+				logFile.write(messageBuffer + "\r\n");
+				logFile.flush();
+				logFile.close();
+			} catch (IOException e) {
+				System.out.println(e);
+			}
+			messageBuffer = new String();
+
+			//logWriter.println(message);
+			//System.out.println(message);
+		}
 	}
 	
 	public void logMemory(){
@@ -78,7 +81,8 @@ public class GetLatency extends Subsystem {
 		logMessage("testA");
 		logMessage("testB");
 		
-		logMessage(System.currentTimeMillis() + "," +(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()));
+		logMessage("Current Time (ms): " + System.currentTimeMillis());
+		logMessage("Used Memory: " +(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()));
 
 
 //		Mem = System.currentTimeMillis() + "," +(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory());
@@ -109,6 +113,30 @@ public class GetLatency extends Subsystem {
 		final IcmpPingRequest request = IcmpPingUtil.createIcmpPingRequest ();
 		request.setHost ("169.254.153.224");
 		
+		try{
+		Process p = Runtime.getRuntime().exec("/sbin/ifconfig eth0");
+		
+		if (p.waitFor(1, TimeUnit.SECONDS) == true) {
+			InputStream inputStream = p.getInputStream();
+			int currentChar = inputStream.read();
+			while (currentChar >= 0) {
+				System.out.print((char)currentChar);
+				currentChar = inputStream.read();
+			}
+			System.out.println();
+		}
+		String IPList = p.getOutputStream().toString();
+		logMessage(IPList);
+		
+		
+		}
+		catch(IOException e){
+			 System.out.println("exception happened - here's what I know: ");
+	            e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		final IcmpPingResponse response = IcmpPingUtil.executePingRequest (request);
 		
 		final String formattedResponse = IcmpPingUtil.formatResponse (response);
