@@ -159,7 +159,7 @@ public class GetLatency extends Subsystem {
 			}
 			System.out.println();
 			System.out.println("found address " + address);
-			System.out.println("Found mask address " + maskAddress);
+			//System.out.println("Found mask address " + maskAddress);
 		}
 		String IPList = p.getOutputStream().toString();
 		logMessage(IPList);
