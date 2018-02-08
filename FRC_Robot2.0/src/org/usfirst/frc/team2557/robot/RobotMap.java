@@ -41,18 +41,16 @@ public class RobotMap {
 	public static SpeedControllerGroup Right;
 	public static DifferentialDrive robotDrive;
 	public static MecanumDrive mecDrive;
-	public static WPI_TalonSRX Lshooter;
-	public static WPI_TalonSRX Rshooter;
-	public static WPI_TalonSRX intake;
-	public static WPI_TalonSRX climber;
-	public static WPI_TalonSRX gearMotor;
+	public static WPI_TalonSRX Lintake;
+	public static WPI_TalonSRX Rintake;
+	public static SpeedControllerGroup intake;
+	public static WPI_TalonSRX lift;
 	public static WPI_TalonSRX copterAgitator;
 	public static WPI_TalonSRX agitator;
 	
-	
 	public static PowerDistributionPanel pdp;
 	public static DoubleSolenoid shifter;
-	public static DoubleSolenoid gearGrab;
+	public static DoubleSolenoid intakeSol;
 	
 	public static BuiltInAccelerometer accel;
 	public static AHRS navX;
@@ -64,8 +62,6 @@ public class RobotMap {
 	public static double CAngle; //??? Auto Turn? :)
 	public static double visionShooterSpeed;
 	public static boolean shootReq;
-	public static DigitalInput gearSwitch;
-	public static Encoder gearEnc;
 	public static boolean _leftX_gear;
 	
 	public static Servo leftAgitator;
@@ -84,18 +80,16 @@ public class RobotMap {
 		robotDrive.setSafetyEnabled(false);
 		mecDrive = new MecanumDrive(FLdrive, BLdrive, FRdrive, BRdrive);
 		mecDrive.setSafetyEnabled(false);
-		Lshooter = new WPI_TalonSRX(5);
-		Rshooter = new WPI_TalonSRX(6);
-		intake = new WPI_TalonSRX(7);
-		climber = new WPI_TalonSRX(8);
-		gearMotor = new WPI_TalonSRX(9);
+		Lintake = new WPI_TalonSRX(5);
+		Rintake = new WPI_TalonSRX(6);
+		Rintake.setInverted(true);
+		intake = new SpeedControllerGroup(Lintake, Rintake);
+		lift = new WPI_TalonSRX(8);
 		copterAgitator = new WPI_TalonSRX(10);
 		agitator = new WPI_TalonSRX(0);
-		gearSwitch = new DigitalInput(2);
-		gearEnc = new Encoder(0,1);
 		
 		shifter = new DoubleSolenoid(1, 0,1);
-		gearGrab = new DoubleSolenoid(1, 2,3);
+		intakeSol = new DoubleSolenoid(1, 2,3);
 		leftAgitator = new Servo(1);
 		rightAgitator = new Servo(2);
 		cameraServo = new Servo(3);

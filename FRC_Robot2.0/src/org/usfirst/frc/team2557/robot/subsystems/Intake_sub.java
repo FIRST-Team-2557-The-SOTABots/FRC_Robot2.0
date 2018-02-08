@@ -47,14 +47,6 @@ public class Intake_sub extends Subsystem {
     			RobotMap.agitator.set(0);
     			RobotMap.copterAgitator.set(0);
     		}
-    		
-   				
-   				
-   				
-   			
-    	
     }
-    
-    
 }
 

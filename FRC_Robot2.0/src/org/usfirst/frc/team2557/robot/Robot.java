@@ -15,15 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2557.robot.autonomous.ShiftToggle_autoCmd;
 import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
 import org.usfirst.frc.team2557.robot.commands.DriveToTarget_cmd;
-import org.usfirst.frc.team2557.robot.commands.PsuedoShooter_cmd;
-import org.usfirst.frc.team2557.robot.subsystems.Acceleration_sub;
-import org.usfirst.frc.team2557.robot.subsystems.Agitator_sub;
-import org.usfirst.frc.team2557.robot.subsystems.Chassis_sub;
-import org.usfirst.frc.team2557.robot.subsystems.Climber_sub;
-import org.usfirst.frc.team2557.robot.subsystems.Intake_sub;
-import org.usfirst.frc.team2557.robot.subsystems.PsuedoShooter_sub;
-import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
-import org.usfirst.frc.team2557.robot.subsystems.SmartDashboard_sub;
+import org.usfirst.frc.team2557.robot.subsystems.*;
 import org.usfirst.frc.team2557.robot.vision.VisionArray_sub;
 import org.usfirst.frc.team2557.robot.vision.Vision_cmd;
 import org.usfirst.frc.team2557.robot.vision.centerX_gear;
@@ -38,11 +30,9 @@ import org.usfirst.frc.team2557.robot.vision.centerX_gear;
 public class Robot extends IterativeRobot {
 
 	public static final Chassis_sub 		chassis 		= new Chassis_sub();
-	public static final Shooter_sub	 		shooter 		= new Shooter_sub();
 	public static final Intake_sub 			intake 			= new Intake_sub();
-	public static final Climber_sub 		climber 		= new Climber_sub();
+	public static final Lift_sub 		climber 		= new Lift_sub();
 	public static final Agitator_sub 		agitator 		= new Agitator_sub();
-	public static final PsuedoShooter_sub 	psuedoShooter 	= new PsuedoShooter_sub();
 	public static final Acceleration_sub 	accel			= new Acceleration_sub();
 	public static final SmartDashboard_sub  dashboard 		= new SmartDashboard_sub();
 	public static final VisionArray_sub		vision			= new VisionArray_sub();
@@ -75,7 +65,6 @@ public class Robot extends IterativeRobot {
 		RobotMap.shifter.set(Value.kReverse);
 		prefs = Preferences.getInstance();
 		vision.initializer();
-		shooterUpdate = new PsuedoShooter_cmd();
 		visionUpdate = new Vision_cmd();
 		shiftUp = new ShiftToggle_autoCmd(true);
 		shiftDown = new ShiftToggle_autoCmd(false);
@@ -96,7 +85,6 @@ public class Robot extends IterativeRobot {
 
 		
 		
-		fakePID = new PsuedoShooter_cmd();
 		driveToTarget = new DriveToTarget_cmd();
 		oi = new OI();
 		oi.init();
@@ -181,10 +169,10 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("DriveStraight Angle is: ",Robot.chassis.getDriveStraightAngle());
 		
 		if(RobotMap._stage){
-			RobotMap.gearGrab.set(Value.kForward);
+			RobotMap.intakeSol.set(Value.kForward);
 		}
 		else if (RobotMap._stage == false){
-			RobotMap.gearGrab.set(Value.kReverse);
+			RobotMap.intakeSol.set(Value.kReverse);
 		}
 		
 	}
