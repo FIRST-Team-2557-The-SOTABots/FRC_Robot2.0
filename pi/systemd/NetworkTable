@@ -1,10 +1,8 @@
-from array import *
-import math
 import serial
 import time
 import sys
+#import os
 #from networktables import NetworkTables
-
 
 #NetworkTables.initialize(server='10.25.57.5')
 #sd = NetworkTables.getTable('SmartDashboard')
