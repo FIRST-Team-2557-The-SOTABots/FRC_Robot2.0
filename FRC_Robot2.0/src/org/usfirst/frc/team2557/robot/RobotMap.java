@@ -5,6 +5,7 @@ import org.usfirst.frc.team2557.robot.math.EulerDistanceEstimator.ForwardAxis;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -16,6 +17,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -24,6 +26,26 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  * floating around.
  */
 public class RobotMap {
+	
+	public static boolean Confirm;
+	public static boolean Position;
+	public static double GyroAngle;
+	
+	public static WPI_TalonSRX Left1;
+	public static WPI_TalonSRX Left2;
+	public static WPI_TalonSRX Right1;
+	public static WPI_TalonSRX Right2;
+	
+	public static SpeedControllerGroup Left;
+	public static SpeedControllerGroup Right;
+	
+	public static ADXRS450_Gyro Gyro1;
+
+	public static DoubleSolenoid DS1;
+	
+	public static DifferentialDrive DiffDrive;
+	public static MecanumDrive MecDrive;
+	
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.
 	// public static int leftMotor = 1;
@@ -36,8 +58,8 @@ public class RobotMap {
 	public static WPI_TalonSRX FLdrive;
 	public static WPI_TalonSRX BRdrive;
 	public static WPI_TalonSRX BLdrive;
-	public static SpeedControllerGroup Left;
-	public static SpeedControllerGroup Right;
+//	public static SpeedControllerGroup Left;
+//	public static SpeedControllerGroup Right;
 	public static DifferentialDrive robotDrive;
 	
 	public static WPI_TalonSRX Lshooter;
@@ -73,6 +95,23 @@ public class RobotMap {
 	public static EulerDistanceEstimator euler;
 	
 	public static void init(){
+		
+		Left1 = new WPI_TalonSRX(1);
+		Left2 = new WPI_TalonSRX(2);
+		Right1 = new WPI_TalonSRX(3);
+		Right2 = new WPI_TalonSRX(4);
+		
+		Left = new SpeedControllerGroup(Left1, Left2);
+		Right = new SpeedControllerGroup(Right1, Right2);
+		
+		DS1 = new DoubleSolenoid(1, 0, 1);
+		Gyro1 = new ADXRS450_Gyro();
+		
+		DiffDrive = new DifferentialDrive(Left, Right);
+		MecDrive = new MecanumDrive(Left1, Left2, Right1, Right2);
+		DiffDrive.setSafetyEnabled(false);
+		MecDrive.setSafetyEnabled(false);
+		
 		FRdrive = new WPI_TalonSRX(1);
 		FLdrive = new WPI_TalonSRX(2);
 		BRdrive = new WPI_TalonSRX(3);

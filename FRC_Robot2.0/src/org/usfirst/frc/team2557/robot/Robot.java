@@ -20,13 +20,30 @@ import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightHopper;
 import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightShoot;
 import org.usfirst.frc.team2557.robot.autonomous.ShiftToggle_autoCmd;
 import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
+import org.usfirst.frc.team2557.robot.commands.CombinedHumanErrorDriveCommand;
+import org.usfirst.frc.team2557.robot.commands.CorrectStrafeCommand;
 import org.usfirst.frc.team2557.robot.commands.DriveToTarget_cmd;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand1;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand2;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand3;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand4;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand5;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand6;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand7;
 import org.usfirst.frc.team2557.robot.commands.GearGrab_toggle;
+import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandMid;
+import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandRight;
+import org.usfirst.frc.team2557.robot.commands.GroupForward;
+import org.usfirst.frc.team2557.robot.commands.GyroCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.GyroCommandRight;
 import org.usfirst.frc.team2557.robot.commands.PsuedoShooter_cmd;
+import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
 import org.usfirst.frc.team2557.robot.subsystems.Acceleration_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Agitator_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Chassis_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Climber_sub;
+import org.usfirst.frc.team2557.robot.subsystems.DriveSub;
 import org.usfirst.frc.team2557.robot.subsystems.Gear_sub;
 import org.usfirst.frc.team2557.robot.subsystems.Intake_sub;
 import org.usfirst.frc.team2557.robot.subsystems.PsuedoShooter_sub;
@@ -44,7 +61,19 @@ import org.usfirst.frc.team2557.robot.vision.centerX_gear;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
+	
+	public static GyroCommandLeft GCL;
+	public static GyroCommandRight GCR;
+	public static EncoderDriveCommand1 EDC1;
+	public static EncoderDriveCommand2 EDC2;
+	public static EncoderDriveCommand3 EDC3;
+	public static EncoderDriveCommand4 EDC4;
+	public static EncoderDriveCommand5 EDC5;
+	public static EncoderDriveCommand6 EDC6;
+	public static EncoderDriveCommand7 EDC7;
+	public static CombinedHumanErrorDriveCommand CHEDC;
+	public static DriveSub DriveSub1;
+	
 	public static final Chassis_sub 		chassis 		= new Chassis_sub();
 	public static final Shooter_sub	 		shooter 		= new Shooter_sub();
 	public static final Intake_sub 			intake 			= new Intake_sub();
@@ -71,7 +100,7 @@ public class Robot extends IterativeRobot {
 	public int _auto;
 	
 	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
+	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -79,6 +108,18 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		GCL = new GyroCommandLeft();
+		GCR = new GyroCommandRight();
+		CHEDC = new CombinedHumanErrorDriveCommand();
+		EDC1 = new EncoderDriveCommand1(1, 0);
+		EDC2 = new EncoderDriveCommand2(1, 0);
+		EDC3 = new EncoderDriveCommand3(1,0);
+		EDC4 = new EncoderDriveCommand4(1, 0);
+		EDC5 = new EncoderDriveCommand5(1, 0);
+		EDC6 = new EncoderDriveCommand6(1,0);
+		EDC7 = new EncoderDriveCommand7(1,0);
+		DriveSub1 = new DriveSub();
+		
 		RobotMap.init();
 		CameraServer.getInstance().startAutomaticCapture();
 		prefs = Preferences.getInstance();
@@ -108,6 +149,14 @@ public class Robot extends IterativeRobot {
 		driveToTarget = new DriveToTarget_cmd();
 		oi = new OI();
 		oi.init();
+		
+		
+		
+		
+		m_chooser.addDefault("Mid Auto", new GroupAutoCommandMid());
+		m_chooser.addObject("Left Auto", new GroupAutoCommandLeft());
+		m_chooser.addObject("Right Auto", new GroupAutoCommandRight());
+		m_chooser.addObject("For Auto", new GroupForward());
 		
 		/*
 //		chooser.addObject("Autonomous_GearLeftShoot: ", new Autonomous_GearLeftShoot());
