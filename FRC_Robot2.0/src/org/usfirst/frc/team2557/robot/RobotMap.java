@@ -98,8 +98,8 @@ public class RobotMap {
 		
 		Left1 = new WPI_TalonSRX(1);
 		Left2 = new WPI_TalonSRX(2);
-		Right1 = new WPI_TalonSRX(3);
-		Right2 = new WPI_TalonSRX(4);
+		Right1 = new WPI_TalonSRX(6);
+		Right2 = new WPI_TalonSRX(5);
 		
 		Left = new SpeedControllerGroup(Left1, Left2);
 		Right = new SpeedControllerGroup(Right1, Right2);
