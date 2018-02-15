@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
@@ -45,12 +46,10 @@ public class RobotMap {
 	public static WPI_TalonSRX Rintake;
 	public static SpeedControllerGroup intake;
 	public static WPI_TalonSRX lift;
-	public static WPI_TalonSRX copterAgitator;
-	public static WPI_TalonSRX agitator;
 	
 	public static PowerDistributionPanel pdp;
 	public static DoubleSolenoid shifter;
-	public static DoubleSolenoid intakeSol;
+	public static Solenoid intakeSol;
 	
 	public static BuiltInAccelerometer accel;
 	public static AHRS navX;
@@ -85,11 +84,9 @@ public class RobotMap {
 		Rintake.setInverted(true);
 		intake = new SpeedControllerGroup(Lintake, Rintake);
 		lift = new WPI_TalonSRX(0);
-		copterAgitator = new WPI_TalonSRX(10);
-		agitator = new WPI_TalonSRX(0);
 		
 		shifter = new DoubleSolenoid(1, 0,1);
-		intakeSol = new DoubleSolenoid(1, 2,3);
+		intakeSol = new Solenoid(1, 2);
 		leftAgitator = new Servo(1);
 		rightAgitator = new Servo(2);
 		cameraServo = new Servo(3);
@@ -110,9 +107,6 @@ public class RobotMap {
 		CAngle = 0;
 		visionShooterSpeed = 0;
 		shootReq = false;
-		
-		
-		
 		
 	}
 }

@@ -34,18 +34,12 @@ public class Intake_sub extends Subsystem {
 //			}
     		if(Robot.oi.RB2.get()){ // && RobotMap.Lshooter.getEncVelocity() > 3500){
     			RobotMap.intake.set(-.75);
-    			RobotMap.agitator.set(-.55);
-    			RobotMap.copterAgitator.set(.5);
     		}
     		else if(Robot.oi.LB2.get()){
     			RobotMap.intake.set(.6);
-    			RobotMap.agitator.set(.55);
-    			RobotMap.copterAgitator.set(-.5);
     		}
     		else{
     			RobotMap.intake.set(0);
-    			RobotMap.agitator.set(0);
-    			RobotMap.copterAgitator.set(0);
     		}
     }
 }

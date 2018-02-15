@@ -169,10 +169,10 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("DriveStraight Angle is: ",Robot.chassis.getDriveStraightAngle());
 		
 		if(RobotMap._stage){
-			RobotMap.intakeSol.set(Value.kForward);
+			RobotMap.intakeSol.set(true);
 		}
 		else if (RobotMap._stage == false){
-			RobotMap.intakeSol.set(Value.kReverse);
+			RobotMap.intakeSol.set(false);
 		}
 		
 	}
