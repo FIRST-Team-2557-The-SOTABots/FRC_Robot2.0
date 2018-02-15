@@ -70,9 +70,9 @@ public class RobotMap {
 	public static EulerDistanceEstimator euler;
 	
 	public static void init(){
-		FRdrive = new WPI_TalonSRX(3);
+		FRdrive = new WPI_TalonSRX(6);
 		FLdrive = new WPI_TalonSRX(1);
-		BRdrive = new WPI_TalonSRX(4);
+		BRdrive = new WPI_TalonSRX(5);
 		BLdrive = new WPI_TalonSRX(2);
 		Left = new SpeedControllerGroup(FLdrive, BLdrive);
 		Right = new SpeedControllerGroup(FRdrive, BRdrive);
@@ -80,11 +80,11 @@ public class RobotMap {
 		robotDrive.setSafetyEnabled(false);
 		mecDrive = new MecanumDrive(FLdrive, BLdrive, FRdrive, BRdrive);
 		mecDrive.setSafetyEnabled(false);
-		Lintake = new WPI_TalonSRX(5);
-		Rintake = new WPI_TalonSRX(6);
+		Lintake = new WPI_TalonSRX(3);
+		Rintake = new WPI_TalonSRX(4);
 		Rintake.setInverted(true);
 		intake = new SpeedControllerGroup(Lintake, Rintake);
-		lift = new WPI_TalonSRX(8);
+		lift = new WPI_TalonSRX(0);
 		copterAgitator = new WPI_TalonSRX(10);
 		agitator = new WPI_TalonSRX(0);
 		
