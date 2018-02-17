@@ -94,7 +94,7 @@ public class RobotMap {
 		gearSwitch = new DigitalInput(2);
 		gearEnc = new Encoder(0,1);
 		
-		shifter = new DoubleSolenoid(1, 0,1);
+		shifter = new DoubleSolenoid(0, 0,1);
 		gearGrab = new DoubleSolenoid(1, 2,3);
 		leftAgitator = new Servo(1);
 		rightAgitator = new Servo(2);

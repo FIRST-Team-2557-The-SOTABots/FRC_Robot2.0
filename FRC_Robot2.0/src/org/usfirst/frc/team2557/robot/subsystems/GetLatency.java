@@ -28,6 +28,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class GetLatency extends Subsystem {
 	private static String address = new String("EMPTY");
+	
 	private static String maskAddress = new String("EMPTY");
 
 	private static String messageBuffer;
@@ -126,6 +127,7 @@ public class GetLatency extends Subsystem {
 			int currentChar = inputStream.read();
 			String InputString = new String();
 			
+			//String maskAddress;
 			while (currentChar >= 0) {
 				if ((char)currentChar != '\n') {
 					InputString += (char) currentChar;
@@ -141,14 +143,16 @@ public class GetLatency extends Subsystem {
 
 						int indexOfMaskAddr = InputString.indexOf("Mask:");
 						if(indexOfMaskAddr >= 0){
+							
 							// InputString.indexOf("k:") gives the index of the "k" - add 2 to get past
 							// the colon.
-							maskAddress = InputString.substring(InputString.indexOf("k:") + 2);
-							maskAddress = maskAddress.substring(0, maskAddress.indexOf(" "));
+							maskAddress = InputString.substring(indexOfMaskAddr + 5);
+							//maskAddress = maskAddress.substring(0, maskAddress.indexOf("\n"));
 						}
-					} else {
-						InputString = new String();
 					}
+					
+					InputString = new String();
+
 
 
 				}
@@ -161,7 +165,7 @@ public class GetLatency extends Subsystem {
 		}
 		String IPList = p.getOutputStream().toString();
 		logMessage(IPList);
-		}
+
 		
 		}
 		catch(IOException e){
