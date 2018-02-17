@@ -8,6 +8,8 @@
 package org.usfirst.frc.team2557.robot;
 
 
+import CharlesCommands.IntakeCommand;
+import CharlesCommands.LiftCommand;
 import CharlesCommands.SolenoidCommand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -24,7 +26,8 @@ public class OI {
 	
 	public static Joystick Joystick2;
 	public static JoystickButton Lift;
-	public static JoystickButton Intake;
+	public static JoystickButton IntakeIn;
+	public static JoystickButton IntakeOut;
 	
 	public void OIInit() {
 		Joystick1 = new Joystick(0);
@@ -35,11 +38,13 @@ public class OI {
 		BackwardButton.whenPressed(new SolenoidCommand());
 		
 		Joystick2 = new Joystick(1);
-//		Lift = new JoystickButton(Joystick2, 1);
-//		Intake = new JoystickButton(Joystick2, 2);
+		Lift = new JoystickButton(Joystick2, 3);
+		IntakeIn = new JoystickButton(Joystick2, 2);
+		IntakeOut = new JoystickButton(Joystick2, 1);
 		
-		
-//		Lift.whenPressed(command);
+		IntakeIn.whileHeld(new IntakeCommand());
+		IntakeOut.whileHeld(new IntakeCommand());
+		Lift.whileHeld(new LiftCommand());
 	}
 	
 	//// CREATING BUTTONS

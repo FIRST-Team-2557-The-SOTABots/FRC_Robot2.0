@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -61,10 +62,11 @@ public class RobotMap {
 	
 	public static AHRS Gyro1;
 	
-	
 	public static Compressor compressor;
 
 	public static DoubleSolenoid DS1;
+	public static Solenoid S1;
+	public static Solenoid S2;
 	
 	public static DifferentialDrive DiffDrive;
 	public static MecanumDrive MecDrive;
@@ -82,7 +84,7 @@ public class RobotMap {
 	public static WPI_TalonSRX Winch;
 	
 	public static void init() {
-		
+			
 		Left1 = new WPI_TalonSRX(1);
 		Left2 = new WPI_TalonSRX(7);
 		Right1 = new WPI_TalonSRX(0);
@@ -91,10 +93,14 @@ public class RobotMap {
 		IntakeR = new WPI_TalonSRX(4);
 		IntakeL = new WPI_TalonSRX(6);
 		
+		
 		Left = new SpeedControllerGroup(Left1, Left2);
 		Right = new SpeedControllerGroup(Right1, Right2);
 		
 		DS1 = new DoubleSolenoid(0, 0, 1);
+		S1 = new Solenoid(0, 2);
+		S2 = new Solenoid(0, 3);
+		
 		Gyro1 = new AHRS(SPI.Port.kMXP);
 		
 		compressor = new Compressor(0);

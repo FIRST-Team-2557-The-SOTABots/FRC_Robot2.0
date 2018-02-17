@@ -27,6 +27,7 @@ public class LiftEncoderCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	if(-RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition()/10 > 729);
         return false;
     }
 

@@ -106,6 +106,7 @@ public class Robot extends TimedRobot {
 		
 //		RobotMap.DS1.set(Value.kReverse);
 //		RobotMap.DS1.set(Value.kForward);
+    	RobotMap.S1.set(true);
 		
 		DriveSub1 = new DriveSub();
 		SolSub = new SolenoidSub();
@@ -227,7 +228,7 @@ public class Robot extends TimedRobot {
 		CHEDC.start();
 //		HETC.start();
 		LC.start();
-		IC.start();		
+		IC.start();
 //		MSC.start();
 //		CFC.start();
 //    	SmartDashboard.putNumber("EncoderCountLeft", - RobotMap.Left2.getSensorCollection().getQuadraturePosition()/1000);
