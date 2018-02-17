@@ -43,6 +43,8 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	}
+	public static Joystick Joystick1;
+	
 	public Joystick gamepad1;
 	public Joystick gamepad2;
 	
@@ -69,7 +71,8 @@ public class OI {
 	public JoystickButton RJ2;
 	
 	public void init(){
-		gamepad1 = new Joystick(0);
+		Joystick1 = new Joystick(0);
+//		gamepad1 = new Joystick(0);
 		gamepad2 = new Joystick(1);
 		
 		a1 = new JoystickButton(gamepad1, 1);
