@@ -28,7 +28,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class GetLatency extends Subsystem {
 	private static String address = new String("EMPTY");
-	private static String maskAddress = new String("EMPTY");
+	//private static String maskAddress = new String("EMPTY");
 
 	private static String messageBuffer;
 	public static final int maxBufferLength = 500;
