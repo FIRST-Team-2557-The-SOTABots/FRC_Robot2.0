@@ -97,14 +97,14 @@ public class RobotMap {
 	public static void init(){
 		
 		Left1 = new WPI_TalonSRX(1);
-		Left2 = new WPI_TalonSRX(2);
-		Right1 = new WPI_TalonSRX(6);
-		Right2 = new WPI_TalonSRX(5);
+		Left2 = new WPI_TalonSRX(7);
+		Right1 = new WPI_TalonSRX(0);
+		Right2 = new WPI_TalonSRX(2);
 		
 		Left = new SpeedControllerGroup(Left1, Left2);
 		Right = new SpeedControllerGroup(Right1, Right2);
 		
-		DS1 = new DoubleSolenoid(1, 0, 1);
+		DS1 = new DoubleSolenoid(0, 0, 1);
 		Gyro1 = new ADXRS450_Gyro();
 		
 		DiffDrive = new DifferentialDrive(Left, Right);
