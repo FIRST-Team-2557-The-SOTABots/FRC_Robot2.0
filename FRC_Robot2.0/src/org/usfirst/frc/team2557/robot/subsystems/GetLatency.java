@@ -114,6 +114,7 @@ public class GetLatency extends Subsystem {
 	public void getDriverStation(){
 		SmartDashboard.putString("gotThere", "You made it!");
 		final IcmpPingRequest request = IcmpPingUtil.createIcmpPingRequest ();
+		// XXX Maybe call this after the address is set.
 		request.setHost (address);
 		
 		try{
@@ -122,18 +123,13 @@ public class GetLatency extends Subsystem {
 		if (p.waitFor(1, TimeUnit.SECONDS) == true) {
 			InputStream inputStream = p.getInputStream();
 			
-				
-			
-			
-			
-			
 			int currentChar = inputStream.read();
 			String InputString = new String();
 			
 			while (currentChar >= 0) {
 				if ((char)currentChar != '\n') {
 					InputString += (char) currentChar;
-					
+
 				}
 				else{
 					int indexOfAddr = InputString.indexOf("inet addr:");//InputString.contains("inet addr:")
@@ -141,25 +137,27 @@ public class GetLatency extends Subsystem {
 						//address = InputString.substring(indexOfAddr);
 						address = InputString.substring(InputString.indexOf(":") + 1);
 						address = address.substring(0, address.indexOf(" "));
-						
-						
-//					int indexOfMaskAddr = InputString.indexOf("Mask:");
-//					if(indexOfMaskAddr >= 0){
-//						maskAddress = InputString.substring(InputString.indexOf("k:") + 1);
-//						maskAddress = address.substring(0, maskAddress.indexOf(" "));
-//					}
-//					} else {
-//						InputString = new String();
-//					}
-					
-					
+
+
+						int indexOfMaskAddr = InputString.indexOf("Mask:");
+						if(indexOfMaskAddr >= 0){
+							// InputString.indexOf("k:") gives the index of the "k" - add 2 to get past
+							// the colon.
+							maskAddress = InputString.substring(InputString.indexOf("k:") + 2);
+							maskAddress = maskAddress.substring(0, maskAddress.indexOf(" "));
+						}
+					} else {
+						InputString = new String();
+					}
+
+
 				}
 				System.out.print((char)currentChar);
 				currentChar = inputStream.read();
 			}
 			System.out.println();
 			System.out.println("found address " + address);
-			//System.out.println("Found mask address " + maskAddress);
+			System.out.println("Found mask address " + maskAddress);
 		}
 		String IPList = p.getOutputStream().toString();
 		logMessage(IPList);
