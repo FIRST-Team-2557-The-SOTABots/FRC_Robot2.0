@@ -8,9 +8,10 @@
 package org.usfirst.frc.team2557.robot;
 
 
-import CharlesCommands.IntakeCommand;
-import CharlesCommands.LiftCommand;
-import CharlesCommands.SolenoidCommand;
+import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
+import org.usfirst.frc.team2557.robot.commands.LiftCommand;
+import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -25,7 +26,8 @@ public class OI {
 	public static JoystickButton BackwardButton;
 	
 	public static Joystick Joystick2;
-	public static JoystickButton Lift;
+	public static JoystickButton LiftUp;
+	public static JoystickButton LiftDown;
 	public static JoystickButton IntakeIn;
 	public static JoystickButton IntakeOut;
 	
@@ -38,13 +40,15 @@ public class OI {
 		BackwardButton.whenPressed(new SolenoidCommand());
 		
 		Joystick2 = new Joystick(1);
-		Lift = new JoystickButton(Joystick2, 3);
+		LiftUp = new JoystickButton(Joystick2, 4);
+		LiftDown = new JoystickButton(Joystick2, 3);
 		IntakeIn = new JoystickButton(Joystick2, 2);
 		IntakeOut = new JoystickButton(Joystick2, 1);
 		
-		IntakeIn.whileHeld(new IntakeCommand());
-		IntakeOut.whileHeld(new IntakeCommand());
-		Lift.whileHeld(new LiftCommand());
+		IntakeIn.whileHeld(new IntakeCommand(false));
+		IntakeOut.whileHeld(new IntakeCommand(false));
+		LiftUp.whileHeld(new LiftCommand());
+		LiftDown.whileHeld(new LiftCommand());
 	}
 	
 	//// CREATING BUTTONS

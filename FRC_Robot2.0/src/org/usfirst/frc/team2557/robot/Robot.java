@@ -16,35 +16,36 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import CharlesSubsystem.*;
-import CharlesCommands.CombinedHumanErrorDriveCommand;
-import CharlesCommands.CorrectStrafeCommand;
-import CharlesCommands.EncoderDriveCommand1;
-import CharlesCommands.EncoderDriveCommand2;
-import CharlesCommands.EncoderDriveCommand3;
-import CharlesCommands.EncoderDriveCommand4;
-import CharlesCommands.EncoderDriveCommand5;
-import CharlesCommands.EncoderDriveCommand6;
-import CharlesCommands.EncoderDriveCommand7;
-import CharlesCommands.GroupAutoCommandLeft;
-import CharlesCommands.GroupAutoCommandMid;
-import CharlesCommands.GroupAutoCommandRight;
-import CharlesCommands.GroupForward;
-import CharlesCommands.GyroCommand;
-import CharlesCommands.GyroCommandLeft;
-import CharlesCommands.GyroCommandRight;
-import CharlesCommands.HumanErrorMecanumCommand;
-import CharlesCommands.HumanErrorTractionCommand;
-import CharlesCommands.IntakeCommand;
-import CharlesCommands.LiftCommand;
-import CharlesCommands.LiftEncoderCommand;
-import CharlesCommands.MecanumStrafeCommand;
-import CharlesCommands.SolenoidAutoCommand;
-import CharlesCommands.SolenoidCommand;
-import CharlesCommands.TeleDriveCommand;
-import CharlesCommands.TimedAutoDriveCommand;
-import CharlesCommands.TimedAutoMecanumDriveCommand;
-import CharlesCommands.WheelCheck;
+
+import org.usfirst.frc.team2557.robot.commands.CombinedHumanErrorDriveCommand;
+import org.usfirst.frc.team2557.robot.commands.CorrectStrafeCommand;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand1;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand2;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand3;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand4;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand5;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand6;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand7;
+import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandMid;
+import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandRight;
+import org.usfirst.frc.team2557.robot.commands.GroupForward;
+import org.usfirst.frc.team2557.robot.commands.GyroCommand;
+import org.usfirst.frc.team2557.robot.commands.GyroCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.GyroCommandRight;
+import org.usfirst.frc.team2557.robot.commands.HumanErrorMecanumCommand;
+import org.usfirst.frc.team2557.robot.commands.HumanErrorTractionCommand;
+import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
+import org.usfirst.frc.team2557.robot.commands.LiftCommand;
+import org.usfirst.frc.team2557.robot.commands.LiftEncoderCommand;
+import org.usfirst.frc.team2557.robot.commands.MecanumStrafeCommand;
+import org.usfirst.frc.team2557.robot.commands.SolenoidAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
+import org.usfirst.frc.team2557.robot.commands.TeleDriveCommand;
+import org.usfirst.frc.team2557.robot.commands.TimedAutoDriveCommand;
+import org.usfirst.frc.team2557.robot.commands.TimedAutoMecanumDriveCommand;
+import org.usfirst.frc.team2557.robot.commands.WheelCheck;
+import org.usfirst.frc.team2557.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -104,9 +105,10 @@ public class Robot extends TimedRobot {
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 1000);
     	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 1000);
 		
-//		RobotMap.DS1.set(Value.kReverse);
+		RobotMap.DS1.set(Value.kReverse);
 //		RobotMap.DS1.set(Value.kForward);
     	RobotMap.S1.set(true);
+    	RobotMap.S2.set(false);
 		
 		DriveSub1 = new DriveSub();
 		SolSub = new SolenoidSub();
@@ -136,8 +138,9 @@ public class Robot extends TimedRobot {
 		
 		
 		LS = new LiftSub();
+		
 		LC = new LiftCommand();
-		IC = new IntakeCommand();
+		IC = new IntakeCommand(false);
 		
 		m_oi = new OI();
 		m_oi.OIInit();
@@ -207,8 +210,9 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
-//		GC.start();
+		GC.start();
 		CHEDC.start();
+//		LC.start();
 //		HETC.start();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
@@ -227,7 +231,7 @@ public class Robot extends TimedRobot {
 		SC.start();
 		CHEDC.start();
 //		HETC.start();
-		LC.start();
+//		LC.start();
 		IC.start();
 //		MSC.start();
 //		CFC.start();
