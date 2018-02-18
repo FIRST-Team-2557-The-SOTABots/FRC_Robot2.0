@@ -48,7 +48,9 @@ public class OI {
 		IntakeIn.whileHeld(new IntakeCommand(false));
 		IntakeOut.whileHeld(new IntakeCommand(false));
 		LiftUp.whileHeld(new LiftCommand());
+		LiftUp.whenReleased(new LiftCommand());
 		LiftDown.whileHeld(new LiftCommand());
+		LiftDown.whenReleased(new LiftCommand());
 	}
 	
 	//// CREATING BUTTONS

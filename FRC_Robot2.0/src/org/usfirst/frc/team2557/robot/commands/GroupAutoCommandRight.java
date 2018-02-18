@@ -15,7 +15,13 @@ public class GroupAutoCommandRight extends CommandGroup {
                 {
 		  if(gameData.charAt(0) == 'L')
 		  {
-			  addSequential(new EncoderDriveCommand2(-.5, 0));
+//			  addSequential(new EncoderDriveCommand2(-.5, 0));
+			  
+			  addSequential(new EncoderDriveCommand4(-.5, 0));
+			  addSequential(new GyroCommandRight());
+			  addSequential(new EncoderDriveCommand7(-.5, 0));
+			  addSequential(new GyroCommandLeft());
+			  addSequential(new EncoderDriveCommand6(-.5, 0));
 			//check for scale
 		  } else {
 			  addSequential(new EncoderDriveCommand2(-.5, 0));

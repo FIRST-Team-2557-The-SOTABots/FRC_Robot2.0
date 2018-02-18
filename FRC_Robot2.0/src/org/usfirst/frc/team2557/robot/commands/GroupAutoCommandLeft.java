@@ -20,7 +20,13 @@ public class GroupAutoCommandLeft extends CommandGroup {
 			  addSequential(new EncoderDriveCommand3(.5, 0));
 			  //place block
 		  } else {
-			  addSequential(new EncoderDriveCommand2(.5, 0));
+//			  addSequential(new EncoderDriveCommand2(.5, 0));
+			  
+			  addSequential(new EncoderDriveCommand4(-.5, 0));
+			  addSequential(new GyroCommandLeft());
+			  addSequential(new EncoderDriveCommand7(-.5, 0));
+			  addSequential(new GyroCommandRight());
+			  addSequential(new EncoderDriveCommand6(-.5, 0));
 			  //check for scale
 		  }
                 }

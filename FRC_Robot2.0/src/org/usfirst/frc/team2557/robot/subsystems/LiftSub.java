@@ -35,7 +35,8 @@ public class LiftSub extends Subsystem {
 			SmartDashboard.putBoolean("here1", true);
 		}else if(SolVal == false && SolVal2 == true){
 			RobotMap.LiftMotor.set(-.2);
-		}else {
+		}
+		else {
 			RobotMap.LiftMotor.set(0);
 		}
 	
