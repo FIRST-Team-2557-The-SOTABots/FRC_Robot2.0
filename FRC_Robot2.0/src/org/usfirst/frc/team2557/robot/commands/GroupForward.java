@@ -22,7 +22,7 @@ public class GroupForward extends CommandGroup {
 //		  addSequential(new GyroCommandLeft());
 //		  addSequential(new EncoderDriveCommand6(-.5, 0));
     	
-		  addSequential(new EncoderDriveCommand1(-.5, 0));
+		  addSequential(new EncoderDriveCommand1(0, 0));
 //		  addSequential(new GyroCommandLeft());
 //		  addSequential(new EncoderDriveCommand3(-.5, 0));
 		  
