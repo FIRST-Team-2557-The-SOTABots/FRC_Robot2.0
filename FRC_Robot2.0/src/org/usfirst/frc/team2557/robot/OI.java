@@ -14,6 +14,7 @@ import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -26,8 +27,8 @@ public class OI {
 	public static JoystickButton BackwardButton;
 	
 	public static Joystick Joystick2;
-	public static JoystickButton LiftUp;
-	public static JoystickButton LiftDown;
+	public static JoystickButton y;
+	public static JoystickButton x;
 	public static JoystickButton IntakeIn;
 	public static JoystickButton IntakeOut;
 	
@@ -40,17 +41,18 @@ public class OI {
 		BackwardButton.whenPressed(new SolenoidCommand());
 		
 		Joystick2 = new Joystick(1);
-		LiftUp = new JoystickButton(Joystick2, 4);
-		LiftDown = new JoystickButton(Joystick2, 3);
+		y = new JoystickButton(Joystick2, 4);
+		x = new JoystickButton(Joystick2, 3);
 		IntakeIn = new JoystickButton(Joystick2, 2);
 		IntakeOut = new JoystickButton(Joystick2, 1);
 		
-		IntakeIn.whileHeld(new IntakeCommand(false));
-		IntakeOut.whileHeld(new IntakeCommand(false));
-		LiftUp.whileHeld(new LiftCommand());
-		LiftUp.whenReleased(new LiftCommand());
-		LiftDown.whileHeld(new LiftCommand());
-		LiftDown.whenReleased(new LiftCommand());
+		IntakeIn.whileHeld(new IntakeCommand());
+		IntakeOut.whileHeld(new IntakeCommand());
+		y.whileHeld(new LiftCommand());
+		y.whenReleased(new LiftCommand());
+		x.whileHeld(new LiftCommand());
+		x.whenReleased(new LiftCommand());
+		
 	}
 	
 	//// CREATING BUTTONS

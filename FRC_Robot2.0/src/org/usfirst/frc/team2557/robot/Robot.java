@@ -107,8 +107,8 @@ public class Robot extends TimedRobot {
 		
 		RobotMap.DS1.set(Value.kReverse);
 //		RobotMap.DS1.set(Value.kForward);
-    	RobotMap.S1.set(true);
-    	RobotMap.S2.set(false);
+//    	RobotMap.S1.set(true);
+//    	RobotMap.S2.set(false);
 		
 		DriveSub1 = new DriveSub();
 		SolSub = new SolenoidSub();
@@ -140,7 +140,7 @@ public class Robot extends TimedRobot {
 		LS = new LiftSub();
 		
 		LC = new LiftCommand();
-		IC = new IntakeCommand(false);
+		IC = new IntakeCommand();
 		
 		m_oi = new OI();
 		m_oi.OIInit();

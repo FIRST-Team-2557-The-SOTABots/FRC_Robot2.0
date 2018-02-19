@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2557.robot.commands;
 
+import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -21,7 +22,8 @@ public class CombinedHumanErrorDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.DriveSub1.CombinedHumandErrorDrive();
+//    	Robot.DriveSub1.CombinedHumandErrorDrive();
+    	Robot.DriveSub1.MecanumAutoDriveMethod(OI.Joystick1.getRawAxis(0), OI.Joystick1.getRawAxis(1), -OI.Joystick1.getRawAxis(4));
     }
 
     // Make this return true when this Command no longer needs to run execute()
