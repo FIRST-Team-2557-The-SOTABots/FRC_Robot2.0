@@ -139,7 +139,7 @@ public class DriveSub extends Subsystem {
 		else if( (OI.Joystick1.getRawAxis(1) > .8 || OI.Joystick1.getRawAxis(1) < -.8) && ( Math.abs(OI.Joystick1.getRawAxis(4)) >.5) /*&& ( (Math.abs(OI.Joystick1.getRawAxis(1)) != 1) || (Math.abs(OI.Joystick1.getRawAxis(0)) != 1) )*/ ){
 			RobotMap.MecDrive.driveCartesian(0, -OI.Joystick1.getRawAxis(1)*.8, 0);
 		}
-		else if( (OI.Joystick1.getRawAxis(4) > .8 || OI.Joystick1.getRawAxis(4) < -.8 ) && ( Math.abs(OI.Joystick1.getRawAxis(0)) >.5) /* && ( (Math.abs(OI.Joystick1.getRawAxis(1)) != 1) || (Math.abs(OI.Joystick1.getRawAxis(0)) != 1) )*/ ){
+		else if( (OI.Joystick1.getRawAxis(4) > .8 || OI.Joystick1.getRawAxis(4) < -.8 ) && ( Math.abs(OI.Joystick1.getRawAxis(0)) >.5) && ( Math.abs(OI.Joystick1.getRawAxis(1)) >.5)/* && ( (Math.abs(OI.Joystick1.getRawAxis(1)) != 1) || (Math.abs(OI.Joystick1.getRawAxis(0)) != 1) )*/ ){
 			RobotMap.MecDrive.driveCartesian(0, 0, -OI.Joystick1.getRawAxis(4)*.8);
 		}
 		else {

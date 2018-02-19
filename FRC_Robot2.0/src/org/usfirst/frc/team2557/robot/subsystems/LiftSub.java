@@ -30,11 +30,12 @@ public class LiftSub extends Subsystem {
 		boolean SolVal2 = OI.LiftDown.get();
 		SmartDashboard.putBoolean("LiftButton", OI.LiftUp.get());
 		SmartDashboard.putBoolean("LiftButtonDown", OI.LiftDown.get());
-		if (SolVal == true && SolVal2 == false) {
+		double a = -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition();
+		if (SolVal == true && SolVal2 == false && -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() < 38000) {
 			RobotMap.LiftMotor.set(.6);
 			SmartDashboard.putBoolean("here1", true);
-		}else if(SolVal == false && SolVal2 == true){
-			RobotMap.LiftMotor.set(-.2);
+		}else if(SolVal == false && SolVal2 == true && -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() > 500){
+			RobotMap.LiftMotor.set(-.4);
 		}
 		else {
 			RobotMap.LiftMotor.set(0);
