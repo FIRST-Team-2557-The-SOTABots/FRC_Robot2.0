@@ -23,8 +23,8 @@ public class SmartDashboard_sub extends Subsystem {
     }
 
     public void encoders(){
-		SmartDashboard.putNumber("Left encoder: ", (double) (RobotMap.FLdrive.getSensorCollection().getQuadraturePosition()) / 1000);
-		SmartDashboard.putNumber("Right encoder: ", (double) (-RobotMap.FRdrive.getSensorCollection().getQuadraturePosition()) / 1000);
+		SmartDashboard.putNumber("Left encoder: ", (double) (RobotMap.BLdrive.getSensorCollection().getQuadraturePosition()) / 1000);
+		SmartDashboard.putNumber("Right encoder: ", (double) (-RobotMap.BRdrive.getSensorCollection().getQuadraturePosition()) / 1000);
     }
 //    public void vision(){
 //    	SmartDashboard.putNumber("The height is: ", Robot.vision.findHeights());
@@ -36,8 +36,6 @@ public class SmartDashboard_sub extends Subsystem {
     }
     public void currentDraw(){
     	//Current Draw via Talons
-    	SmartDashboard.putNumber("Front Left Drive is pulling current (talon): ", RobotMap.FLdrive.getOutputCurrent());
-    	SmartDashboard.putNumber("Front Right Drive is pulling current (talon): ", RobotMap.FRdrive.getOutputCurrent());
     	SmartDashboard.putNumber("Back Left Drive is pulling current (talon): ", RobotMap.BLdrive.getOutputCurrent());
     	SmartDashboard.putNumber("Back Right Drive is pulling current (talon): ", RobotMap.BRdrive.getOutputCurrent());
     	
@@ -54,7 +52,7 @@ public class SmartDashboard_sub extends Subsystem {
 //		SmartDashboard.putNumber("Left Servo: ", RobotMap.leftAgitator.getAngle());
 //		SmartDashboard.putNumber("Right Servo: ", RobotMap.rightAgitator.getAngle());
 //    	SmartDashboard.putNumber("Camera Angle", RobotMap.cameraServo.getAngle());
-    	SmartDashboard.putNumber("Robot Angle", RobotMap.navX.getAngle());
+//    	SmartDashboard.putNumber("Robot Angle", RobotMap.navX.getAngle());
     	
     }
 }

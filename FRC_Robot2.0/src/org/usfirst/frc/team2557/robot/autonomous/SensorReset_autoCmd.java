@@ -24,14 +24,14 @@ public class SensorReset_autoCmd extends Command {
     protected void execute() {
     	switch(_reset){
     	case 1:
-    		RobotMap.navX.reset();
+//    		RobotMap.navX.reset();
     	case 2:
-    		RobotMap.FLdrive.getSensorCollection().setQuadraturePosition(0, 10);
-    		RobotMap.FRdrive.getSensorCollection().setQuadraturePosition(0, 10) ;
+    		RobotMap.BLdrive.getSensorCollection().setQuadraturePosition(0, 10);
+    		RobotMap.BRdrive.getSensorCollection().setQuadraturePosition(0, 10) ;
     	case 3:
-    		RobotMap.navX.reset();
-    		RobotMap.FLdrive.getSensorCollection().setQuadraturePosition(0, 10) ;
-    		RobotMap.FRdrive.getSensorCollection().setQuadraturePosition(0, 10) ;
+//    		RobotMap.navX.reset();
+    		RobotMap.BLdrive.getSensorCollection().setQuadraturePosition(0, 10) ;
+    		RobotMap.BRdrive.getSensorCollection().setQuadraturePosition(0, 10) ;
     	}
     }
 

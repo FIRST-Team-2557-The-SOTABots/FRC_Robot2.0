@@ -33,11 +33,13 @@ public class EncoderDrive_cmd extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if(_forward){
-    		return ((double) (RobotMap.BLdrive.getSensorCollection().getQuadraturePosition() ) / 1000 >= _encGoalLeft && (double)(-RobotMap.BRdrive.getSensorCollection().getQuadraturePosition() ) / 1000 >= _encGoalRight) || (double)RobotMap.FLdrive.getSensorCollection().getQuadraturePosition()  / 1000 >= _encGoalLeft + (_encGoalLeft *.25);
-    	}
+    	if(_forward){
+    		return ((double) (RobotMap.BLdrive.getSensorCollection().getQuadraturePosition() ) / 1000 >= _encGoalLeft && (double)(-RobotMap.BRdrive.getSensorCollection().getQuadraturePosition() ) / 1000 >= _encGoalRight) ||
+    				(double)RobotMap.BLdrive.getSensorCollection().getQuadraturePosition()  / 1000 >= _encGoalLeft + (_encGoalLeft *.25);
+        }
         else{
-    		return ((double) (RobotMap.BLdrive.getSensorCollection().getQuadraturePosition() ) / 1000 <= _encGoalLeft && (double) (-RobotMap.BRdrive.getSensorCollection().getQuadraturePosition() ) / 1000 <= _encGoalRight) || (double)RobotMap.FLdrive.getSensorCollection().getQuadraturePosition()  / 1000 <= _encGoalLeft + (_encGoalLeft *.25);
+        	return ((double) (RobotMap.BLdrive.getSensorCollection().getQuadraturePosition() ) / 1000 <= _encGoalLeft && (double) (-RobotMap.BRdrive.getSensorCollection().getQuadraturePosition() ) / 1000 <= _encGoalRight) ||
+    				(double)RobotMap.BLdrive.getSensorCollection().getQuadraturePosition()  / 1000 <= _encGoalLeft + (_encGoalLeft *.25);
     	}
     }
 

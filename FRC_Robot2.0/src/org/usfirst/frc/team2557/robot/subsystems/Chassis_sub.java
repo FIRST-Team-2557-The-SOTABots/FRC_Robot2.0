@@ -79,16 +79,16 @@ public class Chassis_sub extends Subsystem {
 	private double gyroOffset = 0;
 
 	public void resetDriveStraight() {
-		gyroOffset = RobotMap.navX.getAngle();
+//		gyroOffset = RobotMap.navX.getAngle();
 	}
 
 	public void driveStraight(double speed) {
-		RobotMap.robotDrive.arcadeDrive(speed, -(RobotMap.navX.getAngle() - gyroOffset) * 0.2);
+//		RobotMap.robotDrive.arcadeDrive(speed, -(RobotMap.navX.getAngle() - gyroOffset) * 0.2);
 	}
 
-	public double getDriveStraightAngle() {
-		return RobotMap.navX.getAngle() - gyroOffset;
-	}
+//	public double getDriveStraightAngle() {
+//		return RobotMap.navX.getAngle() - gyroOffset;
+//	}
 
 	private double _power, _turn1, _turn2;
 
@@ -96,25 +96,25 @@ public class Chassis_sub extends Subsystem {
 		_power = speed;
 		_turn1 = 0;
 		_turn2 = 0;
-		if (-RobotMap.FRdrive.getSensorCollection().getQuadratureVelocity() > RobotMap.FLdrive.getSensorCollection()
+		if (-RobotMap.BRdrive.getSensorCollection().getQuadratureVelocity() > RobotMap.BLdrive.getSensorCollection()
 				.getQuadratureVelocity()) {
 			_turn1 += .0002;
-		} else if (-RobotMap.FRdrive.getSensorCollection().getQuadratureVelocity() < RobotMap.FLdrive
+		} else if (-RobotMap.BRdrive.getSensorCollection().getQuadratureVelocity() < RobotMap.BLdrive
 				.getSensorCollection().getQuadratureVelocity()) {
 			_turn1 -= .0002;
 		} else {
 			_turn1 += 0;
 		}
 
-		if (RobotMap.navX.getAngle() > 1) {
-			_turn2 += .00075;
-		} else if (RobotMap.navX.getAngle() < -1) {
-			_turn2 -= .00075;
-
-		} else {
-			_turn2 += 0;
-
-		}
+//		if (RobotMap.navX.getAngle() > 1) {
+//			_turn2 += .00075;
+//		} else if (RobotMap.navX.getAngle() < -1) {
+//			_turn2 -= .00075;
+//
+//		} else {
+//			_turn2 += 0;
+//
+//		}
 		RobotMap.robotDrive.arcadeDrive(_power, _turn2); // _turn1 + _turn2);
 
 	}

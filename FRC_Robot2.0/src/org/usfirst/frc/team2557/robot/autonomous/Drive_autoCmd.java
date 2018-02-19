@@ -52,12 +52,13 @@ public class Drive_autoCmd extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if(_rotate == false){
-    		return Robot.accel.feetPerSecond2X() * timer.get() > _required;
+//    		return Robot.accel.feetPerSecond2X() * timer.get() > _required;
     	}
     	else{
-    		return RobotMap.navX.getAngle() < _upperThreshold && RobotMap.navX.getAngle() > _lowerThreshold;
+//    		return RobotMap.navX.getAngle() < _upperThreshold && RobotMap.navX.getAngle() > _lowerThreshold;
     	}
         //return Robot.accel.feetPerSecond2Y() * timer.get() > _required;
+    	return false;
     }
 
     // Called once after isFinished returns true

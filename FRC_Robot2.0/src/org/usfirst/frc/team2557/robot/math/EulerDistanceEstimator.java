@@ -57,12 +57,12 @@ public class EulerDistanceEstimator {
      */
     public void update() {
         // d = v(dt) + (1/2)a(dt^2)
-        this._displacement += this._velocity * this._eTimer.get()
-                + (RobotMap.navX.getRawAccelX() * 9.80662 * Math.pow(this._eTimer.get(), 2)) / 2;
+//        this._displacement += this._velocity * this._eTimer.get()
+//                + (RobotMap.navX.getRawAccelX() * 9.80662 * Math.pow(this._eTimer.get(), 2)) / 2;
         // v = a(dt)
         // This is as close as we can get since we don't have jerk (the derivative of acceleration)
 //        this._velocity += Math.round(this._accelSensor.getY() * 1000.0) / 1000.0 * this._eTimer.get();
-        this._velocity += Math.round(RobotMap.navX.getRawAccelX() * 9.80662 * 1000.0) / 1000.0 * this._eTimer.get();
+//        this._velocity += Math.round(RobotMap.navX.getRawAccelX() * 9.80662 * 1000.0) / 1000.0 * this._eTimer.get();
         // Reset the timer for the next step (delta time)
         this._eTimer.reset();
     }

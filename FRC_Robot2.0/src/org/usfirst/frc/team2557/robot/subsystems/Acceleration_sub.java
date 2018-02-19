@@ -18,36 +18,36 @@ public class Acceleration_sub extends Subsystem {
     }
     
     //Units for the X-axis of Acceleration
-    public double metersPerSecond2X(){
-    	return RobotMap.navX.getRawAccelX() * 9.80665; //Converts G-force into meters pr second squared
-    }
-    public double feetPerSecond2X(){
-    	return RobotMap.navX.getRawAccelX() * 9.80665 * 3.28084; //Converts G-force into feet per second squared
-    }
-    public double distanceX(){
-    	return (feetPerSecond2X() /*time*/)/2;
+//    public double metersPerSecond2X(){
+//    	return RobotMap.navX.getRawAccelX() * 9.80665; //Converts G-force into meters pr second squared
+//    }
+//    public double feetPerSecond2X(){
+//    	return RobotMap.navX.getRawAccelX() * 9.80665 * 3.28084; //Converts G-force into feet per second squared
+//    }
+//    public double distanceX(){
+//    	return (feetPerSecond2X() /*time*/)/2;
     	//return (metersPerSecond2X() /*time*/)/2;
-    }
+//    }
     
     //Units for the Y-axis of acceleration
-    public double metersPerSecond2Y(){
-    	return RobotMap.navX.getRawAccelX() * 9.80665; //Converts G-force into meters pr second squared
-    }
-    public double feetPerSecond2Y(){
-    	return RobotMap.navX.getRawAccelX() * 9.80665 * 3.28084; //Converts G-force into feet per second squared
-    }
-    public double distanceY(){
-    	return (feetPerSecond2Y() /*time*/)/2;
-    	//return (metersPerSecond2Y() /*time*/)/2;
-    }
+//    public double metersPerSecond2Y(){
+//    	return RobotMap.navX.getRawAccelX() * 9.80665; //Converts G-force into meters pr second squared
+//    }
+//    public double feetPerSecond2Y(){
+//    	return RobotMap.navX.getRawAccelX() * 9.80665 * 3.28084; //Converts G-force into feet per second squared
+//    }
+//    public double distanceY(){
+//    	return (feetPerSecond2Y() /*time*/)/2;
+//    	//return (metersPerSecond2Y() /*time*/)/2;
+//    }
     
     
-    public void AutonomousTurn(){
-    	RobotMap.CAngle = RobotMap.navX.getAngle();
-    	
-    	
-
-    }
+//    public void AutonomousTurn(){
+//    	RobotMap.CAngle = RobotMap.navX.getAngle();
+//    	
+//    	
+//
+//    }
     
 }
 

@@ -46,13 +46,13 @@ public class RobotMap {
 	public static WPI_TalonSRX Rintake;
 	public static SpeedControllerGroup intake;
 	public static WPI_TalonSRX lift;
-	
+	public static WPI_TalonSRX winch;
 	public static PowerDistributionPanel pdp;
 	public static DoubleSolenoid shifter;
-	public static Solenoid intakeSol;
+//	public static DoubleSolenoid intakeSol;
 	
 	public static BuiltInAccelerometer accel;
-	public static AHRS navX;
+//	public static AHRS navX;
 	public static boolean _gemini; //false = Fuel Forward and true = Gear Forward
 	public static boolean _stage; //used in gear command or subsystem(I forgot) somewhere :)
 	public static boolean shift; //boolean for the super shifters on the drive train
@@ -69,30 +69,30 @@ public class RobotMap {
 	public static EulerDistanceEstimator euler;
 	
 	public static void init(){
-		FRdrive = new WPI_TalonSRX(6);
+		FRdrive = new WPI_TalonSRX(0);
 		FLdrive = new WPI_TalonSRX(1);
-		BRdrive = new WPI_TalonSRX(5);
-		BLdrive = new WPI_TalonSRX(2);
+		BRdrive = new WPI_TalonSRX(2);
+		BLdrive = new WPI_TalonSRX(7);
 		Left = new SpeedControllerGroup(FLdrive, BLdrive);
 		Right = new SpeedControllerGroup(FRdrive, BRdrive);
 		robotDrive = new DifferentialDrive(Left, Right);
 		robotDrive.setSafetyEnabled(false);
 		mecDrive = new MecanumDrive(FLdrive, BLdrive, FRdrive, BRdrive);
 		mecDrive.setSafetyEnabled(false);
-		Lintake = new WPI_TalonSRX(3);
+		Lintake = new WPI_TalonSRX(6);
 		Rintake = new WPI_TalonSRX(4);
 		Rintake.setInverted(true);
 		intake = new SpeedControllerGroup(Lintake, Rintake);
-		lift = new WPI_TalonSRX(0);
-		
+		lift = new WPI_TalonSRX(9);
+		winch = new WPI_TalonSRX(5);
 		shifter = new DoubleSolenoid(1, 0,1);
-		intakeSol = new Solenoid(1, 2);
+//		intakeSol = new DoubleSolenoid(1, 2, 3);
 		leftAgitator = new Servo(1);
 		rightAgitator = new Servo(2);
 		cameraServo = new Servo(3);
 		
 		pdp = new PowerDistributionPanel(0);
-		navX = new AHRS(SPI.Port.kMXP);
+//		navX = new AHRS(SPI.Port.kMXP);
 		accel = new BuiltInAccelerometer();
 		euler = new EulerDistanceEstimator(ForwardAxis.NegX);
 		

@@ -130,7 +130,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 //		RobotMap.euler.autoInit();
 //		Robot.chassis.resetDriveStraight();
-		RobotMap.FLdrive.getSensorCollection().setQuadraturePosition(0, 10);
+		RobotMap.BLdrive.getSensorCollection().setQuadraturePosition(0, 10);
 		RobotMap.BRdrive.getSensorCollection().setQuadraturePosition(0, 10);
 //		RobotMap.navX.reset();
 		/*
@@ -163,16 +163,16 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		RobotMap.euler.update();
-		SmartDashboard.putNumber("Left Encoder: ", RobotMap.FLdrive.getSensorCollection().getQuadraturePosition());
+		SmartDashboard.putNumber("Left Encoder: ", RobotMap.BLdrive.getSensorCollection().getQuadraturePosition());
 		SmartDashboard.putNumber("Right Encoder: ", RobotMap.BRdrive.getSensorCollection().getQuadraturePosition());
-		SmartDashboard.putNumber("NavX Angle is: ",RobotMap.navX.getAngle());
-		SmartDashboard.putNumber("DriveStraight Angle is: ",Robot.chassis.getDriveStraightAngle());
+//		SmartDashboard.putNumber("NavX Angle is: ",RobotMap.navX.getAngle());
+//		SmartDashboard.putNumber("DriveStraight Angle is: ",Robot.chassis.getDriveStraightAngle());
 		
 		if(RobotMap._stage){
-			RobotMap.intakeSol.set(true);
+//			RobotMap.intakeSol.set(Value.kForward);
 		}
 		else if (RobotMap._stage == false){
-			RobotMap.intakeSol.set(false);
+//			RobotMap.intakeSol.set(Value.kReverse);
 		}
 		
 	}
@@ -202,9 +202,9 @@ public class Robot extends IterativeRobot {
 		visionUpdate.start();
 		shooterUpdate.start();
 		if(oi.x1.get()){
-			RobotMap.FLdrive.getSensorCollection().setQuadraturePosition(0, 10);
-			RobotMap.FRdrive.getSensorCollection().setQuadraturePosition(0, 10);
-			RobotMap.navX.reset();
+			RobotMap.BLdrive.getSensorCollection().setQuadraturePosition(0, 10);
+			RobotMap.BRdrive.getSensorCollection().setQuadraturePosition(0, 10);
+//			RobotMap.navX.reset();
 		}
 		if(oi.RB1.get()){
 			shiftUp.start();
