@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2557.robot.autonomous.ShiftToggle_autoCmd;
-import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
+import org.usfirst.frc.team2557.robot.commands.Wings_cmd;
 import org.usfirst.frc.team2557.robot.commands.DriveToTarget_cmd;
 import org.usfirst.frc.team2557.robot.subsystems.*;
 import org.usfirst.frc.team2557.robot.vision.VisionArray_sub;
@@ -32,7 +32,7 @@ public class Robot extends IterativeRobot {
 	public static final Chassis_sub 		chassis 		= new Chassis_sub();
 	public static final Intake_sub 			intake 			= new Intake_sub();
 	public static final Lift_sub 		climber 		= new Lift_sub();
-	public static final Agitator_sub 		agitator 		= new Agitator_sub();
+	public static final Wings_sub 		wing 		= new Wings_sub();
 	public static final Acceleration_sub 	accel			= new Acceleration_sub();
 	public static final SmartDashboard_sub  dashboard 		= new SmartDashboard_sub();
 	public static final VisionArray_sub		vision			= new VisionArray_sub();

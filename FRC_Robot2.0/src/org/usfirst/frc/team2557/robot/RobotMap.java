@@ -63,8 +63,8 @@ public class RobotMap {
 	public static boolean shootReq;
 	public static boolean _leftX_gear;
 	
-	public static Servo leftAgitator;
-	public static Servo rightAgitator;
+	public static Servo leftWing;
+	public static Servo rightWing;
 	public static Servo cameraServo;
 	public static EulerDistanceEstimator euler;
 	
@@ -87,8 +87,8 @@ public class RobotMap {
 		winch = new WPI_TalonSRX(5);
 		shifter = new DoubleSolenoid(1, 0,1);
 //		intakeSol = new DoubleSolenoid(1, 2, 3);
-		leftAgitator = new Servo(1);
-		rightAgitator = new Servo(2);
+		leftWing = new Servo(1);
+		rightWing = new Servo(2);
 		cameraServo = new Servo(3);
 		
 		pdp = new PowerDistributionPanel(0);
