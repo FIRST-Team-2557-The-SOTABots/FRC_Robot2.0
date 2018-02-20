@@ -7,9 +7,6 @@ import org.usfirst.frc.team2557.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class IntakeCommand extends Command {
 	
     public IntakeCommand() {
@@ -55,7 +52,6 @@ public class IntakeCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-
         return false;
     }
 

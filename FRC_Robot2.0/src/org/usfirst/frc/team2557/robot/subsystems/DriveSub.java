@@ -2,24 +2,19 @@ package org.usfirst.frc.team2557.robot.subsystems;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
 import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class DriveSub extends Subsystem {
 
 	public void MecanumAutoDriveMethod(double yspeed, double xspeed, double zrotation) {
 		RobotMap.MecDrive.driveCartesian(yspeed, xspeed, zrotation);
 	}
 	
-	public void AutoDriveMethod(double speed, double rotation) {
+	public void DiffAutoDriveMethod(double speed, double rotation) {
 		RobotMap.DiffDrive.arcadeDrive(speed, rotation);
 		
 		SmartDashboard.putNumber("L2", RobotMap.Left2.getSensorCollection().getQuadraturePosition());

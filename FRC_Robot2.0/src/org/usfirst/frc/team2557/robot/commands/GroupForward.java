@@ -9,10 +9,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class GroupForward extends CommandGroup {
 
 	public GroupForward() {
-		// Add Commands here:
-		// e.g. addSequential(new Command1());
-		//      addSequential(new Command2());
-		// these will run in order.
 		//		  addSequential(new EncoderDriveCommand1(0, 0));
 		//    	  addSequential(new GyroCommandLeft());
 		//		  addSequential(new GyroCommandRight());
@@ -25,17 +21,14 @@ public class GroupForward extends CommandGroup {
 
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
-		if(gameData.length() > 0)
-		{
-			if(gameData.charAt(0) == 'L')
-			{
+		if(gameData != null && gameData.length() > 0){
+			if(gameData.charAt(0) == 'L'){
 				addSequential(new EncoderDriveCommand2(.5, 0));
 				addSequential(new GyroCommandRight());
 				addSequential(new EncoderDriveCommand3(.5, 0));
 				//place block
 			} else {
 				//			  addSequential(new EncoderDriveCommand2(.5, 0));
-
 				if(gameData.charAt(1) == 'L') {
 					//go to switch
 					addSequential(new GyroCommandRight());
@@ -52,8 +45,6 @@ public class GroupForward extends CommandGroup {
 				//			  //check for scale
 			}
 		}
-
-
 		addSequential(new EncoderDriveCommand1(0, 0));
 		//		  addSequential(new GyroCommandLeft());
 		//		  addSequential(new EncoderDriveCommand3(-.5, 0));

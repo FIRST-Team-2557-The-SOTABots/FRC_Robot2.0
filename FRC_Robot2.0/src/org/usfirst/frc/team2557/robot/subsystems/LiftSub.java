@@ -3,16 +3,14 @@ package org.usfirst.frc.team2557.robot.subsystems;
 import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.RobotMap;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
-
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class LiftSub extends Subsystem {
+	
+	public void liftInAuto(double power){
+		RobotMap.LiftMotor.set(power);
+	}
 
 	public void LiftMethod() {
 		

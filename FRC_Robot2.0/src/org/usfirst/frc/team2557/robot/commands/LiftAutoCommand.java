@@ -1,21 +1,17 @@
 package org.usfirst.frc.team2557.robot.commands;
 
-import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
-public class CombinedHumanErrorDriveCommand extends Command {
+public class LiftAutoCommand extends Command {
+	double height;
 
-	public CombinedHumanErrorDriveCommand() {
-		requires(Robot.DriveSub1);
+	public LiftAutoCommand(double encPos) {
 		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
+		requires(Robot.LS);
+		height = encPos;
 	}
 
 	// Called just before this Command runs the first time
@@ -24,16 +20,16 @@ public class CombinedHumanErrorDriveCommand extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		//    	Robot.DriveSub1.CombinedHumandErrorDrive();
-		if(RobotMap.DS1.get() == DoubleSolenoid.Value.kForward){
-			Robot.DriveSub1.MecanumAutoDriveMethod(-OI.Joystick1.getRawAxis(0), OI.Joystick1.getRawAxis(1), -OI.Joystick1.getRawAxis(4));
-		}else{
-			Robot.DriveSub1.DiffAutoDriveMethod(-OI.Joystick1.getRawAxis(0), -OI.Joystick1.getRawAxis(4));
+		while(-RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() < height){
+			Robot.LS.liftInAuto(.6);
 		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
+		if(-RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() >= height){
+			return true;
+		}
 		return false;
 	}
 
