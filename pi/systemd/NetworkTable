@@ -6,8 +6,6 @@ import sys
 from networktables import NetworkTables
 
 
-
-
 NetworkTables.initialize(server='10.25.57.5')
 sd = NetworkTables.getTable('SmartDashboard')
 dt = NetworkTables.getTable('DataTable')
