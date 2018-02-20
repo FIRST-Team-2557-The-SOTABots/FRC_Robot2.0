@@ -32,7 +32,7 @@ public class EncoderDriveCommand2 extends Command {
     protected void execute() {
     	SmartDashboard.getNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10);
     	SmartDashboard.getNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10);
-    	Robot.DriveSub1.AutoDriveMethod(speed, rotation);
+    	Robot.DriveSub1.DiffAutoDriveMethod(speed, rotation);
     }
 
     // Make this return true when this Command no longer needs to run execute()
