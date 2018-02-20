@@ -14,3 +14,4 @@ dts = NetworkTables.getTable('MessageTable')
 fileMessage  = open(“Message”, “r”)
 String message = fileMessage.read()
 print(message)
+
