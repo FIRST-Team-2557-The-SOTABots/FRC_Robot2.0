@@ -1,17 +1,15 @@
-from array import *
-import math
 import serial
 import time
 import sys
+import os
 from networktables import NetworkTables
 
+#NetworkTables.initialize(server='10.25.57.5')
+#sd = NetworkTables.getTable('SmartDashboard')
+#dt = NetworkTables.getTable('DataTable')
+#dts = NetworkTables.getTable('MessageTable')
 
-NetworkTables.initialize(server='10.25.57.5')
-sd = NetworkTables.getTable('SmartDashboard')
-dt = NetworkTables.getTable('DataTable')
-dts = NetworkTables.getTable('MessageTable')
-
-fileMessage  = open(“Message”, “r”)
+fileMessage  = open(“os.path.abspath("C:/example/cwd/mydir/Message.txt")”, “r”)
 String message = fileMessage.read()
 print(message)
 
