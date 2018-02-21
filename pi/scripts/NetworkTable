@@ -1,0 +1,15 @@
+import serial
+import time
+import sys
+#import os
+#from networktables import NetworkTables
+
+#NetworkTables.initialize(server='10.25.57.5')
+#sd = NetworkTables.getTable('SmartDashboard')
+#dt = NetworkTables.getTable('DataTable')
+#dts = NetworkTables.getTable('MessageTable')
+
+fileMessage = open("/home/pi/Desktop/vision/vision-message.txt", "r")
+message = fileMessage.read()
+print(message)
+
