@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class EncoderDriveCommand8 extends Command {
+public class EncoderDriveCommandTEST extends Command {
 	
 	private double speed;
 	private double rotation;
 
-    public EncoderDriveCommand8(double s, double r) {
+    public EncoderDriveCommandTEST(double s, double r) {
     	requires(Robot.DriveSub1);
     	speed = s;
     	rotation = r;
@@ -37,12 +37,12 @@ public class EncoderDriveCommand8 extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if((-RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10 > 11050) && (RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10 > 11150)) {
+//    	if((-RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10 > 4750) && (RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10 >4700)) {
 //    		the "> 100" values are just placeholders for now, they're supposed to be however long 11 and 2/3 feet is. It is used for getting to the switch,
 //    		not the scale, which is going to use a different command. There will probably be a sensor to get the colour of the two things, so updates are
 //    		expected.
-    		return true;
-    	}
+//    		return true;
+//    	}
         return false;
     }
 

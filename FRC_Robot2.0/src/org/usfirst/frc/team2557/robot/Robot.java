@@ -26,6 +26,8 @@ import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand4;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand5;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand6;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand7;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand8;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommandTEST;
 import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandMid;
 import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandRight;
@@ -35,7 +37,9 @@ import org.usfirst.frc.team2557.robot.commands.GyroCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.GyroCommandRight;
 import org.usfirst.frc.team2557.robot.commands.HumanErrorMecanumCommand;
 import org.usfirst.frc.team2557.robot.commands.HumanErrorTractionCommand;
+import org.usfirst.frc.team2557.robot.commands.IntakeAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
+import org.usfirst.frc.team2557.robot.commands.LiftAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftEncoderCommand;
 import org.usfirst.frc.team2557.robot.commands.MecanumStrafeCommand;
@@ -67,6 +71,8 @@ public class Robot extends TimedRobot {
 	public static GyroCommandRight GCR;
 	public static CorrectStrafeCommand CFC;
 	public static CombinedHumanErrorDriveCommand CHEDC;
+	
+	public static EncoderDriveCommandTEST EDC_TEST;
 	public static EncoderDriveCommand1 EDC1;
 	public static EncoderDriveCommand2 EDC2;
 	public static EncoderDriveCommand3 EDC3;
@@ -74,6 +80,7 @@ public class Robot extends TimedRobot {
 	public static EncoderDriveCommand5 EDC5;
 	public static EncoderDriveCommand6 EDC6;
 	public static EncoderDriveCommand7 EDC7;
+	public static EncoderDriveCommand8 EDC8;
 	
 	public static TimedAutoMecanumDriveCommand TAMDC;
 	public static TimedAutoDriveCommand TADC;
@@ -88,8 +95,10 @@ public class Robot extends TimedRobot {
 
 	public static LiftSub LS;
 	public static LiftCommand LC;
+	public static LiftAutoCommand LAC;
 	public static IntakeCommand IC;
 	public static LiftEncoderCommand LEC;
+	public static IntakeAutoCommand IAC;
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -118,6 +127,8 @@ public class Robot extends TimedRobot {
 		GCR = new GyroCommandRight();
 		CFC = new CorrectStrafeCommand();
 		CHEDC = new CombinedHumanErrorDriveCommand();
+		
+		EDC_TEST = new EncoderDriveCommandTEST(1,0);
 		EDC1 = new EncoderDriveCommand1(1, 0);
 		EDC2 = new EncoderDriveCommand2(1, 0);
 		EDC3 = new EncoderDriveCommand3(1, 0);
@@ -125,6 +136,7 @@ public class Robot extends TimedRobot {
 		EDC5 = new EncoderDriveCommand5(1, 0);
 		EDC6 = new EncoderDriveCommand6(1, 0);
 		EDC7 = new EncoderDriveCommand7(1, 0);
+		EDC8 = new EncoderDriveCommand8(1, 0);
 		
 		TAMDC = new TimedAutoMecanumDriveCommand(1, 0, 0, 1);
 		TADC = new TimedAutoDriveCommand(1, 0, 1);
@@ -140,7 +152,10 @@ public class Robot extends TimedRobot {
 		LS = new LiftSub();
 		
 		LC = new LiftCommand();
+		LAC = new LiftAutoCommand(.6);
+		LEC = new LiftEncoderCommand();
 		IC = new IntakeCommand(false);
+		IAC = new IntakeAutoCommand();
 		
 		m_oi = new OI();
 		m_oi.OIInit();

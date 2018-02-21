@@ -45,6 +45,7 @@ public class RobotMap {
 //    public static final int RIGHT_ULTRASONIC_ECHO_CHANNEL =
 //                    getConstant("RIGHT_ULTRASONIC_ECHO_CHANNEL");
 	
+	public static boolean LiftConfirm;
 	public static boolean Confirm;
 	public static boolean Position;
 	public static double GyroAngle;

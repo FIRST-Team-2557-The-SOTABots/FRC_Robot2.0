@@ -40,7 +40,6 @@ public class LiftSub extends Subsystem {
 		else {
 			RobotMap.LiftMotor.set(0);
 		}
-	
 		
 //		RobotMap.LiftMotor.set(-OI.Joystick2.getRawAxis(1)*.8);
 //		if(Math.abs(OI.Joystick2.getRawAxis(1)) > .1){
@@ -71,6 +70,28 @@ public class LiftSub extends Subsystem {
 	} 
 		*/
 		
+	}
+	
+	public void LiftAuto(double power) {
+			RobotMap.LiftMotor.set(power);
+	}
+	
+	boolean Moo = RobotMap.LiftConfirm;
+	
+	public void IntakeAutoMethod() {
+		if(Moo == false) {
+			RobotMap.IntakeR.set(.6);
+			RobotMap.IntakeL.set(-.6);
+			RobotMap.S1.set(false);
+			RobotMap.S2.set(true);
+			Moo = false;
+		}
+		else {
+			RobotMap.IntakeR.set(0);
+			RobotMap.IntakeL.set(0);
+			RobotMap.S1.set(true);
+			RobotMap.S1.set(false);
+		}
 	}
 
 	
