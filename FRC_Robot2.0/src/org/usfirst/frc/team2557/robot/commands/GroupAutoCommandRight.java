@@ -22,19 +22,19 @@ public class GroupAutoCommandRight extends CommandGroup {
 //			  addSequential(new EncoderDriveCommand6(-.5, 0));
 			  
 			if(gameData.charAt(1) == 'L') {
-				  addSequential(new EncoderDriveCommand8(.6, 0));
-				  addParallel(new LiftAutoCommand(.6));
+				  addSequential(new EncoderDriveCommand8(-.8, 0));
+				  addParallel(new LiftAutoCommand(1));
 				  addSequential(new GyroCommandLeft());
 				  addSequential(new IntakeAutoCommand());
 			}
 				  else {
-					  addSequential(new EncoderDriveCommand9(.6, 0));
+					  addSequential(new EncoderDriveCommand9(-.8, 0));
 				  }
 		  } 
 		  else {
-			  addSequential(new EncoderDriveCommand2(-.5, 0));
+			  addSequential(new EncoderDriveCommand2(-.8, 0));
 			  addSequential(new GyroCommandLeft());
-			  addSequential(new EncoderDriveCommand3(-.5, 0));
+			  addSequential(new EncoderDriveCommand3(-.8, 0));
 			  addSequential(new IntakeAutoCommand());
 		  }
                 }

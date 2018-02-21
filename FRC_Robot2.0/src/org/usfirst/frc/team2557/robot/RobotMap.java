@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Ultrasonic;
@@ -28,22 +29,6 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
  * floating around.
  */
 public class RobotMap {
-	
-//    private static final int[] LEFT_ULTRASONIC_PING_CHANNEL_VALS = {4, 4, 4};
-//    public static final int LEFT_ULTRASONIC_PING_CHANNEL =
-//                    getConstant("LEFT_ULTRASONIC_PING_CHANNEL");
-//
-//    private static final int[] LEFT_ULTRASONIC_ECHO_CHANNEL_VALS = {5, 5, 5};
-//    public static final int LEFT_ULTRASONIC_ECHO_CHANNEL =
-//                    getConstant("LEFT_ULTRASONIC_ECHO_CHANNEL");
-//
-//    private static final int[] RIGHT_ULTRASONIC_PING_CHANNEL_VALS = {6, 6, 6};
-//    public static final int RIGHT_ULTRASONIC_PING_CHANNEL =
-//                    getConstant("RIGHT_ULTRASONIC_PING_CHANNEL");
-//
-//    private static final int[] RIGHT_ULTRASONIC_ECHO_CHANNEL_VALS = {7, 7, 7};
-//    public static final int RIGHT_ULTRASONIC_ECHO_CHANNEL =
-//                    getConstant("RIGHT_ULTRASONIC_ECHO_CHANNEL");
 	
 	public static boolean LiftConfirm;
 	public static boolean Confirm;
@@ -73,16 +58,11 @@ public class RobotMap {
 	public static MecanumDrive MecDrive;
 	
 	public static AnalogInput Ultrasonic;
-	
-//	public static boolean LiftVar;
 
-//	public static AnalogInput leftAngleIR;
-//	public static AnalogInput rightAngleIR;
-//	public static AnalogInput leftCenterIR;
-//	public static AnalogInput rightCenterIR;
 	
 	public static WPI_TalonSRX LiftMotor;
-	public static WPI_TalonSRX Winch;
+	public static Servo LeftWing;
+	public static Servo RightWing;
 	
 	public static void init() {
 			
@@ -113,14 +93,11 @@ public class RobotMap {
 		
 		Ultrasonic = new AnalogInput(0);
 		
-//		leftAngleIR = new AnalogInput(RobotMap.Analog.LeftAngleIR);
-//		rightAngleIR = new AnalogInput(RobotMap.Analog.RightAngleIR);
-//
-//		leftCenterIR = new AnalogInput(RobotMap.Analog.LeftCenterIR);
-//		rightCenterIR = new AnalogInput(RobotMap.Analog.RightCenterIR);
-		
 		LiftMotor = new WPI_TalonSRX(9);
-		Winch = new WPI_TalonSRX(5);
+		
+//		LeftWing = new Servo();
+//		RightWing = new Servo();
+//		Winch = new WPI_TalonSRX(5);
 	}
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.

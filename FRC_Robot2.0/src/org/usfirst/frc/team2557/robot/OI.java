@@ -11,6 +11,7 @@ package org.usfirst.frc.team2557.robot;
 import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
 import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
+import org.usfirst.frc.team2557.robot.commands.WingCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -30,6 +31,8 @@ public class OI {
 	public static JoystickButton LiftDown;
 	public static JoystickButton IntakeIn;
 	public static JoystickButton IntakeOut;
+	public static JoystickButton WingL;
+	public static JoystickButton WingR;
 	
 	public void OIInit() {
 		Joystick1 = new Joystick(0);
@@ -44,6 +47,8 @@ public class OI {
 		LiftDown = new JoystickButton(Joystick2, 3);
 		IntakeIn = new JoystickButton(Joystick2, 2);
 		IntakeOut = new JoystickButton(Joystick2, 1);
+		WingL = new JoystickButton(Joystick2, 5);
+		WingR = new JoystickButton(Joystick2, 6);
 		
 		IntakeIn.whileHeld(new IntakeCommand(false));
 		IntakeOut.whileHeld(new IntakeCommand(false));
@@ -51,6 +56,8 @@ public class OI {
 		LiftUp.whenReleased(new LiftCommand());
 		LiftDown.whileHeld(new LiftCommand());
 		LiftDown.whenReleased(new LiftCommand());
+		WingL.whenPressed(new WingCommand());
+		WingR.whenPressed(new WingCommand());
 	}
 	
 	//// CREATING BUTTONS

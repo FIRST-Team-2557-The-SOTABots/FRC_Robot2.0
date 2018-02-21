@@ -49,7 +49,8 @@ import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
 import org.usfirst.frc.team2557.robot.commands.TeleDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.TimedAutoDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.TimedAutoMecanumDriveCommand;
-import org.usfirst.frc.team2557.robot.commands.WheelCheck;
+import org.usfirst.frc.team2557.robot.commands.WheelCheckCommand;
+import org.usfirst.frc.team2557.robot.commands.WingCommand;
 import org.usfirst.frc.team2557.robot.subsystems.*;
 
 /**
@@ -92,15 +93,17 @@ public class Robot extends TimedRobot {
 	public static HumanErrorTractionCommand HETC;
 	public static TeleDriveCommand TDC;
 	public static MecanumStrafeCommand MSC;
-	public static WheelCheck WC;
+	public static WheelCheckCommand WCC;
 	
 
 	public static LiftSub LS;
+	public static WingSub WS;
 	public static LiftCommand LC;
 	public static LiftAutoCommand LAC;
 	public static IntakeCommand IC;
 	public static LiftEncoderCommand LEC;
 	public static IntakeAutoCommand IAC;
+	public static WingCommand WC;
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -149,16 +152,18 @@ public class Robot extends TimedRobot {
 		HETC = new HumanErrorTractionCommand();
 		TDC = new TeleDriveCommand();
 		MSC = new MecanumStrafeCommand();
-		WC = new WheelCheck();
+		WCC = new WheelCheckCommand();
 		
 		
 		LS = new LiftSub();
+		WS = new WingSub();
 		
 		LC = new LiftCommand();
 		LAC = new LiftAutoCommand(.6);
 		LEC = new LiftEncoderCommand();
 		IC = new IntakeCommand(false);
 		IAC = new IntakeAutoCommand();
+		WC = new WingCommand();
 		
 		m_oi = new OI();
 		m_oi.OIInit();
@@ -251,6 +256,7 @@ public class Robot extends TimedRobot {
 //		HETC.start();
 //		LC.start();
 		IC.start();
+		WC.start();
 //		MSC.start();
 //		CFC.start();
 //    	SmartDashboard.putNumber("EncoderCountLeft", - RobotMap.Left2.getSensorCollection().getQuadraturePosition()/1000);

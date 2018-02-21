@@ -7,10 +7,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class WheelCheck extends Command {
+public class WingCommand extends Command {
 
-    public WheelCheck() {
-    	requires(Robot.DriveSub1);
+    public WingCommand() {
+    	requires(Robot.WS);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -21,7 +21,7 @@ public class WheelCheck extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.DriveSub1.Control();
+    	Robot.WS.Wings();
     }
 
     // Make this return true when this Command no longer needs to run execute()
