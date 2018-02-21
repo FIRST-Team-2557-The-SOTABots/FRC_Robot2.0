@@ -27,6 +27,9 @@ public class GroupAutoCommandRight extends CommandGroup {
 				  addSequential(new GyroCommandLeft());
 				  addSequential(new IntakeAutoCommand());
 			}
+			else {
+				
+			}
 		  } else {
 			  addSequential(new EncoderDriveCommand2(-.5, 0));
 			  addSequential(new GyroCommandLeft());
