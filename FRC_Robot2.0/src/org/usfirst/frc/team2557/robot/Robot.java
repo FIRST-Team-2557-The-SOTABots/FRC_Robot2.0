@@ -27,6 +27,7 @@ import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand5;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand6;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand7;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand8;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand9;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommandTEST;
 import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandMid;
@@ -81,6 +82,7 @@ public class Robot extends TimedRobot {
 	public static EncoderDriveCommand6 EDC6;
 	public static EncoderDriveCommand7 EDC7;
 	public static EncoderDriveCommand8 EDC8;
+	public static EncoderDriveCommand9 EDC9;
 	
 	public static TimedAutoMecanumDriveCommand TAMDC;
 	public static TimedAutoDriveCommand TADC;
@@ -137,6 +139,7 @@ public class Robot extends TimedRobot {
 		EDC6 = new EncoderDriveCommand6(1, 0);
 		EDC7 = new EncoderDriveCommand7(1, 0);
 		EDC8 = new EncoderDriveCommand8(1, 0);
+		EDC9 = new EncoderDriveCommand9(1, 0);
 		
 		TAMDC = new TimedAutoMecanumDriveCommand(1, 0, 0, 1);
 		TADC = new TimedAutoDriveCommand(1, 0, 1);
