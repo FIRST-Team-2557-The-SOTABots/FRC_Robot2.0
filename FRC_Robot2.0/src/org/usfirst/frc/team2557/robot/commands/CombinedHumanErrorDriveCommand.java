@@ -26,9 +26,10 @@ public class CombinedHumanErrorDriveCommand extends Command {
 	protected void execute() {
 		//    	Robot.DriveSub1.CombinedHumandErrorDrive();
 		if(RobotMap.DS1.get() == DoubleSolenoid.Value.kForward){
-			Robot.DriveSub1.MecanumAutoDriveMethod(-OI.Joystick1.getRawAxis(0), OI.Joystick1.getRawAxis(1), -OI.Joystick1.getRawAxis(4));
+			RobotMap.MecDrive.driveCartesian(-OI.Joystick1.getRawAxis(0), OI.Joystick1.getRawAxis(1), -OI.Joystick1.getRawAxis(4));
 		}else{
-			Robot.DriveSub1.DiffAutoDriveMethod(-OI.Joystick1.getRawAxis(0), -OI.Joystick1.getRawAxis(4));
+			RobotMap.DiffDrive.arcadeDrive(OI.Joystick1.getRawAxis(1), -OI.Joystick1.getRawAxis(4));
+			//			Robot.DriveSub1.DiffAutoDriveMethod(-OI.Joystick1.getRawAxis(0), -OI.Joystick1.getRawAxis(4));
 		}
 	}
 

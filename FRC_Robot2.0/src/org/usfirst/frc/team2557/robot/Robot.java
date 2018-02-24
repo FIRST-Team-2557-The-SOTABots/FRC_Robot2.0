@@ -36,6 +36,7 @@ import org.usfirst.frc.team2557.robot.commands.TeleDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.TimedAutoDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.TimedAutoMecanumDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.WheelCheck;
+import org.usfirst.frc.team2557.robot.commands.WingCommand;
 import org.usfirst.frc.team2557.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
@@ -70,6 +71,7 @@ public class Robot extends TimedRobot {
 	public static LiftCommand LC;
 	public static IntakeCommand IC;
 	public static LiftEncoderCommand LEC;
+	public static WingCommand wingCommand;
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -81,6 +83,9 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
+		
+//		RobotMap.rightWing.set(1.0);
+//    	RobotMap.leftWing.set(0.0);
 		
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 1000);
     	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 1000);
@@ -114,6 +119,7 @@ public class Robot extends TimedRobot {
 		LS = new LiftSub();
 		LC = new LiftCommand();
 		IC = new IntakeCommand();
+		wingCommand = new WingCommand();
 		
 		m_oi = new OI();
 		m_oi.OIInit();
@@ -138,14 +144,19 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
+		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 1);
 		m_autonomousCommand = m_chooser.getSelected();
 		timer.start();
 //		RobotMap.Gyro1.reset();
 		// schedule the autonomous command (example)
+		
+		
+		m_autonomousCommand = new GroupAutoCommandLeft();
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
 		}
 	}
+	
 
 	/**
 	 * This function is called periodically during autonomous.
@@ -168,6 +179,7 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+		
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
@@ -183,6 +195,7 @@ public class Robot extends TimedRobot {
 //		HETC.start();
 //		LC.start();
 		IC.start();
+		wingCommand.start();
 //		MSC.start();
 //		CFC.start();
 //		TDC.start();

@@ -10,10 +10,14 @@ public class GroupAutoCommandLeft extends CommandGroup {
 
 	public GroupAutoCommandLeft() {
 		String gameData = DriverStation.getInstance().getGameSpecificMessage();
+		gameData = "L";
 		if(gameData != null && gameData.length() > 0){
 			if(gameData.charAt(0) == 'L'){
-				addSequential(new EncoderDriveCommand2(.5, 0));
+				addSequential(new EncoderDriveCommand2(-.5, 0));
+				addSequential(new LiftAutoCommand(8000.0));
 				addSequential(new GyroCommandRight());
+				addSequential(new EncoderDriveCommand3(-.5, 0));
+				addSequential(new OuttakeAutoCommand());
 				addSequential(new EncoderDriveCommand3(.5, 0));
 				// place block
 			} else {

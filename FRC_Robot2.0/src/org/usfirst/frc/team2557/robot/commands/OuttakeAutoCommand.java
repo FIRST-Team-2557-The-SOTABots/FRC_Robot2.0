@@ -11,14 +11,14 @@ public class OuttakeAutoCommand extends Command {
     public OuttakeAutoCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	t = new Timer();
+    	t.start();
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	RobotMap.S1.set(false);
-    	RobotMap.S2.set(true);
-    	t.reset();
-    	t.start();
+//    	RobotMap.S1.set(false);
+//    	RobotMap.S2.set(true);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -31,7 +31,7 @@ public class OuttakeAutoCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(t.get() >= 1.0){
+    	if(t.get() >= 2.0){
     		RobotMap.S1.set(false);
         	RobotMap.S2.set(true);
     		return true;

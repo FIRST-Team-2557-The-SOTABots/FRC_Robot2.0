@@ -10,40 +10,54 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class GyroCommandRight extends Command {
-	
-    public GyroCommandRight() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.DriveSub1);
-    }
+	boolean done;
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	RobotMap.Gyro1.reset();
-    }
+	public GyroCommandRight() {
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+		requires(Robot.DriveSub1);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-//    	SmartDashboard.putNumber("GyroAngleValue", RobotMap.GyroAngle);
-    	Robot.DriveSub1.DriveTurnRight();
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+		done = false;
+		RobotMap.Gyro1.reset();
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {    	
-    		if(RobotMap.Confirm == true){
-    			return true;
-    		}
-    else{
-    	return false;
-    }
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		//    	SmartDashboard.putNumber("GyroAngleValue", RobotMap.GyroAngle);
+		SmartDashboard.getBoolean("Confirm Value", done);
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+		RobotMap.GyroAngle = RobotMap.Gyro1.getAngle();
+		double Angle = RobotMap.GyroAngle;
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+		if(Angle < 80) {
+			RobotMap.DiffDrive.arcadeDrive(0, -.8);
+			SmartDashboard.putNumber("GyroAngle", Angle);
+//			done = false;
+		}else if(Angle >= 80) {
+			RobotMap.DiffDrive.arcadeDrive(0, 0);
+			done = true;
+		}
+	}
+
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {    	
+		if(done == true){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	// Called once after isFinished returns true
+	protected void end() {
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+	}
 }

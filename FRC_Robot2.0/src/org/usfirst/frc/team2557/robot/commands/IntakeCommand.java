@@ -24,10 +24,10 @@ public class IntakeCommand extends Command {
     	SmartDashboard.putBoolean("S1", RobotMap.S1.get());
 //		SmartDashboard.putBoolean("S2", RobotMap.S2.get());
 		if(OI.IntakeIn.get()) {
-			RobotMap.IntakeR.set(-.6);
-			RobotMap.IntakeL.set(.6);
-			RobotMap.S2.set(false);
-			RobotMap.S1.set(true);
+			RobotMap.IntakeR.set(-.8);
+			RobotMap.IntakeL.set(.8);
+//			RobotMap.S2.set(false);
+//			RobotMap.S1.set(true);
 			SmartDashboard.putBoolean("IN", true);
 			//			RobotMap.S2.set(false);
 		}

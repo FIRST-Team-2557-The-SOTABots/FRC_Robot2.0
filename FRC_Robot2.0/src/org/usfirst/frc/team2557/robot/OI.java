@@ -11,6 +11,7 @@ package org.usfirst.frc.team2557.robot;
 import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
 import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
+import org.usfirst.frc.team2557.robot.commands.WingCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -31,11 +32,19 @@ public class OI {
 	public static JoystickButton x;
 	public static JoystickButton IntakeIn;
 	public static JoystickButton IntakeOut;
+	public static JoystickButton rightBumper;
+	public static JoystickButton leftBumper;
 	
 	public void OIInit() {
 		Joystick1 = new Joystick(0);
 		ForwardButton = new JoystickButton(Joystick1, 6);
 		BackwardButton = new JoystickButton(Joystick1, 5);
+		
+		rightBumper = new JoystickButton(Joystick2, 5); 
+		leftBumper = new JoystickButton(Joystick2, 6);
+		
+//		rightBumper.whenPressed(new WingCommand());
+//		leftBumper.whenPressed(new WingCommand());
 		
 		ForwardButton.whenPressed(new SolenoidCommand());
 		BackwardButton.whenPressed(new SolenoidCommand());

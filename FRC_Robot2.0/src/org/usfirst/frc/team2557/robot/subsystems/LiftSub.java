@@ -22,10 +22,10 @@ public class LiftSub extends Subsystem {
 		double a = -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition();
 		boolean x = OI.x.get();
 		boolean y = OI.y.get();
-		if(x == false && y == true && a < 37000){
-			RobotMap.LiftMotor.set(.6);
-		}else if(x == true && y == false && a > 1000){
-			RobotMap.LiftMotor.set(-.4);
+		if(x == false && y == true && a < 35000){
+			RobotMap.LiftMotor.set(1.0);
+		}else if(x == true && y == false && a > 2000){
+			RobotMap.LiftMotor.set(-.7);
 		}else{
 			RobotMap.LiftMotor.set(0);
 		}
