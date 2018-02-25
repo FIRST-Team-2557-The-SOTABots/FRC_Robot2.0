@@ -16,6 +16,7 @@ public class Detector {
 
 		//final ProcessBuilder pb = new ProcessBuilder("java", "-version");
 		while(true){
+			
 			try {
 				Process p = Runtime.getRuntime().exec("ping youtube.com");
 				System.out.println(p);
@@ -78,6 +79,8 @@ public class Detector {
 			}
 			
 			LatencyString = new String();
+			
+			Timer.Tie();
 
 			//		String substring = LatencyString.substring(start + 1, end);
 			//		String[] split = substring.split("\\.");
