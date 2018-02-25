@@ -32,31 +32,6 @@ public class Chassis_sub extends Subsystem {
 		}
 	}
 
-	public void arcadeDrive() {
-		if (RobotMap.drive) {
-			RobotMap.robotDrive.arcadeDrive(Robot.oi.gamepad1.getRawAxis(1) * x, Robot.oi.gamepad1.getRawAxis(0) * .8);
-		} else if (RobotMap.drive == false) {
-			RobotMap.robotDrive.arcadeDrive(-Robot.oi.gamepad1.getRawAxis(1) * x, Robot.oi.gamepad1.getRawAxis(0) * .8);
-		}
-	}
-
-	public void gemini() {
-		if (Robot.oi.gamepad2.getPOV() == 0) {
-			RobotMap._gemini = true;
-			return;
-		} else if (Robot.oi.gamepad2.getPOV() == 180) {
-			RobotMap._gemini = false;
-			return;
-		}
-
-		if (Robot.oi.a1.get()) {
-			RobotMap.drive = true;
-			return;
-		} else if (Robot.oi.b1.get()) {
-			RobotMap.drive = false;
-			return;
-		}
-	}
 
 	public void shift_toggle() {
 		if (RobotMap.shift) {
