@@ -34,6 +34,8 @@ public class OI {
 	public static JoystickButton IntakeOut;
 	public static JoystickButton rightBumper;
 	public static JoystickButton leftBumper;
+	public static JoystickButton rightWingPiston;
+	public static JoystickButton leftWingPiston;
 	
 	public void OIInit() {
 		Joystick1 = new Joystick(0);
@@ -42,6 +44,8 @@ public class OI {
 		
 		rightBumper = new JoystickButton(Joystick2, 5); 
 		leftBumper = new JoystickButton(Joystick2, 6);
+		rightWingPiston = new JoystickButton(Joystick2, 8);
+		leftWingPiston = new JoystickButton(Joystick2, 7);
 		
 //		rightBumper.whenPressed(new WingCommand());
 //		leftBumper.whenPressed(new WingCommand());

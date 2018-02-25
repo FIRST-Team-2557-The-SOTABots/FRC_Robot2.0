@@ -28,7 +28,6 @@ import org.usfirst.frc.team2557.robot.commands.HumanErrorTractionCommand;
 import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftEncoderCommand;
-import org.usfirst.frc.team2557.robot.commands.LiloAutoCommandGroup;
 import org.usfirst.frc.team2557.robot.commands.MecanumStrafeCommand;
 import org.usfirst.frc.team2557.robot.commands.SolenoidAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
@@ -72,7 +71,7 @@ public class Robot extends TimedRobot {
 	public static IntakeCommand IC;
 	public static LiftEncoderCommand LEC;
 	public static WingCommand wingCommand;
-	
+
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -128,7 +127,6 @@ public class Robot extends TimedRobot {
 		m_chooser.addObject("Left Auto", new GroupAutoCommandLeft());
 		m_chooser.addObject("Right Auto", new GroupAutoCommandRight());
 		m_chooser.addObject("Forward Auto", new GroupForward());
-		m_chooser.addObject("Lilo Auto Command", new LiloAutoCommandGroup());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 
