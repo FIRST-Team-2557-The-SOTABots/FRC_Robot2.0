@@ -139,6 +139,8 @@ public class GetLatency extends Subsystem {
 						//address = InputString.substring(indexOfAddr);
 						address = InputString.substring(InputString.indexOf(":") + 1);
 						address = address.substring(0, address.indexOf(" "));
+						
+						
 
 
 						int indexOfMaskAddr = InputString.indexOf("Mask:");
