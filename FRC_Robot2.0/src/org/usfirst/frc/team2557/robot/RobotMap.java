@@ -48,7 +48,7 @@ public class RobotMap {
 //		Left1 = new WPI_TalonSRX(3); //
 //		Left2 = new WPI_TalonSRX(4); //
 //		Right1 = new WPI_TalonSRX(9);
-//		Right2 = new WPI_TalonSRX(6);
+//		Right2 = new WPI_TalonSRX(6);  
 //		IntakeR = new WPI_TalonSRX(8);
 //		IntakeL = new WPI_TalonSRX(1); //
 //		LiftMotor = new WPI_TalonSRX(2);
