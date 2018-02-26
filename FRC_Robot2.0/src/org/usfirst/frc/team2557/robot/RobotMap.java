@@ -40,7 +40,7 @@ public class RobotMap {
 	public static Solenoid b;
 	public static Solenoid c;
 	public static Solenoid d;
-	
+
 	// left2 = 7, liftMotor = 9, right1 = 0, left1 = 1, right2 = 6, leftIntake = 1, rightIntake = 4
 	
 	public static void init() {
@@ -63,7 +63,7 @@ public class RobotMap {
 		
 		Left1 = new WPI_TalonSRX(1); //
 		Left2 = new WPI_TalonSRX(7); //
-		Right1 = new WPI_TalonSRX(0);
+		Right1 = new WPI_TalonSRX(3);
 		Right2 = new WPI_TalonSRX(2);
 		IntakeR = new WPI_TalonSRX(4);
 		IntakeL = new WPI_TalonSRX(6); //
