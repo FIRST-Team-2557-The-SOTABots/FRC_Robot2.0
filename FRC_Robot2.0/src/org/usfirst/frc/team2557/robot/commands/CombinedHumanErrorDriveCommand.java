@@ -30,6 +30,13 @@ public class CombinedHumanErrorDriveCommand extends Command {
 		}else{
 			Robot.DriveSub1.DiffAutoDriveMethod(-OI.Joystick1.getRawAxis(0), -OI.Joystick1.getRawAxis(4));
 		}
+		
+		if(OI.b1.get()){
+			Robot.DriveSub1.MecanumAutoDriveMethod(0, 1, 0);
+		}
+		else if(OI.x1.get()){
+			Robot.DriveSub1.MecanumAutoDriveMethod(0, -1, 0);
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
