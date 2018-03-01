@@ -23,8 +23,8 @@ public class OuttakeAutoCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.IntakeR.set(.4);
-		RobotMap.IntakeL.set(-.4);
+    	RobotMap.IntakeR.set(.6);
+		RobotMap.IntakeL.set(-.6);
 		RobotMap.S2.set(false);
 		RobotMap.S1.set(true);
     }
@@ -34,6 +34,8 @@ public class OuttakeAutoCommand extends Command {
     	if(t.get() >= 2.0){
     		RobotMap.S1.set(false);
         	RobotMap.S2.set(true);
+        	RobotMap.IntakeR.set(0);
+    		RobotMap.IntakeL.set(0);
     		return true;
     	}
         return false;

@@ -144,6 +144,7 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 1);
 		m_autonomousCommand = m_chooser.getSelected();
+//		m_autonomousCommand = new GroupAutoCommandLeft();
 		timer.start();
 //		RobotMap.Gyro1.reset();
 		// schedule the autonomous command (example)

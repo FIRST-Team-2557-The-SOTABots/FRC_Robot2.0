@@ -13,6 +13,7 @@ public class GroupAutoCommandLeft extends CommandGroup {
 		gameData = "L";
 		if(gameData != null && gameData.length() > 0){
 			if(gameData.charAt(0) == 'L'){
+				addSequential(new LiftAutoCommand(1000.0));
 				addSequential(new EncoderDriveCommand2(-.5, 0));
 				addSequential(new LiftAutoCommand(8000.0));
 				addSequential(new GyroCommandRight());
