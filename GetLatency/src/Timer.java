@@ -49,11 +49,15 @@ public class Timer {
 				System.out.println(address);
 				
 				if(address.contains("ms")){
-					address = address;
+					address = address.substring(0, address.indexOf("m"));
+					System.out.println(address);
 				}
 				else{
 					String addressParse = address.substring(0, address.indexOf("s"));
-					address = addressParse * 100;
+					double addressParseDouble = Double.parseDouble(addressParse);
+					double addressParseMultiply = addressParseDouble * 100;
+					String addressParseFinal = Double.toString(addressParseMultiply);
+					address = addressParseFinal;
 				}
 		    	
 //		    	String AverageNumber = everything.substring(everything.indexOf("Average" + 4), everything.indexOf("Average" + 4));
@@ -78,4 +82,3 @@ public class Timer {
 		
 	} 
 	}
-
