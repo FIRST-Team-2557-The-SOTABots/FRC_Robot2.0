@@ -32,12 +32,12 @@ public class EncoderDriveCommand3 extends Command {
     protected void execute() {
     	SmartDashboard.putNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10);
     	SmartDashboard.putNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10);
-    	Robot.DriveSub1.DiffAutoDriveMethod(speed, rotation);
+    	Robot.DriveSub1.AutoDriveMethod(speed, rotation);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if((-RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10 > 1600) && (RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10 > 1700)) {
+    	if((-RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10 > 1950) && (RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10 > 2090)) {
 //    		the "> 100" values are just placeholders for now, they're supposed to be however long 11 and 2/3 feet is. It is used for getting to the switch,
 //    		not the scale, which is going to use a different command. There will probably be a sensor to get the colour of the two things, so updates are
 //    		expected.

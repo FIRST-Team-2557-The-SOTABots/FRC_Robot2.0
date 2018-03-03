@@ -12,15 +12,6 @@ public class IntakeAutoCommand extends Command {
 
     public IntakeAutoCommand() {
     	requires(Robot.LS);
-
-import org.usfirst.frc.team2557.robot.RobotMap;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Command;
-
-public class IntakeAutoCommand extends Command {
-	Timer t;
-
-    public IntakeAutoCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -29,20 +20,11 @@ public class IntakeAutoCommand extends Command {
     protected void initialize() {
 		RobotMap.S1.set(true);
 		RobotMap.S1.set(false);
-    	RobotMap.S1.set(false);
-    	RobotMap.S2.set(true);
-    	t.reset();
-    	t.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.LS.IntakeAutoMethod();
-
-    	RobotMap.IntakeR.set(-.6);
-		RobotMap.IntakeL.set(.6);
-		RobotMap.S2.set(false);
-		RobotMap.S1.set(true);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -53,12 +35,6 @@ public class IntakeAutoCommand extends Command {
     else {
     	return false;
     	}
-    	if(t.get() >= 1.0){
-    		RobotMap.S1.set(false);
-        	RobotMap.S2.set(true);
-    		return true;
-    	}
-        return false;
     }
 
     // Called once after isFinished returns true
