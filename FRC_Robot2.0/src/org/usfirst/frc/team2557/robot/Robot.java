@@ -16,6 +16,9 @@ import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand4;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand5;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand6;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand7;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand8;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand9;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommandTEST;
 import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandMid;
 import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandRight;
@@ -25,7 +28,9 @@ import org.usfirst.frc.team2557.robot.commands.GyroCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.GyroCommandRight;
 import org.usfirst.frc.team2557.robot.commands.HumanErrorMecanumCommand;
 import org.usfirst.frc.team2557.robot.commands.HumanErrorTractionCommand;
+import org.usfirst.frc.team2557.robot.commands.IntakeAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
+import org.usfirst.frc.team2557.robot.commands.LiftAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftEncoderCommand;
 //import org.usfirst.frc.team2557.robot.commands.LiloAutoCommandGroup;
@@ -37,9 +42,14 @@ import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
 import org.usfirst.frc.team2557.robot.commands.TeleDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.TimedAutoDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.TimedAutoMecanumDriveCommand;
+
+import org.usfirst.frc.team2557.robot.commands.WheelCheckCommand;
+import org.usfirst.frc.team2557.robot.commands.WingCommand;
+
 import org.usfirst.frc.team2557.robot.commands.WheelCheck;
 import org.usfirst.frc.team2557.robot.commands.WingCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.WingCommandRight;
+
 import org.usfirst.frc.team2557.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
@@ -54,6 +64,8 @@ public class Robot extends TimedRobot {
 	public static GyroCommandRight GCR;
 	public static CorrectStrafeCommand CFC;
 	public static CombinedHumanErrorDriveCommand CHEDC;
+	
+	public static EncoderDriveCommandTEST EDC_TEST;
 	public static EncoderDriveCommand1 EDC1;
 	public static EncoderDriveCommand2 EDC2;
 	public static EncoderDriveCommand3 EDC3;
@@ -61,6 +73,9 @@ public class Robot extends TimedRobot {
 	public static EncoderDriveCommand5 EDC5;
 	public static EncoderDriveCommand6 EDC6;
 	public static EncoderDriveCommand7 EDC7;
+	public static EncoderDriveCommand8 EDC8;
+	public static EncoderDriveCommand9 EDC9;
+	
 	public static TimedAutoMecanumDriveCommand TAMDC;
 	public static TimedAutoDriveCommand TADC;
 	public static SolenoidCommand SC;
@@ -69,11 +84,18 @@ public class Robot extends TimedRobot {
 	public static HumanErrorTractionCommand HETC;
 //	public static TeleDriveCommand TDC;
 	public static MecanumStrafeCommand MSC;
+	public static WheelCheckCommand WCC;
+	
+
 	public static WheelCheck WC;
 	public static LiftSub LS;
+	public static WingSub WS;
 	public static LiftCommand LC;
+	public static LiftAutoCommand LAC;
 	public static IntakeCommand IC;
 	public static LiftEncoderCommand LEC;
+	public static IntakeAutoCommand IAC;
+	public static WingCommand WC;
 	public static WingCommandRight WCR;
 	public static WingCommandLeft WCL;
 	public static RiseCommandRight RCR;
@@ -103,6 +125,8 @@ public class Robot extends TimedRobot {
 		GCR = new GyroCommandRight();
 		CFC = new CorrectStrafeCommand();
 		CHEDC = new CombinedHumanErrorDriveCommand();
+		
+		EDC_TEST = new EncoderDriveCommandTEST(1,0);
 		EDC1 = new EncoderDriveCommand1(1, 0);
 		EDC2 = new EncoderDriveCommand2(1, 0);
 		EDC3 = new EncoderDriveCommand3(1, 0);
@@ -110,6 +134,9 @@ public class Robot extends TimedRobot {
 		EDC5 = new EncoderDriveCommand5(1, 0);
 		EDC6 = new EncoderDriveCommand6(1, 0);
 		EDC7 = new EncoderDriveCommand7(1, 0);
+		EDC8 = new EncoderDriveCommand8(1, 0);
+		EDC9 = new EncoderDriveCommand9(1, 0);
+		
 		TAMDC = new TimedAutoMecanumDriveCommand(1, 0, 0, 1);
 		TADC = new TimedAutoDriveCommand(1, 0, 1);
 		SC = new SolenoidCommand();
@@ -118,6 +145,18 @@ public class Robot extends TimedRobot {
 		HETC = new HumanErrorTractionCommand();
 //		TDC = new TeleDriveCommand();
 		MSC = new MecanumStrafeCommand();
+		WCC = new WheelCheckCommand();
+		
+		
+		LS = new LiftSub();
+		WS = new WingSub();
+		
+		LC = new LiftCommand();
+		LAC = new LiftAutoCommand(.6);
+		LEC = new LiftEncoderCommand();
+		IC = new IntakeCommand(false);
+		IAC = new IntakeAutoCommand();
+		WC = new WingCommand();
 		WC = new WheelCheck();
 		LS = new LiftSub();
 		LC = new LiftCommand();
@@ -197,6 +236,7 @@ public class Robot extends TimedRobot {
 //		HETC.start();
 //		LC.start();
 		IC.start();
+		WC.start();
 //		MSC.start();
 //		CFC.start();
 //		TDC.start();

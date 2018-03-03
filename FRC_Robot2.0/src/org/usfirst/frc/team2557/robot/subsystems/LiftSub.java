@@ -18,6 +18,33 @@ public class LiftSub extends Subsystem {
 //		double axis = OI.Joystick2.getRawAxis(3);
 //		SmartDashboard.putNumber("joystick2 axis 1", axis);
 		
+		boolean SolVal = OI.LiftUp.get();
+		boolean SolVal2 = OI.LiftDown.get();
+		SmartDashboard.putBoolean("LiftButton", OI.LiftUp.get());
+		SmartDashboard.putBoolean("LiftButtonDown", OI.LiftDown.get());
+		double a = -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition();
+		if (SolVal == true && SolVal2 == false && -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() < 37000) {
+			RobotMap.LiftMotor.set(1);
+			SmartDashboard.putBoolean("here1", true);
+		}else if(SolVal == false && SolVal2 == true && -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() > 2000){
+			RobotMap.LiftMotor.set(-.8);
+		}
+		else {
+			RobotMap.LiftMotor.set(0);
+		}
+		
+//		RobotMap.LiftMotor.set(-OI.Joystick2.getRawAxis(1)*.8);
+//		if(Math.abs(OI.Joystick2.getRawAxis(1)) > .1){
+//SmartDashboard.putBoolean("works", true);
+//	}
+//		RobotMap.LiftMotor.set(.5);
+		
+		//			LiftVar = yes;
+		/*
+		else if (Sensor.get() == no && LiftVar){
+			Lifter.set(-1);
+			LiftVar = no;
+		}
 		
 		double a = -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition();
 		boolean x = OI.x.get();
@@ -46,6 +73,28 @@ public class LiftSub extends Subsystem {
 //			RobotMap.LiftMotor.set(0);
 //		}
 
+	}
+	
+	public void LiftAuto(double power) {
+			RobotMap.LiftMotor.set(power);
+	}
+	
+	boolean Moo = RobotMap.LiftConfirm;
+	
+	public void IntakeAutoMethod() {
+		if(Moo == false) {
+			RobotMap.IntakeR.set(.6);
+			RobotMap.IntakeL.set(-.6);
+			RobotMap.S1.set(false);
+			RobotMap.S2.set(true);
+			Moo = false;
+		}
+		else {
+			RobotMap.IntakeR.set(0);
+			RobotMap.IntakeL.set(0);
+			RobotMap.S1.set(true);
+			RobotMap.S1.set(false);
+		}
 	}
 
 

@@ -1,5 +1,18 @@
 package org.usfirst.frc.team2557.robot.commands;
 
+import org.usfirst.frc.team2557.robot.Robot;
+import org.usfirst.frc.team2557.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.command.Command;
+
+/**
+ *
+ */
+public class IntakeAutoCommand extends Command {
+
+    public IntakeAutoCommand() {
+    	requires(Robot.LS);
+
 import org.usfirst.frc.team2557.robot.RobotMap;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -14,6 +27,8 @@ public class IntakeAutoCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+		RobotMap.S1.set(true);
+		RobotMap.S1.set(false);
     	RobotMap.S1.set(false);
     	RobotMap.S2.set(true);
     	t.reset();
@@ -22,6 +37,8 @@ public class IntakeAutoCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.LS.IntakeAutoMethod();
+
     	RobotMap.IntakeR.set(-.6);
 		RobotMap.IntakeL.set(.6);
 		RobotMap.S2.set(false);
@@ -30,6 +47,12 @@ public class IntakeAutoCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	if(RobotMap.LiftConfirm == true) {
+    	return true;	
+    	}
+    else {
+    	return false;
+    	}
     	if(t.get() >= 1.0){
     		RobotMap.S1.set(false);
         	RobotMap.S2.set(true);

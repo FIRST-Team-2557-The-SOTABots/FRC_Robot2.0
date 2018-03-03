@@ -11,6 +11,8 @@ public class LiftAutoCommand extends Command {
 	public LiftAutoCommand(double encPos) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.LS);
+		height = 8000;
+
 		height = encPos;
 	}
 
@@ -21,6 +23,7 @@ public class LiftAutoCommand extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		while(-RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() < height){
+			Robot.LS.LiftAuto(.6);
 			Robot.LS.liftInAuto(1.0);
 		}
 	}
@@ -42,4 +45,5 @@ public class LiftAutoCommand extends Command {
 	// subsystems is scheduled to run
 	protected void interrupted() {
 	}
+}
 }

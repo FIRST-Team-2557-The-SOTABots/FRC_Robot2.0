@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class WheelCheck extends Command {
+public class WheelCheckCommand extends Command {
 
-    public WheelCheck() {
+    public WheelCheckCommand() {
     	requires(Robot.DriveSub1);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

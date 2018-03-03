@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
 public class RobotMap {
+	
+	public static boolean LiftConfirm;
 	public static boolean Confirm;
 	public static boolean Position;
 	public static double GyroAngle;
@@ -33,6 +35,11 @@ public class RobotMap {
 	public static DifferentialDrive DiffDrive;
 	public static MecanumDrive MecDrive;
 	public static AnalogInput Ultrasonic;
+
+	
+	public static WPI_TalonSRX LiftMotor;
+	public static Servo LeftWing;
+	public static Servo RightWing;
 	public static WPI_TalonSRX LiftMotor;
 	public static WPI_TalonSRX Winch;
 	public static Servo rightWing;
@@ -84,6 +91,11 @@ public class RobotMap {
 		MecDrive.setSafetyEnabled(false);
 		Ultrasonic = new AnalogInput(0);
 		
+		LiftMotor = new WPI_TalonSRX(9);
+		
+//		LeftWing = new Servo();
+//		RightWing = new Servo();
+//		Winch = new WPI_TalonSRX(5);
 		pdp = new PowerDistributionPanel(10);
 	}
 }
