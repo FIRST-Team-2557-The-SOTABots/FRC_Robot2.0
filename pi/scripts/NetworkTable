@@ -14,10 +14,19 @@ from watchdog.events import FileSystemEventHandler
 #dts = NetworkTables.getTable('MessageTable')
 
 # The path to the vision data file
-visionFilePath = "/home/pi/Desktop/vision/"
+visionFilePath = "/run/visionmessage/"
 # The file with the vision data.
 visionFileName = "vision-message.txt"
 
+
+def locationPublish():
+    #print("Location Publish")
+    fileMessage = open(visionFilePath + visionFileName, "r")
+    message = fileMessage.read()
+    fileMessage.close()
+    print(message.split())
+    
+    
 # Class for handling file changes.
 class VisionFileHandler(FileSystemEventHandler):
 
@@ -30,11 +39,13 @@ class VisionFileHandler(FileSystemEventHandler):
         event.src_path
             path/to/observed/file
         """
+        print("Found file " + event.src_path)
         # Only update the NetworkTable if this is the vision file.
         if event.src_path == visionFilePath + visionFileName:
             # Open the file and send the data from the file to
             # the NetworkTables.
-            print("Got my file.")
+            #print("Got my file.")
+            locationPublish()
 
     def on_modified(self, event):
         self.process(event)
@@ -43,12 +54,12 @@ class VisionFileHandler(FileSystemEventHandler):
         self.process(event)
 
 # Wait for the vision file to become available.
-while os.path.exists(visionFileName) == False:
+while os.path.exists(visionFilePath + visionFileName) == False:
     time.sleep(1)
 
 # Make sure it is a file.
-if os.path.isfile(visionFileName) == False:
-    print("%s isn't a file." % (visionFileName))
+if os.path.isfile(visionFilePath + visionFileName) == False:
+    print("%s isn't a file." % (visionFilePath + visionFileName))
     sys.exit(-1)
 
 # Create an observer for the path the file lives in.
