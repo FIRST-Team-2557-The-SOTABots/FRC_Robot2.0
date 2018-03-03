@@ -12,6 +12,8 @@ public class LiftAutoCommand extends Command {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.LS);
 		height = 8000;
+
+		height = encPos;
 	}
 
 	// Called just before this Command runs the first time
@@ -22,12 +24,14 @@ public class LiftAutoCommand extends Command {
 	protected void execute() {
 		while(-RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() < height){
 			Robot.LS.LiftAuto(.6);
+			Robot.LS.liftInAuto(1.0);
 		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		if(-RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() >= height){
+			Robot.LS.liftInAuto(0);
 			return true;
 		}
 		return false;
@@ -41,4 +45,5 @@ public class LiftAutoCommand extends Command {
 	// subsystems is scheduled to run
 	protected void interrupted() {
 	}
+}
 }
