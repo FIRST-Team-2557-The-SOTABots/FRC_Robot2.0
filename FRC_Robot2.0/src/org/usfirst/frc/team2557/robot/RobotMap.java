@@ -1,121 +1,89 @@
 package org.usfirst.frc.team2557.robot;
-import org.usfirst.frc.team2557.robot.math.EulerDistanceEstimator;
-import org.usfirst.frc.team2557.robot.math.EulerDistanceEstimator.ForwardAxis;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
-
-import edu.wpi.first.wpilibj.BuiltInAccelerometer;
-import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Servo;
-import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
-	public static WPI_TalonSRX FRdrive;
-	public static WPI_TalonSRX FLdrive;
-	public static WPI_TalonSRX BRdrive;
-	public static WPI_TalonSRX BLdrive;
+	public static boolean Confirm;
+	public static boolean Position;
+	public static double GyroAngle;
+	public static WPI_TalonSRX Left1;
+	public static WPI_TalonSRX Left2;
+	public static WPI_TalonSRX Right1;
+	public static WPI_TalonSRX Right2;
+	public static WPI_TalonSRX IntakeR;
+	public static WPI_TalonSRX IntakeL;
 	public static SpeedControllerGroup Left;
 	public static SpeedControllerGroup Right;
-	public static DifferentialDrive robotDrive;
-	
-	public static WPI_TalonSRX Lshooter;
-	public static WPI_TalonSRX Rshooter;
-	public static WPI_TalonSRX intake;
-	public static WPI_TalonSRX climber;
-	public static WPI_TalonSRX gearMotor;
-	public static WPI_TalonSRX copterAgitator;
-	public static SpeedController agitator;
-	
-	
+	public static AHRS Gyro1;
+	public static Compressor compressor;
+	public static DoubleSolenoid DS1;
+	public static Solenoid S1;
+	public static Solenoid S2;
+	public static DifferentialDrive DiffDrive;
+	public static MecanumDrive MecDrive;
+	public static AnalogInput Ultrasonic;
+	public static WPI_TalonSRX LiftMotor;
+	public static WPI_TalonSRX Winch;
+	public static Servo rightWing;
+	public static Servo leftWing;
+	public static Solenoid a;
+	public static Solenoid b;
+	public static Solenoid c;
+	public static Solenoid d;
 	public static PowerDistributionPanel pdp;
-	public static DoubleSolenoid shifter;
-	public static DoubleSolenoid gearGrab;
+
+	// left2 = 7, liftMotor = 9, right1 = 0, left1 = 1, right2 = 6, leftIntake = 1, rightIntake = 4
 	
-	public static BuiltInAccelerometer accel;
-	public static AHRS navX;
-	public static boolean _gemini; //false = Fuel Forward and true = Gear Forward
-	public static boolean _stage; //used in gear command or subsystem(I forgot) somewhere :)
-	public static boolean shift; //boolean for the super shifters on the drive train
-	public static boolean drive; //boolean to switch the drive stick
-	public static boolean _switch; //boolean to activate/deactivate the momentary switch for the gear grabber
-	public static double CAngle; //??? Auto Turn? :)
-	public static double visionShooterSpeed;
-	public static boolean shootReq;
-	public static DigitalInput gearSwitch;
-	public static Encoder gearEnc;
-	public static boolean _leftX_gear;
-	
-	public static Servo leftAgitator;
-	public static Servo rightAgitator;
-	public static Servo cameraServo;
-	public static EulerDistanceEstimator euler;
-	
-	public static void init(){
-		FRdrive = new WPI_TalonSRX(1);
-		FLdrive = new WPI_TalonSRX(2);
-		BRdrive = new WPI_TalonSRX(3);
-		BLdrive = new WPI_TalonSRX(4);
-		Left = new SpeedControllerGroup(FLdrive, BLdrive);
-		Right = new SpeedControllerGroup(FRdrive, BRdrive);
-		robotDrive = new DifferentialDrive(Left, Right);
-		robotDrive.setSafetyEnabled(false);
-		Lshooter = new WPI_TalonSRX(5);
-		Rshooter = new WPI_TalonSRX(6);
-		intake = new WPI_TalonSRX(7);
-		climber = new WPI_TalonSRX(8);
-		gearMotor = new WPI_TalonSRX(9);
-		copterAgitator = new WPI_TalonSRX(10);
-		agitator = new Talon(0);
-		gearSwitch = new DigitalInput(2);
-		gearEnc = new Encoder(0,1);
+	public static void init() {
 		
-		shifter = new DoubleSolenoid(0,1);
-		gearGrab = new DoubleSolenoid(2,3);
-		leftAgitator = new Servo(1);
-		rightAgitator = new Servo(2);
-		cameraServo = new Servo(3);
+//		Left1 = new WPI_TalonSRX(3); //
+//		Left2 = new WPI_TalonSRX(4); //
+//		Right1 = new WPI_TalonSRX(9);
+//		Right2 = new WPI_TalonSRX(6);  
+//		IntakeR = new WPI_TalonSRX(8);
+//		IntakeL = new WPI_TalonSRX(1); //
+//		LiftMotor = new WPI_TalonSRX(2);
 		
-		pdp = new PowerDistributionPanel(0);
-		navX = new AHRS(SPI.Port.kMXP);
-		accel = new BuiltInAccelerometer();
-		euler = new EulerDistanceEstimator(ForwardAxis.NegX);
+		a = new Solenoid(7);
+		b = new Solenoid(6);
+		c = new Solenoid(5);
+		d = new Solenoid(4);
 		
+		leftWing = new Servo(0);
+		rightWing = new Servo(1);
 		
-		_leftX_gear = true;
-		shootReq = false;
-		_stage = true;
-		_gemini = true; //boolean for manipulator, true = gear and false = fuel
-		shift = true;
-		drive = true; //boolean for driver, true = gear and false = fuel
-		_switch = true;
-		CAngle = 0;
-		visionShooterSpeed = 0;
-		shootReq = false;
+		Left1 = new WPI_TalonSRX(1); //
+		Left2 = new WPI_TalonSRX(7); //
+		Right1 = new WPI_TalonSRX(3);
+		Right2 = new WPI_TalonSRX(2);
+		IntakeR = new WPI_TalonSRX(4);
+		IntakeL = new WPI_TalonSRX(6); //
+		LiftMotor = new WPI_TalonSRX(5);
 		
+		Left = new SpeedControllerGroup(Left1, Left2);
+		Right = new SpeedControllerGroup(Right1, Right2);
+		DS1 = new DoubleSolenoid(0, 0, 1);
+		S1 = new Solenoid(0, 2);
+		S2 = new Solenoid(0, 3);
+		Gyro1 = new AHRS(SPI.Port.kMXP);
+		compressor = new Compressor(0);
+		DiffDrive = new DifferentialDrive(Left, Right);
+		MecDrive = new MecanumDrive(Left1, Left2, Right1, Right2);
+		DiffDrive.setSafetyEnabled(false);
+		MecDrive.setSafetyEnabled(false);
+		Ultrasonic = new AnalogInput(0);
 		
-		
-		
+		pdp = new PowerDistributionPanel(10);
 	}
 }
