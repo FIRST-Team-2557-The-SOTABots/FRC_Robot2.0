@@ -5,6 +5,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -40,6 +41,7 @@ public class RobotMap {
 	public static Solenoid b;
 	public static Solenoid c;
 	public static Solenoid d;
+	public static PowerDistributionPanel pdp;
 
 	// left2 = 7, liftMotor = 9, right1 = 0, left1 = 1, right2 = 6, leftIntake = 1, rightIntake = 4
 	
@@ -58,8 +60,8 @@ public class RobotMap {
 		c = new Solenoid(5);
 		d = new Solenoid(4);
 		
-		rightWing = new Servo(0);
-		leftWing = new Servo(1);
+		leftWing = new Servo(0);
+		rightWing = new Servo(1);
 		
 		Left1 = new WPI_TalonSRX(1); //
 		Left2 = new WPI_TalonSRX(7); //
@@ -81,5 +83,7 @@ public class RobotMap {
 		DiffDrive.setSafetyEnabled(false);
 		MecDrive.setSafetyEnabled(false);
 		Ultrasonic = new AnalogInput(0);
+		
+		pdp = new PowerDistributionPanel(10);
 	}
 }

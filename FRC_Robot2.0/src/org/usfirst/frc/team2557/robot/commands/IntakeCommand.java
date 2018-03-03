@@ -30,16 +30,14 @@ public class IntakeCommand extends Command {
 //			RobotMap.S1.set(true);
 			SmartDashboard.putBoolean("IN", true);
 			//			RobotMap.S2.set(false);
-		}
-		else if(OI.IntakeOut.get()){
+		}else if(OI.IntakeOut.get()){
 			RobotMap.IntakeR.set(.4);
 			RobotMap.IntakeL.set(-.4);
 			RobotMap.S2.set(false);
 			RobotMap.S1.set(true);
 			SmartDashboard.putBoolean("Out", true);
 			//			RobotMap.S2.set(true);
-		}	
-		else {
+		}else {
 			RobotMap.IntakeR.set(0);
 			RobotMap.IntakeL.set(0);
 			RobotMap.S2.set(true);

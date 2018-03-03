@@ -4,15 +4,19 @@ import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**r
  *
  */
-public class WingCommand extends Command {
+public class WingCommandLeft extends Command {
+	boolean done;
 
-	public WingCommand() {
+	public WingCommandLeft() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
+		SmartDashboard.putNumber("got to", 2);
+		done = false;
 	}
 
 	// Called just before this Command runs the first time
@@ -21,12 +25,15 @@ public class WingCommand extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if(OI.rightBumper.get() == true){
-			RobotMap.rightWing.setAngle(-90.0);
-		}
-//		if(OI.leftBumper.get() == true){
-//			RobotMap.leftWing.setAngle(90.0);
+//		SmartDashboard.putNumber("got to", 3);
+//		if(OI.rightBumper.get() == true){
+//			RobotMap.rightWing.setAngle(-90.0);
 //		}
+		if(OI.leftBumper.get()){
+			RobotMap.leftWing.setAngle(90.0);
+			done = true;
+//			SmartDashboard.putNumber("got to 2", 4);
+		}
 //		if(OI.rightWingPiston.get() == true){
 //			RobotMap.a.set(true);
 //			RobotMap.b.set(true);
@@ -35,19 +42,16 @@ public class WingCommand extends Command {
 //			RobotMap.a.set(false);
 //			RobotMap.b.set(false);
 //		}
-//		if(OI.leftWingPiston.get() == true){
-//			RobotMap.c.set(true);
-//			RobotMap.d.set(true);
-//		}
-//		}else{
-//			RobotMap.c.set(false);
-//			RobotMap.d.set(false);
-//		}
+		
+		
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if(RobotMap.rightWing.getAngle() == -90.0){
+//		if(RobotMap.leftWing.getAngle() == 90.0){
+//			return true;
+//		}
+		if(done){
 			return true;
 		}
 		return false;

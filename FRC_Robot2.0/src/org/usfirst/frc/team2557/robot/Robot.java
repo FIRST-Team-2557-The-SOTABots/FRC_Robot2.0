@@ -28,14 +28,18 @@ import org.usfirst.frc.team2557.robot.commands.HumanErrorTractionCommand;
 import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftEncoderCommand;
+//import org.usfirst.frc.team2557.robot.commands.LiloAutoCommandGroup;
 import org.usfirst.frc.team2557.robot.commands.MecanumStrafeCommand;
+import org.usfirst.frc.team2557.robot.commands.RiseCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.RiseCommandRight;
 import org.usfirst.frc.team2557.robot.commands.SolenoidAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
 import org.usfirst.frc.team2557.robot.commands.TeleDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.TimedAutoDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.TimedAutoMecanumDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.WheelCheck;
-import org.usfirst.frc.team2557.robot.commands.WingCommand;
+import org.usfirst.frc.team2557.robot.commands.WingCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.WingCommandRight;
 import org.usfirst.frc.team2557.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
@@ -70,8 +74,11 @@ public class Robot extends TimedRobot {
 	public static LiftCommand LC;
 	public static IntakeCommand IC;
 	public static LiftEncoderCommand LEC;
-	public static WingCommand wingCommand;
-
+	public static WingCommandRight WCR;
+	public static WingCommandLeft WCL;
+	public static RiseCommandRight RCR;
+	public static RiseCommandLeft RCL;
+	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -82,9 +89,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
-		
-//		RobotMap.rightWing.set(1.0);
-//    	RobotMap.leftWing.set(0.0);
 		
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 1000);
     	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 1000);
@@ -118,7 +122,10 @@ public class Robot extends TimedRobot {
 		LS = new LiftSub();
 		LC = new LiftCommand();
 		IC = new IntakeCommand();
-		wingCommand = new WingCommand();
+		WCR = new WingCommandRight();
+		WCL = new WingCommandLeft();
+		RCR = new RiseCommandRight();
+		RCL = new RiseCommandLeft();
 		
 		m_oi = new OI();
 		m_oi.OIInit();
@@ -127,6 +134,7 @@ public class Robot extends TimedRobot {
 		m_chooser.addObject("Left Auto", new GroupAutoCommandLeft());
 		m_chooser.addObject("Right Auto", new GroupAutoCommandRight());
 		m_chooser.addObject("Forward Auto", new GroupForward());
+//		m_chooser.addObject("Lilo Auto Command", new LiloAutoCommandGroup());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 
@@ -142,20 +150,14 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
-		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 1);
 		m_autonomousCommand = m_chooser.getSelected();
-//		m_autonomousCommand = new GroupAutoCommandLeft();
 		timer.start();
 //		RobotMap.Gyro1.reset();
 		// schedule the autonomous command (example)
-		
-		
-		m_autonomousCommand = new GroupAutoCommandLeft();
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
 		}
 	}
-	
 
 	/**
 	 * This function is called periodically during autonomous.
@@ -178,10 +180,11 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
+		RCR.start();
+		RCL.start();
 	}
 	
 	/**
@@ -194,11 +197,47 @@ public class Robot extends TimedRobot {
 //		HETC.start();
 //		LC.start();
 		IC.start();
-		wingCommand.start();
 //		MSC.start();
 //		CFC.start();
 //		TDC.start();
+		WCR.start();
+		WCL.start();
 		Scheduler.getInstance().run();
+		
+		
+		SmartDashboard.putNumber("Left 1 current", RobotMap.Left1.getOutputCurrent());
+		SmartDashboard.putNumber("Right 1 current", RobotMap.Right1.getOutputCurrent());
+		SmartDashboard.putNumber("Left 2 current", RobotMap.Left2.getOutputCurrent());
+		SmartDashboard.putNumber("Right 2 current", RobotMap.Right2.getOutputCurrent());
+		SmartDashboard.putNumber("Lift current", RobotMap.LiftMotor.getOutputCurrent());
+		SmartDashboard.putNumber("Intake right current", RobotMap.IntakeR.getOutputCurrent());
+		SmartDashboard.putNumber("Intake left current", RobotMap.IntakeL.getOutputCurrent());
+		SmartDashboard.putNumber("Pdp 1 current", RobotMap.pdp.getCurrent(1));
+		SmartDashboard.putNumber("Pdp 2 current", RobotMap.pdp.getCurrent(2));
+		SmartDashboard.putNumber("Pdp 3 current", RobotMap.pdp.getCurrent(3));
+		SmartDashboard.putNumber("Pdp 4 current", RobotMap.pdp.getCurrent(4));
+		SmartDashboard.putNumber("Pdp 5 current", RobotMap.pdp.getCurrent(5));
+		SmartDashboard.putNumber("Pdp 6 current", RobotMap.pdp.getCurrent(6));
+		SmartDashboard.putNumber("Pdp 7 current", RobotMap.pdp.getCurrent(7));
+		SmartDashboard.putNumber("Pdp 8 current", RobotMap.pdp.getCurrent(8));
+		SmartDashboard.putNumber("Pdp 9 current", RobotMap.pdp.getCurrent(9));
+		SmartDashboard.putNumber("Pdp 10 current", RobotMap.pdp.getCurrent(10));
+		SmartDashboard.putNumber("Pdp 11 current", RobotMap.pdp.getCurrent(11));
+		SmartDashboard.putNumber("Pdp 12 current", RobotMap.pdp.getCurrent(12));
+		SmartDashboard.putNumber("Pdp 13 current", RobotMap.pdp.getCurrent(13));
+		SmartDashboard.putNumber("Pdp 14 current", RobotMap.pdp.getCurrent(14));
+		SmartDashboard.putNumber("Pdp 15 current", RobotMap.pdp.getCurrent(15));
+		SmartDashboard.putNumber("Pdp total current", RobotMap.pdp.getTotalCurrent());
+		SmartDashboard.putNumber("Pdp temperature", RobotMap.pdp.getTemperature());
+		SmartDashboard.putNumber("Left 1 voltage", RobotMap.Left1.getMotorOutputVoltage());
+		SmartDashboard.putNumber("Right 1 voltage", RobotMap.Right1.getMotorOutputVoltage());
+		SmartDashboard.putNumber("Left 2 voltage", RobotMap.Left2.getMotorOutputVoltage());
+		SmartDashboard.putNumber("Right 2 voltage", RobotMap.Right2.getMotorOutputVoltage());
+		SmartDashboard.putNumber("Lift voltage", RobotMap.LiftMotor.getMotorOutputVoltage());
+		SmartDashboard.putNumber("Intake right voltage", RobotMap.IntakeR.getMotorOutputVoltage());
+		SmartDashboard.putNumber("Intake left voltage", RobotMap.IntakeL.getMotorOutputVoltage());
+		SmartDashboard.putNumber("Gyro", RobotMap.Gyro1.getAngle());
+		
 	}
 
 	/**
