@@ -24,10 +24,10 @@ public class CombinedHumanErrorDriveCommand extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		RobotMap.Right1.enableCurrentLimit(currentLimit);
-		RobotMap.Right2.enableCurrentLimit(currentLimit);
-		RobotMap.Left1.enableCurrentLimit(currentLimit);
-		RobotMap.Left2.enableCurrentLimit(currentLimit);
+//		RobotMap.Right1.enableCurrentLimit(currentLimit);
+//		RobotMap.Right2.enableCurrentLimit(currentLimit);
+//		RobotMap.Left1.enableCurrentLimit(currentLimit);
+//		RobotMap.Left2.enableCurrentLimit(currentLimit);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -45,22 +45,22 @@ public class CombinedHumanErrorDriveCommand extends Command {
 		}
 		
 		
-		double powerAmount = 0.2;
-		
-		if((upL < powerAmount && sideL < powerAmount && sideR < powerAmount) && (upL > -powerAmount && sideL > -powerAmount && sideR > -powerAmount)){
-			int amps = 0;
-			RobotMap.Right1.configContinuousCurrentLimit(amps, timeout);
-			RobotMap.Right2.configContinuousCurrentLimit(amps, timeout);
-			RobotMap.Left1.configContinuousCurrentLimit(amps, timeout);
-			RobotMap.Left2.configContinuousCurrentLimit(amps, timeout);
+//		double powerAmount = 0.2;
+//		
+//		if((upL < powerAmount && sideL < powerAmount && sideR < powerAmount) && (upL > -powerAmount && sideL > -powerAmount && sideR > -powerAmount)){
+//			int amps = 0;
+//			RobotMap.Right1.configContinuousCurrentLimit(amps, timeout);
+//			RobotMap.Right2.configContinuousCurrentLimit(amps, timeout);
+//			RobotMap.Left1.configContinuousCurrentLimit(amps, timeout);
+//			RobotMap.Left2.configContinuousCurrentLimit(amps, timeout);
+////		}
+//		}else{
+//			int amps = 40;
+//			RobotMap.Right1.configContinuousCurrentLimit(amps, timeout);
+//			RobotMap.Right2.configContinuousCurrentLimit(amps, timeout);
+//			RobotMap.Left1.configContinuousCurrentLimit(amps, timeout);
+//			RobotMap.Left2.configContinuousCurrentLimit(amps, timeout);
 //		}
-		}else{
-			int amps = 40;
-			RobotMap.Right1.configContinuousCurrentLimit(amps, timeout);
-			RobotMap.Right2.configContinuousCurrentLimit(amps, timeout);
-			RobotMap.Left1.configContinuousCurrentLimit(amps, timeout);
-			RobotMap.Left2.configContinuousCurrentLimit(amps, timeout);
-		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
