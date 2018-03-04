@@ -28,7 +28,6 @@ public class RiseCommandRight extends Command {
     	if(OI.rightTrigger.get()){
 			go = true;
 			dir = !dir;
-			RobotMap.rightWing.setAngle(180.0);
 		}
     	
     	if(go && !dir){

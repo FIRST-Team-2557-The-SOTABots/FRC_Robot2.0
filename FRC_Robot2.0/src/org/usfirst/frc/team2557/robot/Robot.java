@@ -152,6 +152,8 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		m_autonomousCommand = m_chooser.getSelected();
 		timer.start();
+		
+		m_autonomousCommand = new GroupAutoCommandLeft();
 //		RobotMap.Gyro1.reset();
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
@@ -185,6 +187,8 @@ public class Robot extends TimedRobot {
 		}
 		RCR.start();
 		RCL.start();
+		WCR.start();
+		WCL.start();
 	}
 	
 	/**
@@ -200,8 +204,6 @@ public class Robot extends TimedRobot {
 //		MSC.start();
 //		CFC.start();
 //		TDC.start();
-		WCR.start();
-		WCL.start();
 		Scheduler.getInstance().run();
 		
 		

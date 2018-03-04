@@ -55,7 +55,7 @@ public class CombinedHumanErrorDriveCommand extends Command {
 			RobotMap.Left2.configContinuousCurrentLimit(amps, timeout);
 //		}
 		}else{
-			int amps = 15;
+			int amps = 40;
 			RobotMap.Right1.configContinuousCurrentLimit(amps, timeout);
 			RobotMap.Right2.configContinuousCurrentLimit(amps, timeout);
 			RobotMap.Left1.configContinuousCurrentLimit(amps, timeout);
