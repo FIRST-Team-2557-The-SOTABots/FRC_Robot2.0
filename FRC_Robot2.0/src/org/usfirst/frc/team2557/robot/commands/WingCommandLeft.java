@@ -2,20 +2,15 @@ package org.usfirst.frc.team2557.robot.commands;
 
 import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**r
- *
- */
 public class WingCommandLeft extends Command {
 	boolean done;
 
 	public WingCommandLeft() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		SmartDashboard.putNumber("got to", 2);
+//		SmartDashboard.putNumber("got to", 2);
 		done = false;
 	}
 
@@ -30,7 +25,8 @@ public class WingCommandLeft extends Command {
 //			RobotMap.rightWing.setAngle(-90.0);
 //		}
 		if(OI.leftBumper.get()){
-			RobotMap.leftWing.setAngle(90.0);
+//			RobotMap.leftWing.setAngle(90.0);
+			RobotMap.leftWing.setPosition(0.5);
 			done = true;
 //			SmartDashboard.putNumber("got to 2", 4);
 		}

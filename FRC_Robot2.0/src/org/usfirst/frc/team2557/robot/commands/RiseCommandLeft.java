@@ -29,7 +29,6 @@ public class RiseCommandLeft extends Command {
     	if(OI.leftTrigger.get()){
 			go = true;
 			dir = !dir;
-			RobotMap.leftWing.setAngle(-90.0);
 		}
 
     	if(go && !dir){
