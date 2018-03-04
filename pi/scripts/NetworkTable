@@ -8,7 +8,7 @@ from networktables import NetworkTables
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
-#NetworkTables.initialize(server='roboRIO-2557-FRC.local')
+NetworkTables.initialize(server='roboRIO-2557-FRC.local')
 sd = NetworkTables.getTable('SmartDashboard')
 #dt = NetworkTables.getTable('DataTable')
 #dts = NetworkTables.getTable('MessageTable')
@@ -25,7 +25,7 @@ def locationPublish():
     message = fileMessage.read()
     fileMessage.close()
     print(message.split())
-    sd.putArray('Vision', message)
+    sd.putValue('Vision', message)
     
     
 # Class for handling file changes.
