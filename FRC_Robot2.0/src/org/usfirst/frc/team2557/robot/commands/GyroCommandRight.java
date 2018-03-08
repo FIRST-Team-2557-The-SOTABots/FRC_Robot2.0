@@ -31,10 +31,10 @@ public class GyroCommandRight extends Command {
 		
 		SmartDashboard.putNumber("GyroAngle", RobotMap.Gyro1.getAngle());
 
-		if(RobotMap.Gyro1.getAngle() > -80) {
+		if(RobotMap.Gyro1.getAngle() > -90) {
 			RobotMap.DiffDrive.arcadeDrive(0, -.8);
 //			done = false;
-		}else if(RobotMap.Gyro1.getAngle() <= -80) {
+		}else if(RobotMap.Gyro1.getAngle() <= -90) {
 			RobotMap.DiffDrive.arcadeDrive(0, 0);
 			done = true;
 		}
