@@ -28,15 +28,13 @@ public class GyroCommandRight extends Command {
 	protected void execute() {
 		//    	SmartDashboard.putNumber("GyroAngleValue", RobotMap.GyroAngle);
 		SmartDashboard.getBoolean("Confirm Value", done);
+		
+		SmartDashboard.putNumber("GyroAngle", RobotMap.Gyro1.getAngle());
 
-		RobotMap.GyroAngle = RobotMap.Gyro1.getAngle();
-		double Angle = RobotMap.GyroAngle;
-
-		if(Angle < 80) {
+		if(RobotMap.Gyro1.getAngle() > -80) {
 			RobotMap.DiffDrive.arcadeDrive(0, -.8);
-			SmartDashboard.putNumber("GyroAngle", Angle);
 //			done = false;
-		}else if(Angle >= 80) {
+		}else if(RobotMap.Gyro1.getAngle() <= -80) {
 			RobotMap.DiffDrive.arcadeDrive(0, 0);
 			done = true;
 		}
@@ -45,6 +43,7 @@ public class GyroCommandRight extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {    	
 		if(done == true){
+			RobotMap.DiffDrive.arcadeDrive(0, 0);
 			return true;
 		}
 		else{
@@ -54,6 +53,7 @@ public class GyroCommandRight extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		RobotMap.DiffDrive.arcadeDrive(0, 0);
 	}
 
 	// Called when another command which requires one or more of the same

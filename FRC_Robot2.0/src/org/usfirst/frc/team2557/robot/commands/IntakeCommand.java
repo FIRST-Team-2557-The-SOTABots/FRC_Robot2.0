@@ -21,6 +21,9 @@ public class IntakeCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
+    	boolean x = OI.x.get();
+		boolean y = OI.y.get();
     	SmartDashboard.putBoolean("S1", RobotMap.S1.get());
 //		SmartDashboard.putBoolean("S2", RobotMap.S2.get());
 		if(OI.IntakeIn.get()) {

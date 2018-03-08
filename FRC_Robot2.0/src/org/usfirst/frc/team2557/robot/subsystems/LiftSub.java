@@ -23,22 +23,21 @@ public class LiftSub extends Subsystem {
 		boolean x = OI.x.get();
 		boolean y = OI.y.get();
 		
-		if(x == false && y == true && a < 30000){
-			RobotMap.LiftMotor.set(1.0);
-		}else if(x == true && y == false && a > -2000){
-			RobotMap.LiftMotor.set(-.7);
-		}else{
-			RobotMap.LiftMotor.set(0);
-		}
-		
-//		if(x == false && y == true ){
+//		if(x == false && y == true && a < 30000){
 //			RobotMap.LiftMotor.set(1.0);
-//		}else if(x == true && y == false ){
+//		}else if(x == true && y == false && a > -2000){
 //			RobotMap.LiftMotor.set(-.7);
 //		}else{
 //			RobotMap.LiftMotor.set(0);
 //		}
-
+		
+		if(x == false && y == true){
+			RobotMap.LiftMotor.set(1.0);
+		}else if(x == true && y == false){
+			RobotMap.LiftMotor.set(-.7);
+		}else{
+			RobotMap.LiftMotor.set(0);
+		}
 	}
 
 

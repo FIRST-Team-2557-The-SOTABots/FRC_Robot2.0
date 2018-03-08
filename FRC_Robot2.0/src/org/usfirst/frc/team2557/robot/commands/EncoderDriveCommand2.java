@@ -37,7 +37,7 @@ public class EncoderDriveCommand2 extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if((-RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10 > 6100) && (RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10 > 6200)) {
+    	if((-RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10 > 3800) && (RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10 > 3800)) {
 //    		the "> 100" values are just placeholders for now, they're supposed to be however long 121.47 inches is. It is used after the switch to get to
 //    		the place next to the scale. There will probably be a sensor to get the colour of the two things, so updates are expected.
     		RobotMap.DiffDrive.arcadeDrive(0, 0);

@@ -37,7 +37,7 @@ public class EncoderDriveCommand3 extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if((-RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10 > 1600) && (RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10 > 1700)) {
+    	if((-RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10 > 200) && (RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10 > 200)) {
 //    		the "> 100" values are just placeholders for now, they're supposed to be however long 11 and 2/3 feet is. It is used for getting to the switch,
 //    		not the scale, which is going to use a different command. There will probably be a sensor to get the colour of the two things, so updates are
 //    		expected.
