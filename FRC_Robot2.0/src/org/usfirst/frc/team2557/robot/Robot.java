@@ -1,77 +1,88 @@
-//2.82 counts per foot
 package org.usfirst.frc.team2557.robot;
 
-import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Preferences;
-import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team2557.robot.commands.CombinedHumanErrorDriveCommand;
+import org.usfirst.frc.team2557.robot.commands.CorrectStrafeCommand;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand1;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand2;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand3;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand4;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand5;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand6;
+import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand7;
+import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandMid;
+import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandRight;
+import org.usfirst.frc.team2557.robot.commands.GroupForward;
+import org.usfirst.frc.team2557.robot.commands.GyroCommand;
+import org.usfirst.frc.team2557.robot.commands.GyroCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.GyroCommandRight;
+import org.usfirst.frc.team2557.robot.commands.HumanErrorMecanumCommand;
+import org.usfirst.frc.team2557.robot.commands.HumanErrorTractionCommand;
+import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
+import org.usfirst.frc.team2557.robot.commands.LiftCommand;
+import org.usfirst.frc.team2557.robot.commands.LiftCommandWithAxis;
+import org.usfirst.frc.team2557.robot.commands.LiftEncoderCommand;
+//import org.usfirst.frc.team2557.robot.commands.LiloAutoCommandGroup;
+import org.usfirst.frc.team2557.robot.commands.MecanumStrafeCommand;
+import org.usfirst.frc.team2557.robot.commands.RiseCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.RiseCommandRight;
+import org.usfirst.frc.team2557.robot.commands.SolenoidAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
+import org.usfirst.frc.team2557.robot.commands.TeleDriveCommand;
+import org.usfirst.frc.team2557.robot.commands.TimedAutoDriveCommand;
+import org.usfirst.frc.team2557.robot.commands.TimedAutoMecanumDriveCommand;
+import org.usfirst.frc.team2557.robot.commands.WheelCheck;
+import org.usfirst.frc.team2557.robot.commands.WingCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.WingCommandRight;
+import org.usfirst.frc.team2557.robot.subsystems.*;
 
-import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearCenterShootLeft;
-import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearCenterShootRight;
-import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeftHopper;
-import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearLeftShoot;
-import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightHopper;
-import org.usfirst.frc.team2557.robot.autonomous.Autonomous_GearRightShoot;
-import org.usfirst.frc.team2557.robot.autonomous.ShiftToggle_autoCmd;
-import org.usfirst.frc.team2557.robot.commands.Agitator_cmd;
-import org.usfirst.frc.team2557.robot.commands.DriveToTarget_cmd;
-import org.usfirst.frc.team2557.robot.commands.GearGrab_toggle;
-import org.usfirst.frc.team2557.robot.commands.PsuedoShooter_cmd;
-import org.usfirst.frc.team2557.robot.subsystems.Acceleration_sub;
-import org.usfirst.frc.team2557.robot.subsystems.Agitator_sub;
-import org.usfirst.frc.team2557.robot.subsystems.Chassis_sub;
-import org.usfirst.frc.team2557.robot.subsystems.Climber_sub;
-import org.usfirst.frc.team2557.robot.subsystems.Gear_sub;
-import org.usfirst.frc.team2557.robot.subsystems.Intake_sub;
-import org.usfirst.frc.team2557.robot.subsystems.PsuedoShooter_sub;
-import org.usfirst.frc.team2557.robot.subsystems.Shooter_sub;
-import org.usfirst.frc.team2557.robot.subsystems.SmartDashboard_sub;
-import org.usfirst.frc.team2557.robot.vision.VisionArray_sub;
-import org.usfirst.frc.team2557.robot.vision.Vision_cmd;
-import org.usfirst.frc.team2557.robot.vision.centerX_gear;
-
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
- */
-public class Robot extends IterativeRobot {
-
-	public static final Chassis_sub 		chassis 		= new Chassis_sub();
-	public static final Shooter_sub	 		shooter 		= new Shooter_sub();
-	public static final Intake_sub 			intake 			= new Intake_sub();
-	public static final Gear_sub 			gear 			= new Gear_sub();
-	public static final Climber_sub 		climber 		= new Climber_sub();
-	public static final Agitator_sub 		agitator 		= new Agitator_sub();
-	public static final PsuedoShooter_sub 	psuedoShooter 	= new PsuedoShooter_sub();
-	public static final Acceleration_sub 	accel			= new Acceleration_sub();
-	public static final SmartDashboard_sub  dashboard 		= new SmartDashboard_sub();
-	public static final VisionArray_sub		vision			= new VisionArray_sub();
-	public static OI oi;
-	public double x = 45;
-	Command driveTo;
-	Command shiftUp;
-	Command shiftDown;
-	Command Main_auto;
-	Command fakePID;
-	Command visionUpdate;
-	Command shooterUpdate;
-	Command driveToTarget;
+public class Robot extends TimedRobot {
+	public static OI m_oi;
+	public static Timer timer = new Timer();
 	
-	public static Command leftX_gear;
-	public static Preferences prefs;
-	public int _auto;
+	public static DriveSub DriveSub1;
+	public static SolenoidSub SolSub;
 	
-	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
+	public static GyroCommand GC;
+	public static GyroCommandLeft GCL;
+	public static GyroCommandRight GCR;
+	public static CorrectStrafeCommand CFC;
+	public static CombinedHumanErrorDriveCommand CHEDC;
+	public static EncoderDriveCommand1 EDC1;
+	public static EncoderDriveCommand2 EDC2;
+	public static EncoderDriveCommand3 EDC3;
+	public static EncoderDriveCommand4 EDC4;
+	public static EncoderDriveCommand5 EDC5;
+	public static EncoderDriveCommand6 EDC6;
+	public static EncoderDriveCommand7 EDC7;
+	public static TimedAutoMecanumDriveCommand TAMDC;
+	public static TimedAutoDriveCommand TADC;
+	public static SolenoidCommand SC;
+	public static SolenoidAutoCommand SAC;
+	public static HumanErrorMecanumCommand HEMC;
+	public static HumanErrorTractionCommand HETC;
+//	public static TeleDriveCommand TDC;
+	public static MecanumStrafeCommand MSC;
+	public static WheelCheck WC;
+	public static LiftSub LS;
+	public static LiftCommand LC;
+	public static LiftCommandWithAxis LCWA;
+	public static IntakeCommand IC;
+	public static LiftEncoderCommand LEC;
+	public static WingCommandRight WCR;
+	public static WingCommandLeft WCL;
+	public static RiseCommandRight RCR;
+	public static RiseCommandLeft RCL;
+	
+	Command m_autonomousCommand;
+	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -80,51 +91,56 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
-		CameraServer.getInstance().startAutomaticCapture();
-		prefs = Preferences.getInstance();
-		vision.initializer();
-		shooterUpdate = new PsuedoShooter_cmd();
-		visionUpdate = new Vision_cmd();
-		shiftUp = new ShiftToggle_autoCmd(true);
-		shiftDown = new ShiftToggle_autoCmd(false);
-		leftX_gear = new centerX_gear();
 		
+    	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 1000);
+    	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 1000);
 		
+		RobotMap.DS1.set(Value.kReverse);
 		
+		DriveSub1 = new DriveSub();
+		SolSub = new SolenoidSub();
 		
-//		Main_auto = new Autonomous_GearLeftHopper(); //GearLeft
-//		Main_auto = new Autonomous_GearLeftShoot();
-//		Main_auto = new Autonomous_GearRightHopper(); //GearRight
+		GC = new GyroCommand();
+		GCL = new GyroCommandLeft();
+		GCR = new GyroCommandRight();
+		CFC = new CorrectStrafeCommand();
+		CHEDC = new CombinedHumanErrorDriveCommand();
+		EDC1 = new EncoderDriveCommand1(1, 0);
+		EDC2 = new EncoderDriveCommand2(1, 0);
+		EDC3 = new EncoderDriveCommand3(1, 0);
+		EDC4 = new EncoderDriveCommand4(1, 0);
+		EDC5 = new EncoderDriveCommand5(1, 0);
+		EDC6 = new EncoderDriveCommand6(1, 0);
+		EDC7 = new EncoderDriveCommand7(1, 0);
+		TAMDC = new TimedAutoMecanumDriveCommand(1, 0, 0, 1);
+		TADC = new TimedAutoDriveCommand(1, 0, 1);
+		SC = new SolenoidCommand();
+		SAC = new SolenoidAutoCommand();
+		HEMC = new HumanErrorMecanumCommand();
+		HETC = new HumanErrorTractionCommand();
+//		TDC = new TeleDriveCommand();
+		MSC = new MecanumStrafeCommand();
+		WC = new WheelCheck();
+		LS = new LiftSub();
+		LC = new LiftCommand();
+		LCWA = new LiftCommandWithAxis();
+		IC = new IntakeCommand();
+		WCR = new WingCommandRight();
+		WCL = new WingCommandLeft();
+		RCR = new RiseCommandRight();
+		RCL = new RiseCommandLeft();
 		
-//		Main_auto = new Autonomous_GearRightShoot(); //GearLine up right
-//		Main_auto = new Autonomous_GearCenterShootLeft(); //GearCenter
+		m_oi = new OI();
+		m_oi.OIInit();
 		
-		
-//		Main_auto = new Autonomous_GearCenterShootRight();
-
-		
-		
-		fakePID = new PsuedoShooter_cmd();
-		driveToTarget = new DriveToTarget_cmd();
-		oi = new OI();
-		oi.init();
-		
-		/*
-//		chooser.addObject("Autonomous_GearLeftShoot: ", new Autonomous_GearLeftShoot());
-		chooser.addObject("Autonomous_GearLeft (Hopper): ", new Autonomous_GearLeftHopper());
-//		chooser.addObject("Autonomous_GearRightShoot: ", new Autonomous_GearRightShoot());
-		chooser.addObject("Autonomous_GearRight (Hopper): ", new Autonomous_GearRightHopper());
-		chooser.addObject("Autonomous_GearCenter (ShootLeft): ", new Autonomous_GearCenterShootLeft());		
-//		chooser.addObject("Autonomous_GearCenterShootRight: ", new Autonomous_GearCenterShootRight());
-		SmartDashboard.putData("Auto mode", chooser);
-		*/
+		m_chooser.addDefault("Mid Auto", new GroupAutoCommandMid());
+		m_chooser.addObject("Left Auto", new GroupAutoCommandLeft());
+		m_chooser.addObject("Right Auto", new GroupAutoCommandRight());
+		m_chooser.addObject("Forward Auto", new GroupForward());
+//		m_chooser.addObject("Lilo Auto Command", new LiloAutoCommandGroup());
+		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 
-	/**
-	 * This function is called once each time the robot enters Disabled mode.
-	 * You can use it to reset any subsystem information you want to clear when
-	 * the robot is disabled.
-	 */
 	@Override
 	public void disabledInit() {
 
@@ -135,157 +151,105 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 	}
 
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString code to get the auto name from the text box below the Gyro
-	 *
-	 * You can add additional auto modes by adding additional commands to the
-	 * chooser code above (like the commented example) or additional comparisons
-	 * to the switch structure below with additional strings & commands.
-	 */
 	@Override
 	public void autonomousInit() {
-//		RobotMap.euler.autoInit();
-//		Robot.chassis.resetDriveStraight();
-		RobotMap.FLdrive.getSensorCollection().setQuadraturePosition(0, 10);
-		RobotMap.BRdrive.getSensorCollection().setQuadraturePosition(0, 10);
-//		RobotMap.navX.reset();
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
+		m_autonomousCommand = m_chooser.getSelected();
+		timer.start();
 		
-//		autonomousCommand = (Command) chooser.getSelected();
-//		autonomousCommand.start();
-		
-		_auto = prefs.getInt("Auto", 0);
-		if(_auto == 1){
-			autonomousCommand = new Autonomous_GearLeftHopper();
-		}
-		else if(_auto == 2){
-			autonomousCommand = new Autonomous_GearRightHopper();
-		}
-		else{
-			autonomousCommand = new Autonomous_GearCenterShootLeft();
-		}
+		m_autonomousCommand = new GroupAutoCommandLeft();
+//		RobotMap.Gyro1.reset();
 		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
-			autonomousCommand.start();
-			
+		if (m_autonomousCommand != null) {
+			m_autonomousCommand.start();
+		}
 	}
 
 	/**
-	 * This function is called periodically during autonomous
+	 * This function is called periodically during autonomous.
 	 */
 	@Override
 	public void autonomousPeriodic() {
+//		CFC.start();
+//		MSC.start();
+		SmartDashboard.putNumber("Time passed", timer.get());
 		Scheduler.getInstance().run();
-		RobotMap.euler.update();
-		SmartDashboard.putNumber("Left Encoder: ", RobotMap.FLdrive.getSensorCollection().getQuadraturePosition());
-		SmartDashboard.putNumber("Right Encoder: ", RobotMap.BRdrive.getSensorCollection().getQuadraturePosition());
-		SmartDashboard.putNumber("NavX Angle is: ",RobotMap.navX.getAngle());
-		SmartDashboard.putNumber("DriveStraight Angle is: ",Robot.chassis.getDriveStraightAngle());
-		
-		if(RobotMap._stage){
-			RobotMap.gearGrab.set(Value.kForward);
-		}
-		else if (RobotMap._stage == false){
-			RobotMap.gearGrab.set(Value.kReverse);
-		}
-		
 	}
 
 	@Override
 	public void teleopInit() {
+		GC.start();
+		CHEDC.start();
+//		LC.start();
+//		HETC.start();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-//		driveToTarget.start();
-//		if (autonomousCommand != null)
-//			autonomousCommand.cancle();
-		if (autonomousCommand != null)
-			autonomousCommand.cancel();
-		
+		if (m_autonomousCommand != null) {
+			m_autonomousCommand.cancel();
+		}
+		RCR.start();
+		RCL.start();
+		WCR.start();
+		WCL.start();
 	}
-
+	
 	/**
-	 * This function is called periodically during operator control
-	 */
+	 * This function is called periodically during operator control.
+	 */	
 	@Override
 	public void teleopPeriodic() {
+		SC.start();
+		CHEDC.start();
+		LCWA.start();
+//		HETC.start();
+//		LC.start();
+		IC.start();
+//		MSC.start();
+//		CFC.start();
+//		TDC.start();
 		Scheduler.getInstance().run();
-//		SmartDashboard.putNumber("Auto", (int) SmartDashboard.getNumber("Auto", 0.0));
-		RobotMap.euler.update();
-		visionUpdate.start();
-		shooterUpdate.start();
-		if(oi.x1.get()){
-			RobotMap.FLdrive.getSensorCollection().setQuadraturePosition(0, 10);
-			RobotMap.FRdrive.getSensorCollection().setQuadraturePosition(0, 10);
-			RobotMap.navX.reset();
-		}
-		if(oi.RB1.get()){
-			shiftUp.start();
-			return;
-		}
-		else if(oi.LB1.get()){
-			shiftDown.start();
-			return;
-		}
 		
+//		
+//		SmartDashboard.putNumber("Left 1 current", RobotMap.Left1.getOutputCurrent());
+//		SmartDashboard.putNumber("Right 1 current", RobotMap.Right1.getOutputCurrent());
+//		SmartDashboard.putNumber("Left 2 current", RobotMap.Left2.getOutputCurrent());
+//		SmartDashboard.putNumber("Right 2 current", RobotMap.Right2.getOutputCurrent());
+//		SmartDashboard.putNumber("Lift current", RobotMap.LiftMotor.getOutputCurrent());
+//		SmartDashboard.putNumber("Intake right current", RobotMap.IntakeR.getOutputCurrent());
+//		SmartDashboard.putNumber("Intake left current", RobotMap.IntakeL.getOutputCurrent());
+		SmartDashboard.putNumber("Pdp 1 current", RobotMap.pdp.getCurrent(1));
+		SmartDashboard.putNumber("Pdp 2 current", RobotMap.pdp.getCurrent(2));
+		SmartDashboard.putNumber("Pdp 3 current", RobotMap.pdp.getCurrent(3));
+//		SmartDashboard.putNumber("Pdp 4 current", RobotMap.pdp.getCurrent(4));
+//		SmartDashboard.putNumber("Pdp 5 current", RobotMap.pdp.getCurrent(5));
+//		SmartDashboard.putNumber("Pdp 6 current", RobotMap.pdp.getCurrent(6));
+		SmartDashboard.putNumber("Pdp 7 current", RobotMap.pdp.getCurrent(7));
+//		SmartDashboard.putNumber("Pdp 8 current", RobotMap.pdp.getCurrent(8));
+//		SmartDashboard.putNumber("Pdp 9 current", RobotMap.pdp.getCurrent(9));
+//		SmartDashboard.putNumber("Pdp 10 current", RobotMap.pdp.getCurrent(10));
+//		SmartDashboard.putNumber("Pdp 11 current", RobotMap.pdp.getCurrent(11));
+//		SmartDashboard.putNumber("Pdp 12 current", RobotMap.pdp.getCurrent(12));
+//		SmartDashboard.putNumber("Pdp 13 current", RobotMap.pdp.getCurrent(13));
+//		SmartDashboard.putNumber("Pdp 14 current", RobotMap.pdp.getCurrent(14));
+//		SmartDashboard.putNumber("Pdp 15 current", RobotMap.pdp.getCurrent(15));
+//		SmartDashboard.putNumber("Pdp total current", RobotMap.pdp.getTotalCurrent());
+//		SmartDashboard.putNumber("Pdp temperature", RobotMap.pdp.getTemperature());
+//		SmartDashboard.putNumber("Left 1 voltage", RobotMap.Left1.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Right 1 voltage", RobotMap.Right1.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Left 2 voltage", RobotMap.Left2.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Right 2 voltage", RobotMap.Right2.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Lift voltage", RobotMap.LiftMotor.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Intake right voltage", RobotMap.IntakeR.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Intake left voltage", RobotMap.IntakeL.getMotorOutputVoltage());
+		SmartDashboard.putNumber("Gyro", RobotMap.Gyro1.getAngle());
 		
-		
-		
-//		if(oi.gamepad1.getRawAxis(3) > 0.1){
-//			fakePID.start();
-//		}
-		
-//		if(oi.a1.get()) {
-//    		if(vision.averageInterpretation(2, 0, 0, 167, 0, .05) == false){
-//    			if(vision.findCenterXs(0) < 167){
-//    				RobotMap.robotDrive.tankDrive(-.5,.7); //-.52
-//    			}
-//    			else if(vision.findCenterXs(0) > 167){
-//    				RobotMap.robotDrive.tankDrive(-.5,-.7); //.52
-//    			}
-//    			else{
-//    				RobotMap.robotDrive.tankDrive(0,0);
-//    			}
-//    		}
-//    		else{
-//    			RobotMap.robotDrive.tankDrive(-.6,-.6);
-//    		}
-//    		
-//    	}
-		if(oi.y1.get()) {
-    		if(vision.averageInterpretation(2, 0, 0, 220, 0, .02) == false){
-    			if(vision.findCenterXs(0) < 221){
-    				RobotMap.robotDrive.arcadeDrive(-.8,-.5);
-    			}
-    			else if(vision.findCenterXs(0) > 221){
-    				RobotMap.robotDrive.arcadeDrive(-.8,.5);
-    			}
-    			else{
-    				RobotMap.robotDrive.arcadeDrive(0,0);
-    			}
-    		}
-    		else{
-    			RobotMap.robotDrive.arcadeDrive(-.8,0);
-    		}
-    		
-    	}
 	}
 
 	/**
-	 * This function is called periodically during test mode
+	 * This function is called periodically during test mode.
 	 */
 	@Override
 	public void testPeriodic() {
-		LiveWindow.run();
 	}
 }
