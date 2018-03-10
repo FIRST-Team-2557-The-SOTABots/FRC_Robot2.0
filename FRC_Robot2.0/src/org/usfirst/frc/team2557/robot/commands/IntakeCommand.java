@@ -26,8 +26,8 @@ public class IntakeCommand extends Command {
 		if(OI.IntakeIn.get()) {
 			RobotMap.IntakeR.set(-.8);
 			RobotMap.IntakeL.set(.8);
-//			RobotMap.S2.set(false);
-//			RobotMap.S1.set(true);
+			RobotMap.S2.set(false);
+			RobotMap.S1.set(true);
 			SmartDashboard.putBoolean("IN", true);
 			//			RobotMap.S2.set(false);
 		}else if(OI.IntakeOut.get()){

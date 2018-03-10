@@ -1,22 +1,18 @@
 package org.usfirst.frc.team2557.robot.commands;
 
 import org.usfirst.frc.team2557.robot.OI;
-import org.usfirst.frc.team2557.robot.RobotMap;
+import org.usfirst.frc.team2557.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class RiseCommandRight extends Command {
-	boolean go;
-	boolean dir;
+public class LiftCommandWithAxis extends Command {
 
-    public RiseCommandRight() {
+    public LiftCommandWithAxis() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	go = false;
-    	dir = true;
     }
 
     // Called just before this Command runs the first time
@@ -25,19 +21,10 @@ public class RiseCommandRight extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(OI.rightTrigger.get()){
-			go = true;
-			dir = !dir;
-		}
-    	
-    	if(go && !dir){
-    		RobotMap.a.set(true);
-			RobotMap.b.set(false);
-    	}else if(go && dir){
-    		RobotMap.b.set(true);
-			RobotMap.a.set(false);
+    	double value;
+    	value = OI.Joystick2.getY();
+    	Robot.LS.LiftWithAxis();
     	}
-    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
