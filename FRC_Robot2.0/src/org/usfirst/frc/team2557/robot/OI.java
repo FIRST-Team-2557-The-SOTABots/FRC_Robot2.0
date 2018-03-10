@@ -38,7 +38,12 @@ public class OI {
 	public static JoystickButton rightTrigger;
 	public static JoystickButton leftTrigger;
 	
+	
+	public static JoystickButton mJoystickLeft;
+	public static JoystickButton mJoystickRight;
+	
 	public void OIInit() {
+		
 		Joystick1 = new Joystick(0);
 		ForwardButton = new JoystickButton(Joystick1, 6);
 		BackwardButton = new JoystickButton(Joystick1, 5);
@@ -57,13 +62,20 @@ public class OI {
 		rightTrigger = new JoystickButton(Joystick2, 8);
 		leftTrigger = new JoystickButton(Joystick2, 7);
 		
+		mJoystickLeft = new JoystickButton(Joystick2, 9);
+		mJoystickRight = new JoystickButton(Joystick2, 10);
+		
 		IntakeIn.whileHeld(new IntakeCommand());
 		IntakeOut.whileHeld(new IntakeCommand());
 		
-		y.whileHeld(new LiftCommand());
-		y.whenReleased(new LiftCommand());
-		x.whileHeld(new LiftCommand());
-		x.whenReleased(new LiftCommand());
+		double value;
+
+		value = Joystick2.getY();
+		
+//		y.whileHeld(new LiftCommand());
+//		y.whenReleased(new LiftCommand());
+//		x.whileHeld(new LiftCommand());
+//		x.whenReleased(new LiftCommand());
 		
 	}
 	

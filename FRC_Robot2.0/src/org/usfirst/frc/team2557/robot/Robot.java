@@ -27,6 +27,7 @@ import org.usfirst.frc.team2557.robot.commands.HumanErrorMecanumCommand;
 import org.usfirst.frc.team2557.robot.commands.HumanErrorTractionCommand;
 import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
+import org.usfirst.frc.team2557.robot.commands.LiftCommandWithAxis;
 import org.usfirst.frc.team2557.robot.commands.LiftEncoderCommand;
 //import org.usfirst.frc.team2557.robot.commands.LiloAutoCommandGroup;
 import org.usfirst.frc.team2557.robot.commands.MecanumStrafeCommand;
@@ -72,12 +73,14 @@ public class Robot extends TimedRobot {
 	public static WheelCheck WC;
 	public static LiftSub LS;
 	public static LiftCommand LC;
+	public static LiftCommandWithAxis LCWA;
 	public static IntakeCommand IC;
 	public static LiftEncoderCommand LEC;
 	public static WingCommandRight WCR;
 	public static WingCommandLeft WCL;
 	public static RiseCommandRight RCR;
 	public static RiseCommandLeft RCL;
+	
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -89,6 +92,10 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
+		
+//		double liftSpeed;
+//		liftSpeed = OI.Joystick2.getRawAxis(1);
+//		SmartDashboard.putNumber("Lift In Robot", liftSpeed);
 		
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 1000);
     	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 1000);
@@ -121,6 +128,7 @@ public class Robot extends TimedRobot {
 		WC = new WheelCheck();
 		LS = new LiftSub();
 		LC = new LiftCommand();
+		LCWA = new LiftCommandWithAxis();
 		IC = new IntakeCommand();
 		WCR = new WingCommandRight();
 		WCL = new WingCommandLeft();
@@ -204,6 +212,10 @@ public class Robot extends TimedRobot {
 //		LC.start();
 //		HETC.start();
 		IC.start();
+		LC.start();
+		LCWA.start();
+		
+		
 //		MSC.start();
 //		CFC.start();
 //		TDC.start();

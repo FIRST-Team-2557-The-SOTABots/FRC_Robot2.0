@@ -2,7 +2,6 @@ package org.usfirst.frc.team2557.robot.commands;
 
 import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.Robot;
-import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -10,10 +9,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class LiftCommand extends Command {
+public class LiftCommandWithAxis extends Command {
 
-    public LiftCommand() {
-    	requires(Robot.LS);
+    public LiftCommandWithAxis() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -30,7 +28,7 @@ public class LiftCommand extends Command {
 		double value;
 		value = OI.Joystick2.getY();
 		SmartDashboard.putNumber("lift2 in sub", value);
-    	Robot.LS.LiftMethod();
+    	Robot.LS.LiftWithAxis();
     }
 
     // Make this return true when this Command no longer needs to run execute()

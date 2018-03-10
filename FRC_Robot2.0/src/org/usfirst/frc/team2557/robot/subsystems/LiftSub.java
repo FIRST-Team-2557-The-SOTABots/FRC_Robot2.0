@@ -11,12 +11,40 @@ public class LiftSub extends Subsystem {
 	public void liftInAuto(double power){
 		RobotMap.LiftMotor.set(power);
 	}
-
-	public void LiftMethod() {
+	
+	public void LiftWithAxis(){
+		
+		double liftSpeed;
+		liftSpeed = OI.Joystick2.getRawAxis(1);
+		SmartDashboard.putNumber("Lift In LiftSub", liftSpeed);
+		
+		double value;
+		value = OI.Joystick2.getY();
+		SmartDashboard.putNumber("lift2 in sub", value);
 		
 		SmartDashboard.putNumber("LiftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 //		double axis = OI.Joystick2.getRawAxis(3);
 //		SmartDashboard.putNumber("joystick2 axis 1", axis);
+		
+		RobotMap.LiftMotor.set(-value);
+	
+	}
+
+	public void LiftMethod() {
+		
+//		double liftSpeed;
+//		liftSpeed = OI.Joystick2.getRawAxis(1);
+//		SmartDashboard.putNumber("Lift In LiftSub", liftSpeed);
+//		
+//		double value;
+//		value = OI.Joystick2.getY();
+//		SmartDashboard.putNumber("lift2 in sub", value);
+//		
+//		SmartDashboard.putNumber("LiftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
+////		double axis = OI.Joystick2.getRawAxis(3);
+////		SmartDashboard.putNumber("joystick2 axis 1", axis);
+//		
+//		RobotMap.LiftMotor.set(-value);
 		
 		
 		double a = -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition();

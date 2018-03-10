@@ -12,11 +12,13 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class RobotMap {
 	public static boolean Confirm;
 	public static boolean Position;
 	public static double GyroAngle;
+	
 	public static WPI_TalonSRX Left1;
 	public static WPI_TalonSRX Left2;
 	public static WPI_TalonSRX Right1;
@@ -54,6 +56,7 @@ public class RobotMap {
 //		IntakeR = new WPI_TalonSRX(8);
 //		IntakeL = new WPI_TalonSRX(1); //
 //		LiftMotor = new WPI_TalonSRX(2);
+		
 		
 		a = new Solenoid(7);
 		b = new Solenoid(6);
