@@ -11,6 +11,15 @@ public class LiftSub extends Subsystem {
 	public void liftInAuto(double power){
 		RobotMap.LiftMotor.set(power);
 	}
+	
+	public void LiftWithAxis(){
+		double value;
+		value = OI.Joystick2.getY();
+		SmartDashboard.putNumber("lift in sub2", value);
+		SmartDashboard.putNumber("LiftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
+		
+		RobotMap.LiftMotor.set(-value);
+	}
 
 	public void LiftMethod() {
 		

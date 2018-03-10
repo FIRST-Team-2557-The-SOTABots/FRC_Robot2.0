@@ -27,6 +27,7 @@ import org.usfirst.frc.team2557.robot.commands.HumanErrorMecanumCommand;
 import org.usfirst.frc.team2557.robot.commands.HumanErrorTractionCommand;
 import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
+import org.usfirst.frc.team2557.robot.commands.LiftCommandWithAxis;
 import org.usfirst.frc.team2557.robot.commands.LiftEncoderCommand;
 //import org.usfirst.frc.team2557.robot.commands.LiloAutoCommandGroup;
 import org.usfirst.frc.team2557.robot.commands.MecanumStrafeCommand;
@@ -72,6 +73,7 @@ public class Robot extends TimedRobot {
 	public static WheelCheck WC;
 	public static LiftSub LS;
 	public static LiftCommand LC;
+	public static LiftCommandWithAxis LCWA;
 	public static IntakeCommand IC;
 	public static LiftEncoderCommand LEC;
 	public static WingCommandRight WCR;
@@ -121,6 +123,7 @@ public class Robot extends TimedRobot {
 		WC = new WheelCheck();
 		LS = new LiftSub();
 		LC = new LiftCommand();
+		LCWA = new LiftCommandWithAxis();
 		IC = new IntakeCommand();
 		WCR = new WingCommandRight();
 		WCL = new WingCommandLeft();
@@ -198,6 +201,7 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		SC.start();
 		CHEDC.start();
+		LCWA.start();
 //		HETC.start();
 //		LC.start();
 		IC.start();
@@ -206,38 +210,38 @@ public class Robot extends TimedRobot {
 //		TDC.start();
 		Scheduler.getInstance().run();
 		
-		
-		SmartDashboard.putNumber("Left 1 current", RobotMap.Left1.getOutputCurrent());
-		SmartDashboard.putNumber("Right 1 current", RobotMap.Right1.getOutputCurrent());
-		SmartDashboard.putNumber("Left 2 current", RobotMap.Left2.getOutputCurrent());
-		SmartDashboard.putNumber("Right 2 current", RobotMap.Right2.getOutputCurrent());
-		SmartDashboard.putNumber("Lift current", RobotMap.LiftMotor.getOutputCurrent());
-		SmartDashboard.putNumber("Intake right current", RobotMap.IntakeR.getOutputCurrent());
-		SmartDashboard.putNumber("Intake left current", RobotMap.IntakeL.getOutputCurrent());
-		SmartDashboard.putNumber("Pdp 1 current", RobotMap.pdp.getCurrent(1));
-		SmartDashboard.putNumber("Pdp 2 current", RobotMap.pdp.getCurrent(2));
-		SmartDashboard.putNumber("Pdp 3 current", RobotMap.pdp.getCurrent(3));
-		SmartDashboard.putNumber("Pdp 4 current", RobotMap.pdp.getCurrent(4));
-		SmartDashboard.putNumber("Pdp 5 current", RobotMap.pdp.getCurrent(5));
-		SmartDashboard.putNumber("Pdp 6 current", RobotMap.pdp.getCurrent(6));
-		SmartDashboard.putNumber("Pdp 7 current", RobotMap.pdp.getCurrent(7));
-		SmartDashboard.putNumber("Pdp 8 current", RobotMap.pdp.getCurrent(8));
-		SmartDashboard.putNumber("Pdp 9 current", RobotMap.pdp.getCurrent(9));
-		SmartDashboard.putNumber("Pdp 10 current", RobotMap.pdp.getCurrent(10));
-		SmartDashboard.putNumber("Pdp 11 current", RobotMap.pdp.getCurrent(11));
-		SmartDashboard.putNumber("Pdp 12 current", RobotMap.pdp.getCurrent(12));
-		SmartDashboard.putNumber("Pdp 13 current", RobotMap.pdp.getCurrent(13));
-		SmartDashboard.putNumber("Pdp 14 current", RobotMap.pdp.getCurrent(14));
-		SmartDashboard.putNumber("Pdp 15 current", RobotMap.pdp.getCurrent(15));
-		SmartDashboard.putNumber("Pdp total current", RobotMap.pdp.getTotalCurrent());
-		SmartDashboard.putNumber("Pdp temperature", RobotMap.pdp.getTemperature());
-		SmartDashboard.putNumber("Left 1 voltage", RobotMap.Left1.getMotorOutputVoltage());
-		SmartDashboard.putNumber("Right 1 voltage", RobotMap.Right1.getMotorOutputVoltage());
-		SmartDashboard.putNumber("Left 2 voltage", RobotMap.Left2.getMotorOutputVoltage());
-		SmartDashboard.putNumber("Right 2 voltage", RobotMap.Right2.getMotorOutputVoltage());
-		SmartDashboard.putNumber("Lift voltage", RobotMap.LiftMotor.getMotorOutputVoltage());
-		SmartDashboard.putNumber("Intake right voltage", RobotMap.IntakeR.getMotorOutputVoltage());
-		SmartDashboard.putNumber("Intake left voltage", RobotMap.IntakeL.getMotorOutputVoltage());
+//		
+//		SmartDashboard.putNumber("Left 1 current", RobotMap.Left1.getOutputCurrent());
+//		SmartDashboard.putNumber("Right 1 current", RobotMap.Right1.getOutputCurrent());
+//		SmartDashboard.putNumber("Left 2 current", RobotMap.Left2.getOutputCurrent());
+//		SmartDashboard.putNumber("Right 2 current", RobotMap.Right2.getOutputCurrent());
+//		SmartDashboard.putNumber("Lift current", RobotMap.LiftMotor.getOutputCurrent());
+//		SmartDashboard.putNumber("Intake right current", RobotMap.IntakeR.getOutputCurrent());
+//		SmartDashboard.putNumber("Intake left current", RobotMap.IntakeL.getOutputCurrent());
+//		SmartDashboard.putNumber("Pdp 1 current", RobotMap.pdp.getCurrent(1));
+//		SmartDashboard.putNumber("Pdp 2 current", RobotMap.pdp.getCurrent(2));
+//		SmartDashboard.putNumber("Pdp 3 current", RobotMap.pdp.getCurrent(3));
+//		SmartDashboard.putNumber("Pdp 4 current", RobotMap.pdp.getCurrent(4));
+//		SmartDashboard.putNumber("Pdp 5 current", RobotMap.pdp.getCurrent(5));
+//		SmartDashboard.putNumber("Pdp 6 current", RobotMap.pdp.getCurrent(6));
+//		SmartDashboard.putNumber("Pdp 7 current", RobotMap.pdp.getCurrent(7));
+//		SmartDashboard.putNumber("Pdp 8 current", RobotMap.pdp.getCurrent(8));
+//		SmartDashboard.putNumber("Pdp 9 current", RobotMap.pdp.getCurrent(9));
+//		SmartDashboard.putNumber("Pdp 10 current", RobotMap.pdp.getCurrent(10));
+//		SmartDashboard.putNumber("Pdp 11 current", RobotMap.pdp.getCurrent(11));
+//		SmartDashboard.putNumber("Pdp 12 current", RobotMap.pdp.getCurrent(12));
+//		SmartDashboard.putNumber("Pdp 13 current", RobotMap.pdp.getCurrent(13));
+//		SmartDashboard.putNumber("Pdp 14 current", RobotMap.pdp.getCurrent(14));
+//		SmartDashboard.putNumber("Pdp 15 current", RobotMap.pdp.getCurrent(15));
+//		SmartDashboard.putNumber("Pdp total current", RobotMap.pdp.getTotalCurrent());
+//		SmartDashboard.putNumber("Pdp temperature", RobotMap.pdp.getTemperature());
+//		SmartDashboard.putNumber("Left 1 voltage", RobotMap.Left1.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Right 1 voltage", RobotMap.Right1.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Left 2 voltage", RobotMap.Left2.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Right 2 voltage", RobotMap.Right2.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Lift voltage", RobotMap.LiftMotor.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Intake right voltage", RobotMap.IntakeR.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Intake left voltage", RobotMap.IntakeL.getMotorOutputVoltage());
 		SmartDashboard.putNumber("Gyro", RobotMap.Gyro1.getAngle());
 		
 	}
