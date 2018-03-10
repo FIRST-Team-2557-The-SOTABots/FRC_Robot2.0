@@ -5,14 +5,14 @@
 # Unit Section
 # - https://www.freedesktop.org/software/systemd/man/systemd.unit.html
 [Unit]
-Description=Generic Systemd Service File
+Description=MJPG-Streamer Systemd Service File
 # After is a space-separated list of unit names configuring order dependencies
 #After=X-org.service
-#After=
+After=network.target
 # Requires is a space-separated list of unit names configuring order
 # dependencies
-#Requires=
 #Requires=display-manager.service
+Requires=network.target
 
 # Service Section
 # - https://www.freedesktop.org/software/systemd/man/systemd.service.html
