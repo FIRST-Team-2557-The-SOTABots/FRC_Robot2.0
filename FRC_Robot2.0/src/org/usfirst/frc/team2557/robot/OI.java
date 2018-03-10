@@ -42,11 +42,19 @@ public class OI {
 	public static JoystickButton mJoystickLeft;
 	public static JoystickButton mJoystickRight;
 	
+	public static JoystickButton b1;
+	public static JoystickButton x1;
+	
+	
 	public void OIInit() {
 		
 		Joystick1 = new Joystick(0);
 		ForwardButton = new JoystickButton(Joystick1, 6);
 		BackwardButton = new JoystickButton(Joystick1, 5);
+		
+		b1 = new JoystickButton(Joystick1, 2);
+		x1 = new JoystickButton(Joystick1, 3);
+		
 		
 		ForwardButton.whenPressed(new SolenoidCommand());
 		BackwardButton.whenPressed(new SolenoidCommand());
