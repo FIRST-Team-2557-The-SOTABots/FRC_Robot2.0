@@ -218,13 +218,13 @@ public class Robot extends TimedRobot {
 //		SmartDashboard.putNumber("Lift current", RobotMap.LiftMotor.getOutputCurrent());
 //		SmartDashboard.putNumber("Intake right current", RobotMap.IntakeR.getOutputCurrent());
 //		SmartDashboard.putNumber("Intake left current", RobotMap.IntakeL.getOutputCurrent());
-//		SmartDashboard.putNumber("Pdp 1 current", RobotMap.pdp.getCurrent(1));
-//		SmartDashboard.putNumber("Pdp 2 current", RobotMap.pdp.getCurrent(2));
-//		SmartDashboard.putNumber("Pdp 3 current", RobotMap.pdp.getCurrent(3));
+		SmartDashboard.putNumber("Pdp 1 current", RobotMap.pdp.getCurrent(1));
+		SmartDashboard.putNumber("Pdp 2 current", RobotMap.pdp.getCurrent(2));
+		SmartDashboard.putNumber("Pdp 3 current", RobotMap.pdp.getCurrent(3));
 //		SmartDashboard.putNumber("Pdp 4 current", RobotMap.pdp.getCurrent(4));
 //		SmartDashboard.putNumber("Pdp 5 current", RobotMap.pdp.getCurrent(5));
 //		SmartDashboard.putNumber("Pdp 6 current", RobotMap.pdp.getCurrent(6));
-//		SmartDashboard.putNumber("Pdp 7 current", RobotMap.pdp.getCurrent(7));
+		SmartDashboard.putNumber("Pdp 7 current", RobotMap.pdp.getCurrent(7));
 //		SmartDashboard.putNumber("Pdp 8 current", RobotMap.pdp.getCurrent(8));
 //		SmartDashboard.putNumber("Pdp 9 current", RobotMap.pdp.getCurrent(9));
 //		SmartDashboard.putNumber("Pdp 10 current", RobotMap.pdp.getCurrent(10));
