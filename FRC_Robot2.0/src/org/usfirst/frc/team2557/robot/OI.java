@@ -76,14 +76,10 @@ public class OI {
 		IntakeIn.whileHeld(new IntakeCommand());
 		IntakeOut.whileHeld(new IntakeCommand());
 		
-		double value;
-
-		value = Joystick2.getY();
-		
-//		y.whileHeld(new LiftCommand());
-//		y.whenReleased(new LiftCommand());
-//		x.whileHeld(new LiftCommand());
-//		x.whenReleased(new LiftCommand());
+		y.whileHeld(new LiftCommand());
+		y.whenReleased(new LiftCommand());
+		x.whileHeld(new LiftCommand());
+		x.whenReleased(new LiftCommand());
 		
 	}
 	

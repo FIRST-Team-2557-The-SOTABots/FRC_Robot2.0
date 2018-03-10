@@ -66,9 +66,6 @@ public class RobotMap {
 		
 		leftWing = new Servo(0);
 		rightWing = new Servo(1);
-		
-		Left1 = new WPI_TalonSRX(1); //
-		Left2 = new WPI_TalonSRX(7); //
 
 		Left1 = new WPI_TalonSRX(1);
 		Left2 = new WPI_TalonSRX(7);

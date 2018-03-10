@@ -30,15 +30,13 @@ public class IntakeCommand extends Command {
 //		leftTrigger = OI.Joystick1.getRawAxis(2);
 //		SmartDashboard.putNumber("getting Axis of Trigegr left", leftTrigger);
     	
-    	boolean x = OI.x.get();
-		boolean y = OI.y.get();
     	SmartDashboard.putBoolean("S1", RobotMap.S1.get());
 //		SmartDashboard.putBoolean("S2", RobotMap.S2.get());
 		if(OI.IntakeIn.get()) {
 			RobotMap.IntakeR.set(-.8);
 			RobotMap.IntakeL.set(.8);
-			RobotMap.S2.set(true);
-			RobotMap.S1.set(false);
+			RobotMap.S2.set(false);
+			RobotMap.S1.set(true);
 			SmartDashboard.putBoolean("IN", true);
 			//			RobotMap.S2.set(false);
 		}else if(OI.IntakeOut.get()){
