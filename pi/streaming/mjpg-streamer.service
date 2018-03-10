@@ -1,0 +1,32 @@
+# Primary documentation for systemd.service is
+# https://www.freedesktop.org/software/systemd/man/index.html
+
+
+# Unit Section
+# - https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+[Unit]
+Description=Generic Systemd Service File
+# After is a space-separated list of unit names configuring order dependencies
+#After=X-org.service
+#After=
+# Requires is a space-separated list of unit names configuring order
+# dependencies
+#Requires=
+#Requires=display-manager.service
+
+# Service Section
+# - https://www.freedesktop.org/software/systemd/man/systemd.service.html
+[Service]
+# Type can be one of simple, forking, oneshot, dbus, notify, or idle.
+# Defaults to simple if Type and BusName are blank, but ExecStart isn't.
+#Type=simple
+
+# ExecStart is the script or executable to run.
+#ExecStart=/usr/bin/MyExecutable -my-arg
+ExecStart=/home/pi/Desktop/stream/mjpg-streamer.sh
+
+
+# Install Section
+# - https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+[Install]
+WantedBy=multi-user.target
