@@ -212,7 +212,7 @@ public class Robot extends TimedRobot {
 //		LC.start();
 //		HETC.start();
 		IC.start();
-		LC.start();
+	//	LC.start();
 		LCWA.start();
 		
 		

@@ -22,6 +22,14 @@ public class IntakeCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
+//		double rightTrigger;
+//		rightTrigger = OI.Joystick2.getRawAxis(3);
+//		SmartDashboard.putNumber("getting Axis of Trigegr?", rightTrigger);
+//		
+//		double leftTrigger;
+//		leftTrigger = OI.Joystick1.getRawAxis(2);
+//		SmartDashboard.putNumber("getting Axis of Trigegr left", leftTrigger);
+    	
     	boolean x = OI.x.get();
 		boolean y = OI.y.get();
     	SmartDashboard.putBoolean("S1", RobotMap.S1.get());
@@ -29,8 +37,8 @@ public class IntakeCommand extends Command {
 		if(OI.IntakeIn.get()) {
 			RobotMap.IntakeR.set(-.8);
 			RobotMap.IntakeL.set(.8);
-			RobotMap.S2.set(false);
-			RobotMap.S1.set(true);
+			RobotMap.S2.set(true);
+			RobotMap.S1.set(false);
 			SmartDashboard.putBoolean("IN", true);
 			//			RobotMap.S2.set(false);
 		}else if(OI.IntakeOut.get()){
@@ -40,6 +48,18 @@ public class IntakeCommand extends Command {
 			RobotMap.S1.set(true);
 			SmartDashboard.putBoolean("Out", true);
 			//			RobotMap.S2.set(true);
+//		}else if(rightTrigger > .8){
+//			RobotMap.IntakeR.set(.9);
+//			RobotMap.IntakeL.set(-.9);
+//			RobotMap.S2.set(false);
+//			RobotMap.S1.set(true);
+//			SmartDashboard.putBoolean("Out", true);
+//		}else if(leftTrigger > .8){
+//			RobotMap.IntakeR.set(.2);
+//			RobotMap.IntakeL.set(-.2);
+//			RobotMap.S2.set(false);
+//			RobotMap.S1.set(true);
+//			SmartDashboard.putBoolean("Out", true);	
 		}else {
 			RobotMap.IntakeR.set(0);
 			RobotMap.IntakeL.set(0);
@@ -48,7 +68,7 @@ public class IntakeCommand extends Command {
 			SmartDashboard.putBoolean("Stop", true);
 			//			RobotMap.S1.set(true);
 			//			RobotMap.S2.set(true);
-		}
+		}	
     }
 
     // Make this return true when this Command no longer needs to run execute()

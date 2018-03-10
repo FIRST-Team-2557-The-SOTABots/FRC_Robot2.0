@@ -24,12 +24,6 @@ public class LiftCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-		double liftSpeed;
-		liftSpeed = OI.Joystick2.getRawAxis(1);
-		SmartDashboard.putNumber("Lift In LiftCommand", liftSpeed);
-		double value;
-		value = OI.Joystick2.getY();
-		SmartDashboard.putNumber("lift2 in sub", value);
     	Robot.LS.LiftMethod();
     }
 
