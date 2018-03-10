@@ -11,23 +11,15 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class CombinedHumanErrorDriveCommand extends Command {
-	boolean currentLimit;
-	int timeout;
 
 	public CombinedHumanErrorDriveCommand() {
 		requires(Robot.DriveSub1);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		currentLimit = true;
-		timeout = 10;
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		RobotMap.Right1.enableCurrentLimit(currentLimit);
-		RobotMap.Right2.enableCurrentLimit(currentLimit);
-		RobotMap.Left1.enableCurrentLimit(currentLimit);
-		RobotMap.Left2.enableCurrentLimit(currentLimit);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -42,24 +34,6 @@ public class CombinedHumanErrorDriveCommand extends Command {
 		}else{
 			RobotMap.DiffDrive.arcadeDrive(sideL, sideR);
 			//			Robot.DriveSub1.DiffAutoDriveMethod(-OI.Joystick1.getRawAxis(0), -OI.Joystick1.getRawAxis(4));
-		}
-		
-		
-		double powerAmount = 0.2;
-		
-		if((upL < powerAmount && sideL < powerAmount && sideR < powerAmount) && (upL > -powerAmount && sideL > -powerAmount && sideR > -powerAmount)){
-			int amps = 0;
-			RobotMap.Right1.configContinuousCurrentLimit(amps, timeout);
-			RobotMap.Right2.configContinuousCurrentLimit(amps, timeout);
-			RobotMap.Left1.configContinuousCurrentLimit(amps, timeout);
-			RobotMap.Left2.configContinuousCurrentLimit(amps, timeout);
-//		}
-		}else{
-			int amps = 40;
-			RobotMap.Right1.configContinuousCurrentLimit(amps, timeout);
-			RobotMap.Right2.configContinuousCurrentLimit(amps, timeout);
-			RobotMap.Left1.configContinuousCurrentLimit(amps, timeout);
-			RobotMap.Left2.configContinuousCurrentLimit(amps, timeout);
 		}
 	}
 
