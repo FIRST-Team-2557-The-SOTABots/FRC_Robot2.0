@@ -10,6 +10,7 @@ public class LiftSub extends Subsystem {
 	
 	public void liftInAuto(double power){
 		RobotMap.LiftMotor.set(power);
+		RobotMap.LiftMotor2.set(power);
 	}
 	
 	public void LiftWithAxis(){
@@ -19,6 +20,7 @@ public class LiftSub extends Subsystem {
 		SmartDashboard.putNumber("LiftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 		
 		RobotMap.LiftMotor.set(-value);
+		RobotMap.LiftMotor2.set(-value);
 	}
 
 	public void LiftMethod() {
@@ -32,12 +34,15 @@ public class LiftSub extends Subsystem {
 		boolean x = OI.x.get();
 		boolean y = OI.y.get();
 		
-		if(x){
-			RobotMap.LiftMotor.set(1.0);
-		}else if(y){
+		if(y){
+			RobotMap.LiftMotor.set(1);
+			RobotMap.LiftMotor2.set(1);
+		}else if(x){
 			RobotMap.LiftMotor.set(-.7);
+			RobotMap.LiftMotor2.set(-.7);
 		}else{
 			RobotMap.LiftMotor.set(0);
+			RobotMap.LiftMotor2.set(0);
 		}
 		
 //		if(x == false && y == true ){

@@ -34,6 +34,7 @@ public class RobotMap {
 	public static MecanumDrive MecDrive;
 	public static AnalogInput Ultrasonic;
 	public static WPI_TalonSRX LiftMotor;
+	public static WPI_TalonSRX LiftMotor2;
 	public static WPI_TalonSRX Winch;
 	public static Servo rightWing;
 	public static Servo leftWing;
@@ -70,6 +71,7 @@ public class RobotMap {
 		IntakeR = new WPI_TalonSRX(4);
 		IntakeL = new WPI_TalonSRX(6); //
 		LiftMotor = new WPI_TalonSRX(5);
+		LiftMotor2 = new WPI_TalonSRX(11);
 		
 		Left = new SpeedControllerGroup(Left1, Left2);
 		Right = new SpeedControllerGroup(Right1, Right2);
