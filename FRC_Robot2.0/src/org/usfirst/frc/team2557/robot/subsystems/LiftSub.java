@@ -18,9 +18,11 @@ public class LiftSub extends Subsystem {
 		value = OI.Joystick2.getY();
 		SmartDashboard.putNumber("lift in sub2", value);
 		SmartDashboard.putNumber("LiftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
+		double a = -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition();
 		
 		RobotMap.LiftMotor.set(-value);
 		RobotMap.LiftMotor2.set(-value);
+		
 	}
 
 	public void LiftMethod() {

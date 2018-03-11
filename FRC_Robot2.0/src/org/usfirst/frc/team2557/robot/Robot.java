@@ -26,6 +26,7 @@ import org.usfirst.frc.team2557.robot.commands.GyroCommandRight;
 import org.usfirst.frc.team2557.robot.commands.HumanErrorMecanumCommand;
 import org.usfirst.frc.team2557.robot.commands.HumanErrorTractionCommand;
 import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
+import org.usfirst.frc.team2557.robot.commands.IntakeCommandWithAxis;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftCommandWithAxis;
 import org.usfirst.frc.team2557.robot.commands.LiftEncoderCommand;
@@ -75,6 +76,7 @@ public class Robot extends TimedRobot {
 	public static LiftCommand LC;
 	public static LiftCommandWithAxis LCWA;
 	public static IntakeCommand IC;
+	public static IntakeCommandWithAxis ICWA;
 	public static LiftEncoderCommand LEC;
 	public static WingCommandRight WCR;
 	public static WingCommandLeft WCL;
@@ -125,6 +127,7 @@ public class Robot extends TimedRobot {
 		LC = new LiftCommand();
 		LCWA = new LiftCommandWithAxis();
 		IC = new IntakeCommand();
+		ICWA = new IntakeCommandWithAxis();
 		WCR = new WingCommandRight();
 		WCL = new WingCommandLeft();
 		RCR = new RiseCommandRight();
@@ -202,6 +205,7 @@ public class Robot extends TimedRobot {
 		SC.start();
 		CHEDC.start();
 		LCWA.start();
+		ICWA.start();
 //		HETC.start();
 //		LC.start();
 		IC.start();
