@@ -24,6 +24,8 @@ public class IntakeCommand extends Command {
     	SmartDashboard.putBoolean("S1", RobotMap.S1.get());
 //		SmartDashboard.putBoolean("S2", RobotMap.S2.get());
 		double axisRight = OI.Joystick2.getRawAxis(3);
+		
+		double axisLeft = OI.Joystick2.getRawAxis(2);
     	
 		if(OI.IntakeIn.get()) {
 			RobotMap.IntakeR.set(-.8);
@@ -32,6 +34,13 @@ public class IntakeCommand extends Command {
 			RobotMap.S1.set(true);
 			SmartDashboard.putBoolean("IN", true);
 			//			RobotMap.S2.set(false);
+		}else if(axisLeft > 0.8){
+			RobotMap.IntakeR.set(-.3);
+			RobotMap.IntakeL.set(.3);
+			RobotMap.S2.set(false);
+			RobotMap.S1.set(true);
+			SmartDashboard.putBoolean("IN", true);
+			
 		}else if(OI.IntakeOut.get()){
 			RobotMap.IntakeR.set(.4);
 			RobotMap.IntakeL.set(-.4);

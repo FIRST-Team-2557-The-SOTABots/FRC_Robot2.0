@@ -25,6 +25,8 @@ public class LiftSub extends Subsystem {
 		RobotMap.LiftMotor.set(-axis);
 		RobotMap.LiftMotor2.set(-axis);
 		
+		SmartDashboard.putBoolean("LiftHallEffect", RobotMap.liftHallEffect.get());
+		
 	}
 
 	public void LiftMethod() {
