@@ -7,11 +7,13 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class LiftAutoCommand extends Command {
 	double height;
+	double speed;
 
-	public LiftAutoCommand(double encPos) {
+	public LiftAutoCommand(double encPos, double speed) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.LS);
 		height = encPos;
+		this.speed = speed;
 	}
 
 	// Called just before this Command runs the first time
@@ -21,7 +23,7 @@ public class LiftAutoCommand extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		while(RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() > height){
-			Robot.LS.liftInAuto(0.8);
+			Robot.LS.liftInAuto(speed);
 		}
 	}
 
