@@ -14,14 +14,16 @@ public class LiftSub extends Subsystem {
 	}
 	
 	public void LiftWithAxis(){
-		double value;
-		value = OI.Joystick2.getY();
-		SmartDashboard.putNumber("lift in sub2", value);
+		double axis;
+		axis = OI.Joystick2.getRawAxis(1);
+		
+		SmartDashboard.putNumber("THIS IS AXIS 1!!!!", axis);
+		
 		SmartDashboard.putNumber("LiftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 		double a = -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition();
 		
-		RobotMap.LiftMotor.set(-value);
-		RobotMap.LiftMotor2.set(-value);
+		RobotMap.LiftMotor.set(-axis);
+		RobotMap.LiftMotor2.set(-axis);
 		
 	}
 

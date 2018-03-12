@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2557.robot.commands;
 
 import org.usfirst.frc.team2557.robot.OI;
+import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -22,13 +23,7 @@ public class IntakeCommandWithAxis extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//		double value;
-//		value = OI.Joystick2.getY();
-//		SmartDashboard.putNumber("Intaking", value);
-//		
-//		RobotMap.IntakeR.set(value);
-//		RobotMap.IntakeL.set(-value);
-    	
+    	Robot.IS.IntakeWithAxis();
     }
 
     // Make this return true when this Command no longer needs to run execute()

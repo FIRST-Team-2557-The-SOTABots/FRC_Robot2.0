@@ -82,6 +82,7 @@ public class Robot extends TimedRobot {
 	public static WingCommandLeft WCL;
 	public static RiseCommandRight RCR;
 	public static RiseCommandLeft RCL;
+	public static IntakeSubsystem IS;
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -132,6 +133,8 @@ public class Robot extends TimedRobot {
 		WCL = new WingCommandLeft();
 		RCR = new RiseCommandRight();
 		RCL = new RiseCommandLeft();
+		
+		IS = new IntakeSubsystem();
 		
 		m_oi = new OI();
 		m_oi.OIInit();
