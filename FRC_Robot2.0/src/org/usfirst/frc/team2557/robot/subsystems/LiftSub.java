@@ -74,8 +74,6 @@ public class LiftSub extends Subsystem {
 	public void AutoIntake(double fire) {
 		RobotMap.IntakeR.set(fire);
 		RobotMap.IntakeL.set(-fire);
-		RobotMap.S1.set(false);
-		RobotMap.S2.set(true);
 	}
 	
 	public void IntakeAutoMethod() {

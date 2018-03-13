@@ -23,44 +23,44 @@ public class GroupForward extends CommandGroup {
 		//		  addSequential(new GyroCommandLeft());
 		//		  addSequential(new EncoderDriveCommand6(-.5, 0));
 
-//		addSequential(new LiftAutoCommand1(.8));
-//		addSequential(new EncoderDriveCommand8(-.8, 0));
-//		addParallel(new LiftAutoCommand2(1);
-//		addSequential(new GyroCommandLeft());
-//		addSequential(new IntakeAutoCommandAlt(.8));
+		//		addSequential(new LiftAutoCommand1(.8));
+		//		addSequential(new EncoderDriveCommand8(-.8, 0));
+		//		addParallel(new LiftAutoCommand2(1);
+		//		addSequential(new GyroCommandLeft());
+		//		addSequential(new IntakeAutoCommandAlt(.8));
 		addSequential(new EncoderDriveCommand9(-.8, 0));
-		  addSequential(new GyroCommandRight());
-		  addSequential(new EncoderDriveCommand5(-.8, 0));
-		
-//		addSequential(new IntakeAutoCommand());
-//		addSequential(new IntakeAutoCommandAlt(.8));
+		addSequential(new GyroCommandRight());
+		addSequential(new EncoderDriveCommand5(-.8, 0));
 
-//		addSequential(new EncoderDriveCommandTEST(0, 0));
-		
-				//			  addSequential(new EncoderDriveCommand4(-.5, 0));
-				//			  addSequential(new GyroCommandLeft());
-				//			  addSequential(new EncoderDriveCommand7(-.5, 0));
-				//			  addSequential(new GyroCommandRight());
-				//			  addSequential(new EncoderDriveCommand6(-.5, 0));
-				//			  //check for scale
-			}
-	
+		//		addSequential(new IntakeAutoCommand());
+		//		addSequential(new IntakeAutoCommandAlt(.8));
 
+		//		addSequential(new EncoderDriveCommandTEST(0, 0));
 
-//		addSequential(new EncoderDriveCommand1(0, 0));
-		//		  addSequential(new GyroCommandLeft());
-		//		  addSequential(new EncoderDriveCommand3(-.5, 0));
-
-		// To run multiple commands at the same time,
-		// use addParallel()
-		// e.g. addParallel(new Command1());
-		//      addSequential(new Command2());
-		// Command1 and Command2 will run in parallel.
-
-		// A command group will require all of the subsystems that each member
-		// would require.
-		// e.g. if Command1 requires chassis, and Command2 requires arm,
-		// a CommandGroup containing them would require both the chassis and the
-		// arm.
+		//			  addSequential(new EncoderDriveCommand4(-.5, 0));
+		//			  addSequential(new GyroCommandLeft());
+		//			  addSequential(new EncoderDriveCommand7(-.5, 0));
+		//			  addSequential(new GyroCommandRight());
+		//			  addSequential(new EncoderDriveCommand6(-.5, 0));
+		//			  //check for scale
 	}
+
+
+
+	//		addSequential(new EncoderDriveCommand1(0, 0));
+	//		  addSequential(new GyroCommandLeft());
+	//		  addSequential(new EncoderDriveCommand3(-.5, 0));
+
+	// To run multiple commands at the same time,
+	// use addParallel()
+	// e.g. addParallel(new Command1());
+	//      addSequential(new Command2());
+	// Command1 and Command2 will run in parallel.
+
+	// A command group will require all of the subsystems that each member
+	// would require.
+	// e.g. if Command1 requires chassis, and Command2 requires arm,
+	// a CommandGroup containing them would require both the chassis and the
+	// arm.
+}
 

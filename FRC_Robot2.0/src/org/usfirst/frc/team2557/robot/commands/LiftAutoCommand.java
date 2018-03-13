@@ -30,7 +30,7 @@ public class LiftAutoCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	while(RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() > height) {
+    	if(RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() > height) {
     			Robot.LS.LiftAuto(speed);
     	}
     }
