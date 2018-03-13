@@ -1,14 +1,5 @@
 package org.usfirst.frc.team2557.robot;
 
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
-
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -16,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc.team2557.robot.commands.CombinedHumanErrorDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.CorrectStrafeCommand;
+import org.usfirst.frc.team2557.robot.commands.CurrentLimitCommand;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand1;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand2;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand3;
@@ -26,9 +17,6 @@ import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand4;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand5;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand6;
 import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand7;
-import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand8;
-import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand9;
-import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommandTEST;
 import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandMid;
 import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandRight;
@@ -38,12 +26,14 @@ import org.usfirst.frc.team2557.robot.commands.GyroCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.GyroCommandRight;
 import org.usfirst.frc.team2557.robot.commands.HumanErrorMecanumCommand;
 import org.usfirst.frc.team2557.robot.commands.HumanErrorTractionCommand;
-import org.usfirst.frc.team2557.robot.commands.IntakeAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftEncoderCommand;
+//import org.usfirst.frc.team2557.robot.commands.LiloAutoCommandGroup;
 import org.usfirst.frc.team2557.robot.commands.MecanumStrafeCommand;
+import org.usfirst.frc.team2557.robot.commands.RiseCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.RiseCommandRight;
 import org.usfirst.frc.team2557.robot.commands.SolenoidAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
 import org.usfirst.frc.team2557.robot.commands.TeleDriveCommand;
@@ -51,30 +41,23 @@ import org.usfirst.frc.team2557.robot.commands.TimedAutoDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.TimedAutoMecanumDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.WheelCheckCommand;
 import org.usfirst.frc.team2557.robot.commands.WingCommand;
+import org.usfirst.frc.team2557.robot.commands.WingCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.WingCommandRight;
 import org.usfirst.frc.team2557.robot.subsystems.*;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the TimedRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the build.properties file in the
- * project.
- */
 public class Robot extends TimedRobot {
-	public static final ExampleSubsystem kExampleSubsystem = new ExampleSubsystem();
 	public static OI m_oi;
 	public static Timer timer = new Timer();
-	
+
 	public static DriveSub DriveSub1;
 	public static SolenoidSub SolSub;
-	
+	public static WingSub WS;
+
 	public static GyroCommand GC;
 	public static GyroCommandLeft GCL;
 	public static GyroCommandRight GCR;
 	public static CorrectStrafeCommand CFC;
 	public static CombinedHumanErrorDriveCommand CHEDC;
-	
-	public static EncoderDriveCommandTEST EDC_TEST;
 	public static EncoderDriveCommand1 EDC1;
 	public static EncoderDriveCommand2 EDC2;
 	public static EncoderDriveCommand3 EDC3;
@@ -82,9 +65,6 @@ public class Robot extends TimedRobot {
 	public static EncoderDriveCommand5 EDC5;
 	public static EncoderDriveCommand6 EDC6;
 	public static EncoderDriveCommand7 EDC7;
-	public static EncoderDriveCommand8 EDC8;
-	public static EncoderDriveCommand9 EDC9;
-	
 	public static TimedAutoMecanumDriveCommand TAMDC;
 	public static TimedAutoDriveCommand TADC;
 	public static SolenoidCommand SC;
@@ -94,17 +74,18 @@ public class Robot extends TimedRobot {
 	public static TeleDriveCommand TDC;
 	public static MecanumStrafeCommand MSC;
 	public static WheelCheckCommand WCC;
-	
-
 	public static LiftSub LS;
-	public static WingSub WS;
-	public static LiftCommand LC;
 	public static LiftAutoCommand LAC;
+	public static LiftCommand LC;
 	public static IntakeCommand IC;
 	public static LiftEncoderCommand LEC;
-	public static IntakeAutoCommand IAC;
 	public static WingCommand WC;
-	
+	public static WingCommandRight WCR;
+	public static WingCommandLeft WCL;
+	public static RiseCommandRight RCR;
+	public static RiseCommandLeft RCL;
+	public static CurrentLimitCommand CLC;
+
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -115,25 +96,22 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
-		
-    	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 1000);
-    	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 1000);
+
+		RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 1000);
+		RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 1000);
+		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 1000);
 		
 		RobotMap.DS1.set(Value.kReverse);
-//		RobotMap.DS1.set(Value.kForward);
-    	RobotMap.S1.set(true);
-    	RobotMap.S2.set(false);
-		
+
 		DriveSub1 = new DriveSub();
 		SolSub = new SolenoidSub();
-		
+		WS = new WingSub();
+
 		GC = new GyroCommand();
 		GCL = new GyroCommandLeft();
 		GCR = new GyroCommandRight();
 		CFC = new CorrectStrafeCommand();
 		CHEDC = new CombinedHumanErrorDriveCommand();
-		
-		EDC_TEST = new EncoderDriveCommandTEST(1,0);
 		EDC1 = new EncoderDriveCommand1(1, 0);
 		EDC2 = new EncoderDriveCommand2(1, 0);
 		EDC3 = new EncoderDriveCommand3(1, 0);
@@ -141,9 +119,6 @@ public class Robot extends TimedRobot {
 		EDC5 = new EncoderDriveCommand5(1, 0);
 		EDC6 = new EncoderDriveCommand6(1, 0);
 		EDC7 = new EncoderDriveCommand7(1, 0);
-		EDC8 = new EncoderDriveCommand8(1, 0);
-		EDC9 = new EncoderDriveCommand9(1, 0);
-		
 		TAMDC = new TimedAutoMecanumDriveCommand(1, 0, 0, 1);
 		TADC = new TimedAutoDriveCommand(1, 0, 1);
 		SC = new SolenoidCommand();
@@ -153,34 +128,28 @@ public class Robot extends TimedRobot {
 		TDC = new TeleDriveCommand();
 		MSC = new MecanumStrafeCommand();
 		WCC = new WheelCheckCommand();
-		
-		
 		LS = new LiftSub();
-		WS = new WingSub();
-		
+		LAC = new LiftAutoCommand(1, 1);
 		LC = new LiftCommand();
-		LAC = new LiftAutoCommand(.6);
-		LEC = new LiftEncoderCommand();
-		IC = new IntakeCommand(false);
-		IAC = new IntakeAutoCommand();
+		IC = new IntakeCommand();
 		WC = new WingCommand();
-		
+		WCR = new WingCommandRight();
+		WCL = new WingCommandLeft();
+		RCR = new RiseCommandRight();
+		RCL = new RiseCommandLeft();
+		CLC = new CurrentLimitCommand();
+
 		m_oi = new OI();
 		m_oi.OIInit();
-		
+
 		m_chooser.addDefault("Mid Auto", new GroupAutoCommandMid());
 		m_chooser.addObject("Left Auto", new GroupAutoCommandLeft());
 		m_chooser.addObject("Right Auto", new GroupAutoCommandRight());
-		m_chooser.addObject("For Auto", new GroupForward());
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		m_chooser.addObject("Forward Auto", new GroupForward());
+		//		m_chooser.addObject("Lilo Auto Command", new LiloAutoCommandGroup());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 
-	/**
-	 * This function is called once each time the robot enters Disabled mode.
-	 * You can use it to reset any subsystem information you want to clear when
-	 * the robot is disabled.
-	 */
 	@Override
 	public void disabledInit() {
 
@@ -191,29 +160,12 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 	}
 
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString code to get the auto name from the text box below the Gyro
-	 *
-	 * <p>You can add additional auto modes by adding additional commands to the
-	 * chooser code above (like the commented example) or additional comparisons
-	 * to the switch structure below with additional strings & commands.
-	 */
 	@Override
 	public void autonomousInit() {
 		m_autonomousCommand = m_chooser.getSelected();
+		m_autonomousCommand.start();
 		timer.start();
-//		RobotMap.Gyro1.reset();
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
+		//		RobotMap.Gyro1.reset();
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
@@ -225,18 +177,25 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-//		CFC.start();
-//		MSC.start();
+		
+    	SmartDashboard.putNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10);
+    	SmartDashboard.putNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10);
+		//		CFC.start();
+		//		MSC.start();
 		SmartDashboard.putNumber("Time passed", timer.get());
 		Scheduler.getInstance().run();
 	}
 
 	@Override
 	public void teleopInit() {
+//		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 1000);
 		GC.start();
-		CHEDC.start();
-//		LC.start();
-//		HETC.start();
+//		CHEDC.start();
+		//		LC.start();
+		//		HETC.start();
+		TDC.start();
+		RCR.start();
+		RCL.start();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
@@ -245,26 +204,62 @@ public class Robot extends TimedRobot {
 			m_autonomousCommand.cancel();
 		}
 	}
-	
+
 	/**
 	 * This function is called periodically during operator control.
 	 */	
 	@Override
 	public void teleopPeriodic() {
+		SmartDashboard.putNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10);
+    	SmartDashboard.putNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10);
 		SC.start();
-		CHEDC.start();
-//		HETC.start();
-//		LC.start();
+//		CHEDC.start();
+		//		HETC.start();
+		//		LC.start();
 		IC.start();
-		WC.start();
-//		MSC.start();
-//		CFC.start();
-//    	SmartDashboard.putNumber("EncoderCountLeft", - RobotMap.Left2.getSensorCollection().getQuadraturePosition()/1000);
-//    	SmartDashboard.putNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition()/1000);
-//		SmartDashboard.putNumber("Right2Velocity", RobotMap.Right2.getSensorCollection().getQuadratureVelocity());
-//		SmartDashboard.putNumber("Left2Velocity", RobotMap.Left2.getSensorCollection().getQuadratureVelocity());
-//		TDC.start();
+		//		MSC.start();
+		//		CFC.start();
+		TDC.start();
+		WCR.start();
+		WCL.start();
+		//		CLC.start();
+
 		Scheduler.getInstance().run();
+
+
+//		SmartDashboard.putNumber("Left 1 current", RobotMap.Left1.getOutputCurrent());
+//		SmartDashboard.putNumber("Right 1 current", RobotMap.Right1.getOutputCurrent());
+//		SmartDashboard.putNumber("Left 2 current", RobotMap.Left2.getOutputCurrent());
+//		SmartDashboard.putNumber("Right 2 current", RobotMap.Right2.getOutputCurrent());
+//		SmartDashboard.putNumber("Lift current", RobotMap.LiftMotor.getOutputCurrent());
+//		SmartDashboard.putNumber("Intake right current", RobotMap.IntakeR.getOutputCurrent());
+//		SmartDashboard.putNumber("Intake left current", RobotMap.IntakeL.getOutputCurrent());
+//		SmartDashboard.putNumber("Pdp 1 current", RobotMap.pdp.getCurrent(1));
+//		SmartDashboard.putNumber("Pdp 2 current", RobotMap.pdp.getCurrent(2));
+//		SmartDashboard.putNumber("Pdp 3 current", RobotMap.pdp.getCurrent(3));
+//		SmartDashboard.putNumber("Pdp 4 current", RobotMap.pdp.getCurrent(4));
+//		SmartDashboard.putNumber("Pdp 5 current", RobotMap.pdp.getCurrent(5));
+//		SmartDashboard.putNumber("Pdp 6 current", RobotMap.pdp.getCurrent(6));
+//		SmartDashboard.putNumber("Pdp 7 current", RobotMap.pdp.getCurrent(7));
+//		SmartDashboard.putNumber("Pdp 8 current", RobotMap.pdp.getCurrent(8));
+//		SmartDashboard.putNumber("Pdp 9 current", RobotMap.pdp.getCurrent(9));
+//		SmartDashboard.putNumber("Pdp 10 current", RobotMap.pdp.getCurrent(10));
+//		SmartDashboard.putNumber("Pdp 11 current", RobotMap.pdp.getCurrent(11));
+//		SmartDashboard.putNumber("Pdp 12 current", RobotMap.pdp.getCurrent(12));
+//		SmartDashboard.putNumber("Pdp 13 current", RobotMap.pdp.getCurrent(13));
+//		SmartDashboard.putNumber("Pdp 14 current", RobotMap.pdp.getCurrent(14));
+//		SmartDashboard.putNumber("Pdp 15 current", RobotMap.pdp.getCurrent(15));
+//		SmartDashboard.putNumber("Pdp total current", RobotMap.pdp.getTotalCurrent());
+//		SmartDashboard.putNumber("Pdp temperature", RobotMap.pdp.getTemperature());
+//		SmartDashboard.putNumber("Left 1 voltage", RobotMap.Left1.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Right 1 voltage", RobotMap.Right1.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Left 2 voltage", RobotMap.Left2.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Right 2 voltage", RobotMap.Right2.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Lift voltage", RobotMap.LiftMotor.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Intake right voltage", RobotMap.IntakeR.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Intake left voltage", RobotMap.IntakeL.getMotorOutputVoltage());
+//		SmartDashboard.putNumber("Gyro", RobotMap.Gyro1.getAngle());
+
 	}
 
 	/**

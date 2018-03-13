@@ -10,40 +10,40 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class GyroCommandRight extends Command {
-	
-    public GyroCommandRight() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.DriveSub1);
-    }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	RobotMap.Gyro1.reset();
-    }
+	public GyroCommandRight() {
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+		requires(Robot.DriveSub1);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-//    	SmartDashboard.putNumber("GyroAngleValue", RobotMap.GyroAngle);
-    	Robot.DriveSub1.DriveTurnRight();
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+		RobotMap.Gyro1.reset();
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {    	
-    		if(RobotMap.Confirm == true){
-    			return true;
-    		}
-    else{
-    	return false;
-    }
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+	Robot.DriveSub1.DriveTurnRight();
+	}		
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {    	
+		if(RobotMap.Confirm == true){
+			RobotMap.DiffDrive.arcadeDrive(0, 0);
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+		RobotMap.DiffDrive.arcadeDrive(0, 0);
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+	}
 }

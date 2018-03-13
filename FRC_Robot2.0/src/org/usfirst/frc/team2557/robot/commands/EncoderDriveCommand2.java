@@ -21,7 +21,7 @@ public class EncoderDriveCommand2 extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
-
+//7678 7654
     // Called just before this Command runs the first time
     protected void initialize() {
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 1000);
@@ -32,12 +32,12 @@ public class EncoderDriveCommand2 extends Command {
     protected void execute() {
     	SmartDashboard.getNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10);
     	SmartDashboard.getNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10);
-    	Robot.DriveSub1.AutoDriveMethod(speed, rotation);
+    	Robot.DriveSub1.DiffAutoDriveMethod(speed, rotation);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if((-RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10 > 6100) && (RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10 > 6200)) {
+    	if((-RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10 > 2800) && (RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10 > 2800)) {
 //    		the "> 100" values are just placeholders for now, they're supposed to be however long 121.47 inches is. It is used after the switch to get to
 //    		the place next to the scale. There will probably be a sensor to get the colour of the two things, so updates are expected.
     		return true;

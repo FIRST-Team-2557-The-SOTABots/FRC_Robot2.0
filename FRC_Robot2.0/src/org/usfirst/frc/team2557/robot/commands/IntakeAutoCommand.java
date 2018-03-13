@@ -18,13 +18,18 @@ public class IntakeAutoCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-		RobotMap.S1.set(true);
-		RobotMap.S1.set(false);
+    	RobotMap.S1.set(false);
+    	RobotMap.S2.set(true);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.LS.IntakeAutoMethod();
+
+//    	RobotMap.IntakeR.set(-.6);
+//		RobotMap.IntakeL.set(.6);
+//		RobotMap.S2.set(false);
+//		RobotMap.S1.set(true);
     }
 
     // Make this return true when this Command no longer needs to run execute()

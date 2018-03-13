@@ -12,9 +12,12 @@ import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
 import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
 import org.usfirst.frc.team2557.robot.commands.WingCommand;
+import org.usfirst.frc.team2557.robot.commands.WingCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.WingCommandRight;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -27,12 +30,15 @@ public class OI {
 	public static JoystickButton BackwardButton;
 	
 	public static Joystick Joystick2;
-	public static JoystickButton LiftUp;
-	public static JoystickButton LiftDown;
+	public static JoystickButton y;
+	public static JoystickButton x;
 	public static JoystickButton IntakeIn;
 	public static JoystickButton IntakeOut;
-	public static JoystickButton WingL;
-	public static JoystickButton WingR;
+	public static JoystickButton rightBumper;
+	public static JoystickButton leftBumper;
+	public static JoystickButton rightTrigger;
+	public static JoystickButton leftTrigger;
+	public static JoystickButton outTakeFast;
 	
 	public void OIInit() {
 		Joystick1 = new Joystick(0);
@@ -43,21 +49,25 @@ public class OI {
 		BackwardButton.whenPressed(new SolenoidCommand());
 		
 		Joystick2 = new Joystick(1);
-		LiftUp = new JoystickButton(Joystick2, 4);
-		LiftDown = new JoystickButton(Joystick2, 3);
+		y = new JoystickButton(Joystick2, 4);
+		x = new JoystickButton(Joystick2, 3);
 		IntakeIn = new JoystickButton(Joystick2, 2);
 		IntakeOut = new JoystickButton(Joystick2, 1);
-		WingL = new JoystickButton(Joystick2, 5);
-		WingR = new JoystickButton(Joystick2, 6);
 		
-		IntakeIn.whileHeld(new IntakeCommand(false));
-		IntakeOut.whileHeld(new IntakeCommand(false));
-		LiftUp.whileHeld(new LiftCommand());
-		LiftUp.whenReleased(new LiftCommand());
-		LiftDown.whileHeld(new LiftCommand());
-		LiftDown.whenReleased(new LiftCommand());
-		WingL.whenPressed(new WingCommand());
-		WingR.whenPressed(new WingCommand());
+		rightBumper = new JoystickButton(Joystick2, 5); 
+		leftBumper = new JoystickButton(Joystick2, 6);
+		rightTrigger = new JoystickButton(Joystick2, 8);
+		leftTrigger = new JoystickButton(Joystick2, 7);
+		outTakeFast = new JoystickButton(Joystick2, 10);
+		
+		IntakeIn.whileHeld(new IntakeCommand());
+		IntakeOut.whileHeld(new IntakeCommand());
+		outTakeFast.whileHeld(new IntakeCommand());
+		y.whileHeld(new LiftCommand());
+		y.whenReleased(new LiftCommand());
+		x.whileHeld(new LiftCommand());
+		x.whenReleased(new LiftCommand());
+		
 	}
 	
 	//// CREATING BUTTONS

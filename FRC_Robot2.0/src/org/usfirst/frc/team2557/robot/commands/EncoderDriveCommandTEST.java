@@ -32,7 +32,7 @@ public class EncoderDriveCommandTEST extends Command {
     protected void execute() {
     	SmartDashboard.putNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10);
     	SmartDashboard.putNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10);
-    	Robot.DriveSub1.AutoDriveMethod(speed, rotation);
+    	Robot.DriveSub1.DiffAutoDriveMethod(speed, rotation);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -48,9 +48,6 @@ public class EncoderDriveCommandTEST extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	RobotMap.DiffDrive.arcadeDrive(0, 0);
-    	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 1000);
-    	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 1000);
     }
 
     // Called when another command which requires one or more of the same

@@ -28,16 +28,16 @@ public class GroupAutoCommandMid extends CommandGroup {
 		  if(gameData.charAt(0) == 'L')
 		  {
 			  addSequential(new EncoderDriveCommand4(-.8, 0));
-			  addParallel(new LiftAutoCommand(1));
+			  addParallel(new LiftAutoCommand(11000, .8));
 			  addSequential(new GyroCommandLeft());
 			  addSequential(new EncoderDriveCommand5(-.8, 0));
 			  addSequential(new GyroCommandRight());
 			  addSequential(new EncoderDriveCommand6(-.8, 0));
-			  addSequential(new IntakeAutoCommand());
+			  addSequential(new IntakeAutoCommandAlt(.8));
 		  }
 		  else {
 			  addSequential(new EncoderDriveCommand1(-.8, 0));
-			  addSequential(new IntakeAutoCommand());
+			  addSequential(new IntakeAutoCommandAlt(.8));
 		  }
                 }
     	

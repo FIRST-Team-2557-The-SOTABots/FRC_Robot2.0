@@ -23,27 +23,20 @@ public class GroupForward extends CommandGroup {
 		//		  addSequential(new GyroCommandLeft());
 		//		  addSequential(new EncoderDriveCommand6(-.5, 0));
 
-		String gameData;
-		gameData = DriverStation.getInstance().getGameSpecificMessage();
-		if(gameData.length() > 0)
-		{
-			if(gameData.charAt(0) == 'L')
-			{
-				addSequential(new EncoderDriveCommand2(.5, 0));
-				addSequential(new GyroCommandRight());
-				addSequential(new EncoderDriveCommand3(.5, 0));
-				//place block
-			} else {
-				//			  addSequential(new EncoderDriveCommand2(.5, 0));
+//		addSequential(new LiftAutoCommand1(.8));
+//		addSequential(new EncoderDriveCommand8(-.8, 0));
+//		addParallel(new LiftAutoCommand2(1);
+//		addSequential(new GyroCommandLeft());
+//		addSequential(new IntakeAutoCommandAlt(.8));
+		addSequential(new EncoderDriveCommand9(-.8, 0));
+		  addSequential(new GyroCommandRight());
+		  addSequential(new EncoderDriveCommand5(-.8, 0));
+		
+//		addSequential(new IntakeAutoCommand());
+//		addSequential(new IntakeAutoCommandAlt(.8));
 
-				if(gameData.charAt(1) == 'L') {
-					//go to switch
-					addSequential(new GyroCommandRight());
-					//place cube
-				}else {
-					addSequential(new EncoderDriveCommand1(0, 0));
-				}
-
+//		addSequential(new EncoderDriveCommandTEST(0, 0));
+		
 				//			  addSequential(new EncoderDriveCommand4(-.5, 0));
 				//			  addSequential(new GyroCommandLeft());
 				//			  addSequential(new EncoderDriveCommand7(-.5, 0));
@@ -51,10 +44,10 @@ public class GroupForward extends CommandGroup {
 				//			  addSequential(new EncoderDriveCommand6(-.5, 0));
 				//			  //check for scale
 			}
-		}
+	
 
 
-		addSequential(new EncoderDriveCommand1(0, 0));
+//		addSequential(new EncoderDriveCommand1(0, 0));
 		//		  addSequential(new GyroCommandLeft());
 		//		  addSequential(new EncoderDriveCommand3(-.5, 0));
 
@@ -70,4 +63,4 @@ public class GroupForward extends CommandGroup {
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
 	}
-}
+

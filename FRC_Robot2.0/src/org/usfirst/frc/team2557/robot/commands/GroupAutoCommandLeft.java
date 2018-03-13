@@ -16,10 +16,10 @@ public class GroupAutoCommandLeft extends CommandGroup {
 		  if(gameData.charAt(0) == 'L')
 		  {
 			  addSequential(new EncoderDriveCommand2(-.8, 0));
-			  addParallel(new LiftAutoCommand(1));
+			  addParallel(new LiftAutoCommand(11000, .8));
 			  addSequential(new GyroCommandRight());
 			  addSequential(new EncoderDriveCommand3(-.8, 0));
-			  addSequential(new IntakeAutoCommand());
+			  addSequential(new IntakeAutoCommandAlt(.8));
 			  
 		  } 
 		  else {
@@ -34,12 +34,15 @@ public class GroupAutoCommandLeft extends CommandGroup {
 
 			  if(gameData.charAt(1) == 'L') {
 				  addSequential(new EncoderDriveCommand8(-.8, 0));
-				  addParallel(new LiftAutoCommand(1));
+				  addParallel(new LiftAutoCommand(11000, .8));
 				  addSequential(new GyroCommandRight());
-				  addSequential(new IntakeAutoCommand());
+				  addSequential(new IntakeAutoCommandAlt(.8));
 			  }
 			  else {
 				  addSequential(new EncoderDriveCommand9(-.8, 0));
+				  addSequential(new GyroCommandRight());
+				  addSequential(new EncoderDriveCommand5(-.8, 0));
+				  
 			  }
 		  }
                 }

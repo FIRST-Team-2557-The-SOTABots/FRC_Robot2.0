@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class WingSub extends Subsystem {
 
 	public void Wings() {
-		if(OI.WingL.get() == true && OI.WingR.get() == true) {
+		if(OI.leftBumper.get() == true && OI.rightBumper.get() == true) {
 			RobotMap.LeftWing.set(1);
 			RobotMap.RightWing.set(1);
 			SmartDashboard.putBoolean("Mothman activated", true);

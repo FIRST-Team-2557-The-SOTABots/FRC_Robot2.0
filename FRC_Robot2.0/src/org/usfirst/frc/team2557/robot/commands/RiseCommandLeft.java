@@ -1,28 +1,44 @@
 package org.usfirst.frc.team2557.robot.commands;
 
+import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class LiftEncoderCommand extends Command {
+public class RiseCommandLeft extends Command {
+	boolean go;
+	boolean dir;
 
-    public LiftEncoderCommand() {
+    public RiseCommandLeft() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	go = false;
+    	dir = true;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 1000);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("EncoderCountLift", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
+    	if(OI.leftTrigger.get()){
+			go = true;
+			dir = !dir;
+			RobotMap.leftWing.setAngle(-90.0);
+		}
+
+    	if(go && !dir){
+    		RobotMap.c.set(true);
+			RobotMap.d.set(false);
+    	}else if(go && dir){
+    		RobotMap.d.set(true);
+			RobotMap.c.set(false);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
