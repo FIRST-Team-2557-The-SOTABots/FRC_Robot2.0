@@ -3,28 +3,21 @@ package org.usfirst.frc.team2557.robot.subsystems;
 import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class IntakeSubsystem extends Subsystem {
-	
-//	int raw = Ultrasonic.getValue();
-//	double volts = Ultrasonic.getVoltage();
-//	int averageRaw = Ultrasonic.getAverageValue();
-//	double averageVolts = Ultrasonic.getAverageVoltage();
-	
-	public void IntakeWithAxis(){
-    	double axis;
-    	axis = OI.Joystick2.getRawAxis(5);
-		
-		RobotMap.IntakeR.set(axis);
-		RobotMap.IntakeL.set(-axis);
-	}
+public class WingSubsystem extends Subsystem {
 
+	public void Wings() {
+		if(OI.leftBumper.get() == true && OI.rightBumper.get() == true) {
+			RobotMap.LeftWing.set(1);
+			RobotMap.RightWing.set(1);
+		}
+	}
+	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -33,4 +26,3 @@ public class IntakeSubsystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
 }
-
