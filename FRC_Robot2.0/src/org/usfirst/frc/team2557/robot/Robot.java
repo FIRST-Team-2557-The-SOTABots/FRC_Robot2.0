@@ -170,6 +170,7 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 10);
 		m_autonomousCommand = m_chooser.getSelected();
+		m_autonomousCommand = new GroupAutoCommandLeft();
 		m_autonomousCommand.start();
 		timer.start();
 		//		RobotMap.Gyro1.reset();

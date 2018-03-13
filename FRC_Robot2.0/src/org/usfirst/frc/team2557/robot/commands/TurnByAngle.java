@@ -3,57 +3,48 @@ package org.usfirst.frc.team2557.robot.commands;
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class IntakeAutoCommand extends Command {
-	Timer t;
-	double time;
-	double speed;
+public class TurnByAngle extends Command {
+	double angle;
 
-    public IntakeAutoCommand(double time, double speed) {
+    public TurnByAngle(double angle) {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	this.time = time;
-    	this.speed = speed;
+    	this.angle = angle;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-//    	RobotMap.S1.set(false);
-//    	RobotMap.S2.set(true);
-    	t = new Timer();
-    	t.reset();
-    	t.start();
+    	RobotMap.Gyro1.reset();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.IntakeR.set(-speed);
-		RobotMap.IntakeL.set(speed);
-//		RobotMap.S2.set(false);
-//		RobotMap.S1.set(true);
+		SmartDashboard.getBoolean("ConfirmLeft", RobotMap.Confirm);
+		SmartDashboard.putNumber("GyroAngleValue", RobotMap.Gyro1.getAngle());
+
+		if(RobotMap.Gyro1.getAngle() > angle) {
+			Robot.DriveSub1.DiffAutoDriveMethod(0, 1);
+		}else if(RobotMap.Gyro1.getAngle() < angle){
+			Robot.DriveSub1.DiffAutoDriveMethod(0, -1);
+		}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(t.get() >= time){
-//    		RobotMap.S1.set(false);
-//        	RobotMap.S2.set(true);
+    	if(Math.abs(RobotMap.Gyro1.getAngle()-angle) < 5){
     		return true;
     	}
-    else {
-    	return false;
-    	}
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	RobotMap.IntakeR.set(0);
-		RobotMap.IntakeL.set(0);
+    	Robot.DriveSub1.DiffAutoDriveMethod(0, 0);
     }
 
     // Called when another command which requires one or more of the same

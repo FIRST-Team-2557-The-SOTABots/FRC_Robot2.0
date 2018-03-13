@@ -11,7 +11,7 @@ public class GroupAutoCommandRight extends CommandGroup {
 	public GroupAutoCommandRight() {
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
-		if(gameData.length() > 0)
+		if(gameData != null && gameData.length() > 0)
 		{
 			if(gameData.charAt(0) == 'L')
 			{
