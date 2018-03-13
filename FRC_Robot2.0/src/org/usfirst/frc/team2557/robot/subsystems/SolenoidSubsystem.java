@@ -16,12 +16,9 @@ public class SolenoidSubsystem extends Subsystem {
 
 		if (OI.ForwardButton.get()){
 			RobotMap.DS1.set(Value.kForward);
-			RobotMap.Position = true;
 		}
 		else if(OI.BackwardButton.get()) {
 			RobotMap.DS1.set(Value.kReverse);
-			RobotMap.Position = false;
-
 		}
 
 	}

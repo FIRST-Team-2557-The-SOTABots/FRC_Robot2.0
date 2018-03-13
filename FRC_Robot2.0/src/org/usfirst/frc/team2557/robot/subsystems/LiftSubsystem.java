@@ -15,10 +15,7 @@ public class LiftSubsystem extends Subsystem {
 	}
 	
 	public void LiftWithAxis(){
-		double axis;
-		axis = OI.Joystick2.getRawAxis(1);
-		
-		double a = -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition();
+		double axis = OI.Joystick2.getRawAxis(1);
 		
 		RobotMap.LiftMotor.set(-axis);
 		RobotMap.LiftMotor2.set(-axis);
@@ -26,12 +23,6 @@ public class LiftSubsystem extends Subsystem {
 	}
 
 	public void LiftMethod() {
-//		double axis = OI.Joystick2.getRawAxis(3);
-//		SmartDashboard.putNumber("joystick2 axis 1", axis);
-		
-//		RobotMap.LiftMotor.set(OI.Joystick2.getRawAxis(1));
-		
-		
 		boolean SolVal = OI.y.get();
 		boolean SolVal2 = OI.x.get();
 		double a = -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition();
@@ -47,53 +38,14 @@ public class LiftSubsystem extends Subsystem {
 			RobotMap.LiftMotor.set(0);
 			RobotMap.LiftMotor2.set(0);
 		}
-		}
-		
-//		if(x == false && y == true ){
-//			RobotMap.LiftMotor.set(1.0);
-//		}else if(x == true && y == false ){
-//			RobotMap.LiftMotor.set(-.7);
-//		}else{
-//			RobotMap.LiftMotor.set(0);
-//		}
-
+	}
 	
 	public void LiftAuto(double power) {
-			RobotMap.LiftMotor.set(power);
+		RobotMap.LiftMotor.set(power);
 	}
-	
-	
-	public void AutoIntake(double fire) {
-		RobotMap.IntakeR.set(fire);
-		RobotMap.IntakeL.set(-fire);
-	}
-	
-	public void IntakeAutoMethod() {
-		if(RobotMap.LiftConfirm == false) {
-			RobotMap.IntakeR.set(.6);
-			RobotMap.IntakeL.set(-.6);
-			RobotMap.S1.set(false);
-			RobotMap.S2.set(true);
-			RobotMap.LiftConfirm = true;
-		}
-		else {
-			RobotMap.IntakeR.set(0);
-			RobotMap.IntakeL.set(0);
-			RobotMap.S1.set(true);
-			RobotMap.S1.set(false);
-		}
-	}
-
-
-
-
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
 
 	public void initDefaultCommand() {
 		setDefaultCommand(new LiftCommand());
-		// Set the default command for a subsystem here.
-		//setDefaultCommand(new MySpecialCommand());
 	}
 }
 
