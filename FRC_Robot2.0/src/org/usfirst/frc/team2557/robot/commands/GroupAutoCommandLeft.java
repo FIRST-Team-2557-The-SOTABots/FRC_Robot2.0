@@ -2,6 +2,7 @@ package org.usfirst.frc.team2557.robot.commands;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
@@ -15,7 +16,12 @@ public class GroupAutoCommandLeft extends CommandGroup {
 		//			if(gameData.charAt(0) == 'L'){
 		//				addSequential(new LiftAutoCommand(17000.0)); // drop intake
 		//				addSequential(new EncoderDriveCommand2(-.5, 0)); // forward across baseline 3800
-		addSequential(new LiftAutoCommand(0.0, 0.5)); // lift up to switch
+		addSequential(new LiftAutoCommand(2000.0));
+		addSequential(new IntakeAutoCommand(1));
+		addSequential(new WaitCommand(5));
+		addSequential(new LiftAutoCommand(25000.0)); // lift up to switch
+		addSequential(new WaitCommand(5));
+		addSequential(new LiftAutoCommand(10000.0)); // lift up to switch
 		//				addSequential(new GyroCommandRight()); // turn 90 degrees
 		//				addSequential(new EncoderDriveCommand3(-.5, 0)); // forward to switch 500
 		//				addSequential(new OuttakeAutoCommand()); // spit out cube

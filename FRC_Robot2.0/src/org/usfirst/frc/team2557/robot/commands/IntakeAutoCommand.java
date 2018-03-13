@@ -6,16 +6,19 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class IntakeAutoCommand extends Command {
 	Timer t;
+	double time;
 
-    public IntakeAutoCommand() {
+    public IntakeAutoCommand(double time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	this.time = time;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	RobotMap.S1.set(false);
-    	RobotMap.S2.set(true);
+//    	RobotMap.S1.set(false);
+//    	RobotMap.S2.set(true);
+    	t = new Timer();
     	t.reset();
     	t.start();
     }
@@ -24,15 +27,15 @@ public class IntakeAutoCommand extends Command {
     protected void execute() {
     	RobotMap.IntakeR.set(-.6);
 		RobotMap.IntakeL.set(.6);
-		RobotMap.S2.set(false);
-		RobotMap.S1.set(true);
+//		RobotMap.S2.set(false);
+//		RobotMap.S1.set(true);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(t.get() >= 1.0){
-    		RobotMap.S1.set(false);
-        	RobotMap.S2.set(true);
+    	if(t.get() >= time){
+//    		RobotMap.S1.set(false);
+//        	RobotMap.S2.set(true);
     		return true;
     	}
         return false;
@@ -40,6 +43,8 @@ public class IntakeAutoCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	RobotMap.IntakeR.set(0);
+		RobotMap.IntakeL.set(0);
     }
 
     // Called when another command which requires one or more of the same

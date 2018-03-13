@@ -159,6 +159,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
+		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 10);
 		m_autonomousCommand = m_chooser.getSelected();
 		timer.start();
 		
@@ -175,6 +176,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		
 //		CFC.start();
 //		MSC.start();
 		SmartDashboard.putNumber("Time passed", timer.get());
