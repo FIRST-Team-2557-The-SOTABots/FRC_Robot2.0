@@ -55,7 +55,7 @@ public class LiftSub extends Subsystem {
 			RobotMap.LiftMotor.set(0);
 			RobotMap.LiftMotor2.set(0);
 		}
-	}
+		}
 		
 //		if(x == false && y == true ){
 //			RobotMap.LiftMotor.set(1.0);

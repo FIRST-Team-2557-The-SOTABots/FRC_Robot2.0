@@ -61,7 +61,6 @@ public class OI {
 		
 		IntakeIn.whileHeld(new IntakeCommand());
 		IntakeOut.whileHeld(new IntakeCommand());
-		outTakeFast.whileHeld(new IntakeCommand());
 		y.whileHeld(new LiftCommand());
 		y.whenReleased(new LiftCommand());
 		x.whileHeld(new LiftCommand());

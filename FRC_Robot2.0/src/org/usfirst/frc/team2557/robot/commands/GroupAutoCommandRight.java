@@ -22,7 +22,7 @@ public class GroupAutoCommandRight extends CommandGroup {
 				}
 				else {
 					addSequential(new EncoderDriveCommand8(-.8, 0));
-					addParallel(new LiftAutoCommand(11000, .8));
+					addParallel(new LiftAutoCommand(11000));
 					addSequential(new GyroCommandLeft());
 					addSequential(new IntakeAutoCommandAlt(.8));
 				}
@@ -30,7 +30,7 @@ public class GroupAutoCommandRight extends CommandGroup {
 			} 
 			else {
 				addSequential(new EncoderDriveCommand2(-.8, 0));
-				addParallel(new LiftAutoCommand(11000, .8));
+				addParallel(new LiftAutoCommand(11000));
 				addSequential(new GyroCommandLeft());
 				addSequential(new EncoderDriveCommand3(-.8, 0));
 				addSequential(new IntakeAutoCommandAlt(.8));

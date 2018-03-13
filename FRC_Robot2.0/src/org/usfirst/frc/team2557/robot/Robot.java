@@ -133,7 +133,7 @@ public class Robot extends TimedRobot {
 		MSC = new MecanumStrafeCommand();
 		WCC = new WheelCheckCommand();
 		LS = new LiftSub();
-		LAC = new LiftAutoCommand(1, 1);
+		LAC = new LiftAutoCommand(1);
 		LC = new LiftCommand();
 		LCWA = new LiftCommandWithAxis();
 		IC = new IntakeCommand();
@@ -168,6 +168,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
+		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 10);
 		m_autonomousCommand = m_chooser.getSelected();
 		m_autonomousCommand.start();
 		timer.start();
@@ -184,11 +185,11 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		
-    	SmartDashboard.putNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10);
-    	SmartDashboard.putNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10);
-		//		CFC.start();
-		//		MSC.start();
+//		CFC.start();
+//		MSC.start();
 		SmartDashboard.putNumber("Time passed", timer.get());
+		SmartDashboard.putNumber("GyroThisOne", RobotMap.Gyro1.getAngle());
+		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 		Scheduler.getInstance().run();
 	}
 
@@ -220,8 +221,7 @@ public class Robot extends TimedRobot {
 	 */	
 	@Override
 	public void teleopPeriodic() {
-		SmartDashboard.putNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10);
-    	SmartDashboard.putNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10);
+		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 		SC.start();
 		CHEDC.start();
 		LCWA.start();
@@ -229,12 +229,10 @@ public class Robot extends TimedRobot {
 //		HETC.start();
 //		LC.start();
 		IC.start();
-		//		MSC.start();
-		//		CFC.start();
-		TDC.start();
-		WCR.start();
-		WCL.start();
-		//		CLC.start();
+		
+//		MSC.start();
+//		CFC.start();
+//		TDC.start();
 		Scheduler.getInstance().run();
 //		SmartDashboard.putNumber("Left 1 current", RobotMap.Left1.getOutputCurrent());
 //		SmartDashboard.putNumber("Right 1 current", RobotMap.Right1.getOutputCurrent());
@@ -243,13 +241,13 @@ public class Robot extends TimedRobot {
 //		SmartDashboard.putNumber("Lift current", RobotMap.LiftMotor.getOutputCurrent());
 //		SmartDashboard.putNumber("Intake right current", RobotMap.IntakeR.getOutputCurrent());
 //		SmartDashboard.putNumber("Intake left current", RobotMap.IntakeL.getOutputCurrent());
-		SmartDashboard.putNumber("Pdp 1 current", RobotMap.pdp.getCurrent(1));
-		SmartDashboard.putNumber("Pdp 2 current", RobotMap.pdp.getCurrent(2));
-		SmartDashboard.putNumber("Pdp 3 current", RobotMap.pdp.getCurrent(3));
+//		SmartDashboard.putNumber("Pdp 1 current", RobotMap.pdp.getCurrent(1));
+//		SmartDashboard.putNumber("Pdp 2 current", RobotMap.pdp.getCurrent(2));
+//		SmartDashboard.putNumber("Pdp 3 current", RobotMap.pdp.getCurrent(3));
 //		SmartDashboard.putNumber("Pdp 4 current", RobotMap.pdp.getCurrent(4));
 //		SmartDashboard.putNumber("Pdp 5 current", RobotMap.pdp.getCurrent(5));
 //		SmartDashboard.putNumber("Pdp 6 current", RobotMap.pdp.getCurrent(6));
-		SmartDashboard.putNumber("Pdp 7 current", RobotMap.pdp.getCurrent(7));
+//		SmartDashboard.putNumber("Pdp 7 current", RobotMap.pdp.getCurrent(7));
 //		SmartDashboard.putNumber("Pdp 8 current", RobotMap.pdp.getCurrent(8));
 //		SmartDashboard.putNumber("Pdp 9 current", RobotMap.pdp.getCurrent(9));
 //		SmartDashboard.putNumber("Pdp 10 current", RobotMap.pdp.getCurrent(10));
@@ -267,7 +265,7 @@ public class Robot extends TimedRobot {
 //		SmartDashboard.putNumber("Lift voltage", RobotMap.LiftMotor.getMotorOutputVoltage());
 //		SmartDashboard.putNumber("Intake right voltage", RobotMap.IntakeR.getMotorOutputVoltage());
 //		SmartDashboard.putNumber("Intake left voltage", RobotMap.IntakeL.getMotorOutputVoltage());
-		SmartDashboard.putNumber("Gyro", RobotMap.Gyro1.getAngle());
+		SmartDashboard.putNumber("GyroThisOne", RobotMap.Gyro1.getAngle());
 	}
 
 	/**
