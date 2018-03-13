@@ -15,8 +15,8 @@ public class IntakeAutoCommand extends Command {
 	double speed;
 
     public IntakeAutoCommand(double time, double speed) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    	requires(Robot.IntakeSubsystem);
+    	
     	this.time = time;
     	this.speed = speed;
     }

@@ -18,8 +18,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class WingCommand extends Command {
 
 	public WingCommand() {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
+		requires(Robot.WingSubsystem);
 	}
 
 	// Called just before this Command runs the first time

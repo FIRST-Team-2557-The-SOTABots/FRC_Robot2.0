@@ -12,9 +12,8 @@ public class IntakeAutoCommandAlt extends Command {
 	private double fire;
 	
     public IntakeAutoCommandAlt(double f) {
-    	requires(Robot.LiftSubsystem);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    	requires(Robot.IntakeSubsystem);
+    	
     	fire = f;
     }
 

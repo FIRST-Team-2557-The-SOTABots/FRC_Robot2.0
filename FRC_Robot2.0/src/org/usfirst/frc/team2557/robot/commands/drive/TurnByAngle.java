@@ -13,7 +13,8 @@ public class TurnByAngle extends Command {
 	double angle;
 
     public TurnByAngle(double angle) {
-        // Use requires() here to declare subsystem dependencies
+    	requires(Robot.DriveSubsystem);
+    	
     	this.angle = angle;
     }
 

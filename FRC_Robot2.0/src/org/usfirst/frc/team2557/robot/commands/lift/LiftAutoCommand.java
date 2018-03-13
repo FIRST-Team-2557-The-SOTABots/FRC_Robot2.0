@@ -20,6 +20,7 @@ public class LiftAutoCommand extends Command {
 
 	public LiftAutoCommand(double target) {
 		requires(Robot.LiftSubsystem);
+		
 		pidcontroller = new PIDController(0.001, 0.00005, 0.001, new PIDSource(){
 
 			@Override

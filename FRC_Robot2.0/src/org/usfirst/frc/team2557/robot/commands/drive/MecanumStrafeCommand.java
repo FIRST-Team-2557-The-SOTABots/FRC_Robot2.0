@@ -11,8 +11,6 @@ public class MecanumStrafeCommand extends Command {
 
     public MecanumStrafeCommand() {
     	requires(Robot.DriveSubsystem);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +20,6 @@ public class MecanumStrafeCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.DriveSubsystem.MecanumStrafeControl();
-//    	Robot.DriveSub1.CorrectStrafe();
     }
 
     // Make this return true when this Command no longer needs to run execute()

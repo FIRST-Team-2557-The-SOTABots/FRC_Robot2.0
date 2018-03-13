@@ -14,8 +14,6 @@ public class CombinedHumanErrorDriveCommand extends Command {
 
 	public CombinedHumanErrorDriveCommand() {
 		requires(Robot.DriveSubsystem);
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
 	}
 
 	// Called just before this Command runs the first time

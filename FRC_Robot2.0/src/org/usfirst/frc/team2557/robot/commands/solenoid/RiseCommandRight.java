@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2557.robot.commands.solenoid;
 
 import org.usfirst.frc.team2557.robot.OI;
+import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -13,8 +14,8 @@ public class RiseCommandRight extends Command {
 	boolean dir;
 
     public RiseCommandRight() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    	requires(Robot.SolenoidSubsystem);
+    	
     	go = false;
     	dir = true;
     }

@@ -11,8 +11,6 @@ public class CorrectStrafeCommand extends Command {
 
     public CorrectStrafeCommand() {
     	requires(Robot.DriveSubsystem);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time

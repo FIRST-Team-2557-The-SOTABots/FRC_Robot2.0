@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2557.robot.commands.wing;
 
 import org.usfirst.frc.team2557.robot.OI;
+import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -8,9 +9,8 @@ public class WingCommandLeft extends Command {
 	boolean done;
 
 	public WingCommandLeft() {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
-//		SmartDashboard.putNumber("got to", 2);
+		requires(Robot.WingSubsystem);
+		
 		done = false;
 	}
 

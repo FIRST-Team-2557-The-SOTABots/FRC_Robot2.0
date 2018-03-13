@@ -14,8 +14,6 @@ public class SolenoidCommand extends Command {
 
     public SolenoidCommand() {
     	requires(Robot.SolenoidSubsystem);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -24,7 +22,7 @@ public class SolenoidCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    Robot.SolenoidSubsystem.SolenoidMethod1();
+    	Robot.SolenoidSubsystem.SolenoidMethod1();
     }
 
     // Make this return true when this Command no longer needs to run execute()

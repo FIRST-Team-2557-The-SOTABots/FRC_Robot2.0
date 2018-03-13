@@ -13,8 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class IntakeCommandWithAxis extends Command {
 
     public IntakeCommandWithAxis() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Robot.IntakeSubsystem);
     }
 
     // Called just before this Command runs the first time

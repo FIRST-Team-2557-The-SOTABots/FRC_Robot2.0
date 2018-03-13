@@ -11,8 +11,6 @@ public class HumanErrorMecanumCommand extends Command {
 
     public HumanErrorMecanumCommand() {
     	requires(Robot.DriveSubsystem);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
