@@ -8,12 +8,19 @@ import edu.wpi.first.wpilibj.command.Command;
 public class LiftAutoCommand extends Command {
 	double height;
 	double speed;
+	boolean bool;
 
-	public LiftAutoCommand(double encPos, double speed) {
+	public LiftAutoCommand(double height, double speed) {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.LS);
-		height = encPos;
+		this.height = height;
 		this.speed = speed;
+		if(height > RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition()){
+			speed *= -1;
+			bool = RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() < height;
+		}else{
+			bool = RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() > height;
+		}
 	}
 
 	// Called just before this Command runs the first time
@@ -22,14 +29,14 @@ public class LiftAutoCommand extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		while(RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() > height){
+		while(bool){
 			Robot.LS.liftInAuto(speed);
 		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if(RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() <= height){
+		if(bool){
 			Robot.LS.liftInAuto(0);
 			return true;
 		}

@@ -201,9 +201,10 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 		SC.start();
 		CHEDC.start();
+		IC.start();
+		
 //		LC.start();
 //		HETC.start();
-		IC.start();
 //		MSC.start();
 //		CFC.start();
 //		TDC.start();
