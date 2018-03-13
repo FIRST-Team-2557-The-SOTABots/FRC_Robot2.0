@@ -21,7 +21,6 @@ public class IntakeSubsystem extends Subsystem {
 	public void IntakeWithAxis(){
     	double axis;
     	axis = OI.Joystick2.getRawAxis(5);
-		SmartDashboard.putNumber("IntakingCommandWithAxis!", axis);
 		
 		RobotMap.IntakeR.set(axis);
 		RobotMap.IntakeL.set(-axis);

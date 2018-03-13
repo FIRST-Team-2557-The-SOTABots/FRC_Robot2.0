@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -16,7 +17,6 @@ import org.usfirst.frc.team2557.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
 	public static OI oi;
-	public static Timer timer = new Timer();
 
 	public static DriveSubsystem DriveSubsystem;
 	public static SolenoidSubsystem SolenoidSubsystem;
@@ -26,6 +26,25 @@ public class Robot extends TimedRobot {
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	
+	/**
+	 * This method is for most of the outputs to the SmartDashboard. This way, outputs
+	 * are independent from commands and all outputs are consolidated instead of
+	 * being in different parts of the code.
+	 */
+	private void updateSmartDashboard() {
+		SmartDashboard.putNumber("Gyro Angle", RobotMap.Gyro1.getAngle());
+		
+		SmartDashboard.putBoolean("S1", RobotMap.S1.get());
+		SmartDashboard.putBoolean("S2", RobotMap.S2.get());
+		
+		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
+		
+		SmartDashboard.putNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10);
+    	SmartDashboard.putNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10);
+    	
+		SmartDashboard.putBoolean("LiftHallEffect", RobotMap.liftHallEffect.get());
+	}
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -65,6 +84,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		updateSmartDashboard();
 	}
 
 	@Override
@@ -76,7 +96,6 @@ public class Robot extends TimedRobot {
 		m_autonomousCommand = m_chooser.getSelected();
 		m_autonomousCommand = new GroupAutoCommandLeft();
 		m_autonomousCommand.start();
-		timer.start();
 		
 		// Start the selected Auto program
 		if (m_autonomousCommand != null) {
@@ -89,11 +108,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		SmartDashboard.putNumber("Time passed", timer.get());
-		SmartDashboard.putNumber("GyroThisOne", RobotMap.Gyro1.getAngle());
-		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
-		
 		Scheduler.getInstance().run();
+		updateSmartDashboard();
 	}
 
 	@Override
@@ -113,6 +129,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("GyroThisOne", RobotMap.Gyro1.getAngle());
 		
 		Scheduler.getInstance().run();
+		updateSmartDashboard();
 	}
 
 	/**
@@ -120,5 +137,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+		updateSmartDashboard();
 	}
 }

@@ -16,15 +16,9 @@ public class DriveSubsystem extends Subsystem {
 
 	public void DiffAutoDriveMethod(double speed, double rotation) {
 		RobotMap.DiffDrive.arcadeDrive(speed, rotation);
-
-		SmartDashboard.putNumber("L2", RobotMap.Left2.getSensorCollection().getQuadraturePosition());
-		SmartDashboard.putNumber("R2", RobotMap.Right2.getSensorCollection().getQuadraturePosition());
 	}
 
 	public void DriveTurnRight(){
-		SmartDashboard.getBoolean("ConfirmRight", RobotMap.Confirm);
-		SmartDashboard.putNumber("GyroAngleValue", RobotMap.Gyro1.getAngle());
-
 		if(RobotMap.Gyro1.getAngle() < 80) {
 			RobotMap.DiffDrive.arcadeDrive(0, -.8);
 			RobotMap.Confirm = false;
@@ -36,10 +30,6 @@ public class DriveSubsystem extends Subsystem {
 	}
 
 	public void DriveTurnLeft() {
-		SmartDashboard.getBoolean("ConfirmLeft", RobotMap.Confirm);
-		SmartDashboard.putNumber("GyroAngleValue", RobotMap.Gyro1.getAngle());
-
-
 		RobotMap.GyroAngle = RobotMap.Gyro1.getAngle();
 		double Angle = RobotMap.GyroAngle;
 
@@ -54,9 +44,6 @@ public class DriveSubsystem extends Subsystem {
 	}
 
 	public void HumanErrorTraction() {
-		SmartDashboard.putNumber("Axis1", OI.Joystick1.getRawAxis(1));
-		SmartDashboard.putNumber("Axis5", -OI.Joystick1.getRawAxis(4));
-
 		//  	if((OI.Joystick1.getRawAxis(1) - -OI.Joystick1.getRawAxis(4) > -.1) 
 		//		|| (-OI.Joystick1.getRawAxis(4) - OI.Joystick1.getRawAxis(1) > -.1)
 		//		|| (OI.Joystick1.getRawAxis(1) + -OI.Joystick1.getRawAxis(4) < .1) 
@@ -74,12 +61,9 @@ public class DriveSubsystem extends Subsystem {
 			double AverageSpeed = ((OI.Joystick1.getRawAxis(1) + -OI.Joystick1.getRawAxis(4)) / 2);
 
 			RobotMap.DiffDrive.arcadeDrive(AverageSpeed, AverageSpeed);
-
-			SmartDashboard.putNumber("average speed", AverageSpeed);
 		}
 		else {
 			RobotMap.DiffDrive.arcadeDrive(OI.Joystick1.getRawAxis(1), -OI.Joystick1.getRawAxis(4));
-			SmartDashboard.putString("Fail Check", "Failed");
 		}
 
 		//		if(/*(OI.Joystick1.getRawAxis(0) < .1 && -OI.Joystick1.getRawAxis(4) < .1) ||*/ OI.Joystick1.getRawAxis(1) > .1 && -OI.Joystick1.getRawAxis(4) > .1) {
@@ -93,16 +77,9 @@ public class DriveSubsystem extends Subsystem {
 		//			
 		//			RobotMap.DiffDrive.arcadeDrive(AverageSpeed, AverageSpeed);
 		//		}
-
-		SmartDashboard.putNumber("Left1", RobotMap.Left1.get());
-		SmartDashboard.putNumber("Right1", RobotMap.Right1.get());
-		SmartDashboard.putNumber("Left2", RobotMap.Left2.get());
-		SmartDashboard.putNumber("Right2", RobotMap.Right2.get());
 	}
 
 	public void HumanErrorMecanumMethod() {
-		SmartDashboard.putNumber("Axis0", OI.Joystick1.getRawAxis(0));
-
 		if(OI.Joystick1.getRawAxis(0) > .8 || OI.Joystick1.getRawAxis(0) < -.8) {
 			RobotMap.MecDrive.driveCartesian(OI.Joystick1.getRawAxis(0), 0, 0);
 		}
@@ -115,17 +92,10 @@ public class DriveSubsystem extends Subsystem {
 		else {
 			RobotMap.MecDrive.driveCartesian(-OI.Joystick1.getRawAxis(0), OI.Joystick1.getRawAxis(1), -OI.Joystick1.getRawAxis(4));
 		}
-		SmartDashboard.putNumber("Left1", RobotMap.Left1.get());
-		SmartDashboard.putNumber("Right1", RobotMap.Right1.get());
-		SmartDashboard.putNumber("Left2", RobotMap.Left2.get());
-		SmartDashboard.putNumber("Right2", RobotMap.Right2.get());
 	}
 
 	public void CombinedHumandErrorDrive() {
-
 		if(RobotMap.DS1.get() == DoubleSolenoid.Value.kForward) {
-			SmartDashboard.putNumber("Axis0", OI.Joystick1.getRawAxis(0));
-
 			if( (OI.Joystick1.getRawAxis(0) > .8 || OI.Joystick1.getRawAxis(0) < -.8) && ( Math.abs(-OI.Joystick1.getRawAxis(4)) >.5) /*&& ( (Math.abs(OI.Joystick1.getRawAxis(1)) != 1) || (Math.abs(OI.Joystick1.getRawAxis(0)) != 1) ) */ ){
 				RobotMap.MecDrive.driveCartesian(-OI.Joystick1.getRawAxis(0), 0, 0);
 			}
@@ -150,8 +120,6 @@ public class DriveSubsystem extends Subsystem {
 				RobotMap.MecDrive.driveCartesian(0, 0, -OI.Joystick1.getRawAxis(4));
 			}
 
-			SmartDashboard.putNumber("Axis1", OI.Joystick1.getRawAxis(1));
-			SmartDashboard.putNumber("Axis5", -OI.Joystick1.getRawAxis(4));
 		}
 		//			if((Math.abs(OI.Joystick1.getRawAxis(1)) - Math.abs(-OI.Joystick1.getRawAxis(4)) > 0) &&
 		//					((Math.abs(OI.Joystick1.getRawAxis(1)) - Math.abs(-OI.Joystick1.getRawAxis(4)) < -.5))
@@ -164,11 +132,6 @@ public class DriveSubsystem extends Subsystem {
 		else {
 			RobotMap.DiffDrive.arcadeDrive(OI.Joystick1.getRawAxis(1), -OI.Joystick1.getRawAxis(4));
 		}
-
-		SmartDashboard.putNumber("Left1", RobotMap.Left1.get());
-		SmartDashboard.putNumber("Right1", RobotMap.Right1.get());
-		SmartDashboard.putNumber("Left2", RobotMap.Left2.get());
-		SmartDashboard.putNumber("Right2", RobotMap.Right2.get());
 	}
 
 	public void TeleDriveMethod() {
@@ -182,43 +145,28 @@ public class DriveSubsystem extends Subsystem {
 		else {
 			RobotMap.DiffDrive.arcadeDrive(OI.Joystick1.getRawAxis(1), -OI.Joystick1.getRawAxis(4));
 		}
-		SmartDashboard.putNumber("Left1", RobotMap.Left1.get());
-		SmartDashboard.putNumber("Right1", RobotMap.Right1.get());
 	}
 
 	public void CorrectStrafe(){
 		//RobotMap.DiffDrive.arcadeDrive(OI.Joystick1.getRawAxis(1), -OI.Joystick1.getRawAxis(4));
-		SmartDashboard.putNumber("Right1Speed", RobotMap.Right1.get());
-		SmartDashboard.putNumber("Left2Speed", RobotMap.Left2.get());
-
-		SmartDashboard.putNumber("RawAxisY", -OI.Joystick1.getRawAxis(4));
-		SmartDashboard.putNumber("RawAxisX", OI.Joystick1.getRawAxis(1));
-		SmartDashboard.putNumber("DirDeg", OI.Joystick1.getDirectionDegrees()); 
 
 		RobotMap.GyroAngle = RobotMap.Gyro1.getAngle();
-
-		SmartDashboard.putNumber("GyroAngle", RobotMap.GyroAngle); 
 
 		if( ((OI.Joystick1.getDirectionDegrees() >= RobotMap.Gyro1.getAngle() + 10) )/* && ( (OI.Joystick1.getDirectionDegrees() != 0 + .1) && (OI.Joystick1.getDirectionDegrees() != 0 - .1) ) */
 				||  ((OI.Joystick1.getDirectionDegrees() <= RobotMap.Gyro1.getAngle() - 10) )/* && ( (OI.Joystick1.getDirectionDegrees() != 0 + .1) && (OI.Joystick1.getDirectionDegrees() != 0 - .1) )*/ ){
 
-			SmartDashboard.putBoolean("First", true);
 			if(RobotMap.DS1.get() == DoubleSolenoid.Value.kForward) {
 				if( ((OI.Joystick1.getRawAxis(1) < -.5 ) && (-OI.Joystick1.getRawAxis(4) > .5)) && ( (Math.abs(OI.Joystick1.getRawAxis(1)) < .9) && (Math.abs(-OI.Joystick1.getRawAxis(4)) < .9)) &&
 						(	((RobotMap.Gyro1.getAngle() >= 95 ) && (RobotMap.Gyro1.getAngle() <= 85)) || ((RobotMap.Gyro1.getAngle() <= -95) || (RobotMap.Gyro1.getAngle() >= -85)) || ((RobotMap.Gyro1.getAngle()
 								<= 175) && (RobotMap.Gyro1.getAngle() >= -175)) || ((RobotMap.Gyro1.getAngle() <= -5) && RobotMap.Gyro1.getAngle() >= 5) ) ){
 					RobotMap.DiffDrive.arcadeDrive(-.8, .8);
-					SmartDashboard.putBoolean("Second", true);
 				}
 				else if( ((-OI.Joystick1.getRawAxis(4) < -.5 ) && (OI.Joystick1.getRawAxis(1) > .5)) && ( (Math.abs(OI.Joystick1.getRawAxis(1)) < .9) || (Math.abs(-OI.Joystick1.getRawAxis(4)) < .9)) &&
 						(	((RobotMap.Gyro1.getAngle() >= 95 ) && (RobotMap.Gyro1.getAngle() <= 85)) || ((RobotMap.Gyro1.getAngle() <= -95) || (RobotMap.Gyro1.getAngle() >= -85)) || ((RobotMap.Gyro1.getAngle()
 								<= 175) && (RobotMap.Gyro1.getAngle() >= -175)) || ((RobotMap.Gyro1.getAngle() <= -5) && RobotMap.Gyro1.getAngle() >= 5) ) ){
 					RobotMap.DiffDrive.arcadeDrive(.8, -.8);
-					SmartDashboard.putBoolean("AltSecond", true);
 				}
 				else if( (Math.abs(OI.Joystick1.getRawAxis(1)) > .9 ) || (Math.abs(-OI.Joystick1.getRawAxis(4)) > .9 ) ) {
-					SmartDashboard.putNumber("Axis1", OI.Joystick1.getRawAxis(1));
-					SmartDashboard.putNumber("Axis5", -OI.Joystick1.getRawAxis(4));
 
 					if((Math.abs(OI.Joystick1.getRawAxis(1)) - Math.abs(-OI.Joystick1.getRawAxis(4)) > 0) &&
 							((Math.abs(OI.Joystick1.getRawAxis(1)) - Math.abs(-OI.Joystick1.getRawAxis(4)) < -.5))
@@ -226,12 +174,10 @@ public class DriveSubsystem extends Subsystem {
 							((Math.abs(-OI.Joystick1.getRawAxis(4)) - Math.abs(OI.Joystick1.getRawAxis(1)) < -.5))){
 						double AverageSpeed = ((OI.Joystick1.getRawAxis(1) + -OI.Joystick1.getRawAxis(4)) / 2) ;
 						RobotMap.DiffDrive.arcadeDrive(AverageSpeed, AverageSpeed);
-						SmartDashboard.putNumber("average speed", AverageSpeed);
 					}
 					else {
 						RobotMap.DiffDrive.arcadeDrive(OI.Joystick1.getRawAxis(1), -OI.Joystick1.getRawAxis(4));
-					}
-					SmartDashboard.putBoolean("Else", true);	
+					}	
 				}
 
 
@@ -284,9 +230,7 @@ public class DriveSubsystem extends Subsystem {
 			}
 		}
 		else {
-			SmartDashboard.putBoolean("Drive", true);
 			if(RobotMap.DS1.get() == DoubleSolenoid.Value.kForward) {
-				SmartDashboard.putNumber("Axis0", OI.Joystick1.getRawAxis(0));
 
 				if(OI.Joystick1.getRawAxis(0) > .8 || OI.Joystick1.getRawAxis(0) < -.8) {
 					RobotMap.MecDrive.driveCartesian(-OI.Joystick1.getRawAxis(0), 0, 0);
@@ -303,8 +247,6 @@ public class DriveSubsystem extends Subsystem {
 			}
 
 			else if(RobotMap.DS1.get() == DoubleSolenoid.Value.kReverse) {
-				SmartDashboard.putNumber("Axis1", OI.Joystick1.getRawAxis(1));
-				SmartDashboard.putNumber("Axis5", -OI.Joystick1.getRawAxis(4));
 
 				if((Math.abs(OI.Joystick1.getRawAxis(1)) - Math.abs(-OI.Joystick1.getRawAxis(4)) > 0) &&
 						((Math.abs(OI.Joystick1.getRawAxis(1)) - Math.abs(-OI.Joystick1.getRawAxis(4)) < -.5))
@@ -312,7 +254,6 @@ public class DriveSubsystem extends Subsystem {
 						((Math.abs(-OI.Joystick1.getRawAxis(4)) - Math.abs(OI.Joystick1.getRawAxis(1)) < -.5))){
 					double AverageSpeed = ((OI.Joystick1.getRawAxis(1) + -OI.Joystick1.getRawAxis(4)) / 2) ;
 					RobotMap.DiffDrive.arcadeDrive(AverageSpeed, AverageSpeed);
-					SmartDashboard.putNumber("average speed", AverageSpeed);
 				}
 				else {
 					RobotMap.DiffDrive.arcadeDrive(OI.Joystick1.getRawAxis(1), -OI.Joystick1.getRawAxis(4));
@@ -366,7 +307,6 @@ public class DriveSubsystem extends Subsystem {
 		double ea2 = Math.abs(e2);
 
 		if(Math.abs(RobotMap.Left1.get()) - .05 != Math.abs(RobotMap.Right1.get() -.05)) {
-			SmartDashboard.putString("Not driving normally?	", "Yes");
 
 			if((OI.Joystick1.getRawAxis(1) > .8) || (OI.Joystick1.getRawAxis(1) < -.8)) {
 				if(ea1 != 1) {
@@ -393,16 +333,9 @@ public class DriveSubsystem extends Subsystem {
 
 				RobotMap.Left1.set(emax);
 				RobotMap.Right1.set(emax);
-
-				SmartDashboard.putNumber("AbsLeft2", ea1);
-				SmartDashboard.putNumber("AbsRight2", ea2);
-
-				SmartDashboard.putNumber("Left2", RobotMap.Left2.getSensorCollection().getQuadratureVelocity());
-				SmartDashboard.putNumber("Right2", RobotMap.Right2.getSensorCollection().getQuadratureVelocity());
 			}
 			else {
 				RobotMap.DiffDrive.arcadeDrive(OI.Joystick1.getRawAxis(1) , -OI.Joystick1.getRawAxis(4));
-				SmartDashboard.putString("Driving normally?", "Yes");
 			}
 		}
 	}

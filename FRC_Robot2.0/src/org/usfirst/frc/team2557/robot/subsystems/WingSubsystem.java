@@ -15,10 +15,6 @@ public class WingSubsystem extends Subsystem {
 		if(OI.leftBumper.get() == true && OI.rightBumper.get() == true) {
 			RobotMap.LeftWing.set(1);
 			RobotMap.RightWing.set(1);
-			SmartDashboard.putBoolean("Mothman activated", true);
-		}
-		else {
-			SmartDashboard.putBoolean("Mothman inactive", true);
 		}
 	}
 	

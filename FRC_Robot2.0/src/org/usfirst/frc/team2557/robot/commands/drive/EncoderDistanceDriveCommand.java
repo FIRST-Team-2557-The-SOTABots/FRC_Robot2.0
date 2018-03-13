@@ -30,8 +30,6 @@ public class EncoderDistanceDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10);
-    	SmartDashboard.putNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10);
     	Robot.DriveSubsystem.DiffAutoDriveMethod(speed, RobotMap.Gyro1.getAngle()*0.8);
     }
 

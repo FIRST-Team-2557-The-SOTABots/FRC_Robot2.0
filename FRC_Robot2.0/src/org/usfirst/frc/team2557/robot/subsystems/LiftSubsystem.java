@@ -18,21 +18,14 @@ public class LiftSubsystem extends Subsystem {
 		double axis;
 		axis = OI.Joystick2.getRawAxis(1);
 		
-		SmartDashboard.putNumber("THIS IS AXIS 1!!!!", axis);
-		
-		SmartDashboard.putNumber("LiftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 		double a = -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition();
 		
 		RobotMap.LiftMotor.set(-axis);
 		RobotMap.LiftMotor2.set(-axis);
 		
-		SmartDashboard.putBoolean("LiftHallEffect", RobotMap.liftHallEffect.get());
-		
 	}
 
 	public void LiftMethod() {
-		
-		SmartDashboard.putNumber("LiftEncoder", -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 //		double axis = OI.Joystick2.getRawAxis(3);
 //		SmartDashboard.putNumber("joystick2 axis 1", axis);
 		
@@ -41,8 +34,6 @@ public class LiftSubsystem extends Subsystem {
 		
 		boolean SolVal = OI.y.get();
 		boolean SolVal2 = OI.x.get();
-		SmartDashboard.putBoolean("LiftButton", OI.y.get());
-		SmartDashboard.putBoolean("LiftButtonDown", OI.x.get());
 		double a = -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition();
 		boolean x = OI.x.get();
 		boolean y = OI.y.get();
