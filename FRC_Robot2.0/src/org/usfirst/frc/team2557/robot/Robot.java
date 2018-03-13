@@ -15,14 +15,14 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.GroupForward;
 import org.usfirst.frc.team2557.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
-	public static OI m_oi;
+	public static OI oi;
 	public static Timer timer = new Timer();
 
-	public static DriveSubsystem DriveSub1;
-	public static SolenoidSubsystem SolSub;
-	public static WingSubsystem WS;
-	public static LiftSubsystem LS;
-	public static IntakeSubsystem IS;
+	public static DriveSubsystem DriveSubsystem;
+	public static SolenoidSubsystem SolenoidSubsystem;
+	public static WingSubsystem WingSubsystem;
+	public static LiftSubsystem LiftSubsystem;
+	public static IntakeSubsystem IntakeSubsystem;
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -40,14 +40,14 @@ public class Robot extends TimedRobot {
 		
 		RobotMap.DS1.set(Value.kReverse);
 
-		DriveSub1 = new DriveSubsystem();
-		SolSub = new SolenoidSubsystem();
-		WS = new WingSubsystem();
-		LS = new LiftSubsystem();
-		IS = new IntakeSubsystem();
+		DriveSubsystem = new DriveSubsystem();
+		SolenoidSubsystem = new SolenoidSubsystem();
+		WingSubsystem = new WingSubsystem();
+		LiftSubsystem = new LiftSubsystem();
+		IntakeSubsystem = new IntakeSubsystem();
 		
-		m_oi = new OI();
-		m_oi.OIInit();
+		oi = new OI();
+		oi.OIInit();
 
 		m_chooser.addDefault("Do Nothing", null);
 		m_chooser.addObject("Mid Auto", new GroupAutoCommandMid());

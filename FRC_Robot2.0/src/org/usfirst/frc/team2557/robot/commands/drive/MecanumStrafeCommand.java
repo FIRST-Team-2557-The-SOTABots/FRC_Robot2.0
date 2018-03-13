@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class MecanumStrafeCommand extends Command {
 
     public MecanumStrafeCommand() {
-    	requires(Robot.DriveSub1);
+    	requires(Robot.DriveSubsystem);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -21,7 +21,7 @@ public class MecanumStrafeCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.DriveSub1.MecanumStrafeControl();
+    	Robot.DriveSubsystem.MecanumStrafeControl();
 //    	Robot.DriveSub1.CorrectStrafe();
     }
 

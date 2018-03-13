@@ -19,7 +19,7 @@ public class LiftAutoCommand extends Command {
 	double target;
 
 	public LiftAutoCommand(double target) {
-		requires(Robot.LS);
+		requires(Robot.LiftSubsystem);
 		pidcontroller = new PIDController(0.001, 0.00005, 0.001, new PIDSource(){
 
 			@Override
@@ -40,7 +40,7 @@ public class LiftAutoCommand extends Command {
 
 			@Override
 			public void pidWrite(double output) {
-				Robot.LS.liftInAuto(output*0.5);
+				Robot.LiftSubsystem.liftInAuto(output*0.5);
 			}
 			
 		});
@@ -68,7 +68,7 @@ public class LiftAutoCommand extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		Robot.LS.liftInAuto(0);
+		Robot.LiftSubsystem.liftInAuto(0);
 		pidcontroller.disable();
 	}
 

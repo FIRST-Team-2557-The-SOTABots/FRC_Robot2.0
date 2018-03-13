@@ -23,7 +23,7 @@ public class LiftCommandWithAxis extends Command {
     protected void execute() {
     	double value;
     	value = OI.Joystick2.getY();
-    	Robot.LS.LiftWithAxis();
+    	Robot.LiftSubsystem.LiftWithAxis();
     	}
 
     // Make this return true when this Command no longer needs to run execute()

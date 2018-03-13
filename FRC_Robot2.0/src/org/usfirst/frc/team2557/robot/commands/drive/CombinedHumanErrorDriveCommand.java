@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class CombinedHumanErrorDriveCommand extends Command {
 
 	public CombinedHumanErrorDriveCommand() {
-		requires(Robot.DriveSub1);
+		requires(Robot.DriveSubsystem);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 	}

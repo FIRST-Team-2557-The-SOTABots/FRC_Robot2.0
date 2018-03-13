@@ -25,21 +25,21 @@ public class MCP extends CommandGroup {
     	SmartDashboard.getNumber("Message", VisionData);
     	
     	if(VisionData < 10){
-    		Robot.DriveSub1.DiffAutoDriveMethod(.5, 0);
+    		Robot.DriveSubsystem.DiffAutoDriveMethod(.5, 0);
     	}
     	
     	
     	if(message1 == "center"){
-    		Robot.DriveSub1.DiffAutoDriveMethod(0, 0);
+    		Robot.DriveSubsystem.DiffAutoDriveMethod(0, 0);
     	}
     	else if(message1 == "left"){
-    		Robot.DriveSub1.DiffAutoDriveMethod(0, -0.5);
+    		Robot.DriveSubsystem.DiffAutoDriveMethod(0, -0.5);
     	}
     	else if(message1 == "right"){
-    		Robot.DriveSub1.DiffAutoDriveMethod(0, 0.5);
+    		Robot.DriveSubsystem.DiffAutoDriveMethod(0, 0.5);
     	}
     	else{
-    		Robot.DriveSub1.DiffAutoDriveMethod(0, 0);
+    		Robot.DriveSubsystem.DiffAutoDriveMethod(0, 0);
     	}
     	
     	

@@ -15,7 +15,7 @@ public class EncoderDistanceDriveCommand extends Command {
 	private double distance;
 
     public EncoderDistanceDriveCommand(double s, double r, double d) {
-    	requires(Robot.DriveSub1);
+    	requires(Robot.DriveSubsystem);
     	speed = s;
     	distance = d;
     }
@@ -31,7 +31,7 @@ public class EncoderDistanceDriveCommand extends Command {
     protected void execute() {
     	SmartDashboard.getNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10);
     	SmartDashboard.getNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10);
-    	Robot.DriveSub1.DiffAutoDriveMethod(speed, RobotMap.Gyro1.getAngle()*0.8);
+    	Robot.DriveSubsystem.DiffAutoDriveMethod(speed, RobotMap.Gyro1.getAngle()*0.8);
     }
 
     // Make this return true when this Command no longer needs to run execute()

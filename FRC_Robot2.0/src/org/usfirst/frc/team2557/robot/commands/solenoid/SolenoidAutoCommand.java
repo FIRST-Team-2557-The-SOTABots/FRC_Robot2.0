@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class SolenoidAutoCommand extends Command {
 
     public SolenoidAutoCommand() {
-    	requires(Robot.SolSub);
+    	requires(Robot.SolenoidSubsystem);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

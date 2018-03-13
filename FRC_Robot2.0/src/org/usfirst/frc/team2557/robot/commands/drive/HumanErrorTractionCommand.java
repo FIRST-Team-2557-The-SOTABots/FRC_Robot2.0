@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class HumanErrorTractionCommand extends Command {
 
     public HumanErrorTractionCommand() {
-    	requires(Robot.DriveSub1);
+    	requires(Robot.DriveSubsystem);
     	// Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -21,7 +21,7 @@ public class HumanErrorTractionCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.DriveSub1.HumanErrorTraction();
+    	Robot.DriveSubsystem.HumanErrorTraction();
     }
 
     // Make this return true when this Command no longer needs to run execute()

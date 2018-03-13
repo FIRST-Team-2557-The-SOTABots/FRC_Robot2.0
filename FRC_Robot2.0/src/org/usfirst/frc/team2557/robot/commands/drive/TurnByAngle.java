@@ -28,9 +28,9 @@ public class TurnByAngle extends Command {
 		SmartDashboard.putNumber("GyroAngleValue", RobotMap.Gyro1.getAngle());
 
 		if(RobotMap.Gyro1.getAngle() > angle) {
-			Robot.DriveSub1.DiffAutoDriveMethod(0, 1);
+			Robot.DriveSubsystem.DiffAutoDriveMethod(0, 1);
 		}else if(RobotMap.Gyro1.getAngle() < angle){
-			Robot.DriveSub1.DiffAutoDriveMethod(0, -1);
+			Robot.DriveSubsystem.DiffAutoDriveMethod(0, -1);
 		}
     }
 
@@ -44,7 +44,7 @@ public class TurnByAngle extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.DriveSub1.DiffAutoDriveMethod(0, 0);
+    	Robot.DriveSubsystem.DiffAutoDriveMethod(0, 0);
     }
 
     // Called when another command which requires one or more of the same

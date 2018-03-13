@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class LiftCommand extends Command {
 
     public LiftCommand() {
-    	requires(Robot.LS);
+    	requires(Robot.LiftSubsystem);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -24,7 +24,7 @@ public class LiftCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.LS.LiftMethod();
+    	Robot.LiftSubsystem.LiftMethod();
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class TeleDriveCommand extends Command {
     public TeleDriveCommand() {
-    	requires(Robot.DriveSub1);
+    	requires(Robot.DriveSubsystem);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -22,7 +22,7 @@ public class TeleDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.DriveSub1.TeleDriveMethod();
+    	Robot.DriveSubsystem.TeleDriveMethod();
 		}
 
     // Make this return true when this Command no longer needs to run execute()

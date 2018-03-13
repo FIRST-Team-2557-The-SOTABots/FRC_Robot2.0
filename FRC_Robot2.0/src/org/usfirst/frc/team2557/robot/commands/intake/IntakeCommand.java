@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class IntakeCommand extends Command {
 	
     public IntakeCommand() {
-    	requires(Robot.LS);
+    	requires(Robot.LiftSubsystem);
     }
 
     // Called just before this Command runs the first time
