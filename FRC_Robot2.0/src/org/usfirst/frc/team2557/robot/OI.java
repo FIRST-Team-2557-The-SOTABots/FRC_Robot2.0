@@ -59,8 +59,8 @@ public class OI {
 		leftTrigger = new JoystickButton(Joystick2, 7);
 		outTakeFast = new JoystickButton(Joystick2, 10);
 		
-		IntakeIn.whileHeld(new IntakeCommand());
-		IntakeOut.whileHeld(new IntakeCommand());
+//		IntakeIn.whileHeld(new IntakeCommand());
+//		IntakeOut.whileHeld(new IntakeCommand());
 		y.whileHeld(new LiftCommand());
 		y.whenReleased(new LiftCommand());
 		x.whileHeld(new LiftCommand());
