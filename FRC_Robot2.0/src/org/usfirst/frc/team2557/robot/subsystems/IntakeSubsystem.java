@@ -3,6 +3,7 @@ package org.usfirst.frc.team2557.robot.subsystems;
 import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -10,6 +11,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class IntakeSubsystem extends Subsystem {
+	
+	AnalogInput Ultrasonic = new AnalogInput(0);
+	int raw = Ultrasonic.getValue();
+	double volts = Ultrasonic.getVoltage();
+	int averageRaw = Ultrasonic.getAverageValue();
+	double averageVolts = Ultrasonic.getAverageVoltage();
 	
 	public void IntakeWithAxis(){
     	double axis;
