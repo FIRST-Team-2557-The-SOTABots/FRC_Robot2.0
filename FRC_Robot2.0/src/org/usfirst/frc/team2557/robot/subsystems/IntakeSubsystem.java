@@ -12,11 +12,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class IntakeSubsystem extends Subsystem {
 	
-	AnalogInput Ultrasonic = new AnalogInput(0);
-	int raw = Ultrasonic.getValue();
-	double volts = Ultrasonic.getVoltage();
-	int averageRaw = Ultrasonic.getAverageValue();
-	double averageVolts = Ultrasonic.getAverageVoltage();
+//	int raw = Ultrasonic.getValue();
+//	double volts = Ultrasonic.getVoltage();
+//	int averageRaw = Ultrasonic.getAverageValue();
+//	double averageVolts = Ultrasonic.getAverageVoltage();
 	
 	public void IntakeWithAxis(){
     	double axis;
