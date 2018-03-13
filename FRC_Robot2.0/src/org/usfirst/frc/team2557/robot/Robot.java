@@ -28,7 +28,9 @@ import org.usfirst.frc.team2557.robot.commands.HumanErrorMecanumCommand;
 import org.usfirst.frc.team2557.robot.commands.HumanErrorTractionCommand;
 import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.IntakeCommandWithAxis;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
+import org.usfirst.frc.team2557.robot.commands.LiftCommandWithAxis;
 import org.usfirst.frc.team2557.robot.commands.LiftEncoderCommand;
 //import org.usfirst.frc.team2557.robot.commands.LiloAutoCommandGroup;
 import org.usfirst.frc.team2557.robot.commands.MecanumStrafeCommand;
@@ -77,15 +79,17 @@ public class Robot extends TimedRobot {
 	public static LiftSub LS;
 	public static LiftAutoCommand LAC;
 	public static LiftCommand LC;
+	public static LiftCommandWithAxis LCWA;
 	public static IntakeCommand IC;
+	public static IntakeCommandWithAxis ICWA;
 	public static LiftEncoderCommand LEC;
 	public static WingCommand WC;
 	public static WingCommandRight WCR;
 	public static WingCommandLeft WCL;
 	public static RiseCommandRight RCR;
 	public static RiseCommandLeft RCL;
-	public static CurrentLimitCommand CLC;
-
+	public static IntakeSubsystem IS;
+	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -131,14 +135,16 @@ public class Robot extends TimedRobot {
 		LS = new LiftSub();
 		LAC = new LiftAutoCommand(1, 1);
 		LC = new LiftCommand();
+		LCWA = new LiftCommandWithAxis();
 		IC = new IntakeCommand();
 		WC = new WingCommand();
+		ICWA = new IntakeCommandWithAxis();
 		WCR = new WingCommandRight();
 		WCL = new WingCommandLeft();
 		RCR = new RiseCommandRight();
 		RCL = new RiseCommandLeft();
-		CLC = new CurrentLimitCommand();
-
+		IS = new IntakeSubsystem();
+		
 		m_oi = new OI();
 		m_oi.OIInit();
 
@@ -203,6 +209,10 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
+		RCR.start();
+		RCL.start();
+		WCR.start();
+		WCL.start();
 	}
 
 	/**
@@ -213,9 +223,11 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10);
     	SmartDashboard.putNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10);
 		SC.start();
-//		CHEDC.start();
-		//		HETC.start();
-		//		LC.start();
+		CHEDC.start();
+		LCWA.start();
+		ICWA.start();
+//		HETC.start();
+//		LC.start();
 		IC.start();
 		//		MSC.start();
 		//		CFC.start();
@@ -223,10 +235,7 @@ public class Robot extends TimedRobot {
 		WCR.start();
 		WCL.start();
 		//		CLC.start();
-
 		Scheduler.getInstance().run();
-
-
 //		SmartDashboard.putNumber("Left 1 current", RobotMap.Left1.getOutputCurrent());
 //		SmartDashboard.putNumber("Right 1 current", RobotMap.Right1.getOutputCurrent());
 //		SmartDashboard.putNumber("Left 2 current", RobotMap.Left2.getOutputCurrent());
@@ -234,13 +243,13 @@ public class Robot extends TimedRobot {
 //		SmartDashboard.putNumber("Lift current", RobotMap.LiftMotor.getOutputCurrent());
 //		SmartDashboard.putNumber("Intake right current", RobotMap.IntakeR.getOutputCurrent());
 //		SmartDashboard.putNumber("Intake left current", RobotMap.IntakeL.getOutputCurrent());
-//		SmartDashboard.putNumber("Pdp 1 current", RobotMap.pdp.getCurrent(1));
-//		SmartDashboard.putNumber("Pdp 2 current", RobotMap.pdp.getCurrent(2));
-//		SmartDashboard.putNumber("Pdp 3 current", RobotMap.pdp.getCurrent(3));
+		SmartDashboard.putNumber("Pdp 1 current", RobotMap.pdp.getCurrent(1));
+		SmartDashboard.putNumber("Pdp 2 current", RobotMap.pdp.getCurrent(2));
+		SmartDashboard.putNumber("Pdp 3 current", RobotMap.pdp.getCurrent(3));
 //		SmartDashboard.putNumber("Pdp 4 current", RobotMap.pdp.getCurrent(4));
 //		SmartDashboard.putNumber("Pdp 5 current", RobotMap.pdp.getCurrent(5));
 //		SmartDashboard.putNumber("Pdp 6 current", RobotMap.pdp.getCurrent(6));
-//		SmartDashboard.putNumber("Pdp 7 current", RobotMap.pdp.getCurrent(7));
+		SmartDashboard.putNumber("Pdp 7 current", RobotMap.pdp.getCurrent(7));
 //		SmartDashboard.putNumber("Pdp 8 current", RobotMap.pdp.getCurrent(8));
 //		SmartDashboard.putNumber("Pdp 9 current", RobotMap.pdp.getCurrent(9));
 //		SmartDashboard.putNumber("Pdp 10 current", RobotMap.pdp.getCurrent(10));
@@ -258,8 +267,7 @@ public class Robot extends TimedRobot {
 //		SmartDashboard.putNumber("Lift voltage", RobotMap.LiftMotor.getMotorOutputVoltage());
 //		SmartDashboard.putNumber("Intake right voltage", RobotMap.IntakeR.getMotorOutputVoltage());
 //		SmartDashboard.putNumber("Intake left voltage", RobotMap.IntakeL.getMotorOutputVoltage());
-//		SmartDashboard.putNumber("Gyro", RobotMap.Gyro1.getAngle());
-
+		SmartDashboard.putNumber("Gyro", RobotMap.Gyro1.getAngle());
 	}
 
 	/**

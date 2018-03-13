@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class WingCommandRight extends Command {
-	boolean done;
+	int done;
 
 	public WingCommandRight() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		done = false;
+		done = 1;
 	}
 
 	// Called just before this Command runs the first time
@@ -24,13 +24,11 @@ public class WingCommandRight extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		if(OI.rightBumper.get()){
-			if(OI.leftBumper.get()){
-				if(RobotMap.Left2.getSensorCollection().getQuadratureVelocity() < .1) {
-					RobotMap.leftWing.setAngle(90.0);
-					done = true;
-					//				SmartDashboard.putNumber("got to 2", 4);
-				}
+			if(done == 1){
+				RobotMap.rightWing.setPosition(0.5);
 			}
+//			RobotMap.rightWing.setAngle(90.0);
+			done--;
 		}
 		//		if(OI.leftBumper.get() == true){
 		//			RobotMap.leftWing.setAngle(90.0);
@@ -55,10 +53,11 @@ public class WingCommandRight extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		//		if(RobotMap.rightWing.getAngle() == -90.0){
-		//			return true;
-		//		}
-		if(done){
+//		if(RobotMap.rightWing.getAngle() == -90.0){
+//			return true;
+//		}
+		if(done == 0){
+			RobotMap.rightWing.setPosition(0.5);
 			return true;
 		}
 		return false;

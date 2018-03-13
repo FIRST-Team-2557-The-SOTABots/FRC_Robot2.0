@@ -1,0 +1,43 @@
+# Primary documentation for systemd.service is
+# https://www.freedesktop.org/software/systemd/man/index.html
+
+
+# Unit Section
+# - https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+[Unit]
+Description=Main Vision Processing Systemd Service File
+# After is a space-separated list of unit names configuring order dependencies
+#After=X-org.service
+#After=
+#After=display-manager.service x11-common.service
+#After=x11-common.service
+# Requires is a space-separated list of unit names configuring order
+# dependencies
+#Requires=
+#Requires=display-manager.service x11-common.service
+#Requires=x11-common.service
+Requires=network.target
+
+# Service Section
+# - https://www.freedesktop.org/software/systemd/man/systemd.service.html
+[Service]
+User=pi
+# Type can be one of simple, forking, oneshot, dbus, notify, or idle.
+# Defaults to simple if Type and BusName are blank, but ExecStart isn't.
+#Type=simple
+
+RestartSec=10s
+
+# Restart can be one of no, on-success, on-failure, on-abnormal, on-watchdog,
+# on-abort, or always.
+Restart=on-failure
+
+# ExecStart is the script or executable to run.
+#ExecStart=/home/pi/Desktop/vision/application.linux-armv6hf/vision
+ExecStart=/usr/bin/xvfb-run /home/pi/Downloads/processing-3.3.6/processing-java --sketch=/home/pi/Desktop/vision --run >/dev/null
+
+
+# Install Section
+# - https://www.freedesktop.org/software/systemd/man/systemd.unit.html
+[Install]
+WantedBy=multi-user.target

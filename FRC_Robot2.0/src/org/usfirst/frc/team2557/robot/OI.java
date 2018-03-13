@@ -11,7 +11,6 @@ package org.usfirst.frc.team2557.robot;
 import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
 import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
-import org.usfirst.frc.team2557.robot.commands.WingCommand;
 import org.usfirst.frc.team2557.robot.commands.WingCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.WingCommandRight;
 

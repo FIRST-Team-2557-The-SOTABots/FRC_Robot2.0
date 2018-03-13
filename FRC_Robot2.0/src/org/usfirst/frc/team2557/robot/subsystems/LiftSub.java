@@ -10,12 +10,23 @@ public class LiftSub extends Subsystem {
 	
 	public void liftInAuto(double power){
 		RobotMap.LiftMotor.set(power);
+		RobotMap.LiftMotor2.set(power);
+	}
+	
+	public void LiftWithAxis(){
+		double axis;
+		axis = OI.Joystick2.getRawAxis(1);
 		
-		double x = SmartDashboard.getNumber("LiftEncoder", -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
+		SmartDashboard.putNumber("THIS IS AXIS 1!!!!", axis);
 		
-		if( (SmartDashboard.getNumber("LiftEncoder", -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition())) > x) {
-			SmartDashboard.putNumber("LiftEncoder", -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
-		}
+		SmartDashboard.putNumber("LiftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
+		double a = -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition();
+		
+		RobotMap.LiftMotor.set(-axis);
+		RobotMap.LiftMotor2.set(-axis);
+		
+		SmartDashboard.putBoolean("LiftHallEffect", RobotMap.liftHallEffect.get());
+		
 	}
 
 	public void LiftMethod() {
@@ -32,49 +43,19 @@ public class LiftSub extends Subsystem {
 		SmartDashboard.putBoolean("LiftButton", OI.y.get());
 		SmartDashboard.putBoolean("LiftButtonDown", OI.x.get());
 		double a = -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition();
-		if (SolVal == true && SolVal2 == false && -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() < 35000) {
+		boolean x = OI.x.get();
+		boolean y = OI.y.get();
+		if(y){
 			RobotMap.LiftMotor.set(1);
-			SmartDashboard.putBoolean("here1", true);
-		}else if(SolVal == false && SolVal2 == true && -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition() > -2000){
-			RobotMap.LiftMotor.set(-.8);
-		}
-		else {
+			RobotMap.LiftMotor2.set(1);
+		}else if(x){
+			RobotMap.LiftMotor.set(-.7);
+			RobotMap.LiftMotor2.set(-.7);
+		}else{
 			RobotMap.LiftMotor.set(0);
+			RobotMap.LiftMotor2.set(0);
 		}
 	}
-	//
-	
-		
-//		RobotMap.LiftMotor.set(-OI.Joystick2.getRawAxis(1)*.8);
-//		if(Math.abs(OI.Joystick2.getRawAxis(1)) > .1){
-//SmartDashboard.putBoolean("works", true);
-//	}
-//		RobotMap.LiftMotor.set(.5);
-		
-		//			LiftVar = yes;
-		
-//		else if (Sensor.get() == no && LiftVar){
-//			Lifter.set(-1);
-//			LiftVar = no;
-//		}
-		
-//		boolean x = OI.x.get();
-//		boolean y = OI.y.get();
-//		if(x == false && y == true && a < 35000){
-//			RobotMap.LiftMotor.set(1.0);
-//		}else if(x == true && y == false && a > 2000){
-//			RobotMap.LiftMotor.set(-.7);
-//		}else{
-//			RobotMap.LiftMotor.set(0);
-//		}
-		
-//		if(x == false && y == true && a < 35000){
-//			RobotMap.LiftMotor.set(1.0);
-//		}else if(x == true && y == false && a > 1000){
-//			RobotMap.LiftMotor.set(-.7);
-//		}else{
-//			RobotMap.LiftMotor.set(0);
-//		}
 		
 //		if(x == false && y == true ){
 //			RobotMap.LiftMotor.set(1.0);

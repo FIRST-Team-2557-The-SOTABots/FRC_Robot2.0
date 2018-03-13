@@ -21,11 +21,24 @@ public class IntakeCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	SmartDashboard.putBoolean("S1", RobotMap.S1.get());
+//		SmartDashboard.putBoolean("S2", RobotMap.S2.get());
+		double axisRight = OI.Joystick2.getRawAxis(3);
+		
+		double axisLeft = OI.Joystick2.getRawAxis(2);
+    	
 		if(OI.IntakeIn.get()) {
 			RobotMap.IntakeR.set(-.8);
 			RobotMap.IntakeL.set(.8);
-			RobotMap.S2.set(true);
-			RobotMap.S1.set(false);
+			RobotMap.S2.set(false);
+			RobotMap.S1.set(true);
+			SmartDashboard.putBoolean("IN", true);
+			//			RobotMap.S2.set(false);
+		}else if(axisLeft > 0.8){
+			RobotMap.IntakeR.set(-.3);
+			RobotMap.IntakeL.set(.3);
+			RobotMap.S2.set(false);
+			RobotMap.S1.set(true);
 			SmartDashboard.putBoolean("IN", true);
 		}else if(OI.IntakeOut.get()){
 			RobotMap.IntakeR.set(.4);
@@ -33,15 +46,14 @@ public class IntakeCommand extends Command {
 			RobotMap.S2.set(false);
 			RobotMap.S1.set(true);
 			SmartDashboard.putBoolean("Out", true);
-		}
-		else if(OI.outTakeFast.get()) {
-			RobotMap.IntakeR.set(.8);
-			RobotMap.IntakeL.set(-.8);
+			//			RobotMap.S2.set(true);
+		}else if(axisRight > 0.8){
+			RobotMap.IntakeR.set(.15);
+			RobotMap.IntakeL.set(-.15);
 			RobotMap.S2.set(false);
 			RobotMap.S1.set(true);
-			SmartDashboard.putBoolean("OutFast", true);
-		}
-		else {
+			SmartDashboard.putBoolean("Out", true);
+		}else {
 			RobotMap.IntakeR.set(0);
 			RobotMap.IntakeL.set(0);
 			RobotMap.S2.set(true);
