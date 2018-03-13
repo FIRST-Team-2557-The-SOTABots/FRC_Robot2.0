@@ -8,11 +8,11 @@
 package org.usfirst.frc.team2557.robot;
 
 
-import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
-import org.usfirst.frc.team2557.robot.commands.LiftCommand;
-import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
-import org.usfirst.frc.team2557.robot.commands.WingCommandLeft;
-import org.usfirst.frc.team2557.robot.commands.WingCommandRight;
+import org.usfirst.frc.team2557.robot.commands.intake.IntakeCommand;
+import org.usfirst.frc.team2557.robot.commands.lift.LiftCommand;
+import org.usfirst.frc.team2557.robot.commands.solenoid.SolenoidCommand;
+import org.usfirst.frc.team2557.robot.commands.wing.WingCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.wing.WingCommandRight;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
