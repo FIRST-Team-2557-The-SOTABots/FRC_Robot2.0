@@ -37,6 +37,7 @@ public class OI {
 	public static JoystickButton leftBumper;
 	public static JoystickButton rightTrigger;
 	public static JoystickButton leftTrigger;
+	public static JoystickButton outTakeFast;
 	
 	public void OIInit() {
 		Joystick1 = new Joystick(0);
@@ -56,10 +57,10 @@ public class OI {
 		leftBumper = new JoystickButton(Joystick2, 6);
 		rightTrigger = new JoystickButton(Joystick2, 8);
 		leftTrigger = new JoystickButton(Joystick2, 7);
+		outTakeFast = new JoystickButton(Joystick2, 10);
 		
 		IntakeIn.whileHeld(new IntakeCommand());
 		IntakeOut.whileHeld(new IntakeCommand());
-		
 		y.whileHeld(new LiftCommand());
 		y.whenReleased(new LiftCommand());
 		x.whileHeld(new LiftCommand());

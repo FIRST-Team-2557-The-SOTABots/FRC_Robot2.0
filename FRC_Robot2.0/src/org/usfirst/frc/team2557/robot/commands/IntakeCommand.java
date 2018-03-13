@@ -43,7 +43,6 @@ public class IntakeCommand extends Command {
 			RobotMap.S2.set(false);
 			RobotMap.S1.set(true);
 			SmartDashboard.putBoolean("IN", true);
-			
 		}else if(OI.IntakeOut.get()){
 			RobotMap.IntakeR.set(.4);
 			RobotMap.IntakeL.set(-.4);
@@ -63,8 +62,6 @@ public class IntakeCommand extends Command {
 			RobotMap.S2.set(true);
 			RobotMap.S1.set(false);
 			SmartDashboard.putBoolean("Stop", true);
-			//			RobotMap.S1.set(true);
-			//			RobotMap.S2.set(true);
 		}
     }
 

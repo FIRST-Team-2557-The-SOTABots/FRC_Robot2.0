@@ -1,17 +1,24 @@
 package org.usfirst.frc.team2557.robot.commands;
 
+import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ *
+ */
 public class IntakeAutoCommand extends Command {
 	Timer t;
 	double time;
+	double speed;
 
-    public IntakeAutoCommand(double time) {
+    public IntakeAutoCommand(double time, double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	this.time = time;
+    	this.speed = speed;
     }
 
     // Called just before this Command runs the first time
@@ -25,8 +32,8 @@ public class IntakeAutoCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.IntakeR.set(-.6);
-		RobotMap.IntakeL.set(.6);
+    	RobotMap.IntakeR.set(-speed);
+		RobotMap.IntakeL.set(speed);
 //		RobotMap.S2.set(false);
 //		RobotMap.S1.set(true);
     }
@@ -38,7 +45,9 @@ public class IntakeAutoCommand extends Command {
 //        	RobotMap.S2.set(true);
     		return true;
     	}
-        return false;
+    else {
+    	return false;
+    	}
     }
 
     // Called once after isFinished returns true

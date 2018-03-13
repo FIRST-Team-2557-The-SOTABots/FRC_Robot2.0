@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+/**
+ *
+ */
 public class LiftAutoCommand extends Command {
 	PIDController pidcontroller;
 	double target;

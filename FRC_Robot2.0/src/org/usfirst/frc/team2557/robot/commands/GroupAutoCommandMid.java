@@ -6,29 +6,25 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class GroupAutoCommandMid extends CommandGroup {
 
 	public GroupAutoCommandMid() {
-
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		if(gameData != null && gameData.length() > 0){
 			if(gameData.charAt(0) == 'L'){
-				addSequential(new EncoderDriveCommand4(.5, 0));
-				addSequential(new GyroCommandLeft());
-				addSequential(new EncoderDriveCommand5(.5, 0));
-				addSequential(new GyroCommandRight());
-				addSequential(new EncoderDriveCommand6(.5, 0));
-				//place block
+				addSequential(new LiftAutoCommand(2000));
+				addSequential(new IntakeAutoCommand(0.25, 0.6));
+				addSequential(new EncoderDistanceDriveCommand(-.8, 0, 3000));
+				addParallel(new LiftAutoCommand(12000));
+				addSequential(new TurnByAngle(-90));
+				addSequential(new EncoderDistanceDriveCommand(-.8, 0, 3000));
+				addSequential(new TurnByAngle(90));
+				addSequential(new EncoderDistanceDriveCommand(-.8, 0, 500));
+				addSequential(new IntakeAutoCommand(1, -0.4));
 			}else {
-				addSequential(new EncoderDriveCommand1(.5, 0));
-				//place block
+				addSequential(new LiftAutoCommand(2000));
+				addSequential(new IntakeAutoCommand(0.25, 0.6));
+				addSequential(new EncoderDistanceDriveCommand(-.8, 0, 2300));
+				addSequential(new IntakeAutoCommand(1, -0.4));
 			}
 		}
-
-		//    	addSequential(new SolenoidAutoCommand());
-		//    	addSequential(new TimedAutoDriveCommand(.5, 0, 5));
-		//    	addSequential(new TimedAutoDriveCommand(-.5, 0, 1));
-		//    	addSequential(new SolenoidAutoCommand());
-		//    	addSequential(new TimedAutoMecanumDriveCommand(.5, 0, 0, 3));
-		//    	addSequential(new SolenoidAutoCommand());
-		//    	addSequential(new TimedAutoDriveCommand(-.5, 0, 1));
 	}
 }

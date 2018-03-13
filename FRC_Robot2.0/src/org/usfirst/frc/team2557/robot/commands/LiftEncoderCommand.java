@@ -22,12 +22,11 @@ public class LiftEncoderCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("EncoderCountLift", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition()/10);
+    	SmartDashboard.putNumber("EncoderCountLift", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(-RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition()/10 > 729);
         return false;
     }
 

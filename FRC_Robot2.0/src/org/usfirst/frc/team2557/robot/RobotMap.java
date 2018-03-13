@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
 public class RobotMap {
+	
+	public static boolean LiftConfirm;
 	public static boolean Confirm;
 	public static boolean Position;
 	public static double GyroAngle;
@@ -34,9 +36,12 @@ public class RobotMap {
 	public static DifferentialDrive DiffDrive;
 	public static MecanumDrive MecDrive;
 	public static AnalogInput Ultrasonic;
+
+	
 	public static WPI_TalonSRX LiftMotor;
 	public static WPI_TalonSRX LiftMotor2;
-	public static WPI_TalonSRX Winch;
+	public static Servo LeftWing;
+	public static Servo RightWing;
 	public static Servo rightWing;
 	public static Servo leftWing;
 	public static Solenoid a;
@@ -47,17 +52,8 @@ public class RobotMap {
 	
     public static DigitalInput liftHallEffect;
 
-	// left2 = 7, liftMotor = 9, right1 = 0, left1 = 1, right2 = 6, leftIntake = 1, rightIntake = 4
 	
 	public static void init() {
-		
-//		Left1 = new WPI_TalonSRX(3); //
-//		Left2 = new WPI_TalonSRX(4); //
-//		Right1 = new WPI_TalonSRX(9);
-//		Right2 = new WPI_TalonSRX(6);  
-//		IntakeR = new WPI_TalonSRX(8);
-//		IntakeL = new WPI_TalonSRX(1); //
-//		LiftMotor = new WPI_TalonSRX(2);
 		
 		a = new Solenoid(7);
 		b = new Solenoid(6);
@@ -83,6 +79,7 @@ public class RobotMap {
 		S2 = new Solenoid(0, 3);
 		Gyro1 = new AHRS(SPI.Port.kMXP);
 		compressor = new Compressor(0);
+		
 		DiffDrive = new DifferentialDrive(Left, Right);
 		MecDrive = new MecanumDrive(Left1, Left2, Right1, Right2);
 		DiffDrive.setSafetyEnabled(false);

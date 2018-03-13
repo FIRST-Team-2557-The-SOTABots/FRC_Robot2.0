@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class GyroCommandRight extends Command {
-	boolean done;
 
 	public GyroCommandRight() {
 		// Use requires() here to declare subsystem dependencies
@@ -20,29 +19,16 @@ public class GyroCommandRight extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		done = false;
 		RobotMap.Gyro1.reset();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		//    	SmartDashboard.putNumber("GyroAngleValue", RobotMap.GyroAngle);
-		SmartDashboard.getBoolean("Confirm Value", done);
-		
-		SmartDashboard.putNumber("GyroAngle", RobotMap.Gyro1.getAngle());
-
-		if(RobotMap.Gyro1.getAngle() > -90) {
-			RobotMap.DiffDrive.arcadeDrive(0, -.8);
-//			done = false;
-		}else if(RobotMap.Gyro1.getAngle() <= -90) {
-			RobotMap.DiffDrive.arcadeDrive(0, 0);
-			done = true;
-		}
-	}
-
+	Robot.DriveSub1.DriveTurnRight();
+	}		
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {    	
-		if(done == true){
+		if(RobotMap.Confirm == true){
 			RobotMap.DiffDrive.arcadeDrive(0, 0);
 			return true;
 		}

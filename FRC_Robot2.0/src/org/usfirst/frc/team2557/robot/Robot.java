@@ -9,13 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2557.robot.commands.CombinedHumanErrorDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.CorrectStrafeCommand;
-import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand1;
-import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand2;
-import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand3;
-import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand4;
-import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand5;
-import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand6;
-import org.usfirst.frc.team2557.robot.commands.EncoderDriveCommand7;
+import org.usfirst.frc.team2557.robot.commands.CurrentLimitCommand;
 import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandMid;
 import org.usfirst.frc.team2557.robot.commands.GroupAutoCommandRight;
@@ -26,6 +20,7 @@ import org.usfirst.frc.team2557.robot.commands.GyroCommandRight;
 import org.usfirst.frc.team2557.robot.commands.HumanErrorMecanumCommand;
 import org.usfirst.frc.team2557.robot.commands.HumanErrorTractionCommand;
 import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
+import org.usfirst.frc.team2557.robot.commands.LiftAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.IntakeCommandWithAxis;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
 import org.usfirst.frc.team2557.robot.commands.LiftCommandWithAxis;
@@ -39,7 +34,8 @@ import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
 import org.usfirst.frc.team2557.robot.commands.TeleDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.TimedAutoDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.TimedAutoMecanumDriveCommand;
-import org.usfirst.frc.team2557.robot.commands.WheelCheck;
+import org.usfirst.frc.team2557.robot.commands.WheelCheckCommand;
+import org.usfirst.frc.team2557.robot.commands.WingCommand;
 import org.usfirst.frc.team2557.robot.commands.WingCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.WingCommandRight;
 import org.usfirst.frc.team2557.robot.subsystems.*;
@@ -47,37 +43,33 @@ import org.usfirst.frc.team2557.robot.subsystems.*;
 public class Robot extends TimedRobot {
 	public static OI m_oi;
 	public static Timer timer = new Timer();
-	
+
 	public static DriveSub DriveSub1;
 	public static SolenoidSub SolSub;
-	
+	public static WingSub WS;
+
 	public static GyroCommand GC;
 	public static GyroCommandLeft GCL;
 	public static GyroCommandRight GCR;
 	public static CorrectStrafeCommand CFC;
 	public static CombinedHumanErrorDriveCommand CHEDC;
-	public static EncoderDriveCommand1 EDC1;
-	public static EncoderDriveCommand2 EDC2;
-	public static EncoderDriveCommand3 EDC3;
-	public static EncoderDriveCommand4 EDC4;
-	public static EncoderDriveCommand5 EDC5;
-	public static EncoderDriveCommand6 EDC6;
-	public static EncoderDriveCommand7 EDC7;
 	public static TimedAutoMecanumDriveCommand TAMDC;
 	public static TimedAutoDriveCommand TADC;
 	public static SolenoidCommand SC;
 	public static SolenoidAutoCommand SAC;
 	public static HumanErrorMecanumCommand HEMC;
 	public static HumanErrorTractionCommand HETC;
-//	public static TeleDriveCommand TDC;
+	public static TeleDriveCommand TDC;
 	public static MecanumStrafeCommand MSC;
-	public static WheelCheck WC;
+	public static WheelCheckCommand WCC;
 	public static LiftSub LS;
+	public static LiftAutoCommand LAC;
 	public static LiftCommand LC;
 	public static LiftCommandWithAxis LCWA;
 	public static IntakeCommand IC;
 	public static IntakeCommandWithAxis ICWA;
 	public static LiftEncoderCommand LEC;
+	public static WingCommand WC;
 	public static WingCommandRight WCR;
 	public static WingCommandLeft WCL;
 	public static RiseCommandRight RCR;
@@ -94,56 +86,52 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
-		
-    	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 1000);
-    	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 1000);
+
+		RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 1000);
+		RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 1000);
+		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 1000);
 		
 		RobotMap.DS1.set(Value.kReverse);
-		
+
 		DriveSub1 = new DriveSub();
 		SolSub = new SolenoidSub();
-		
+		WS = new WingSub();
+
 		GC = new GyroCommand();
 		GCL = new GyroCommandLeft();
 		GCR = new GyroCommandRight();
 		CFC = new CorrectStrafeCommand();
 		CHEDC = new CombinedHumanErrorDriveCommand();
-		EDC1 = new EncoderDriveCommand1(1, 0);
-		EDC2 = new EncoderDriveCommand2(1, 0);
-		EDC3 = new EncoderDriveCommand3(1, 0);
-		EDC4 = new EncoderDriveCommand4(1, 0);
-		EDC5 = new EncoderDriveCommand5(1, 0);
-		EDC6 = new EncoderDriveCommand6(1, 0);
-		EDC7 = new EncoderDriveCommand7(1, 0);
 		TAMDC = new TimedAutoMecanumDriveCommand(1, 0, 0, 1);
 		TADC = new TimedAutoDriveCommand(1, 0, 1);
 		SC = new SolenoidCommand();
 		SAC = new SolenoidAutoCommand();
 		HEMC = new HumanErrorMecanumCommand();
 		HETC = new HumanErrorTractionCommand();
-//		TDC = new TeleDriveCommand();
+		TDC = new TeleDriveCommand();
 		MSC = new MecanumStrafeCommand();
-		WC = new WheelCheck();
+		WCC = new WheelCheckCommand();
 		LS = new LiftSub();
+		LAC = new LiftAutoCommand(1);
 		LC = new LiftCommand();
 		LCWA = new LiftCommandWithAxis();
 		IC = new IntakeCommand();
+		WC = new WingCommand();
 		ICWA = new IntakeCommandWithAxis();
 		WCR = new WingCommandRight();
 		WCL = new WingCommandLeft();
 		RCR = new RiseCommandRight();
 		RCL = new RiseCommandLeft();
-		
 		IS = new IntakeSubsystem();
 		
 		m_oi = new OI();
 		m_oi.OIInit();
-		
+
 		m_chooser.addDefault("Mid Auto", new GroupAutoCommandMid());
 		m_chooser.addObject("Left Auto", new GroupAutoCommandLeft());
 		m_chooser.addObject("Right Auto", new GroupAutoCommandRight());
 		m_chooser.addObject("Forward Auto", new GroupForward());
-//		m_chooser.addObject("Lilo Auto Command", new LiloAutoCommandGroup());
+		//		m_chooser.addObject("Lilo Auto Command", new LiloAutoCommandGroup());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 
@@ -161,10 +149,10 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 10);
 		m_autonomousCommand = m_chooser.getSelected();
-		timer.start();
-		
 		m_autonomousCommand = new GroupAutoCommandLeft();
-//		RobotMap.Gyro1.reset();
+		m_autonomousCommand.start();
+		timer.start();
+		//		RobotMap.Gyro1.reset();
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
@@ -187,10 +175,14 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
+//		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 1000);
 		GC.start();
-		CHEDC.start();
-//		LC.start();
-//		HETC.start();
+//		CHEDC.start();
+		//		LC.start();
+		//		HETC.start();
+		TDC.start();
+		RCR.start();
+		RCL.start();
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
@@ -203,7 +195,7 @@ public class Robot extends TimedRobot {
 		WCR.start();
 		WCL.start();
 	}
-	
+
 	/**
 	 * This function is called periodically during operator control.
 	 */	
@@ -222,8 +214,6 @@ public class Robot extends TimedRobot {
 //		CFC.start();
 //		TDC.start();
 		Scheduler.getInstance().run();
-		
-		
 //		SmartDashboard.putNumber("Left 1 current", RobotMap.Left1.getOutputCurrent());
 //		SmartDashboard.putNumber("Right 1 current", RobotMap.Right1.getOutputCurrent());
 //		SmartDashboard.putNumber("Left 2 current", RobotMap.Left2.getOutputCurrent());
