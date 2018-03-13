@@ -1,0 +1,84 @@
+#!/usr/bin/python
+
+import serial
+import time
+import sys
+import os
+from networktables import NetworkTables
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
+
+NetworkTables.initialize(server='roboRIO-2557-FRC.local')
+sd = NetworkTables.getTable('SmartDashboard')
+#dt = NetworkTables.getTable('DataTable')
+#dts = NetworkTables.getTable('MessageTable')
+
+# The path to the vision data file
+visionFilePath = "/run/visionmessage/"
+# The file with the vision data.
+visionFileName = "vision-message.txt"
+
+
+def locationPublish():
+    #print("Location Publish")
+    fileMessage = open(visionFilePath + visionFileName, "r")
+    message = fileMessage.read()
+    fileMessage.close()
+    print(message.split())
+    sd.putValue('Vision', message)
+    
+    
+# Class for handling file changes.
+class VisionFileHandler(FileSystemEventHandler):
+
+    def process(self, event):
+        """
+        event.event_type 
+            'modified' | 'created' | 'moved' | 'deleted'
+        event.is_directory
+            True | False
+        event.src_path
+            path/to/observed/file
+        """
+        print("Found file " + event.src_path)
+        # Only update the NetworkTable if this is the vision file.
+        if event.src_path == visionFilePath + visionFileName:
+            # Open the file and send the data from the file to
+            # the NetworkTables.
+            #print("Got my file.")
+            locationPublish()
+
+    def on_modified(self, event):
+        self.process(event)
+
+    def on_created(self, event):
+        self.process(event)
+
+# Wait for the vision file to become available.
+while os.path.exists(visionFilePath + visionFileName) == False:
+    time.sleep(1)
+
+# Make sure it is a file.
+if os.path.isfile(visionFilePath + visionFileName) == False:
+    print("%s isn't a file." % (visionFilePath + visionFileName))
+    sys.exit(-1)
+
+# Create an observer for the path the file lives in.
+fileEventObserver = Observer()
+fileEventObserver.schedule(VisionFileHandler(), path=visionFilePath)
+fileEventObserver.start()
+
+# Wait for a Keyboard Interrupt.
+try:
+    while True:
+        time.sleep(1)
+except KeyboardInterrupt:
+    print("Interrupted")
+    fileEventObserver.stop()
+
+fileEventObserver.join()
+
+#fileMessage = open("/home/pi/Desktop/vision/vision-message.txt", "r")
+#message = fileMessage.read()
+#print(message)
+

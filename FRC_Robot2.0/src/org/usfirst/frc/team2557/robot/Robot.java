@@ -26,7 +26,9 @@ import org.usfirst.frc.team2557.robot.commands.GyroCommandRight;
 import org.usfirst.frc.team2557.robot.commands.HumanErrorMecanumCommand;
 import org.usfirst.frc.team2557.robot.commands.HumanErrorTractionCommand;
 import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
+import org.usfirst.frc.team2557.robot.commands.IntakeCommandWithAxis;
 import org.usfirst.frc.team2557.robot.commands.LiftCommand;
+import org.usfirst.frc.team2557.robot.commands.LiftCommandWithAxis;
 import org.usfirst.frc.team2557.robot.commands.LiftEncoderCommand;
 //import org.usfirst.frc.team2557.robot.commands.LiloAutoCommandGroup;
 import org.usfirst.frc.team2557.robot.commands.MecanumStrafeCommand;
@@ -72,12 +74,15 @@ public class Robot extends TimedRobot {
 	public static WheelCheck WC;
 	public static LiftSub LS;
 	public static LiftCommand LC;
+	public static LiftCommandWithAxis LCWA;
 	public static IntakeCommand IC;
+	public static IntakeCommandWithAxis ICWA;
 	public static LiftEncoderCommand LEC;
 	public static WingCommandRight WCR;
 	public static WingCommandLeft WCL;
 	public static RiseCommandRight RCR;
 	public static RiseCommandLeft RCL;
+	public static IntakeSubsystem IS;
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -121,11 +126,15 @@ public class Robot extends TimedRobot {
 		WC = new WheelCheck();
 		LS = new LiftSub();
 		LC = new LiftCommand();
+		LCWA = new LiftCommandWithAxis();
 		IC = new IntakeCommand();
+		ICWA = new IntakeCommandWithAxis();
 		WCR = new WingCommandRight();
 		WCL = new WingCommandLeft();
 		RCR = new RiseCommandRight();
 		RCL = new RiseCommandLeft();
+		
+		IS = new IntakeSubsystem();
 		
 		m_oi = new OI();
 		m_oi.OIInit();
@@ -201,10 +210,12 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 		SC.start();
 		CHEDC.start();
+		LCWA.start();
+		ICWA.start();
+//		HETC.start();
+//		LC.start();
 		IC.start();
 		
-//		LC.start();
-//		HETC.start();
 //		MSC.start();
 //		CFC.start();
 //		TDC.start();
@@ -243,7 +254,6 @@ public class Robot extends TimedRobot {
 //		SmartDashboard.putNumber("Intake right voltage", RobotMap.IntakeR.getMotorOutputVoltage());
 //		SmartDashboard.putNumber("Intake left voltage", RobotMap.IntakeL.getMotorOutputVoltage());
 		SmartDashboard.putNumber("GyroThisOne", RobotMap.Gyro1.getAngle());
-		
 	}
 
 	/**

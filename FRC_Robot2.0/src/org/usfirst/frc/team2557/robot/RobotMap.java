@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SPI;
@@ -34,6 +35,7 @@ public class RobotMap {
 	public static MecanumDrive MecDrive;
 	public static AnalogInput Ultrasonic;
 	public static WPI_TalonSRX LiftMotor;
+	public static WPI_TalonSRX LiftMotor2;
 	public static WPI_TalonSRX Winch;
 	public static Servo rightWing;
 	public static Servo leftWing;
@@ -42,6 +44,8 @@ public class RobotMap {
 	public static Solenoid c;
 	public static Solenoid d;
 	public static PowerDistributionPanel pdp;
+	
+    public static DigitalInput liftHallEffect;
 
 	// left2 = 7, liftMotor = 9, right1 = 0, left1 = 1, right2 = 6, leftIntake = 1, rightIntake = 4
 	
@@ -70,6 +74,7 @@ public class RobotMap {
 		IntakeR = new WPI_TalonSRX(4);
 		IntakeL = new WPI_TalonSRX(6); //
 		LiftMotor = new WPI_TalonSRX(5);
+		LiftMotor2 = new WPI_TalonSRX(11);
 		
 		Left = new SpeedControllerGroup(Left1, Left2);
 		Right = new SpeedControllerGroup(Right1, Right2);
@@ -85,5 +90,7 @@ public class RobotMap {
 		Ultrasonic = new AnalogInput(0);
 		
 		pdp = new PowerDistributionPanel(10);
+		
+        liftHallEffect = new DigitalInput(1);
 	}
 }
