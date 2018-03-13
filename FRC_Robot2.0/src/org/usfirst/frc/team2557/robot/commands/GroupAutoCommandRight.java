@@ -11,38 +11,32 @@ public class GroupAutoCommandRight extends CommandGroup {
 	public GroupAutoCommandRight() {
 		String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
-		if(gameData != null && gameData.length() > 0)
-		{
-			if(gameData.charAt(0) == 'L')
-			{
-				if(gameData.charAt(1) == 'L') {
-					addSequential(new EncoderDriveCommand9(-.8, 0));
-					addSequential(new GyroCommandLeft());
-					addSequential(new EncoderDriveCommand5(-.8, 0));
+		if(gameData.length() > 0){
+			if(gameData.charAt(0) == 'R'){
+				addSequential(new LiftAutoCommand(2000));
+				addSequential(new IntakeAutoCommand(0.25, 0.6));
+				addSequential(new EncoderDistanceDriveCommand(-.8, 0, 2500)); // 2 == 2800
+				addParallel(new LiftAutoCommand(12000));
+				addSequential(new TurnByAngle(-90));
+				addSequential(new EncoderDistanceDriveCommand(-.8, 0, 500)); // 3 == 1000
+				addSequential(new IntakeAutoCommand(1, -0.4));
+			} else {
+				if(gameData.charAt(1) == 'R') {
+					addSequential(new LiftAutoCommand(2000));
+					addSequential(new IntakeAutoCommand(0.25, 0.6));
+					addParallel(new LiftAutoCommand(34000));
+					addSequential(new EncoderDistanceDriveCommand(-.75, 0, 5750)); // 8 == 7600
+					addSequential(new TurnByAngle(-45));
+					addSequential(new EncoderDistanceDriveCommand(-.8, 0, 250));
+					addSequential(new IntakeAutoCommand(1, -0.4));
+				}else {
+					addSequential(new LiftAutoCommand(2000));
+					addSequential(new IntakeAutoCommand(0.25, 0.6));
+					addSequential(new EncoderDistanceDriveCommand(-.8, 0, 5200)); // 9 == 5200
+					addSequential(new TurnByAngle(-90));
+					addSequential(new EncoderDistanceDriveCommand(-.8, 0, 3500)); // 5 == 3500
+
 				}
-				else {
-					addSequential(new EncoderDriveCommand8(-.8, 0));
-					addParallel(new LiftAutoCommand(11000));
-					addSequential(new GyroCommandLeft());
-					addSequential(new IntakeAutoCommandAlt(.8));
-				}
-
-			} 
-			else {
-				addSequential(new EncoderDriveCommand2(-.8, 0));
-				addParallel(new LiftAutoCommand(11000));
-				addSequential(new GyroCommandLeft());
-				addSequential(new EncoderDriveCommand3(-.8, 0));
-				addSequential(new IntakeAutoCommandAlt(.8));
-				//			  addSequential(new EncoderDriveCommand2(.5, 0));
-
-				//			  addSequential(new EncoderDriveCommand4(-.5, 0));
-				//			  addParallel(new LiftAutoCommand(.6));
-				//			  addSequential(new GyroCommandLeft());
-				//			  addSequential(new EncoderDriveCommand7(-.5, 0));
-				//			  addSequential(new GyroCommandRight());
-				//			  addSequential(new EncoderDriveCommand6(-.5, 0));
-
 			}
 		}
 	}
