@@ -10,5 +10,7 @@
 	<classpathentry kind="var" path="USERLIBS_DIR/CTRE_Phoenix.jar"/>
 	<classpathentry kind="var" path="USERLIBS_DIR/navx_frc.jar"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="var" path="USERLIBS_DIR/icmp4j-all.jar"/>
+	<classpathentry kind="var" path="USERLIBS_DIR/icmp4j.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

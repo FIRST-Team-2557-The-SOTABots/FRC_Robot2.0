@@ -21,9 +21,6 @@ public class IntakeCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	boolean x = OI.x.get();
-		boolean y = OI.y.get();
 		double axisRight = OI.Joystick2.getRawAxis(3);
 		
 		double axisLeft = OI.Joystick2.getRawAxis(2);
@@ -65,10 +62,13 @@ public class IntakeCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	RobotMap.IntakeR.set(0);
+		RobotMap.IntakeL.set(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    this.end();
     }
 }

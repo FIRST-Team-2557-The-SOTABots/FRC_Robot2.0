@@ -94,7 +94,6 @@ public class Robot extends TimedRobot {
 		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 10);
 		
 		m_autonomousCommand = m_chooser.getSelected();
-		m_autonomousCommand = new GroupAutoCommandLeft();
 		m_autonomousCommand.start();
 		
 		// Start the selected Auto program
