@@ -43,11 +43,9 @@ import org.usfirst.frc.team2557.robot.subsystems.*;
 public class Robot extends TimedRobot {
 	public static OI m_oi;
 	public static Timer timer = new Timer();
-
 	public static DriveSub DriveSub1;
 	public static SolenoidSub SolSub;
 	public static WingSub WS;
-
 	public static GyroCommand GC;
 	public static GyroCommandLeft GCL;
 	public static GyroCommandRight GCR;

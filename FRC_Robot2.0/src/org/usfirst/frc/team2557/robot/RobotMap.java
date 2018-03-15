@@ -13,6 +13,10 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import jaci.pathfinder.Pathfinder;
+import jaci.pathfinder.Trajectory;
+import jaci.pathfinder.Waypoint;
+import jaci.pathfinder.modifiers.TankModifier;
 
 public class RobotMap {
 	
@@ -36,6 +40,7 @@ public class RobotMap {
 	public static DifferentialDrive DiffDrive;
 	public static MecanumDrive MecDrive;
 	public static AnalogInput Ultrasonic;
+	public static Trajectory testPath;
 
 	
 	public static WPI_TalonSRX LiftMotor;
@@ -54,6 +59,18 @@ public class RobotMap {
 
 	
 	public static void init() {
+		
+		Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.05, 8.65, 2.0, 60.0);
+        Waypoint[] points = new Waypoint[] {
+        		// in feet
+        		new Waypoint(0,0,0),
+//                new Waypoint(0, 0, Pathfinder.d2r(-45)),
+//                new Waypoint(-2, -2, 0),
+                new Waypoint(5, 0, 0)
+        };
+
+        testPath = Pathfinder.generate(points, config);
+        
 		
 		a = new Solenoid(7);
 		b = new Solenoid(6);
