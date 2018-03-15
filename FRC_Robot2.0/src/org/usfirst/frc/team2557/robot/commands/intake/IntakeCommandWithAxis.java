@@ -1,15 +1,19 @@
-package org.usfirst.frc.team2557.robot.commands;
+package org.usfirst.frc.team2557.robot.commands.intake;
+
+import org.usfirst.frc.team2557.robot.OI;
+import org.usfirst.frc.team2557.robot.Robot;
+import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class EncoderDistanceDriveCommand extends Command {
+public class IntakeCommandWithAxis extends Command {
 
-    public EncoderDistanceDriveCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    public IntakeCommandWithAxis() {
+        requires(Robot.IntakeSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -18,6 +22,7 @@ public class EncoderDistanceDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.IntakeSubsystem.IntakeWithAxis();
     }
 
     // Make this return true when this Command no longer needs to run execute()

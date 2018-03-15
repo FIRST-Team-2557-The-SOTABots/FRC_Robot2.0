@@ -8,11 +8,10 @@
 package org.usfirst.frc.team2557.robot;
 
 
-import org.usfirst.frc.team2557.robot.commands.IntakeCommand;
-import org.usfirst.frc.team2557.robot.commands.LiftCommand;
-import org.usfirst.frc.team2557.robot.commands.SolenoidCommand;
-import org.usfirst.frc.team2557.robot.commands.WingCommandLeft;
-import org.usfirst.frc.team2557.robot.commands.WingCommandRight;
+import org.usfirst.frc.team2557.robot.commands.intake.IntakeCommand;
+import org.usfirst.frc.team2557.robot.commands.solenoid.SolenoidCommand;
+import org.usfirst.frc.team2557.robot.commands.wing.WingCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.wing.WingCommandRight;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -29,8 +28,6 @@ public class OI {
 	public static JoystickButton BackwardButton;
 	
 	public static Joystick Joystick2;
-	public static JoystickButton y;
-	public static JoystickButton x;
 	public static JoystickButton IntakeIn;
 	public static JoystickButton IntakeOut;
 	public static JoystickButton rightBumper;
@@ -48,8 +45,6 @@ public class OI {
 		BackwardButton.whenPressed(new SolenoidCommand());
 		
 		Joystick2 = new Joystick(1);
-		y = new JoystickButton(Joystick2, 4);
-		x = new JoystickButton(Joystick2, 3);
 		IntakeIn = new JoystickButton(Joystick2, 2);
 		IntakeOut = new JoystickButton(Joystick2, 1);
 		
@@ -61,11 +56,6 @@ public class OI {
 		
 		IntakeIn.whileHeld(new IntakeCommand());
 		IntakeOut.whileHeld(new IntakeCommand());
-		y.whileHeld(new LiftCommand());
-		y.whenReleased(new LiftCommand());
-		x.whileHeld(new LiftCommand());
-		x.whenReleased(new LiftCommand());
-		
 	}
 	
 	//// CREATING BUTTONS

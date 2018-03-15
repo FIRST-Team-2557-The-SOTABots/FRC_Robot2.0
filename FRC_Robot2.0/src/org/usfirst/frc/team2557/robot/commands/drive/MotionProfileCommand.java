@@ -1,15 +1,27 @@
-package org.usfirst.frc.team2557.robot.commands;
+package org.usfirst.frc.team2557.robot.commands.drive;
+
+import org.usfirst.frc.team2557.robot.Robot;
+import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import jaci.pathfinder.Trajectory;
+import jaci.pathfinder.modifiers.TankModifier;
 
 /**
  *
  */
-public class EncoderDistanceDriveCommand extends Command {
+public class MotionProfileCommand extends Command {
 
-    public EncoderDistanceDriveCommand() {
+    public MotionProfileCommand() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Robot.DriveSubsystem);
+    	
+    	// Wheelbase Width = 2ft
+        TankModifier modifier = new TankModifier(RobotMap.testPath).modify(2.0);
+
+        // Do something with the new Trajectories...
+        Trajectory left = modifier.getLeftTrajectory();
+        Trajectory right = modifier.getRightTrajectory();
     }
 
     // Called just before this Command runs the first time

@@ -1,15 +1,19 @@
-package org.usfirst.frc.team2557.robot.commands;
+package org.usfirst.frc.team2557.robot.commands.solenoid;
 
+import org.usfirst.frc.team2557.robot.Robot;
+import org.usfirst.frc.team2557.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class EncoderDistanceDriveCommand extends Command {
+public class SolenoidCommand extends Command {
 
-    public EncoderDistanceDriveCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    public SolenoidCommand() {
+    	requires(Robot.SolenoidSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -18,6 +22,7 @@ public class EncoderDistanceDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.SolenoidSubsystem.SolenoidMethod1();
     }
 
     // Make this return true when this Command no longer needs to run execute()
