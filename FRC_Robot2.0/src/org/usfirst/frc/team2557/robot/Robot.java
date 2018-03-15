@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2557.robot.commands.autonomous.GroupAutoCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.autonomous.GroupAutoCommandMid;
 import org.usfirst.frc.team2557.robot.commands.autonomous.GroupAutoCommandRight;
-import org.usfirst.frc.team2557.robot.commands.autonomous.GroupForward;
 import org.usfirst.frc.team2557.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
@@ -72,7 +71,6 @@ public class Robot extends TimedRobot {
 		m_chooser.addObject("Mid Auto", new GroupAutoCommandMid());
 		m_chooser.addObject("Left Auto", new GroupAutoCommandLeft());
 		m_chooser.addObject("Right Auto", new GroupAutoCommandRight());
-		m_chooser.addObject("Forward Auto", new GroupForward());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 

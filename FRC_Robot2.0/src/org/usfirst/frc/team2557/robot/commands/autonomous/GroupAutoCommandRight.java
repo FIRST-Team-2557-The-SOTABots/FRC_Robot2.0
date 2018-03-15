@@ -1,5 +1,8 @@
 package org.usfirst.frc.team2557.robot.commands.autonomous;
 
+import org.usfirst.frc.team2557.robot.commands.autonomous.segments.LeftScaleNoRightScale;
+import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScaleNoSwitch;
+import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightSwitch;
 import org.usfirst.frc.team2557.robot.commands.drive.EncoderDistanceDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.drive.TurnByAngleCommand;
 import org.usfirst.frc.team2557.robot.commands.intake.IntakeAutoCommand;
@@ -15,43 +18,9 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 public class GroupAutoCommandRight extends CommandGroup {
 
 	public GroupAutoCommandRight() {
-		String gameData;
-		gameData = DriverStation.getInstance().getGameSpecificMessage();
-		gameData = "LR";
-		if(gameData.length() > 0){
-			if(gameData.charAt(0) == 'R'){
-				addSequential(new LiftAutoCommand(2000));
-				addSequential(new IntakeAutoCommand(0.75, 0.6));
-				addParallel(new LiftAutoCommand(12000));
-				addSequential(new EncoderDistanceDriveCommand(-.8, 0, 2500)); // 2 == 2800
-				addSequential(new TurnByAngleCommand(-90));
-				addSequential(new EncoderDistanceDriveCommand(-.8, 0, 500)); // 3 == 1000
-				addSequential(new IntakeAutoCommand(3, -0.2));
-			} else {
-				if(gameData.charAt(1) == 'R') {
-					addSequential(new LiftAutoCommand(2000));
-					addSequential(new IntakeAutoCommand(0.75, 0.6));
-					addParallel(new LiftAutoCommand(38000));
-					addSequential(new EncoderDistanceDriveCommand(-.75, 0, 7500)); // 8 == 7600
-					addSequential(new TurnByAngleCommand(-90));
-					addSequential(new EncoderDistanceDriveCommand(-.8, 0, 175));
-//					addSequential(new TurnByAngleCommand(-35));
-//					addSequential(new WaitForChildren());
-//					addSequential(new EncoderDistanceDriveCommand(-.8, 0, 750));
-					addSequential(new IntakeAutoCommand(3, -0.2));
-				}else {
-					addSequential(new LiftAutoCommand(2000));
-					addSequential(new IntakeAutoCommand(0.75, 0.6));
-					addSequential(new EncoderDistanceDriveCommand(-.8, 0, 4500)); // 9 == 5200
-					addSequential(new TurnByAngleCommand(-90));
-					addSequential(new EncoderDistanceDriveCommand(-.8, 0, 4000)); // 5 == 3500
-					addParallel(new LiftAutoCommand(37500));
-					addSequential(new TurnByAngleCommand(90));
-					addSequential(new EncoderDistanceDriveCommand(-.8, 0, 500));
-					addSequential(new IntakeAutoCommand(3, -0.2));
-				}
-			}
-		}
+		
+		addSequential(new SwitchConditionalCommand(new RightSwitch(), new ScaleConditionalCommand(new RightScaleNoSwitch(), new LeftScaleNoRightScale(), true), true));
+		
 	}
 
 }
