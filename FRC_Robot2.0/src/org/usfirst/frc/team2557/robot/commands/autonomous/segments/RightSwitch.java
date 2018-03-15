@@ -16,9 +16,9 @@ public class RightSwitch extends CommandGroup {
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
 		addParallel(new LiftAutoCommand(12000));
-		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 2500)); // 2 == 2800
+		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 25000)); // 2 == 2800
 		addSequential(new TurnByAngleCommand(-90));
-		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 500)); // 3 == 1000
+		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 5000)); // 3 == 1000
 		addSequential(new IntakeAutoCommand(3, -0.2));
         // Add Commands here:
         // e.g. addSequential(new Command1());

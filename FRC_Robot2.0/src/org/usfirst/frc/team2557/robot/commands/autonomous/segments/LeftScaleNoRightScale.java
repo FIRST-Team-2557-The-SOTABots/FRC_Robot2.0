@@ -15,12 +15,12 @@ public class LeftScaleNoRightScale extends CommandGroup {
     public LeftScaleNoRightScale() {
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
-		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 4500)); // 9 == 5200
+		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 45000)); // 9 == 5200
 		addSequential(new TurnByAngleCommand(-90));
-		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 4000)); // 5 == 3500
+		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 40000)); // 5 == 3500
 		addParallel(new LiftAutoCommand(37500));
 		addSequential(new TurnByAngleCommand(90));
-		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 500));
+		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 5000));
 		addSequential(new IntakeAutoCommand(3, -0.2));
         // Add Commands here:
         // e.g. addSequential(new Command1());

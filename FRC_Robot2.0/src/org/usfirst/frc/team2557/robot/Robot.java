@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2557.robot.commands.autonomous.GroupAutoCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.autonomous.GroupAutoCommandMid;
 import org.usfirst.frc.team2557.robot.commands.autonomous.GroupAutoCommandRight;
+import org.usfirst.frc.team2557.robot.commands.autonomous.MotionProfileAuto;
 import org.usfirst.frc.team2557.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
@@ -34,8 +35,8 @@ public class Robot extends TimedRobot {
 		
 		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 		
-		SmartDashboard.putNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10);
-    	SmartDashboard.putNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10);
+		SmartDashboard.putNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition());
+    	SmartDashboard.putNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition());
     	
 		SmartDashboard.putBoolean("LiftHallEffect", RobotMap.liftHallEffect.get());
 	}
@@ -66,6 +67,7 @@ public class Robot extends TimedRobot {
 		m_chooser.addObject("Mid Auto", new GroupAutoCommandMid());
 		m_chooser.addObject("Left Auto", new GroupAutoCommandLeft());
 		m_chooser.addObject("Right Auto", new GroupAutoCommandRight());
+		m_chooser.addObject("Motion Profile Auto", new MotionProfileAuto());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 
