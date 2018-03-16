@@ -87,7 +87,7 @@ public class RobotMap {
 		MecDrive.setSafetyEnabled(false);
 		Gyro1 = new AHRS(SPI.Port.kMXP);
 		
-		Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 8.0, 5.0, 100.0);
+		Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 8, 5.0, 100.0);
 //        Waypoint[] points = new Waypoint[] {
 //        		// in feet
 //        		new Waypoint(-12, 0, 0),
@@ -118,7 +118,7 @@ public class RobotMap {
 //			e.printStackTrace();
 //		}
 		scaleForward = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/scaleForward.t"));
-		
+//		
 //		Waypoint[] pointsScale2 = new Waypoint[] {
 //        		// in feet
 //        		new Waypoint(-0.5, 0, 0),
@@ -164,20 +164,20 @@ public class RobotMap {
 //		}
         scaleForwardRight2 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/scaleForwardRight2.t"));
         
-        
-        Waypoint[] pointsSwitchMid = new Waypoint[] {
-        		// in feet
-        		new Waypoint(-6.5, 0, 0),
-                new Waypoint(0, 0, 0)
-        };
-        switchForwardMid = Pathfinder.generate(pointsSwitchMid, config);
-        File switchTrajectoryMid = new File("/home/lvuser/Trajectories/switchForwardMid.t");
-        try {
-			switchTrajectoryMid.createNewFile();
-			Pathfinder.writeToFile(switchTrajectoryMid, switchForwardMid);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//        
+//        Waypoint[] pointsSwitchMid = new Waypoint[] {
+//        		// in feet
+//        		new Waypoint(-6.5, 0, 0),
+//                new Waypoint(0, 0, 0)
+//        };
+//        switchForwardMid = Pathfinder.generate(pointsSwitchMid, config);
+//        File switchTrajectoryMid = new File("/home/lvuser/Trajectories/switchForwardMid.t");
+//        try {
+//			switchTrajectoryMid.createNewFile();
+//			Pathfinder.writeToFile(switchTrajectoryMid, switchForwardMid);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
         switchForwardMid = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/switchForwardMid.t"));
         
 		

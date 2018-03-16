@@ -39,7 +39,7 @@ public class MotionProfileCommand extends Command {
     	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
     	// max velocity 8.65 ft/s ? and kv = 1/max
-    	follower.configurePIDVA(0.95, 0, 0, 1.0/8.0, 0);
+    	follower.configurePIDVA(1.0, 0, 0, 1.0/10, 0);
 //    	follower.configureEncoder(0, 3413, 1.0/3.0);
     	follower.configureEncoder(0, 4100, 1.0/3.0);
     }
@@ -47,7 +47,7 @@ public class MotionProfileCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double power = follower.calculate(RobotMap.Right2.getSensorCollection().getQuadraturePosition());
-    	Robot.DriveSubsystem.DiffDrive(-power, RobotMap.Gyro1.getAngle()*0.5);
+    	Robot.DriveSubsystem.DiffDrive(-power, RobotMap.Gyro1.getAngle()*0.1);
     	SmartDashboard.putNumber("timer motion profile", t.get());
     	t.reset();
     }

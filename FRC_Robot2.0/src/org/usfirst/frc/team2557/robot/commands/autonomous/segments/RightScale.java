@@ -16,16 +16,25 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 public class RightScale extends CommandGroup {
 
     public RightScale() {
-    	addSequential(new LiftAutoCommand(2000));
+    	
+		addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
 		addParallel(new LiftAutoCommand(37500));
-		addSequential(new MotionProfileCommand(RobotMap.scaleForwardRight));
-		addSequential(new TurnByAngleCommand(7.5));
-		addSequential(new MotionProfileCommand(RobotMap.scaleForwardRight));
+		addSequential(new MotionProfileCommand(RobotMap.scaleForward));
 		addSequential(new WaitForChildren());
-		addSequential(new TurnByAngleCommand(-100.0));
-		addSequential(new MotionProfileCommand(RobotMap.scaleForwardRight2));
+		addSequential(new TurnByAngleCommand(-45));
+		addSequential(new MotionProfileCommand(RobotMap.scaleForward2));
 		addSequential(new IntakeAutoCommand(3, -0.4));
+//    	addSequential(new LiftAutoCommand(2000));
+//		addSequential(new IntakeAutoCommand(0.75, 0.6));
+//		addParallel(new LiftAutoCommand(37500));
+//		addSequential(new MotionProfileCommand(RobotMap.scaleForwardRight));
+//		addSequential(new TurnByAngleCommand(7.5));
+//		addSequential(new MotionProfileCommand(RobotMap.scaleForwardRight));
+//		addSequential(new WaitForChildren());
+//		addSequential(new TurnByAngleCommand(-100.0));
+//		addSequential(new MotionProfileCommand(RobotMap.scaleForwardRight2));
+//		addSequential(new IntakeAutoCommand(3, -0.4));
     	
 //    	addSequential(new LiftAutoCommand(2000));
 //		addSequential(new IntakeAutoCommand(0.75, 0.6));
