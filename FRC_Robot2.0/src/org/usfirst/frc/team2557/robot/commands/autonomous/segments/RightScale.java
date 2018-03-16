@@ -13,9 +13,9 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 /**
  *
  */
-public class RightScaleNoSwitch extends CommandGroup {
+public class RightScale extends CommandGroup {
 
-    public RightScaleNoSwitch() {
+    public RightScale() {
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
 		addParallel(new LiftAutoCommand(37500));

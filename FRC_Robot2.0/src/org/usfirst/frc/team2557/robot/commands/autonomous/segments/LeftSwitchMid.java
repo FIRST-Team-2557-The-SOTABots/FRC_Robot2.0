@@ -18,12 +18,7 @@ public class LeftSwitchMid extends CommandGroup {
     public LeftSwitchMid() { 
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
-//    	addSequential(new LiftAutoCommand(13000));
-    	
-//    	addSequential(new LiftAutoCommand(2000));
-//		addSequential(new IntakeAutoCommand(0.75, 0.6));
 		addSequential(new MotionProfileCommand(RobotMap.switchForwardMidLeft));
-//		addParallel(new LiftAutoCommand(12000));
 		addSequential(new TurnByAngleCommand(-90));
 		addSequential(new MotionProfileCommand(RobotMap.switchForwardMidLeft2));
 		addParallel(new LiftAutoCommand(13000));
