@@ -13,9 +13,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftSide_SwitchOnlyAutoCommand extends CommandGroup {
 
 	public LeftSide_SwitchOnlyAutoCommand() {
-		
 		addSequential(new SwitchConditionalCommand(new LeftSwitch(),new RightSwitchCrossover(), false));
-		
 	}
-
 }

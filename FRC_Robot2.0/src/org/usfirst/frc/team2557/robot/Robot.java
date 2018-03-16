@@ -71,16 +71,16 @@ public class Robot extends TimedRobot {
 
 		m_chooser.addDefault("Do Nothing", null);
 		m_chooser.addObject("Mid Switch", new MidSwitchAutoCommand());
-		m_chooser.addObject("Left Side Switch & Scale, Prioritise Switch", new LeftSwitchPriorityAutoCommand());
-		m_chooser.addObject("Right Side Switch & Scale, Prioritise Switch", new RightSwitchPriorityAutoCommand());
-		m_chooser.addObject("Left Side Switch & Scale, Prioritise Scale", new LeftScalePriorityAutoCommand());
-		m_chooser.addObject("Right Side Switch & Scale, Prioritise Scale", new RightScalePriorityAutoCommand());
-		m_chooser.addObject("Left Side, Switch only", new LeftSide_SwitchOnlyAutoCommand());
-		m_chooser.addObject("Right Side, Switch only", new RightSide_SwitchOnlyAutoCommand());
-//		m_chooser.addObject("Left Side, Scale only", new LeftSide_ScaleOnlyAutoCommand());
-//		m_chooser.addObject("Right Side, Scale only", new RightSide_ScaleOnlyAutoCommand());
-		m_chooser.addObject("Right End", new RightEnd());
-		m_chooser.addObject("Left End", new LeftEnd());
+		m_chooser.addObject("Left Side Switch & Scale, Prioritise Switch, with crossover", new LeftSwitchPriorityAutoCommand());
+		m_chooser.addObject("Right Side Switch & Scale, Prioritise Switch with crossover", new RightSwitchPriorityAutoCommand());
+		m_chooser.addObject("Left Side Switch & Scale, Prioritise Scale with crossover", new LeftScalePriorityAutoCommand());
+		m_chooser.addObject("Right Side Switch & Scale, Prioritise Scale with crossover", new RightScalePriorityAutoCommand());
+		m_chooser.addObject("Left Side, Switch only with crossover", new LeftSide_SwitchOnlyAutoCommand());
+		m_chooser.addObject("Right Side, Switch only with crossover", new RightSide_SwitchOnlyAutoCommand());
+		m_chooser.addObject("Left Side, Scale only with crossover", new LeftSide_ScaleOnlyAutoCommand());
+		m_chooser.addObject("Right Side, Scale only with crossover", new RightSide_ScaleOnlyAutoCommand());
+		m_chooser.addObject("Right to Left Crossover and stop", new RightEnd());
+		m_chooser.addObject("Left to Right Crossover and stop", new LeftEnd());
 		m_chooser.addObject("Forward Only", new GroupAutoCommandForward());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
