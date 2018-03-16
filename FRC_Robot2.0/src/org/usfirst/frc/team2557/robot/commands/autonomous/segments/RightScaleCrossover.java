@@ -10,13 +10,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LeftScaleNoRightScale extends CommandGroup {
+public class RightScaleCrossover extends CommandGroup {
 
-    public LeftScaleNoRightScale() {
+    public RightScaleCrossover() {
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
-		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 45000)); // 9 == 5200
-		addSequential(new TurnByAngleCommand(-90));
+		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 42000)); // 9 == 5200
+		addSequential(new TurnByAngleCommand(90));
 		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 40000)); // 5 == 3500
 		addParallel(new LiftAutoCommand(37500));
 		addSequential(new TurnByAngleCommand(-90));

@@ -23,7 +23,8 @@ public class LeftSwitch extends CommandGroup {
     	addSequential(new MotionProfileCommand(RobotMap.switchForward));
     	addSequential(new WaitForChildren());
 		addSequential(new TurnByAngleCommand(90));
-		addSequential(new EncoderDistanceDriveCommand(-.6, 0, 500)); // 3 == 1000
-		addSequential(new IntakeAutoCommand(3, -0.2));
+//		addSequential(new EncoderDistanceDriveCommand(-.6, 0, 1000)); // 3 == 1000
+		addSequential(new MotionProfileCommand(RobotMap.scaleForward2));
+		addSequential(new IntakeAutoCommand(3, -0.4));
     }
 }

@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2557.robot.commands.autonomous;
 
-import org.usfirst.frc.team2557.robot.commands.autonomous.segments.LeftStartRightEnd;
+import org.usfirst.frc.team2557.robot.commands.autonomous.segments.LeftCrossover;
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.LeftSwitch;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -12,7 +12,7 @@ public class RightEnd extends CommandGroup {
 
     public RightEnd() {
     	
-    	addSequential(new ScaleConditionalCommand(new LeftSwitch(), new LeftStartRightEnd(), false));
+    	addSequential(new ScaleConditionalCommand(new LeftSwitch(), new LeftCrossover(), false));
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

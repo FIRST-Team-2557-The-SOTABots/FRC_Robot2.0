@@ -10,9 +10,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LeftStartRightEnd extends CommandGroup {
+public class RightCrossover extends CommandGroup {
 
-    public LeftStartRightEnd() {
+    public RightCrossover() {
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
 		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 42000)); // 9 == 5200
