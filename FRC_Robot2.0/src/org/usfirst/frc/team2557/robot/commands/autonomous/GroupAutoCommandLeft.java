@@ -13,7 +13,7 @@ public class GroupAutoCommandLeft extends CommandGroup {
 
 	public GroupAutoCommandLeft() {
 		
-		addSequential(new SwitchConditionalCommand(new LeftSwitch(), new ScaleConditionalCommand(new LeftScaleNoSwitch(), new RightScaleNoLeftScale(), true), true));
+		addSequential(new SwitchConditionalCommand(new LeftSwitch(), new ScaleConditionalCommand(new LeftScaleNoSwitch(), new RightScaleNoLeftScale(), false), false));
 		
 	}
 
