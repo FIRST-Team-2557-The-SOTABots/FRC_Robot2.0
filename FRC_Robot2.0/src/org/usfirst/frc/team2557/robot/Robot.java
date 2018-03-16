@@ -1,11 +1,13 @@
 package org.usfirst.frc.team2557.robot;
 
 import org.usfirst.frc.team2557.robot.commands.autonomous.GroupAutoCommandForward;
+import org.usfirst.frc.team2557.robot.commands.autonomous.LeftEnd;
 import org.usfirst.frc.team2557.robot.commands.autonomous.LeftScalePriorityAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.LeftSide_ScaleOnlyAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.LeftSide_SwitchOnlyAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.LeftSwitchPriorityAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.MidSwitchAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.autonomous.RightEnd;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightScalePriorityAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSide_ScaleOnlyAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSide_SwitchOnlyAutoCommand;
@@ -77,6 +79,8 @@ public class Robot extends TimedRobot {
 		m_chooser.addObject("Right Side, Switch only", new RightSide_SwitchOnlyAutoCommand());
 		m_chooser.addObject("Left Side, Scale only", new LeftSide_ScaleOnlyAutoCommand());
 		m_chooser.addObject("Right Side, Scale only", new RightSide_ScaleOnlyAutoCommand());
+		m_chooser.addObject("Right End", new RightEnd());
+		m_chooser.addObject("Left End", new LeftEnd());
 		m_chooser.addObject("Forward Only", new GroupAutoCommandForward());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}

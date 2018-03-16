@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2557.robot.commands.autonomous;
 
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.LeftScaleNoRightScale;
-import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScaleNoSwitch;
+import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScale;
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightSwitch;
 import org.usfirst.frc.team2557.robot.commands.drive.EncoderDistanceDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.drive.TurnByAngleCommand;
@@ -19,7 +19,7 @@ public class RightSwitchPriorityAutoCommand extends CommandGroup {
 
 	public RightSwitchPriorityAutoCommand() {
 		
-		addSequential(new SwitchConditionalCommand(new RightSwitch(), new ScaleConditionalCommand(new RightScaleNoSwitch(), new LeftScaleNoRightScale(), true), true));
+		addSequential(new SwitchConditionalCommand(new RightSwitch(), new ScaleConditionalCommand(new RightScale(), new LeftScaleNoRightScale(), true), true));
 		
 	}
 

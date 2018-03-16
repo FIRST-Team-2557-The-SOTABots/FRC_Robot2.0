@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2557.robot.commands.autonomous;
 
-import org.usfirst.frc.team2557.robot.commands.autonomous.segments.LeftScaleNoSwitch;
+import org.usfirst.frc.team2557.robot.commands.autonomous.segments.LeftScale;
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.LeftSwitch;
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScaleNoLeftScale;
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightSwitchNoSwitch;

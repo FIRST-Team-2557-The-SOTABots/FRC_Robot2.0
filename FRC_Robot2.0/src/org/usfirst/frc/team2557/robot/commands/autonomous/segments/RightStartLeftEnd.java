@@ -10,18 +10,15 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LeftScaleNoRightScale extends CommandGroup {
+public class RightStartLeftEnd extends CommandGroup {
 
-    public LeftScaleNoRightScale() {
+    public RightStartLeftEnd() {
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
-		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 45000)); // 9 == 5200
-		addSequential(new TurnByAngleCommand(-90));
-		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 40000)); // 5 == 3500
+		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 42000)); // 9 == 5200
+		addSequential(new TurnByAngleCommand(90));
 		addParallel(new LiftAutoCommand(37500));
-		addSequential(new TurnByAngleCommand(-90));
-		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 5000));
-		addSequential(new IntakeAutoCommand(3, -0.2));
+		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 40000)); // 5 == 3500
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
