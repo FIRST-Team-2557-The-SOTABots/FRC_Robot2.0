@@ -1,19 +1,27 @@
 package org.usfirst.frc.team2557.robot;
 
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
+import org.usfirst.frc.team2557.robot.commands.autonomous.GroupAutoCommandForward;
+import org.usfirst.frc.team2557.robot.commands.autonomous.LeftScalePriorityAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.autonomous.LeftSide_ScaleOnlyAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.autonomous.LeftSide_SwitchOnlyAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.autonomous.LeftSwitchPriorityAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.autonomous.MidSwitchAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.autonomous.RightScalePriorityAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.autonomous.RightSide_ScaleOnlyAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.autonomous.RightSide_SwitchOnlyAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.autonomous.RightSwitchPriorityAutoCommand;
+import org.usfirst.frc.team2557.robot.subsystems.DriveSubsystem;
+import org.usfirst.frc.team2557.robot.subsystems.IntakeSubsystem;
+import org.usfirst.frc.team2557.robot.subsystems.LiftSubsystem;
+import org.usfirst.frc.team2557.robot.subsystems.SolenoidSubsystem;
+import org.usfirst.frc.team2557.robot.subsystems.WingSubsystem;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team2557.robot.commands.autonomous.GroupAutoCommandForward;
-import org.usfirst.frc.team2557.robot.commands.autonomous.GroupAutoCommandLeft;
-import org.usfirst.frc.team2557.robot.commands.autonomous.GroupAutoCommandMid;
-import org.usfirst.frc.team2557.robot.commands.autonomous.GroupAutoCommandRight;
-import org.usfirst.frc.team2557.robot.subsystems.*;
 
 public class Robot extends TimedRobot {
 	public static OI oi;
@@ -60,10 +68,16 @@ public class Robot extends TimedRobot {
 		oi.OIInit();
 
 		m_chooser.addDefault("Do Nothing", null);
-		m_chooser.addObject("Mid Auto", new GroupAutoCommandMid());
-		m_chooser.addObject("Left Auto", new GroupAutoCommandLeft());
-		m_chooser.addObject("Right Auto", new GroupAutoCommandRight());
-		m_chooser.addObject("Baseline Auto", new GroupAutoCommandForward());
+		m_chooser.addObject("Mid Switch", new MidSwitchAutoCommand());
+		m_chooser.addObject("Left Side Switch & Scale, Prioritise Switch", new LeftSwitchPriorityAutoCommand());
+		m_chooser.addObject("Right Side Switch & Scale, Prioritise Switch", new RightSwitchPriorityAutoCommand());
+		m_chooser.addObject("Left Side Switch & Scale, Prioritise Scale", new LeftScalePriorityAutoCommand());
+		m_chooser.addObject("Right Side Switch & Scale, Prioritise Scale", new RightScalePriorityAutoCommand());
+		m_chooser.addObject("Left Side, Switch only", new LeftSide_SwitchOnlyAutoCommand());
+		m_chooser.addObject("Right Side, Switch only", new RightSide_SwitchOnlyAutoCommand());
+		m_chooser.addObject("Left Side, Scale only", new LeftSide_ScaleOnlyAutoCommand());
+		m_chooser.addObject("Right Side, Scale only", new RightSide_ScaleOnlyAutoCommand());
+		m_chooser.addObject("Forward Only", new GroupAutoCommandForward());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 

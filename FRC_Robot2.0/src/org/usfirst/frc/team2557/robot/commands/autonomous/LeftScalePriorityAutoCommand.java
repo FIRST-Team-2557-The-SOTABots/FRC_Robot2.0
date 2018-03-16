@@ -9,12 +9,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class GroupAutoCommandLeft extends CommandGroup {
+public class LeftScalePriorityAutoCommand extends CommandGroup {
 
-	public GroupAutoCommandLeft() {
+	public LeftScalePriorityAutoCommand() {
 		
-		addSequential(new SwitchConditionalCommand(new LeftSwitch(), new ScaleConditionalCommand(new LeftScaleNoSwitch(), new RightScaleNoLeftScale(), false), false));
-		
+		addSequential(new ScaleConditionalCommand(new LeftScaleNoSwitch(), new SwitchConditionalCommand(new LeftSwitch(), new RightScaleNoLeftScale(), false), false));
 	}
 
 }

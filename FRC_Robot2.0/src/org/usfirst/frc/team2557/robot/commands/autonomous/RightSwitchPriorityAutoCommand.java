@@ -15,9 +15,9 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 /**
  *
  */
-public class GroupAutoCommandRight extends CommandGroup {
+public class RightSwitchPriorityAutoCommand extends CommandGroup {
 
-	public GroupAutoCommandRight() {
+	public RightSwitchPriorityAutoCommand() {
 		
 		addSequential(new SwitchConditionalCommand(new RightSwitch(), new ScaleConditionalCommand(new RightScaleNoSwitch(), new LeftScaleNoRightScale(), true), true));
 		
