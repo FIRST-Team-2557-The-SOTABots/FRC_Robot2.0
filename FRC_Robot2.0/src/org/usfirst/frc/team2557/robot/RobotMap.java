@@ -65,6 +65,9 @@ public class RobotMap {
 	public static Trajectory scaleForwardRight;
 	public static Trajectory scaleForwardRight2;
 	public static Trajectory switchForwardMid;
+	public static Trajectory switchForwardMidLeft;
+	public static Trajectory switchForwardMidLeft2;
+	public static Trajectory switchForwardMidLeft3;
 	
 	// CTRE Modules
 	public static PowerDistributionPanel pdp;
@@ -165,20 +168,65 @@ public class RobotMap {
         scaleForwardRight2 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/scaleForwardRight2.t"));
         
         
-        Waypoint[] pointsSwitchMid = new Waypoint[] {
-        		// in feet
-        		new Waypoint(-6.5, 0, 0),
-                new Waypoint(0, 0, 0)
-        };
-        switchForwardMid = Pathfinder.generate(pointsSwitchMid, config);
-        File switchTrajectoryMid = new File("/home/lvuser/Trajectories/switchForwardMid.t");
-        try {
-			switchTrajectoryMid.createNewFile();
-			Pathfinder.writeToFile(switchTrajectoryMid, switchForwardMid);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//        Waypoint[] pointsSwitchMid = new Waypoint[] {
+//        		// in feet
+//        		new Waypoint(-6.8, 0, 0),
+//                new Waypoint(0, 0, 0)
+//        };
+//        switchForwardMid = Pathfinder.generate(pointsSwitchMid, config);
+//        File switchTrajectoryMid = new File("/home/lvuser/Trajectories/switchForwardMid.t");
+//        try {
+//			switchTrajectoryMid.createNewFile();
+//			Pathfinder.writeToFile(switchTrajectoryMid, switchForwardMid);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
         switchForwardMid = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/switchForwardMid.t"));
+        
+//        Waypoint[] pointsSwitchMidLeft = new Waypoint[] {
+//        		// in feet
+//        		new Waypoint(-3.0, 0, 0),
+//                new Waypoint(0, 0, 0)
+//        };
+//        switchForwardMidLeft = Pathfinder.generate(pointsSwitchMidLeft, config);
+//        File switchTrajectoryMidLeft = new File("/home/lvuser/Trajectories/switchForwardMidLeft.t");
+//        try {
+//			switchTrajectoryMidLeft.createNewFile();
+//			Pathfinder.writeToFile(switchTrajectoryMidLeft, switchForwardMidLeft);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+        switchForwardMidLeft = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/switchForwardMidLeft.t"));
+        
+//        Waypoint[] pointsSwitchMidLeft2 = new Waypoint[] {
+//        		// in feet
+//        		new Waypoint(-7.0, 0, 0),
+//                new Waypoint(0, 0, 0)
+//        };
+//        switchForwardMidLeft2 = Pathfinder.generate(pointsSwitchMidLeft2, config);
+//        File switchTrajectoryMidLeft2 = new File("/home/lvuser/Trajectories/switchForwardMidLeft2.t");
+//        try {
+//			switchTrajectoryMidLeft2.createNewFile();
+//			Pathfinder.writeToFile(switchTrajectoryMidLeft2, switchForwardMidLeft2);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+        switchForwardMidLeft2 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/switchForwardMidLeft2.t"));
+        
+//        Waypoint[] pointsSwitchMidLeft3 = new Waypoint[] {
+//        		// in feet
+//        		new Waypoint(-2.2, 0, 0),
+//                new Waypoint(0, 0, 0)
+//        };
+//        switchForwardMidLeft3 = Pathfinder.generate(pointsSwitchMidLeft3, config);
+//        File switchTrajectoryMidLeft3 = new File("/home/lvuser/Trajectories/switchForwardMidLeft3.t");
+//        try {
+//			switchTrajectoryMidLeft3.createNewFile();
+//			Pathfinder.writeToFile(switchTrajectoryMidLeft3, switchForwardMidLeft3);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+        switchForwardMidLeft3 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/switchForwardMidLeft3.t"));
         
 		
 		// Intake

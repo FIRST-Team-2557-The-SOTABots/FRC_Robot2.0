@@ -23,6 +23,6 @@ public class RightSwitch extends CommandGroup {
     	addSequential(new WaitForChildren());
 		addSequential(new TurnByAngleCommand(-90));
 		addSequential(new EncoderDistanceDriveCommand(-.6, 0, 1000)); // 3 == 1000
-		addSequential(new IntakeAutoCommand(3, -0.2));
+		addSequential(new IntakeAutoCommand(3, -0.4));
     }
 }
