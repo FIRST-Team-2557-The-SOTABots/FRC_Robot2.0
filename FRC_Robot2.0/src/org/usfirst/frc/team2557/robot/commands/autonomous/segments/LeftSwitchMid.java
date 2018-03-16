@@ -15,7 +15,7 @@ public class LeftSwitchMid extends CommandGroup {
     public LeftSwitchMid() {
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(075, 0.6));
-		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 30000));
+		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 15000));
 		addParallel(new LiftAutoCommand(12000));
 		addSequential(new TurnByAngleCommand(-90));
 		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 30000));
