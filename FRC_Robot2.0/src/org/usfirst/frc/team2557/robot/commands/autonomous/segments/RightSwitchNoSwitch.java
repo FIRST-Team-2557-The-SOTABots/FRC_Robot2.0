@@ -23,7 +23,7 @@ public class RightSwitchNoSwitch extends CommandGroup {
 		addSequential(new TurnByAngleCommand(7.5));
 		addSequential(new MotionProfileCommand(RobotMap.scaleForwardRight));
 		addSequential(new WaitForChildren());
-		addSequential(new TurnByAngleCommand(-100.0));
+		addSequential(new TurnByAngleCommand(100.0));
 		addSequential(new MotionProfileCommand(RobotMap.scaleForwardRight2));
 		addSequential(new IntakeAutoCommand(3, -0.4));
     	
