@@ -3,7 +3,7 @@ package org.usfirst.frc.team2557.robot.commands.autonomous;
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.LeftScale;
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.LeftSwitch;
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScaleNoLeftScale;
-import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightSwitchNoSwitch;
+import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightSwitchNoLeftSwitch;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -14,7 +14,7 @@ public class LeftSide_SwitchOnlyAutoCommand extends CommandGroup {
 
 	public LeftSide_SwitchOnlyAutoCommand() {
 		
-		addSequential(new SwitchConditionalCommand(new LeftSwitch(),new RightSwitchNoSwitch(), false));
+		addSequential(new SwitchConditionalCommand(new LeftSwitch(),new RightSwitchNoLeftSwitch(), false));
 		
 	}
 
