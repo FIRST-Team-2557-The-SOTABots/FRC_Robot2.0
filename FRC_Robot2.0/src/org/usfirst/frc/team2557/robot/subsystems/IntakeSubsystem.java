@@ -2,6 +2,7 @@ package org.usfirst.frc.team2557.robot.subsystems;
 
 import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.RobotMap;
+import org.usfirst.frc.team2557.robot.commands.intake.IntakeCommand;
 import org.usfirst.frc.team2557.robot.commands.intake.IntakeCommandWithAxis;
 
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -61,12 +62,15 @@ public class IntakeSubsystem extends Subsystem {
 	public void IntakeWithAxis(){
     	double axis;
     	axis = OI.Joystick2.getRawAxis(5);
+    	
+		double axisRight2 = OI.Joystick2.getRawAxis(3);		
+		double axisLeft2 = OI.Joystick2.getRawAxis(2);
 		
-//		SmartDashboard.putNumber("TriggerLeft2", axisLeft);
-//		SmartDashboard.putNumber("TriggerRight2", axisRight);
-		
+		SmartDashboard.putNumber("TriggerLeft2", axisLeft2);
+		SmartDashboard.putNumber("TriggerRight2", axisRight2);
 		RobotMap.IntakeR.set(axis);
 		RobotMap.IntakeL.set(-axis);
+
 	}
 
     // Put methods for controlling this subsystem
@@ -75,7 +79,7 @@ public class IntakeSubsystem extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new IntakeCommandWithAxis());
+    	setDefaultCommand(new IntakeCommand());
     }
 }
 
