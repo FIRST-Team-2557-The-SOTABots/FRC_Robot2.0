@@ -30,7 +30,7 @@ public class EncoderDistanceDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.DriveSubsystem.DiffDrive(speed, RobotMap.Gyro1.getAngle()*0.5);
+    	Robot.DriveSubsystem.DiffDrive(speed*0.8, RobotMap.Gyro1.getAngle()*0.1);
     }
 
     // Make this return true when this Command no longer needs to run execute()

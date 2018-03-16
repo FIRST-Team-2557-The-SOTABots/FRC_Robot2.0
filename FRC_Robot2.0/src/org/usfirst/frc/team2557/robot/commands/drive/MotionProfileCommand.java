@@ -46,7 +46,7 @@ public class MotionProfileCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double power = follower.calculate(RobotMap.Right2.getSensorCollection().getQuadraturePosition());
-    	Robot.DriveSubsystem.DiffDrive(-power, RobotMap.Gyro1.getAngle()*0.2);
+    	Robot.DriveSubsystem.DiffDrive(-power, RobotMap.Gyro1.getAngle()*0.1);
     	SmartDashboard.putNumber("timer motion profile", t.get());
     	t.reset();
     }
