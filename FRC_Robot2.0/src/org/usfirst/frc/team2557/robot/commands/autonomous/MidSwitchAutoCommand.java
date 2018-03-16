@@ -10,9 +10,9 @@ import org.usfirst.frc.team2557.robot.commands.lift.LiftAutoCommand;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class GroupAutoCommandMid extends CommandGroup {
+public class MidSwitchAutoCommand extends CommandGroup {
 
-	public GroupAutoCommandMid() {
+	public MidSwitchAutoCommand() {
 		
 		addSequential(new SwitchConditionalCommand(new RightSwitchMid(), new LeftSwitchMid(), true));
 		

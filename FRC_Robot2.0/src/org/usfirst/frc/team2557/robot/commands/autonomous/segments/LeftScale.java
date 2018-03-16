@@ -13,16 +13,16 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 /**
  *
  */
-public class RightSwitch extends CommandGroup {
+public class LeftScale extends CommandGroup {
 
-    public RightSwitch() {
-    	addSequential(new LiftAutoCommand(2000));
+    public LeftScale() {
+		addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
-		addParallel(new LiftAutoCommand(13000));
-    	addSequential(new MotionProfileCommand(RobotMap.switchForward));
-    	addSequential(new WaitForChildren());
-		addSequential(new TurnByAngleCommand(-90));
-		addSequential(new EncoderDistanceDriveCommand(-.6, 0, 1000)); // 3 == 1000
-		addSequential(new IntakeAutoCommand(3, -0.2));
+		addParallel(new LiftAutoCommand(37500));
+		addSequential(new MotionProfileCommand(RobotMap.scaleForward));
+		addSequential(new WaitForChildren());
+		addSequential(new TurnByAngleCommand(45));
+		addSequential(new MotionProfileCommand(RobotMap.scaleForward2));
+		addSequential(new IntakeAutoCommand(3, -0.4));
     }
 }

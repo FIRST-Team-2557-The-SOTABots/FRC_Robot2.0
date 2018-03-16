@@ -6,22 +6,19 @@ import org.usfirst.frc.team2557.robot.commands.intake.IntakeAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.lift.LiftAutoCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.command.WaitForChildren;
 
 /**
  *
  */
-public class LeftScaleNoSwitch extends CommandGroup {
+public class LeftStartRightEnd extends CommandGroup {
 
-    public LeftScaleNoSwitch() {
-		addSequential(new LiftAutoCommand(2000));
+    public LeftStartRightEnd() {
+    	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
+		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 42000)); // 9 == 5200
+		addSequential(new TurnByAngleCommand(90));
 		addParallel(new LiftAutoCommand(37500));
-		addSequential(new EncoderDistanceDriveCommand(-.75, 0, 62000)); // 8 == 7600
-		addSequential(new TurnByAngleCommand(45));
-		addSequential(new WaitForChildren());
-		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 7500));
-		addSequential(new IntakeAutoCommand(3, -0.2));
+		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 40000)); // 5 == 3500
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

@@ -6,26 +6,19 @@ import org.usfirst.frc.team2557.robot.commands.intake.IntakeAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.lift.LiftAutoCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.command.WaitForChildren;
 
 /**
  *
  */
-public class RightScaleNoSwitch extends CommandGroup {
+public class RightStartLeftEnd extends CommandGroup {
 
-    public RightScaleNoSwitch() {
+    public RightStartLeftEnd() {
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
-		addParallel(new LiftAutoCommand(38000));
-		addSequential(new EncoderDistanceDriveCommand(-.75, 0, 20000)); // 8 == 7600
-		addSequential(new TurnByAngleCommand(10));
-		addSequential(new EncoderDistanceDriveCommand(-.75, 0, 50000));
-//		addSequential(new TurnByAngleCommand(-90));
-//		addSequential(new WaitForChildren());					
-		addSequential(new TurnByAngleCommand(-65));
-		addSequential(new WaitForChildren());
-//		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 750));
-		addSequential(new IntakeAutoCommand(1, -0.4));
+		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 42000)); // 9 == 5200
+		addSequential(new TurnByAngleCommand(90));
+		addParallel(new LiftAutoCommand(37500));
+		addSequential(new EncoderDistanceDriveCommand(-.8, 0, 40000)); // 5 == 3500
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

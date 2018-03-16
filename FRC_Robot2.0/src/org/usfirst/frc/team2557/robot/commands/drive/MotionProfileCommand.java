@@ -15,10 +15,8 @@ import jaci.pathfinder.modifiers.TankModifier;
  */
 public class MotionProfileCommand extends Command {
 	Timer t;
-	Trajectory left;
-	Trajectory right;
-	EncoderFollower rightFollower;
-	EncoderFollower leftFollower;
+	Trajectory trajectory;
+	EncoderFollower follower;
 
     public MotionProfileCommand(Trajectory trajectory) {
     	t = new Timer();
@@ -26,46 +24,36 @@ public class MotionProfileCommand extends Command {
         requires(Robot.DriveSubsystem);
     	
     	// Wheelbase Width = 2ft
-        TankModifier modifier = new TankModifier(trajectory).modify(0.572);
-
         // Do something with the new Trajectories...
-        left = modifier.getLeftTrajectory();
-        right = modifier.getRightTrajectory();
+        this.trajectory = trajectory;
         
-        rightFollower = new EncoderFollower(right);
-        leftFollower = new EncoderFollower(left);
+        follower = new EncoderFollower(trajectory);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	RobotMap.Gyro1.reset();
     	t.reset();
     	t.start();
-    	rightFollower.reset();
-    	leftFollower.reset();
+    	follower.reset();
     	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
-    	// max velocity 8.65 ft/s and kv = 1/max
-    	rightFollower.configurePIDVA(0.8, 0, 0, 1.0/8.65, 0);
-    	leftFollower.configurePIDVA(0.8, 0, 0, 1.0/8.65, 0);
-    	rightFollower.configureEncoder(0, 3413, 1.0/3.0);
-    	leftFollower.configureEncoder(0, 3413, 1.0/3.0);
+    	// max velocity 8.65 ft/s ? and kv = 1/max
+    	follower.configurePIDVA(0.95, 0, 0, 1.0/8.0, 0);
+    	follower.configureEncoder(0, 3413, 1.0/3.0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double rightPower = rightFollower.calculate(RobotMap.Right2.getSensorCollection().getQuadraturePosition());
-    	double leftPower = leftFollower.calculate(-RobotMap.Left2.getSensorCollection().getQuadraturePosition());
-    	RobotMap.Right2.set(rightPower);
-    	RobotMap.Right1.set(rightPower);
-    	RobotMap.Left1.set(-leftPower);
-    	RobotMap.Left2.set(-leftPower);
+    	double power = follower.calculate(RobotMap.Right2.getSensorCollection().getQuadraturePosition());
+    	Robot.DriveSubsystem.DiffDrive(-power, RobotMap.Gyro1.getAngle()*0.5);
     	SmartDashboard.putNumber("timer motion profile", t.get());
     	t.reset();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(rightFollower.isFinished() && leftFollower.isFinished()){
+    	if(follower.isFinished()){
     		return true;
     	}
         return false;
@@ -73,10 +61,7 @@ public class MotionProfileCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	RobotMap.Right2.set(0);
-    	RobotMap.Right1.set(0);
-    	RobotMap.Left1.set(0);
-    	RobotMap.Left2.set(0);
+    	Robot.DriveSubsystem.DiffDrive(0,0);
     	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
     }
@@ -84,5 +69,6 @@ public class MotionProfileCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	this.end();
     }
 }
