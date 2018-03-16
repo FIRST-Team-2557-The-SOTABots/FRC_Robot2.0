@@ -18,15 +18,12 @@ public class LeftSwitchCrossover extends CommandGroup {
     public LeftSwitchCrossover() {
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
-		addSequential(new MotionProfileCommand(RobotMap.pastSwitch));
+		addSequential(new MotionProfileCommand(RobotMap.drive10));
 		addSequential(new TurnByAngleCommand(-90));
-		addParallel(new LiftAutoCommand(13000));
-		addSequential(new MotionProfileCommand(RobotMap.pastSwitch));
+		addParallel(new LiftAutoCommand(16000));
+		addSequential(new MotionProfileCommand(RobotMap.drive11));
 		addSequential(new WaitForChildren());
 		addSequential(new TurnByAngleCommand(-90.0));
-		addSequential(new MotionProfileCommand(RobotMap.crossover2feet));
-		addSequential(new TurnByAngleCommand(-90.0));
-//		addSequential(new MotionProfileCommand(RobotMap.scaleForwardRight2));
 		addSequential(new IntakeAutoCommand(3, -0.4));
     }
 }

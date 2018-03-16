@@ -18,7 +18,7 @@ public class RightSwitchMid extends CommandGroup {
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
     	addSequential(new LiftAutoCommand(13000));
-		addSequential(new MotionProfileCommand(RobotMap.switchForwardMid));
+		addSequential(new MotionProfileCommand(RobotMap.drive2));
 		addSequential(new IntakeAutoCommand(3, -0.4));
     }
 }

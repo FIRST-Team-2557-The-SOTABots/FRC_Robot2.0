@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2557.robot;
 
-import org.usfirst.frc.team2557.robot.commands.autonomous.GroupAutoCommandForward;
+import org.usfirst.frc.team2557.robot.commands.autonomous.ForwardAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.LeftEnd;
 import org.usfirst.frc.team2557.robot.commands.autonomous.LeftScalePriorityAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.LeftSide_ScaleOnlyAutoCommand;
@@ -81,7 +81,7 @@ public class Robot extends TimedRobot {
 		m_chooser.addObject("Right Side, Scale only with crossover", new RightSide_ScaleOnlyAutoCommand());
 		m_chooser.addObject("Right to Left Crossover and stop", new RightEnd());
 		m_chooser.addObject("Left to Right Crossover and stop", new LeftEnd());
-		m_chooser.addObject("Forward Only", new GroupAutoCommandForward());
+		m_chooser.addObject("Forward Only", new ForwardAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 

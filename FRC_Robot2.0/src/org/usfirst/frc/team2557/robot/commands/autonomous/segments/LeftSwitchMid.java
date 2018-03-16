@@ -18,13 +18,13 @@ public class LeftSwitchMid extends CommandGroup {
     public LeftSwitchMid() { 
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
-		addSequential(new MotionProfileCommand(RobotMap.switchForwardMidLeft));
+		addSequential(new MotionProfileCommand(RobotMap.drive3));
 		addSequential(new TurnByAngleCommand(-90));
-		addSequential(new MotionProfileCommand(RobotMap.switchForwardMidLeft2));
+		addSequential(new MotionProfileCommand(RobotMap.drive4));
 		addParallel(new LiftAutoCommand(13000));
 		addSequential(new TurnByAngleCommand(90));
 		addSequential(new WaitForChildren());
-		addSequential(new MotionProfileCommand(RobotMap.switchForwardMidLeft3));
+		addSequential(new MotionProfileCommand(RobotMap.drive5));
 		addSequential(new IntakeAutoCommand(3, -0.4));
     }
 }
