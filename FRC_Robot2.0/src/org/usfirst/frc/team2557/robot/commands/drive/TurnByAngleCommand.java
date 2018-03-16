@@ -34,7 +34,7 @@ public class TurnByAngleCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Math.abs(RobotMap.Gyro1.getAngle()-angle) < 5){
+    	if(Math.abs(RobotMap.Gyro1.getAngle()-angle) < 1.0){
     		return true;
     	}
         return false;
@@ -48,5 +48,6 @@ public class TurnByAngleCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	this.end();
     }
 }
