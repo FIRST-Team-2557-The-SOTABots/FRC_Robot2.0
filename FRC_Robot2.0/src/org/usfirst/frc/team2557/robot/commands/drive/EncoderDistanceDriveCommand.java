@@ -24,18 +24,18 @@ public class EncoderDistanceDriveCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	RobotMap.Gyro1.reset();
-    	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 1000);
-    	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 1000);
+    	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
+    	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.DriveSubsystem.DiffDrive(speed, RobotMap.Gyro1.getAngle()*0.8);
+    	Robot.DriveSubsystem.DiffDrive(speed, RobotMap.Gyro1.getAngle()*0.2);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if((-RobotMap.Left2.getSensorCollection().getQuadraturePosition()/10 > distance) && (RobotMap.Right2.getSensorCollection().getQuadraturePosition()/10 > distance)) {
+    	if((-RobotMap.Left2.getSensorCollection().getQuadraturePosition() > distance) && (RobotMap.Right2.getSensorCollection().getQuadraturePosition() > distance)) {
     		return true;
     	}
         return false;

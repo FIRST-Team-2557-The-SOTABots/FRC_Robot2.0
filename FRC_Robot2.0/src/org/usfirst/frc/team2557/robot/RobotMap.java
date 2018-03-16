@@ -1,5 +1,8 @@
 package org.usfirst.frc.team2557.robot;
 
+import java.io.File;
+import java.io.IOException;
+
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -13,6 +16,10 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import jaci.pathfinder.Pathfinder;
+import jaci.pathfinder.Trajectory;
+import jaci.pathfinder.Waypoint;
+import jaci.pathfinder.modifiers.TankModifier;
 
 public class RobotMap {
 	// Drive
@@ -52,6 +59,8 @@ public class RobotMap {
 	public static Solenoid c;
 	public static Solenoid d;
 	
+	public static Trajectory switchForward;
+	
 	// CTRE Modules
 	public static PowerDistributionPanel pdp;
 	
@@ -72,6 +81,28 @@ public class RobotMap {
 		DiffDrive.setSafetyEnabled(false);
 		MecDrive.setSafetyEnabled(false);
 		Gyro1 = new AHRS(SPI.Port.kMXP);
+		
+		Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 8.65, 5.0, 100.0);
+        Waypoint[] points = new Waypoint[] {
+        		// in feet
+        		new Waypoint(-12, 0, 0),
+//        		new Waypoint(-4, -4, 0),
+//        		new Waypoint(-5, 2.5, Pathfinder.d2r(-45)),
+//        		new Waypoint(-2.5, 0, 0),
+//                new Waypoint(0, 0, Pathfinder.d2r(-45)),
+//                new Waypoint(-2, -2, 0),
+                new Waypoint(0, 0, 0)
+        };
+        switchForward = Pathfinder.generate(points, config);
+        File switchTrajectory = new File("/home/lvuser/Trajectories/switchForward.t");
+        try {
+			switchTrajectory.createNewFile();
+			Pathfinder.writeToFile(switchTrajectory, switchForward);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		switchForward = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/switchForward.t"));
 		
 		// Intake
 		IntakeR = new WPI_TalonSRX(4);
