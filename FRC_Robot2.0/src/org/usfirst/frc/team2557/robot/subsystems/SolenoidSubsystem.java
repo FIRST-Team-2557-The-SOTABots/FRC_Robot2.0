@@ -2,6 +2,7 @@ package org.usfirst.frc.team2557.robot.subsystems;
 
 import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.RobotMap;
+import org.usfirst.frc.team2557.robot.commands.solenoid.SolenoidCommand;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -32,7 +33,7 @@ public class SolenoidSubsystem extends Subsystem {
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-//		setDefaultCommand(new MySpecialCommand());
+//		setDefaultCommand(new SolenoidCommand());
 	}
 }
 

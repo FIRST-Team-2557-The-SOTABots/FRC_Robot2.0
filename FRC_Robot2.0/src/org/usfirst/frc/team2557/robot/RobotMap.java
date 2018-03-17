@@ -320,8 +320,8 @@ public class RobotMap {
 		liftHallEffect = new DigitalInput(1);
 
 		// Wing
-		leftWing = new Servo(0);
-		rightWing = new Servo(1);
+		leftWing = new Servo(1);
+		rightWing = new Servo(0);
 
 		// CTRE Modules
 		pdp = new PowerDistributionPanel(10);		

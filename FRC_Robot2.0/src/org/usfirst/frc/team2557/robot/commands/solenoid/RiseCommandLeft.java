@@ -32,19 +32,19 @@ public class RiseCommandLeft extends Command {
 		//			dir = !dir;
 		//		}
 
-//		if(!RobotMap.c.get()){
+		if(!RobotMap.c.get()){
 			RobotMap.c.set(true);
 			RobotMap.d.set(false);
-//		}else{
-//			RobotMap.d.set(true);
-//			RobotMap.c.set(false);
-//		}
+		}else{
+			RobotMap.d.set(true);
+			RobotMap.c.set(false);
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 
-		return false;
+		return true;
 	}
 
 	// Called once after isFinished returns true

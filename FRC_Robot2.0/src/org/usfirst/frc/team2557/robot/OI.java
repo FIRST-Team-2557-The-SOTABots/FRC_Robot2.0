@@ -28,6 +28,8 @@ public class OI {
 	public static Joystick Joystick1;
 	public static JoystickButton ForwardButton;
 	public static JoystickButton BackwardButton;
+	public static JoystickButton forwardButton;
+	public static JoystickButton backwardButton;
 	
 	public static Joystick Joystick2;
 	public static JoystickButton IntakeIn;
@@ -43,8 +45,8 @@ public class OI {
 		ForwardButton = new JoystickButton(Joystick1, 6);
 		BackwardButton = new JoystickButton(Joystick1, 5);
 		
-//		ForwardButton.whenPressed(new RiseCommandRight());
-//		BackwardButton.whenPressed(new RiseCommandLeft());
+		ForwardButton.whenPressed(new SolenoidCommand());
+		BackwardButton.whenPressed(new SolenoidCommand());
 		
 		Joystick2 = new Joystick(1);
 		IntakeIn = new JoystickButton(Joystick2, 2);
@@ -56,11 +58,19 @@ public class OI {
 		leftTrigger = new JoystickButton(Joystick2, 7);
 		outTakeFast = new JoystickButton(Joystick2, 10);
 		
+		
+		forwardButton = new JoystickButton(Joystick2, 8);
+		backwardButton = new JoystickButton(Joystick2, 7);
+		forwardButton.whenPressed(new RiseCommandRight());
+		backwardButton.whenPressed(new RiseCommandLeft());
+		
 		IntakeIn.whileHeld(new IntakeCommand());
 		IntakeOut.whileHeld(new IntakeCommand());
 		
-//		rightBumper.whenPressed(new WingCommandRight());
-//		leftBumper.whenPressed(new WingCommandLeft());
+		rightBumper.whenPressed(new WingCommandRight());
+		leftBumper.whenPressed(new WingCommandLeft());
+		
+		
 	}
 
 }

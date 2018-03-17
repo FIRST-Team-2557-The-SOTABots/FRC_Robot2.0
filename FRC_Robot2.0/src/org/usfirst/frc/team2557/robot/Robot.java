@@ -56,6 +56,13 @@ public class Robot extends TimedRobot {
 //		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 10);
 		
 		RobotMap.init();
+		RobotMap.a.set(true);
+		RobotMap.b.set(false);
+		RobotMap.c.set(false);
+		RobotMap.d.set(true);
+		
+		RobotMap.rightWing.setAngle(180.0);
+		RobotMap.leftWing.setAngle(0.0);
 
 		RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
 		RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
@@ -100,6 +107,8 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
+		RobotMap.rightWing.set(180.0);
+		RobotMap.leftWing.setAngle(0.0);
 		// Reset the lift encoder to zero
 		// LIFT ***MUST*** BE AT THE BOTTOM AT THE START OF AUTO!!!!!!
 		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 10);
@@ -123,6 +132,8 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
+		RobotMap.rightWing.set(180.0);
+		RobotMap.leftWing.setAngle(0.0);
 		// Stop the auto command, if there was one
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
