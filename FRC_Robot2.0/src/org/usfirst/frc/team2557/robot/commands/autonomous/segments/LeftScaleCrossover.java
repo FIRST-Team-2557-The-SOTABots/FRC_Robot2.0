@@ -13,17 +13,19 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 /**
  *
  */
-public class RightScale extends CommandGroup {
+public class LeftScaleCrossover extends CommandGroup {
 
-    public RightScale() {
-    	
-		addSequential(new LiftAutoCommand(2000));
+    public LeftScaleCrossover() {
+    	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
+		addSequential(new MotionProfileCommand(RobotMap.drive10));
+		addSequential(new TurnByAngleCommand(-90));
 		addParallel(new LiftAutoCommand(37500));
-		addSequential(new MotionProfileCommand(RobotMap.drive8));
+		addSequential(new MotionProfileCommand(RobotMap.drive12));
 		addSequential(new WaitForChildren());
-		addSequential(new TurnByAngleCommand(-30.0));
-		addSequential(new MotionProfileCommand(RobotMap.drive9));
+		addSequential(new TurnByAngleCommand(90.0));
+		addSequential(new MotionProfileCommand(RobotMap.drive13));
+//		addSequential(new TurnByAngleCommand(10.0));
 		addSequential(new IntakeAutoCommand(3, -0.4));
     }
 }

@@ -39,9 +39,10 @@ public class MotionProfileCommand extends Command {
     	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
     	// max velocity 8.65 ft/s ? and kv = 1/max
-    	follower.configurePIDVA(1.0, 0, 0, 1.0/10, 0);
-//    	follower.configureEncoder(0, 3413, 1.0/3.0);
-    	follower.configureEncoder(0, 4100, 1.0/3.0);
+//    	follower.configurePIDVA(1.0, 0, 0, 1.0/10, 0);
+//    	follower.configureEncoder(0, 4100, 1.0/3.0);
+    	follower.configurePIDVA(0.075, 0, 0.001, 1.0/8.5, 0.001);
+    	follower.configureEncoder(0, 3413, 1.0/3.0);
     }
 
     // Called repeatedly when this Command is scheduled to run

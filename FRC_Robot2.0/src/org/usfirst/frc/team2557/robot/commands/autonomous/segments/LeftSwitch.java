@@ -20,10 +20,10 @@ public class LeftSwitch extends CommandGroup {
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
 		addParallel(new LiftAutoCommand(13000));
-    	addSequential(new MotionProfileCommand(RobotMap.switchForward));
+    	addSequential(new MotionProfileCommand(RobotMap.drive6));
     	addSequential(new WaitForChildren());
 		addSequential(new TurnByAngleCommand(90));
-		addSequential(new EncoderDistanceDriveCommand(-.6, 0, 500)); // 3 == 1000
-		addSequential(new IntakeAutoCommand(3, -0.2));
+//		addSequential(new MotionProfileCommand(RobotMap.drive7));
+		addSequential(new IntakeAutoCommand(3, -0.4));
     }
 }

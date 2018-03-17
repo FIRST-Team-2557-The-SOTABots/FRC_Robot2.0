@@ -11,47 +11,48 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class RiseCommandLeft extends Command {
-	boolean go;
-	boolean dir;
+	//	boolean go;
+	//	boolean dir;
 
-    public RiseCommandLeft() {
-    	requires(Robot.SolenoidSubsystem);
-    	
-    	go = false;
-    	dir = true;
-    }
+	public RiseCommandLeft() {
+		requires(Robot.SolenoidSubsystem);
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+		//    	go = false;
+		//    	dir = true;
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	if(OI.leftTrigger.get()){
-			go = true;
-			dir = !dir;
-		}
+	// Called just before this Command runs the first time
+	protected void initialize() {
+	}
 
-    	if(go && !dir){
-    		RobotMap.c.set(true);
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		//    	if(OI.leftTrigger.get()){
+		//			go = true;
+		//			dir = !dir;
+		//		}
+
+//		if(!RobotMap.c.get()){
+			RobotMap.c.set(true);
 			RobotMap.d.set(false);
-    	}else if(go && dir){
-    		RobotMap.d.set(true);
-			RobotMap.c.set(false);
-    	}
-    }
+//		}else{
+//			RobotMap.d.set(true);
+//			RobotMap.c.set(false);
+//		}
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+		return false;
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+	}
 }

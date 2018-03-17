@@ -26,9 +26,9 @@ public class TurnByAngleCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 		if(RobotMap.Gyro1.getAngle() > angle) {
-			Robot.DriveSubsystem.DiffDrive(0, .8);
+			Robot.DriveSubsystem.DiffDrive(0, 0.7);
 		}else if(RobotMap.Gyro1.getAngle() < angle){
-			Robot.DriveSubsystem.DiffDrive(0, -0.8);
+			Robot.DriveSubsystem.DiffDrive(0, -0.7);
 		}
     }
 

@@ -19,10 +19,10 @@ public class LeftScale extends CommandGroup {
 		addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
 		addParallel(new LiftAutoCommand(37500));
-		addSequential(new MotionProfileCommand(RobotMap.scaleForward));
+		addSequential(new MotionProfileCommand(RobotMap.drive8));
 		addSequential(new WaitForChildren());
 		addSequential(new TurnByAngleCommand(45));
-		addSequential(new MotionProfileCommand(RobotMap.scaleForward2));
+		addSequential(new MotionProfileCommand(RobotMap.drive9));
 		addSequential(new IntakeAutoCommand(3, -0.4));
     }
 }

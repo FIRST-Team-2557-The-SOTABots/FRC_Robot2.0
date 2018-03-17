@@ -11,13 +11,13 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 /**
  *
  */
-public class GroupAutoCommandForward extends CommandGroup {
+public class ForwardAutoCommand extends CommandGroup {
 
-    public GroupAutoCommandForward() {
+    public ForwardAutoCommand() {
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
     	addParallel(new LiftAutoCommand(13000));
     	addSequential(new WaitCommand(5));
-		addSequential(new MotionProfileCommand(RobotMap.switchForwardMid));
+		addSequential(new MotionProfileCommand(RobotMap.drive1));
     }
 }
