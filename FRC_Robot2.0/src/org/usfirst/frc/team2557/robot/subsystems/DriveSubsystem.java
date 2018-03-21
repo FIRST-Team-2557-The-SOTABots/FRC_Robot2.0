@@ -19,10 +19,10 @@ public class DriveSubsystem extends Subsystem {
 
 	public void TeleDriveMethod() {
 		if(RobotMap.DS1.get() == DoubleSolenoid.Value.kForward) {
-			MecanumDrive(-OI.Joystick1.getRawAxis(0), OI.Joystick1.getRawAxis(1), -OI.Joystick1.getRawAxis(4));
+			MecanumDrive(-OI.Joystick1.getRawAxis(0)*0.9, OI.Joystick1.getRawAxis(1), -OI.Joystick1.getRawAxis(4));
 		}
 		else {
-			DiffDrive(OI.Joystick1.getRawAxis(1), -OI.Joystick1.getRawAxis(4));
+			DiffDrive(OI.Joystick1.getRawAxis(1)*0.9, -OI.Joystick1.getRawAxis(4)*0.9);
 		}
 	}
 

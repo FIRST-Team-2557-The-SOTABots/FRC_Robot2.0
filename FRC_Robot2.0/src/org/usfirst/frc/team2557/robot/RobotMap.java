@@ -92,7 +92,7 @@ public class RobotMap {
 		MecDrive.setSafetyEnabled(false);
 		Gyro1 = new AHRS(SPI.Port.kMXP);
 
-		Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 8.5, 5.0, 1000000.0);
+		Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 8.5, 6.0, 1000000.0);
 //		Waypoint[] points1 = new Waypoint[] {
 //				// in feet
 //				new Waypoint(-8.0, 0, 0),
@@ -157,20 +157,20 @@ public class RobotMap {
 //		}
 		drive4 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive4.t"));
 		
-//		Waypoint[] points5 = new Waypoint[] {
-//				// in feet
-//				new Waypoint(-3.5, 0, 0),
-//				new Waypoint(0, 0, 0)
-//		};
-//		drive5 = Pathfinder.generate(points5, config);
-//		File drive5file = new File("/home/lvuser/Trajectories/drive5.t");
-//		try {
-//			drive5file.createNewFile();
-//			Pathfinder.writeToFile(drive5file, drive5);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		Waypoint[] points5 = new Waypoint[] {
+				// in feet
+				new Waypoint(-4.5, 0, 0),
+				new Waypoint(0, 0, 0)
+		};
+		drive5 = Pathfinder.generate(points5, config);
+		File drive5file = new File("/home/lvuser/Trajectories/drive5.t");
+		try {
+			drive5file.createNewFile();
+			Pathfinder.writeToFile(drive5file, drive5);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		drive5 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive5.t"));
 		
 //		Waypoint[] points6 = new Waypoint[] {
@@ -237,20 +237,20 @@ public class RobotMap {
 //		}
 		drive9 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive9.t"));
 		
-		Waypoint[] points10 = new Waypoint[] {
-				// in feet
-				new Waypoint(-19.0, 0, 0),
-				new Waypoint(0, 0, 0)
-		};
-		drive10 = Pathfinder.generate(points10, config);
-		File drive10file = new File("/home/lvuser/Trajectories/drive10.t");
-		try {
-			drive10file.createNewFile();
-			Pathfinder.writeToFile(drive10file, drive10);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		Waypoint[] points10 = new Waypoint[] {
+//				// in feet
+//				new Waypoint(-18.0, 0, 0),
+//				new Waypoint(0, 0, 0)
+//		};
+//		drive10 = Pathfinder.generate(points10, config);
+//		File drive10file = new File("/home/lvuser/Trajectories/drive10.t");
+//		try {
+//			drive10file.createNewFile();
+//			Pathfinder.writeToFile(drive10file, drive10);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		drive10 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive10.t"));
 		
 //		Waypoint[] points11 = new Waypoint[] {
@@ -269,25 +269,25 @@ public class RobotMap {
 //		}
 		drive11 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive11.t"));
 		
-		Waypoint[] points12 = new Waypoint[] {
-				// in feet
-				new Waypoint(-14.0, 0, 0),
-				new Waypoint(0, 0, 0)
-		};
-		drive12 = Pathfinder.generate(points12, config);
-		File drive12file = new File("/home/lvuser/Trajectories/drive12.t");
-		try {
-			drive12file.createNewFile();
-			Pathfinder.writeToFile(drive12file, drive12);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		Waypoint[] points12 = new Waypoint[] {
+//				// in feet
+//				new Waypoint(-14.0, 0, 0),
+//				new Waypoint(0, 0, 0)
+//		};
+//		drive12 = Pathfinder.generate(points12, config);
+//		File drive12file = new File("/home/lvuser/Trajectories/drive12.t");
+//		try {
+//			drive12file.createNewFile();
+//			Pathfinder.writeToFile(drive12file, drive12);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		drive12 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive12.t"));
 		
 //		Waypoint[] points13 = new Waypoint[] {
 //				// in feet
-//				new Waypoint(-3.0, 0, 0),
+//				new Waypoint(-2.0, 0, 0),
 //				new Waypoint(0, 0, 0)
 //		};
 //		drive13 = Pathfinder.generate(points13, config);
@@ -299,7 +299,7 @@ public class RobotMap {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-//		drive13 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive13.t"));
+		drive13 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive13.t"));
 
 		// Intake
 		IntakeR = new WPI_TalonSRX(4);
@@ -320,8 +320,8 @@ public class RobotMap {
 		liftHallEffect = new DigitalInput(1);
 
 		// Wing
-		leftWing = new Servo(1);
-		rightWing = new Servo(0);
+		leftWing = new Servo(0);
+		rightWing = new Servo(1);
 
 		// CTRE Modules
 		pdp = new PowerDistributionPanel(10);		

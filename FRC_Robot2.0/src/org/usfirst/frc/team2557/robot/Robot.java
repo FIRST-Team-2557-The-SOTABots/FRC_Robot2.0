@@ -12,6 +12,8 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.RightScalePriorityAuto
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSide_ScaleOnlyAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSide_SwitchOnlyAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSwitchPriorityAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.drive.PIDTurn;
+import org.usfirst.frc.team2557.robot.commands.drive.TurnByAngleCommand;
 import org.usfirst.frc.team2557.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.IntakeSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.LiftSubsystem;
@@ -61,8 +63,8 @@ public class Robot extends TimedRobot {
 		RobotMap.c.set(false);
 		RobotMap.d.set(true);
 		
-		RobotMap.rightWing.setAngle(180.0);
-		RobotMap.leftWing.setAngle(0.0);
+		RobotMap.rightWing.setAngle(0.0);
+		RobotMap.leftWing.setAngle(180.0);
 
 		RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
 		RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
@@ -78,6 +80,7 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		oi.OIInit();
 
+		m_chooser.addObject("PID Turn test", new PIDTurn(90.0));
 		m_chooser.addDefault("Forward Only", new ForwardAutoCommand());
 		m_chooser.addObject("Mid Switch", new MidSwitchAutoCommand());
 		m_chooser.addObject("Left Side Switch & Scale, Prioritise Switch, with crossover", new LeftSwitchPriorityAutoCommand());
@@ -107,8 +110,8 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
-		RobotMap.rightWing.set(180.0);
-		RobotMap.leftWing.setAngle(0.0);
+		RobotMap.rightWing.set(0.0);
+		RobotMap.leftWing.setAngle(180.0);
 		// Reset the lift encoder to zero
 		// LIFT ***MUST*** BE AT THE BOTTOM AT THE START OF AUTO!!!!!!
 		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 10);
@@ -132,8 +135,8 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
-		RobotMap.rightWing.set(180.0);
-		RobotMap.leftWing.setAngle(0.0);
+		RobotMap.rightWing.set(0.0);
+		RobotMap.leftWing.setAngle(180.0);
 		// Stop the auto command, if there was one
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
@@ -145,8 +148,26 @@ public class Robot extends TimedRobot {
 	 */	
 	@Override
 	public void teleopPeriodic() {
+		RobotMap.Right2.enableCurrentLimit(true);
+		RobotMap.Right2.configPeakCurrentDuration(0, 0);
+		RobotMap.Right2.configPeakCurrentLimit(30, 0);
+		RobotMap.Right2.configContinuousCurrentLimit(30, 0);
+		RobotMap.Left2.enableCurrentLimit(true);
+		RobotMap.Left2.configPeakCurrentDuration(0, 0);
+		RobotMap.Left2.configPeakCurrentLimit(30, 0);
+		RobotMap.Left2.configContinuousCurrentLimit(30, 0);
+		RobotMap.Left1.enableCurrentLimit(true);
+		RobotMap.Left1.configPeakCurrentDuration(0, 0);
+		RobotMap.Left1.configPeakCurrentLimit(30, 0);
+		RobotMap.Left1.configContinuousCurrentLimit(30, 0);
+		RobotMap.Right1.enableCurrentLimit(true);
+		RobotMap.Right1.configPeakCurrentDuration(0, 0);
+		RobotMap.Right1.configPeakCurrentLimit(30, 0);
+		RobotMap.Right1.configContinuousCurrentLimit(30, 0);
+		
 		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 		SmartDashboard.putNumber("GyroThisOne", RobotMap.Gyro1.getAngle());
+		
 		
 		Scheduler.getInstance().run();
 		updateSmartDashboard();

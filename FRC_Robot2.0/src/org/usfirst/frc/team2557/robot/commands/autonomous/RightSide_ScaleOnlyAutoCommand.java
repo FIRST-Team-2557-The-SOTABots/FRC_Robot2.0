@@ -14,6 +14,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RightSide_ScaleOnlyAutoCommand extends CommandGroup {
 
 	public RightSide_ScaleOnlyAutoCommand() {
-		addSequential(new SwitchConditionalCommand(new RightScale(),new LeftScaleCrossover(), true));
+		addSequential(new ScaleConditionalCommand(new RightScale(),new LeftScaleCrossover(), true));
 	}
 }

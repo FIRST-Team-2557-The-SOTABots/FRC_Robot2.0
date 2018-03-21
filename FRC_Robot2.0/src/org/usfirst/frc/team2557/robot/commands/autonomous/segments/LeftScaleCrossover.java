@@ -3,6 +3,7 @@ package org.usfirst.frc.team2557.robot.commands.autonomous.segments;
 import org.usfirst.frc.team2557.robot.RobotMap;
 import org.usfirst.frc.team2557.robot.commands.drive.EncoderDistanceDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.drive.MotionProfileCommand;
+import org.usfirst.frc.team2557.robot.commands.drive.PIDTurn;
 import org.usfirst.frc.team2557.robot.commands.drive.TurnByAngleCommand;
 import org.usfirst.frc.team2557.robot.commands.intake.IntakeAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.lift.LiftAutoCommand;
@@ -18,9 +19,10 @@ public class LeftScaleCrossover extends CommandGroup {
     public LeftScaleCrossover() {
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
+		addParallel(new LiftAutoCommand(7500));
 		addSequential(new MotionProfileCommand(RobotMap.drive10));
 		addSequential(new TurnByAngleCommand(-90));
-		addParallel(new LiftAutoCommand(37500));
+		addParallel(new LiftAutoCommand(30000));
 		addSequential(new MotionProfileCommand(RobotMap.drive12));
 		addSequential(new WaitForChildren());
 		addSequential(new TurnByAngleCommand(90.0));

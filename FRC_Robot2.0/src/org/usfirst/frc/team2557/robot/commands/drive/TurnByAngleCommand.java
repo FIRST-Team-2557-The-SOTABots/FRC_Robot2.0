@@ -3,6 +3,10 @@ package org.usfirst.frc.team2557.robot.commands.drive;
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -10,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class TurnByAngleCommand extends Command {
+	
 	double angle;
 
     public TurnByAngleCommand(double angle) {
@@ -26,9 +31,9 @@ public class TurnByAngleCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 		if(RobotMap.Gyro1.getAngle() > angle) {
-			Robot.DriveSubsystem.DiffDrive(0, 0.7);
+			Robot.DriveSubsystem.DiffDrive(0, 0.85);
 		}else if(RobotMap.Gyro1.getAngle() < angle){
-			Robot.DriveSubsystem.DiffDrive(0, -0.7);
+			Robot.DriveSubsystem.DiffDrive(0, -0.85);
 		}
     }
 
