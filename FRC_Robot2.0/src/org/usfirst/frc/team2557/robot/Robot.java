@@ -166,6 +166,10 @@ public class Robot extends TimedRobot {
 		RobotMap.Right1.configPeakCurrentDuration(0, 0);
 		RobotMap.Right1.configPeakCurrentLimit(30, 0);
 		RobotMap.Right1.configContinuousCurrentLimit(30, 0);
+		RobotMap.LiftMotor.enableCurrentLimit(true);
+		RobotMap.LiftMotor.configPeakCurrentDuration(0, 0);
+		RobotMap.LiftMotor.configPeakCurrentLimit(30, 0);
+		RobotMap.LiftMotor.configContinuousCurrentLimit(30, 0);
 		
 		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 		SmartDashboard.putNumber("GyroThisOne", RobotMap.Gyro1.getAngle());

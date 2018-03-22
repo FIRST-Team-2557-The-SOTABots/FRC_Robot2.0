@@ -92,6 +92,7 @@ public class RobotMap {
 		MecDrive.setSafetyEnabled(false);
 		Gyro1 = new AHRS(SPI.Port.kMXP);
 
+		// could increase accel !!!
 		Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 8.5, 6.0, 1000000.0);
 		
 		Waypoint[] points = new Waypoint[] {
@@ -124,19 +125,19 @@ public class RobotMap {
 		}
 		trajectory2 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/jacitest.t"));
 		
-//		Waypoint[] points1 = new Waypoint[] {
-//				// in feet
-//				new Waypoint(-8.0, 0, 0),
-//				new Waypoint(0, 0, 0)
-//		};
-//		drive1 = Pathfinder.generate(points1, config);
-//		File drive1file = new File("/home/lvuser/Trajectories/drive1.t");
-//		try {
-//			drive1file.createNewFile();
-//			Pathfinder.writeToFile(drive1file, drive1);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		Waypoint[] points1 = new Waypoint[] {
+				// in feet
+				new Waypoint(-8.0, 0, 0),
+				new Waypoint(0, 0, 0)
+		};
+		drive1 = Pathfinder.generate(points1, config);
+		File drive1file = new File("/home/lvuser/Trajectories/drive1.t");
+		try {
+			drive1file.createNewFile();
+			Pathfinder.writeToFile(drive1file, drive1);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		drive1 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive1.t"));
 		
 //		Waypoint[] points2 = new Waypoint[] {

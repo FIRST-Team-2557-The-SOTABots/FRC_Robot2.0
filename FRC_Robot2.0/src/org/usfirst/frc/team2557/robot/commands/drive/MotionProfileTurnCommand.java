@@ -37,28 +37,36 @@ public class MotionProfileTurnCommand extends Command {
     	left.reset();
     	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
-    	// max velocity 8.65 ft/s and kv = 1/max
-    	right.configurePIDVA(0.8, 0, 0, 1.0/8.65, 0);
-    	left.configurePIDVA(0.8, 0, 0, 1.0/8.65, 0);
+    	// max velocity 8.65 ft/s and kv = 1/max, ki not used by pathfinder
+    	right.configurePIDVA(0.8, 0, 0, 1.0/8.5, 0);
+    	left.configurePIDVA(0.8, 0, 0, 1.0/8.5, 0);
     	right.configureEncoder(0, 3413, 1.0/3.0);
     	left.configureEncoder(0, 3413, 1.0/3.0);
+    	
+    	// talon docs: /* Displaying the two neutral mode options that both the Talon and Victor have */
+    	RobotMap.Right1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
+    	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
+    	RobotMap.Left1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
+    	RobotMap.Left2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double l = left.calculate(RobotMap.Left2.getSensorCollection().getQuadraturePosition());
+    	// -l because left encoder inverse
+    	double l = -left.calculate(RobotMap.Left2.getSensorCollection().getQuadraturePosition());
     	double r = right.calculate(RobotMap.Right2.getSensorCollection().getQuadraturePosition());
 
     	double gyro_heading = RobotMap.Gyro1.getAngle();    // Assuming the gyro is giving a value in degrees
     	double desired_heading = Pathfinder.r2d(left.getHeading());  // In degrees, wheels are parallel so only left
 
     	double angleDifference = Pathfinder.boundHalfDegrees(desired_heading - gyro_heading);
-    	double turn = 0.8 * (-1.0/80.0) * angleDifference; // multiplier for turning? could change?
+    	double turn = 0.8 * (-1.0/80.0) * angleDifference; // multiplier for turning?
 
     	RobotMap.Right2.set(r - turn);
     	RobotMap.Right1.set(r - turn);
-    	RobotMap.Left1.set(-l + turn);
-    	RobotMap.Left2.set(-l + turn);
+    	RobotMap.Left1.set(l + turn);
+    	RobotMap.Left2.set(l + turn);
+    	
     	SmartDashboard.putNumber("timer motion profile", t.get());
     	t.reset();
     }
@@ -79,6 +87,11 @@ public class MotionProfileTurnCommand extends Command {
     	RobotMap.Left2.set(0);
     	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
+    	
+    	RobotMap.Right1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Left1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Left2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
     }
 
     // Called when another command which requires one or more of the same subsystems is scheduled to run
