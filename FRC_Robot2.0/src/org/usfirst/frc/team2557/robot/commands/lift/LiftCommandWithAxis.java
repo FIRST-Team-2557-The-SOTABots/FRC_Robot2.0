@@ -1,16 +1,9 @@
 package org.usfirst.frc.team2557.robot.commands.lift;
 
-import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.Robot;
-import org.usfirst.frc.team2557.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class LiftCommandWithAxis extends Command {
-
     public LiftCommandWithAxis() {
     	requires(Robot.LiftSubsystem);
     }
@@ -21,11 +14,7 @@ public class LiftCommandWithAxis extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//    	double value;
-//    	if(RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition()<=100 && RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition()>37500){
-    		Robot.LiftSubsystem.LiftWithAxis();
-//    	}
-//    	value = OI.Joystick2.getY();
+   		Robot.LiftSubsystem.LiftWithAxis();
 	}
 
     // Make this return true when this Command no longer needs to run execute()

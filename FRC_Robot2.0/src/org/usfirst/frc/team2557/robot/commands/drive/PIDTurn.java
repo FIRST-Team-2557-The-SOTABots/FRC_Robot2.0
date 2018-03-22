@@ -10,16 +10,13 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class PIDTurn extends Command {
 	double angle;
 	PIDController pid;
+	
 	public PIDTurn(double angle){
 		this.angle = angle;
 		pid = new PIDController(0.0175, 0.000, 0, new PIDSource(){
-
 			@Override
 			public void setPIDSourceType(PIDSourceType pidSource) {
 			}
@@ -33,7 +30,6 @@ public class PIDTurn extends Command {
 			public double pidGet() {
 				return RobotMap.Gyro1.getAngle();
 			}
-			
 		}, new PIDOutput(){
 			@Override
 			public void pidWrite(double output) {
@@ -61,7 +57,6 @@ public class PIDTurn extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		
 		return pid.onTarget();
 	}
 	

@@ -12,14 +12,13 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.RightScalePriorityAuto
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSide_ScaleOnlyAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSide_SwitchOnlyAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSwitchPriorityAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.drive.MotionProfileTurnCommand;
 import org.usfirst.frc.team2557.robot.commands.drive.PIDTurn;
-import org.usfirst.frc.team2557.robot.commands.drive.TurnByAngleCommand;
 import org.usfirst.frc.team2557.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.IntakeSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.LiftSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.SolenoidSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.WingSubsystem;
-
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -80,6 +79,9 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		oi.OIInit();
 
+		m_chooser.addObject("Forward test using Turning Profile", new MotionProfileTurnCommand(RobotMap.drive1));
+		m_chooser.addObject("Left test using Turning Profile", new MotionProfileTurnCommand(RobotMap.trajectory));
+		m_chooser.addObject("Right test using Turning Profile", new MotionProfileTurnCommand(RobotMap.trajectory2));
 		m_chooser.addObject("PID Turn test", new PIDTurn(90.0));
 		m_chooser.addDefault("Forward Only", new ForwardAutoCommand());
 		m_chooser.addObject("Mid Switch", new MidSwitchAutoCommand());
@@ -167,7 +169,6 @@ public class Robot extends TimedRobot {
 		
 		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 		SmartDashboard.putNumber("GyroThisOne", RobotMap.Gyro1.getAngle());
-		
 		
 		Scheduler.getInstance().run();
 		updateSmartDashboard();

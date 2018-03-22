@@ -14,10 +14,8 @@ import org.usfirst.frc.team2557.robot.commands.solenoid.RiseCommandRight;
 import org.usfirst.frc.team2557.robot.commands.solenoid.SolenoidCommand;
 import org.usfirst.frc.team2557.robot.commands.wing.WingCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.wing.WingCommandRight;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -69,8 +67,5 @@ public class OI {
 		
 		rightBumper.whenPressed(new WingCommandRight());
 		leftBumper.whenPressed(new WingCommandLeft());
-		
-		
 	}
-
 }

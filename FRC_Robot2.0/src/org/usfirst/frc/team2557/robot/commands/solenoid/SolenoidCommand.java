@@ -1,15 +1,8 @@
 package org.usfirst.frc.team2557.robot.commands.solenoid;
 
 import org.usfirst.frc.team2557.robot.Robot;
-import org.usfirst.frc.team2557.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class SolenoidCommand extends Command {
 
     public SolenoidCommand() {

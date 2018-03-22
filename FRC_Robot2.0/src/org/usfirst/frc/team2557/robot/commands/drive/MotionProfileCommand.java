@@ -2,17 +2,12 @@ package org.usfirst.frc.team2557.robot.commands.drive;
 
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import jaci.pathfinder.Trajectory;
 import jaci.pathfinder.followers.EncoderFollower;
-import jaci.pathfinder.modifiers.TankModifier;
 
-/**
- *
- */
 public class MotionProfileCommand extends Command {
 	Timer t;
 	Trajectory trajectory;

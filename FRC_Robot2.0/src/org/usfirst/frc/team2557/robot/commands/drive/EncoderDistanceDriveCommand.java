@@ -2,21 +2,14 @@ package org.usfirst.frc.team2557.robot.commands.drive;
 
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class EncoderDistanceDriveCommand extends Command {
-	
 	private double speed;
 	private double distance;
 
     public EncoderDistanceDriveCommand(double s, double r, double d) {
     	requires(Robot.DriveSubsystem);
-    	
     	speed = s;
     	distance = d;
     }
