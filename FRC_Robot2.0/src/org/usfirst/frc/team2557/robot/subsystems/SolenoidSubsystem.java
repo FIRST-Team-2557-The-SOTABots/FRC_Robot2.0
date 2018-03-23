@@ -33,7 +33,7 @@ public class SolenoidSubsystem extends Subsystem {
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-//		setDefaultCommand(new SolenoidCommand());
+//		setDefaultCommand(new S olenoidCommand());
 	}
 }
 

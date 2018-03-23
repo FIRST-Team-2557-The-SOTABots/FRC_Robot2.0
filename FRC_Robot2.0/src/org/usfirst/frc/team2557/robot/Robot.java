@@ -12,11 +12,14 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.RightScalePriorityAuto
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSide_ScaleOnlyAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSide_SwitchOnlyAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSwitchPriorityAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.drive.MotionProfileCommand;
+import org.usfirst.frc.team2557.robot.commands.drive.MotionProfileTurnCommand;
 import org.usfirst.frc.team2557.robot.commands.drive.PIDTurn;
 import org.usfirst.frc.team2557.robot.commands.drive.TurnByAngleCommand;
 import org.usfirst.frc.team2557.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.IntakeSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.LiftSubsystem;
+import org.usfirst.frc.team2557.robot.subsystems.MinimalUseButtonSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.SolenoidSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.WingSubsystem;
 
@@ -35,6 +38,7 @@ public class Robot extends TimedRobot {
 	public static WingSubsystem WingSubsystem;
 	public static LiftSubsystem LiftSubsystem;
 	public static IntakeSubsystem IntakeSubsystem;
+	public static MinimalUseButtonSubsystem MinimalUseButtonSubsystem;
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -76,10 +80,13 @@ public class Robot extends TimedRobot {
 		WingSubsystem = new WingSubsystem();
 		LiftSubsystem = new LiftSubsystem();
 		IntakeSubsystem = new IntakeSubsystem();
+		MinimalUseButtonSubsystem = new MinimalUseButtonSubsystem();
 		
 		oi = new OI();
 		oi.OIInit();
 
+		m_chooser.addObject("Motion Profile Turn test", new MotionProfileTurnCommand(RobotMap.drive0));
+		m_chooser.addObject("Motion Profile Turn baseline test", new MotionProfileTurnCommand(RobotMap.drive1));
 		m_chooser.addObject("PID Turn test", new PIDTurn(90.0));
 		m_chooser.addDefault("Forward Only", new ForwardAutoCommand());
 		m_chooser.addObject("Mid Switch", new MidSwitchAutoCommand());
