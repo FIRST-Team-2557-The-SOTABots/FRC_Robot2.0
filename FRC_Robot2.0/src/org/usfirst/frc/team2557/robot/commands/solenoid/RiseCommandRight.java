@@ -1,23 +1,12 @@
 package org.usfirst.frc.team2557.robot.commands.solenoid;
 
-import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class RiseCommandRight extends Command {
-//	boolean go;
-//	boolean dir;
-
     public RiseCommandRight() {
     	requires(Robot.SolenoidSubsystem);
-    	
-//    	go = false;
-//    	dir = true;
     }
 
     // Called just before this Command runs the first time
@@ -26,11 +15,6 @@ public class RiseCommandRight extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//    	if(OI.rightTrigger.get()){
-//			go = true;
-//			dir = !dir;
-//		}
-    	
     	if(!RobotMap.a.get()){
 			RobotMap.a.set(true);
 			RobotMap.b.set(false);

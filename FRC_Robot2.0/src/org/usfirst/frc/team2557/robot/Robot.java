@@ -15,14 +15,12 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.RightSwitchPriorityAut
 import org.usfirst.frc.team2557.robot.commands.drive.MotionProfileCommand;
 import org.usfirst.frc.team2557.robot.commands.drive.MotionProfileTurnCommand;
 import org.usfirst.frc.team2557.robot.commands.drive.PIDTurn;
-import org.usfirst.frc.team2557.robot.commands.drive.TurnByAngleCommand;
 import org.usfirst.frc.team2557.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.IntakeSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.LiftSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.MinimalUseButtonSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.SolenoidSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.WingSubsystem;
-
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -87,6 +85,12 @@ public class Robot extends TimedRobot {
 
 		m_chooser.addObject("Motion Profile Turn test", new MotionProfileTurnCommand(RobotMap.drive0));
 		m_chooser.addObject("Motion Profile Turn baseline test", new MotionProfileTurnCommand(RobotMap.drive1));
+
+		m_chooser.addObject("Forward test using Turning Profile", new MotionProfileTurnCommand(RobotMap.drive1));
+		m_chooser.addObject("Left test using Turning Profile", new MotionProfileTurnCommand(RobotMap.trajectory));
+		m_chooser.addObject("Right test using Turning Profile", new MotionProfileTurnCommand(RobotMap.trajectory2));
+		
+		
 		m_chooser.addObject("PID Turn test", new PIDTurn(90.0));
 		m_chooser.addDefault("Forward Only", new ForwardAutoCommand());
 		m_chooser.addObject("Mid Switch", new MidSwitchAutoCommand());
@@ -171,10 +175,17 @@ public class Robot extends TimedRobot {
 		RobotMap.Right1.configPeakCurrentDuration(0, 0);
 		RobotMap.Right1.configPeakCurrentLimit(30, 0);
 		RobotMap.Right1.configContinuousCurrentLimit(30, 0);
+		RobotMap.LiftMotor.enableCurrentLimit(true);
+		RobotMap.LiftMotor.configPeakCurrentDuration(0, 0);
+		RobotMap.LiftMotor.configPeakCurrentLimit(30, 0);
+		RobotMap.LiftMotor.configContinuousCurrentLimit(30, 0);
+		RobotMap.LiftMotor2.enableCurrentLimit(true);
+		RobotMap.LiftMotor2.configPeakCurrentDuration(0, 0);
+		RobotMap.LiftMotor2.configPeakCurrentLimit(30, 0);
+		RobotMap.LiftMotor2.configContinuousCurrentLimit(30, 0);
 		
 		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 		SmartDashboard.putNumber("GyroThisOne", RobotMap.Gyro1.getAngle());
-		
 		
 		Scheduler.getInstance().run();
 		updateSmartDashboard();

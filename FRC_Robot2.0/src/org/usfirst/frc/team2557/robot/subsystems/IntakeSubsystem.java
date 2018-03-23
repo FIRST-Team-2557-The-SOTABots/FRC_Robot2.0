@@ -3,15 +3,9 @@ package org.usfirst.frc.team2557.robot.subsystems;
 import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.RobotMap;
 import org.usfirst.frc.team2557.robot.commands.intake.IntakeCommand;
-import org.usfirst.frc.team2557.robot.commands.intake.IntakeCommandWithAxis;
-
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class IntakeSubsystem extends Subsystem {
 	
 //	int raw = Ultrasonic.getValue();
@@ -21,13 +15,11 @@ public class IntakeSubsystem extends Subsystem {
 	
 	
 	public void IntakeWithButtons(){
-		
 		double axisRight = OI.Joystick2.getRawAxis(3);		
 		double axisLeft = OI.Joystick2.getRawAxis(2);
 		
 		SmartDashboard.putNumber("TriggerLeft", axisLeft);
 		SmartDashboard.putNumber("TriggerRight", axisRight);
-		
     	
 		if(OI.IntakeIn.get()) {
 			RobotMap.IntakeR.set(-.8);
@@ -60,8 +52,7 @@ public class IntakeSubsystem extends Subsystem {
 	}
 	
 	public void IntakeWithAxis(){
-    	double axis;
-    	axis = OI.Joystick2.getRawAxis(5);
+    	double axis = OI.Joystick2.getRawAxis(5);
     	
 		double axisRight2 = OI.Joystick2.getRawAxis(3);		
 		double axisLeft2 = OI.Joystick2.getRawAxis(2);
@@ -70,12 +61,11 @@ public class IntakeSubsystem extends Subsystem {
 		SmartDashboard.putNumber("TriggerRight2", axisRight2);
 		RobotMap.IntakeR.set(axis);
 		RobotMap.IntakeL.set(-axis);
-
 	}
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

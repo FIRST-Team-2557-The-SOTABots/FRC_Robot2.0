@@ -1,11 +1,8 @@
 package org.usfirst.frc.team2557.robot.commands.intake;
 
-import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class IntakeCommand extends Command {
 	
@@ -22,7 +19,6 @@ public class IntakeCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.IntakeSubsystem.IntakeWithButtons();
-
     }
 
     // Make this return true when this Command no longer needs to run execute()

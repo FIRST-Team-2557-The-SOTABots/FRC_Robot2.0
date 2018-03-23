@@ -1,14 +1,8 @@
 package org.usfirst.frc.team2557.robot.commands.drive;
 
-import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.Robot;
-import org.usfirst.frc.team2557.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class TeleDriveCommand extends Command {
     public TeleDriveCommand() {
     	requires(Robot.DriveSubsystem);

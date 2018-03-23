@@ -2,18 +2,13 @@ package org.usfirst.frc.team2557.robot.commands.lift;
 
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class LiftAutoCommand extends Command {
 	PIDController pidcontroller;
 	double target;
@@ -22,7 +17,6 @@ public class LiftAutoCommand extends Command {
 		requires(Robot.LiftSubsystem);
 		
 		pidcontroller = new PIDController(0.001, 0.00005, 0.001, new PIDSource(){
-
 			@Override
 			public void setPIDSourceType(PIDSourceType pidSource) {
 			}
@@ -36,17 +30,13 @@ public class LiftAutoCommand extends Command {
 			public double pidGet() {
 				return -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition();
 			}
-			
 		}, new PIDOutput(){
-
 			@Override
 			public void pidWrite(double output) {
 				Robot.LiftSubsystem.liftInAuto(output*0.5);
 			}
-			
 		});
 		this.target = target;
-		
 		pidcontroller.setOutputRange(-1, 1);
 		pidcontroller.setAbsoluteTolerance(500);
 	}
@@ -76,5 +66,6 @@ public class LiftAutoCommand extends Command {
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+		this.cancel();
 	}
 }
