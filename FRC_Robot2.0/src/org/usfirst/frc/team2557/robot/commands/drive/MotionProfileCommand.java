@@ -38,6 +38,11 @@ public class MotionProfileCommand extends Command {
 //    	follower.configureEncoder(0, 4100, 1.0/3.0);
     	follower.configurePIDVA(0.075, 0, 0.001, 1.0/8.5, 0.001);
     	follower.configureEncoder(0, 3413, 1.0/3.0);
+    	
+    	RobotMap.Right1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
+    	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
+    	RobotMap.Left1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
+    	RobotMap.Left2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -61,6 +66,10 @@ public class MotionProfileCommand extends Command {
     	Robot.DriveSubsystem.DiffDrive(0,0);
     	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
+    	RobotMap.Right1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Left1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Left2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
     }
 
     // Called when another command which requires one or more of the same

@@ -43,14 +43,14 @@ public class MotionProfileTurnCommand extends Command {
 		RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
 		// max velocity 8.65 ft/s ? and kv = 1/max
 		followerLeft.configurePIDVA(1.0, 0, 0, 1.0/8.5, 0);
-		followerLeft.configureEncoder(0, 1000, 1.0/3.0);
+		followerLeft.configureEncoder(0, 3413, 1.0/3.0);
 		followerRight.configurePIDVA(1.0, 0, 0, 1.0/8.5, 0);
-		followerRight.configureEncoder(0, 1000, 1.0/3.0);
+		followerRight.configureEncoder(0, 3413, 1.0/3.0);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		double l = -followerLeft.calculate(-RobotMap.Left2.getSensorCollection().getQuadraturePosition());
+		double l = followerLeft.calculate(-RobotMap.Left2.getSensorCollection().getQuadraturePosition());
 		double r = followerRight.calculate(RobotMap.Right2.getSensorCollection().getQuadraturePosition());
 
 		double gyro_heading = RobotMap.Gyro1.getAngle();   // Assuming the gyro is giving a value in degrees
@@ -59,8 +59,8 @@ public class MotionProfileTurnCommand extends Command {
 		double angleDifference = Pathfinder.boundHalfDegrees(desired_heading - gyro_heading);
 		double turn = 0.8 * (-1.0/80.0) * angleDifference;
 
-		RobotMap.Left1.set(l + turn);
-		RobotMap.Left2.set(l + turn);
+		RobotMap.Left1.set(-(l + turn));
+		RobotMap.Left2.set(-(l + turn));
 		RobotMap.Right1.set(r - turn);
 		RobotMap.Right2.set(r - turn);
 

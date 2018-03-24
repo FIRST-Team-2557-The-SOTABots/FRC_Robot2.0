@@ -83,12 +83,9 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		oi.OIInit();
 
-		m_chooser.addObject("Motion Profile Turn test", new MotionProfileTurnCommand(RobotMap.drive0));
-		m_chooser.addObject("Motion Profile Turn baseline test", new MotionProfileTurnCommand(RobotMap.drive1));
-
 		m_chooser.addObject("Forward test using Turning Profile", new MotionProfileTurnCommand(RobotMap.drive1));
-		m_chooser.addObject("Left test using Turning Profile", new MotionProfileTurnCommand(RobotMap.trajectory));
-		m_chooser.addObject("Right test using Turning Profile", new MotionProfileTurnCommand(RobotMap.trajectory2));
+		m_chooser.addObject("Right test using Turning Profile", new MotionProfileTurnCommand(RobotMap.trajectory));
+		m_chooser.addObject("Left test using Turning Profile", new MotionProfileTurnCommand(RobotMap.trajectory2));
 		
 		
 		m_chooser.addObject("PID Turn test", new PIDTurn(90.0));
