@@ -25,7 +25,7 @@ public class DriveSubsystem extends Subsystem {
 			DiffDrive(OI.Joystick1.getRawAxis(1)*0.9, -OI.Joystick1.getRawAxis(4)*0.9);
 		}
 	}
-
+	
 	public void initDefaultCommand() {
 		setDefaultCommand(new TeleDriveCommand());
 	}

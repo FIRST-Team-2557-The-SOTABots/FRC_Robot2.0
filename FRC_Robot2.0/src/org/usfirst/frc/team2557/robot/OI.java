@@ -29,6 +29,11 @@ public class OI {
 	public static JoystickButton forwardButton;
 	public static JoystickButton backwardButton;
 	
+	public static JoystickButton da;
+	public static JoystickButton db;
+	public static JoystickButton dx;
+	public static JoystickButton dy;
+	
 	public static Joystick Joystick2;
 	public static JoystickButton IntakeIn;
 	public static JoystickButton IntakeOut;
@@ -56,7 +61,11 @@ public class OI {
 		leftTrigger = new JoystickButton(Joystick2, 7);
 		outTakeFast = new JoystickButton(Joystick2, 10);
 		
-		
+		da = new JoystickButton(Joystick1, 1);
+		db = new JoystickButton(Joystick1, 2);
+		dx = new JoystickButton(Joystick1, 3);
+		dy = new JoystickButton(Joystick1, 4);
+			
 		forwardButton = new JoystickButton(Joystick2, 8);
 		backwardButton = new JoystickButton(Joystick2, 7);
 		forwardButton.whenPressed(new RiseCommandRight());

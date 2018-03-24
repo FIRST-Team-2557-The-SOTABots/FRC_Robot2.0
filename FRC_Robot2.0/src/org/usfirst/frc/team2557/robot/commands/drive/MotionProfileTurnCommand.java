@@ -26,10 +26,10 @@ public class MotionProfileTurnCommand extends Command {
 
 		// Wheelbase Width = 2ft
 		// Do something with the new Trajectories...
-		TankModifier modifier = new TankModifier(trajectory).modify(1.875);
-
-		this.followerLeft = new EncoderFollower(modifier.getLeftTrajectory());
-		this.followerRight = new EncoderFollower(modifier.getRightTrajectory());
+//		TankModifier modifier = new TankModifier(trajectory).modify(1.875);
+//
+//		this.followerLeft = new EncoderFollower(modifier.getLeftTrajectory());
+//		this.followerRight = new EncoderFollower(modifier.getRightTrajectory());
 	}
 
 	// Called just before this Command runs the first time

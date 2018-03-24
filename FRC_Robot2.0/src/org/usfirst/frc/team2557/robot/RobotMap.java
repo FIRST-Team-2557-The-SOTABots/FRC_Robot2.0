@@ -20,6 +20,7 @@ import jaci.pathfinder.Trajectory;
 import jaci.pathfinder.Waypoint;
 
 public class RobotMap {
+	
 	// Drive
 	public static WPI_TalonSRX Left1;
 	public static WPI_TalonSRX Left2;
@@ -93,52 +94,52 @@ public class RobotMap {
 		MecDrive.setSafetyEnabled(false);
 		Gyro1 = new AHRS(SPI.Port.kMXP);
 
-		// could increase accel !!!
+//		// could increase accel !!!
 		Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 8.5, 6.0, 1000000.0);
 		
-		Waypoint[] points = new Waypoint[] {
-                new Waypoint(-4, 1, Pathfinder.d2r(45)),
-                new Waypoint(-2, 2, 0),
-                new Waypoint(0, 0, 0)
-        };
-        trajectory = Pathfinder.generate(points, config);
-        File file = new File("/home/lvuser/Trajectories/jacitestleft.t");
-		try {
-			file.createNewFile();
-			Pathfinder.writeToFile(file, trajectory);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		Waypoint[] points = new Waypoint[] {
+//                new Waypoint(-4, 1, Pathfinder.d2r(45)),
+//                new Waypoint(-2, 2, 0),
+//                new Waypoint(0, 0, 0)
+//        };
+//        trajectory = Pathfinder.generate(points, config);
+//        File file = new File("/home/lvuser/Trajectories/jacitestleft.t");
+//		try {
+//			file.createNewFile();
+//			Pathfinder.writeToFile(file, trajectory);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		trajectory = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/jacitestleft.t"));
 		
-		Waypoint[] points0 = new Waypoint[] {
-                new Waypoint(-4, -1, Pathfinder.d2r(-45)),
-                new Waypoint(-2, -2, 0),
-                new Waypoint(0, 0, 0)
-        };
-        trajectory2 = Pathfinder.generate(points0, config);
-        File file2 = new File("/home/lvuser/Trajectories/jacitest.t");
-		try {
-			file.createNewFile();
-			Pathfinder.writeToFile(file2, trajectory2);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		Waypoint[] points0 = new Waypoint[] {
+//                new Waypoint(-4, -1, Pathfinder.d2r(-45)),
+//                new Waypoint(-2, -2, 0),
+//                new Waypoint(0, 0, 0)
+//        };
+//        trajectory2 = Pathfinder.generate(points0, config);
+//        File file2 = new File("/home/lvuser/Trajectories/jacitest.t");
+//		try {
+//			file.createNewFile();
+//			Pathfinder.writeToFile(file2, trajectory2);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		trajectory2 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/jacitest.t"));
 		
-		Waypoint[] points1 = new Waypoint[] {
-				// in feet
-				new Waypoint(-8.0, 0, 0),
-				new Waypoint(0, 0, 0)
-		};
-		drive1 = Pathfinder.generate(points1, config);
-		File drive1file = new File("/home/lvuser/Trajectories/drive1.t");
-		try {
-			drive1file.createNewFile();
-			Pathfinder.writeToFile(drive1file, drive1);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		Waypoint[] points1 = new Waypoint[] {
+//				// in feet
+//				new Waypoint(-8.0, 0, 0),
+//				new Waypoint(0, 0, 0)
+//		};
+//		drive1 = Pathfinder.generate(points1, config);
+//		File drive1file = new File("/home/lvuser/Trajectories/drive1.t");
+//		try {
+//			drive1file.createNewFile();
+//			Pathfinder.writeToFile(drive1file, drive1);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		drive1 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive1.t"));
 		
 //		Waypoint[] points2 = new Waypoint[] {
