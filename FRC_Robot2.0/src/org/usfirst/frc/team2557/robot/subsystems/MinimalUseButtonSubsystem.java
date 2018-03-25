@@ -35,25 +35,37 @@ public class MinimalUseButtonSubsystem extends Subsystem {
 	}
 
 	public void uselessForward(){
-		if(RobotMap.DS1.get() == DoubleSolenoid.Value.kForward) {
-			mec = true;
+		
+		if(RobotMap.DS1.get() == DoubleSolenoid.Value.kForward && OI.dy.get()){
+			RobotMap.MecDrive.driveCartesian(0, 0.3, 0);
+		}else if(RobotMap.DS1.get() == DoubleSolenoid.Value.kReverse && OI.dy.get()){
+			RobotMap.DiffDrive.arcadeDrive(0.3, 0);
+		}else if(RobotMap.DS1.get() == DoubleSolenoid.Value.kForward && OI.da.get()){
+			RobotMap.MecDrive.driveCartesian(0, -0.3, 0);
+		}else if(RobotMap.DS1.get() == DoubleSolenoid.Value.kReverse && OI.da.get()){
+			RobotMap.DiffDrive.arcadeDrive(-0.3, 0);
+		}else if(RobotMap.DS1.get() == DoubleSolenoid.Value.kReverse && OI.dy.get()){
+			
 		}
-		else {
-			mec = false;
-		}
-		if(OI.dy.get()){
-			if(mec){
-				RobotMap.MecDrive.driveCartesian(0, 0.3, 0);
-			}else if(mec == false){
-				RobotMap.DiffDrive.arcadeDrive(0.3, 0);
-			}
-		}else if(OI.da.get()){
-			if(mec){
-				RobotMap.MecDrive.driveCartesian(0, -0.3, 0);
-			}else if(mec == false){
-				RobotMap.DiffDrive.arcadeDrive(0.3, 0);
-			}
-		}	
+//		if(RobotMap.DS1.get() == DoubleSolenoid.Value.kForward) {
+//			mec = true;
+//		}
+//		else {
+//			mec = false;
+//		}
+//		if(OI.dy.get()){
+//			if(mec){
+//				RobotMap.MecDrive.driveCartesian(0, 0.3, 0);
+//			}else if(mec == false){
+//				RobotMap.DiffDrive.arcadeDrive(0.3, 0);
+//			}
+//		}else if(OI.da.get()){
+//			if(mec){
+//				RobotMap.MecDrive.driveCartesian(0, -0.3, 0);
+//			}else if(mec == false){
+//				RobotMap.DiffDrive.arcadeDrive(0.3, 0);
+//			}
+//		}	
 	}
 
 	// Put methods for controlling this subsystem

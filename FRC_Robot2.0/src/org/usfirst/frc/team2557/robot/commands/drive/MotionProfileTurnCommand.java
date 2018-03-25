@@ -26,14 +26,16 @@ public class MotionProfileTurnCommand extends Command {
 
 		// Wheelbase Width = 2ft
 		// Do something with the new Trajectories...
-//		TankModifier modifier = new TankModifier(trajectory).modify(1.875);
+		TankModifier modifier = new TankModifier(trajectory).modify(1.875);
 //
-//		this.followerLeft = new EncoderFollower(modifier.getLeftTrajectory());
-//		this.followerRight = new EncoderFollower(modifier.getRightTrajectory());
+		this.followerLeft = new EncoderFollower(modifier.getLeftTrajectory());
+		this.followerRight = new EncoderFollower(modifier.getRightTrajectory());
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+//		followerRight = new EncoderFollower();
+//		followerLeft = new EncoderFollower();
 		RobotMap.Gyro1.reset();
 		t.reset();
 		t.start();
@@ -57,7 +59,7 @@ public class MotionProfileTurnCommand extends Command {
 		double desired_heading = Pathfinder.r2d(followerLeft.getHeading());  // Should also be in degrees
 
 		double angleDifference = Pathfinder.boundHalfDegrees(desired_heading - gyro_heading);
-		double turn = 0.8 * (-1.0/80.0) * angleDifference;
+		double turn = 0.8 * (-1.0/80.0) * angleDifference * 10;
 
 		RobotMap.Left1.set(-(l + turn));
 		RobotMap.Left2.set(-(l + turn));
@@ -87,6 +89,10 @@ public class MotionProfileTurnCommand extends Command {
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+		RobotMap.Right1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Left1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Left2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
 		this.end();
 	}
 }

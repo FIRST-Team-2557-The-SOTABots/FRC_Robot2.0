@@ -43,6 +43,16 @@ public class IntakeSubsystem extends Subsystem {
 			RobotMap.IntakeL.set(-.15);
 			RobotMap.S2.set(false);
 			RobotMap.S1.set(true);
+		}else if(OI.db.get()){
+			RobotMap.IntakeR.set(-0.8);
+			RobotMap.IntakeL.set(0.8);
+			RobotMap.S2.set(false);
+			RobotMap.S1.set(true);
+		}else if(OI.da.get()){
+			RobotMap.IntakeR.set(.3);
+			RobotMap.IntakeL.set(-.3);
+			RobotMap.S2.set(false);
+			RobotMap.S1.set(true);
 		}else {
 			RobotMap.IntakeR.set(0);
 			RobotMap.IntakeL.set(0);

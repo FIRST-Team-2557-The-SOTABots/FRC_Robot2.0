@@ -21,7 +21,6 @@ public class MotionProfileCommand extends Command {
     	// Wheelbase Width = 2ft
         // Do something with the new Trajectories...
         this.trajectory = trajectory;
-        
         follower = new EncoderFollower(trajectory);
     }
 
@@ -34,15 +33,12 @@ public class MotionProfileCommand extends Command {
     	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
     	// max velocity 8.65 ft/s ? and kv = 1/max
-//    	follower.configurePIDVA(1.0, 0, 0, 1.0/10, 0);
-//    	follower.configureEncoder(0, 4100, 1.0/3.0);
-    	follower.configurePIDVA(0.075, 0, 0.001, 1.0/8.5, 0.001);
+    	
+    	follower.configurePIDVA(0.075, 0, 0.001, 1.0/10, 0.001); // real bot pidva
+//    	follower.configurePIDVA(1, 0, 0.01, 1.0/8.5, 0);
+//    	follower.configurePIDVA(0.01, 0, 0.015, 1.0/8.5, 0);
     	follower.configureEncoder(0, 3413, 1.0/3.0);
     	
-    	RobotMap.Right1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
-    	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
-    	RobotMap.Left1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
-    	RobotMap.Left2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -66,15 +62,16 @@ public class MotionProfileCommand extends Command {
     	Robot.DriveSubsystem.DiffDrive(0,0);
     	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
-    	RobotMap.Right1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
-    	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
-    	RobotMap.Left1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
-    	RobotMap.Left2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	this.end();
+    	RobotMap.Right1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Left1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Left2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+//    	this.end();
+    	this.cancel();
     }
 }

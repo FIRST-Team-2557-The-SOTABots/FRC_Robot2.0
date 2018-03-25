@@ -118,6 +118,10 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
+		RobotMap.Right1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
+    	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
+    	RobotMap.Left1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
+    	RobotMap.Left2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
 		RobotMap.rightWing.set(0.0);
 		RobotMap.leftWing.setAngle(180.0);
 		// Reset the lift encoder to zero
@@ -143,6 +147,10 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
+    	RobotMap.Right1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Left1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Left2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
 		RobotMap.rightWing.set(0.0);
 		RobotMap.leftWing.setAngle(180.0);
 		// Stop the auto command, if there was one
