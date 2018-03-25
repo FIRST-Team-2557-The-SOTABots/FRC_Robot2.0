@@ -2,17 +2,12 @@ package org.usfirst.frc.team2557.robot.commands.drive;
 
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import jaci.pathfinder.Trajectory;
 import jaci.pathfinder.followers.EncoderFollower;
-import jaci.pathfinder.modifiers.TankModifier;
 
-/**
- *
- */
 public class MotionProfileCommand extends Command {
 	Timer t;
 	Trajectory trajectory;
@@ -26,7 +21,6 @@ public class MotionProfileCommand extends Command {
     	// Wheelbase Width = 2ft
         // Do something with the new Trajectories...
         this.trajectory = trajectory;
-        
         follower = new EncoderFollower(trajectory);
     }
 
@@ -39,14 +33,18 @@ public class MotionProfileCommand extends Command {
     	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
     	// max velocity 8.65 ft/s ? and kv = 1/max
-    	follower.configurePIDVA(0.9, 0, 0, 1.0/8.0, 0);
+    	
+    	follower.configurePIDVA(0.075, 0, 0.001, 1.0/10, 0.001); // real bot pidva
+//    	follower.configurePIDVA(1, 0, 0.01, 1.0/8.5, 0);
+//    	follower.configurePIDVA(0.01, 0, 0.015, 1.0/8.5, 0);
     	follower.configureEncoder(0, 3413, 1.0/3.0);
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double power = follower.calculate(RobotMap.Right2.getSensorCollection().getQuadraturePosition());
-    	Robot.DriveSubsystem.DiffDrive(-power, RobotMap.Gyro1.getAngle()*0.2);
+    	Robot.DriveSubsystem.DiffDrive(-power, RobotMap.Gyro1.getAngle()*0.1);
     	SmartDashboard.putNumber("timer motion profile", t.get());
     	t.reset();
     }
@@ -69,6 +67,11 @@ public class MotionProfileCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	this.end();
+    	RobotMap.Right1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Left1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.Left2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+//    	this.end();
+    	this.cancel();
     }
 }

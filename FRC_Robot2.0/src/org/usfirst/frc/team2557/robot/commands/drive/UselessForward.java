@@ -1,12 +1,18 @@
-package org.usfirst.frc.team2557.robot.commands.intake;
+package org.usfirst.frc.team2557.robot.commands.drive;
 
 import org.usfirst.frc.team2557.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
-public class IntakeCommandWithAxis extends Command {
+/**
+ *
+ */
+public class UselessForward extends Command {
 
-    public IntakeCommandWithAxis() {
-        requires(Robot.IntakeSubsystem);
+    public UselessForward() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.MinimalUseButtonSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -15,7 +21,7 @@ public class IntakeCommandWithAxis extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.IntakeSubsystem.IntakeWithAxis();
+//    	Robot.MinimalUseButtonSubsystem.uselessForward();
     }
 
     // Make this return true when this Command no longer needs to run execute()

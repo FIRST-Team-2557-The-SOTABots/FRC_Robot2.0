@@ -2,21 +2,14 @@ package org.usfirst.frc.team2557.robot.commands.drive;
 
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class EncoderDistanceDriveCommand extends Command {
-	
 	private double speed;
 	private double distance;
 
     public EncoderDistanceDriveCommand(double s, double r, double d) {
     	requires(Robot.DriveSubsystem);
-    	
     	speed = s;
     	distance = d;
     }
@@ -30,7 +23,7 @@ public class EncoderDistanceDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.DriveSubsystem.DiffDrive(speed, RobotMap.Gyro1.getAngle()*0.5);
+    	Robot.DriveSubsystem.DiffDrive(speed*0.8, RobotMap.Gyro1.getAngle()*0.1);
     }
 
     // Make this return true when this Command no longer needs to run execute()

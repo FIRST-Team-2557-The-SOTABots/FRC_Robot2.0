@@ -9,13 +9,13 @@ package org.usfirst.frc.team2557.robot;
 
 
 import org.usfirst.frc.team2557.robot.commands.intake.IntakeCommand;
+import org.usfirst.frc.team2557.robot.commands.solenoid.RiseCommandLeft;
+import org.usfirst.frc.team2557.robot.commands.solenoid.RiseCommandRight;
 import org.usfirst.frc.team2557.robot.commands.solenoid.SolenoidCommand;
 import org.usfirst.frc.team2557.robot.commands.wing.WingCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.wing.WingCommandRight;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -26,6 +26,13 @@ public class OI {
 	public static Joystick Joystick1;
 	public static JoystickButton ForwardButton;
 	public static JoystickButton BackwardButton;
+	public static JoystickButton forwardButton;
+	public static JoystickButton backwardButton;
+	
+	public static JoystickButton da;
+	public static JoystickButton db;
+	public static JoystickButton dx;
+	public static JoystickButton dy;
 	
 	public static Joystick Joystick2;
 	public static JoystickButton IntakeIn;
@@ -54,35 +61,20 @@ public class OI {
 		leftTrigger = new JoystickButton(Joystick2, 7);
 		outTakeFast = new JoystickButton(Joystick2, 10);
 		
+		da = new JoystickButton(Joystick1, 1);
+		db = new JoystickButton(Joystick1, 2);
+		dx = new JoystickButton(Joystick1, 3);
+		dy = new JoystickButton(Joystick1, 4);
+			
+		forwardButton = new JoystickButton(Joystick2, 8);
+		backwardButton = new JoystickButton(Joystick2, 7);
+		forwardButton.whenPressed(new RiseCommandRight());
+		backwardButton.whenPressed(new RiseCommandLeft());
+		
 		IntakeIn.whileHeld(new IntakeCommand());
 		IntakeOut.whileHeld(new IntakeCommand());
+		
+		rightBumper.whenPressed(new WingCommandRight());
+		leftBumper.whenPressed(new WingCommandLeft());
 	}
-	
-	//// CREATING BUTTONS
-	// One type of button is a joystick button which is any button on a
-	//// joystick.
-	// You create one by telling it which joystick it's on and which button
-	// number it is.
-	// Joystick stick = new Joystick(port);
-	// Button button = new JoystickButton(stick, buttonNumber);
-
-	// There are a few additional built in buttons you can use. Additionally,
-	// by subclassing Button you can create custom triggers and bind those to
-	// commands the same as any other Button.
-
-	//// TRIGGERING COMMANDS WITH BUTTONS
-	// Once you have a button, it's trivial to bind it to a button in one of
-	// three ways:
-
-	// Start the command when the button is pressed and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenPressed(new ExampleCommand());
-
-	// Run the command while the button is being held down and interrupt it once
-	// the button is released.
-	// button.whileHeld(new ExampleCommand());
-
-	// Start the command when the button is released and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenReleased(new ExampleCommand());
 }
