@@ -59,7 +59,7 @@ public class MotionProfileTurnCommand extends Command {
 		double desired_heading = Pathfinder.r2d(followerLeft.getHeading());  // Should also be in degrees
 
 		double angleDifference = Pathfinder.boundHalfDegrees(desired_heading - gyro_heading);
-		double turn = 0.8 * (-1.0/80.0) * angleDifference * 8;
+		double turn = 0.8 * (-1.0/80.0) * angleDifference * 8.0;
 
 		RobotMap.Left1.set(-(l + turn));
 		RobotMap.Left2.set(-(l + turn));
