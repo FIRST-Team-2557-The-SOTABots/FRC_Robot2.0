@@ -20,15 +20,13 @@ public class RightScaleAndCube extends CommandGroup {
     public RightScaleAndCube() {
     	addSequential(new LiftAutoCommand(1000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
-		
-//		RobotMap.IntakeL.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
-//    	RobotMap.IntakeR.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
-		
-		addParallel(new LiftAutoCommand(37500)); // 37500
-		addSequential(new MotionProfileTurnCommand(RobotMap.trajectory3));
+		addParallel(new LiftAutoCommand(37500));
+		addSequential(new MotionProfileCommand(RobotMap.drive8));
 		addSequential(new WaitForChildren());
-		addSequential(new MotionProfileCommand(RobotMap.drive13));
+		addSequential(new TurnByAngleCommand(35.0));
+		addSequential(new MotionProfileCommand(RobotMap.drive9));
 		addSequential(new IntakeAutoCommand(1, -0.4));
+		
 		addSequential(new TurnByAngleCommand(100.0));
 		addSequential(new LiftAutoCommand(250));
 //		addSequential(new WaitForChildren());
@@ -39,6 +37,8 @@ public class RightScaleAndCube extends CommandGroup {
 		addParallel(new LiftAutoCommand(37500));
 		addSequential(new TurnByAngleCommand(-125.0));
 		addSequential(new WaitForChildren());
+		
+		
 		addSequential(new MotionProfileCommand(RobotMap.drive16));
 //		addSequential(new EncoderDistanceDriveCommand(0.8, 0, 4.0));
 		addSequential(new IntakeAutoCommand(1, -0.4));

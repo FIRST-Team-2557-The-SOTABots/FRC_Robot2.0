@@ -85,7 +85,8 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		oi.OIInit();
 
-		m_chooser.addDefault("Right scale and cube", new RightScaleAndCube());
+		m_chooser.addDefault("Defult Auto Go Forward", new ForwardAutoCommand());
+		m_chooser.addObject("Right scale and cube", new RightScaleAndCube());
 		m_chooser.addObject("Forward test using Turning Profile", new MotionProfileTurnCommand(RobotMap.drive1));
 		m_chooser.addObject("Turns Right test using Turning Profile", new RightScaleCrossoverTest());
 		m_chooser.addObject("Turns Left test using Turning Profile", new MotionProfileTurnCommand(RobotMap.trajectory2));
