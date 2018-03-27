@@ -97,7 +97,7 @@ public class RobotMap {
 
 		//		// could increase accel !!!... done
 		Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 8.5, 10.0, 1000000.0);
-		//		Trajectory.Config configSlow = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 5.0, 5.0, 1000000.0);
+				Trajectory.Config configSlow = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 5.0, 5.0, 1000000.0);
 
 //		Waypoint[] points = new Waypoint[] {
 //				new Waypoint(-14.5, 4, 0),
