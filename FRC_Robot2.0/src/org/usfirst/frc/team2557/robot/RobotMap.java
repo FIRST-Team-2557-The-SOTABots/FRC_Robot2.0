@@ -60,12 +60,10 @@ public class RobotMap {
 
 	public static Trajectory drive0;
 	public static Trajectory drive1;
-	public static Trajectory drive2;
 	public static Trajectory drive3;
 	public static Trajectory drive4;
 	public static Trajectory drive5;
 	public static Trajectory drive6;
-	public static Trajectory drive7;
 	public static Trajectory drive8;
 	public static Trajectory drive9;
 	public static Trajectory drive10;
@@ -143,19 +141,6 @@ public class RobotMap {
 		//		} catch (IOException e) {
 		//			e.printStackTrace();
 		//		}
-		//		Waypoint[] points2 = new Waypoint[] {
-		//				// in feet
-		//				new Waypoint(-8.0, 0, 0),
-		//				new Waypoint(0, 0, 0)
-		//		};
-		//		drive2 = Pathfinder.generate(points2, config);
-		//		File drive2file = new File("/home/lvuser/Trajectories/drive2.t");
-		//		try {
-		//			drive2file.createNewFile();
-		//			Pathfinder.writeToFile(drive2file, drive2);
-		//		} catch (IOException e) {
-		//			e.printStackTrace();
-		//		}
 		//		Waypoint[] points3 = new Waypoint[] {
 		//				// in feet
 		//				new Waypoint(-5.0, 0, 0),
@@ -205,19 +190,6 @@ public class RobotMap {
 		//		try {
 		//			drive6file.createNewFile();
 		//			Pathfinder.writeToFile(drive6file, drive6);
-		//		} catch (IOException e) {
-		//			e.printStackTrace();
-		//		}
-		//		Waypoint[] points7 = new Waypoint[] {
-		//				// in feet
-		//				new Waypoint(-0.5, 0, 0),
-		//				new Waypoint(0, 0, 0)
-		//		};
-		//		drive7 = Pathfinder.generate(points7, config);
-		//		File drive7file = new File("/home/lvuser/Trajectories/drive7.t");
-		//		try {
-		//			drive7file.createNewFile();
-		//			Pathfinder.writeToFile(drive7file, drive7);
 		//		} catch (IOException e) {
 		//			e.printStackTrace();
 		//		}
@@ -289,7 +261,7 @@ public class RobotMap {
 				Waypoint[] points13 = new Waypoint[] {
 						// in feet
 						new Waypoint(-2.0, 0, 0),
-						new Waypoint(0, 0, 0)
+						new Waypoint(0.0, 0, 0)
 				};
 				drive13 = Pathfinder.generate(points13, config);
 				File drive13file = new File("/home/lvuser/Trajectories/drive13.t");
@@ -339,8 +311,8 @@ public class RobotMap {
 		//			e.printStackTrace();
 		//		}
 		Waypoint[] points17 = new Waypoint[] {
-				new Waypoint(-18.0, 1.5, 0),
-				new Waypoint(-3.0, 1.5, 0),
+				new Waypoint(-18.0, .5, 0),
+				new Waypoint(-2.0, 2.0, 0),
 //				new Waypoint(-4, 4, 0),
 				new Waypoint(0, 0, 0)
 //				new Waypoint(1, -1, 0)
@@ -357,12 +329,10 @@ public class RobotMap {
 		trajectory = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/jacitestleft.t"));
 		trajectory2 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/jacitest.t"));
 		drive1 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive1.t"));
-		drive2 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive2.t"));
 		drive3 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive3.t"));
 		drive4 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive4.t"));
 		drive5 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive5.t"));
 		drive6 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive6.t"));
-		drive7 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive7.t"));
 		drive8 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive8.t"));
 		drive9 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive9.t"));
 		drive10 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/drive10.t"));
