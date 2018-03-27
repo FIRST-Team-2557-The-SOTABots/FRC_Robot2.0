@@ -221,6 +221,20 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		
+		SmartDashboard.putNumber("accelerometer rawaccelX", RobotMap.Gyro1.getRawAccelX());
+		SmartDashboard.putNumber("accelerometer rawaccelY", RobotMap.Gyro1.getRawAccelY());
+		SmartDashboard.putNumber("accelerometer rawaccelZ", RobotMap.Gyro1.getRawAccelZ());
+		SmartDashboard.putNumber("accelerometer velocityX", RobotMap.Gyro1.getVelocityX());
+		SmartDashboard.putNumber("accelerometer velocityY", RobotMap.Gyro1.getVelocityY());
+		SmartDashboard.putNumber("accelerometer velocityZ", RobotMap.Gyro1.getVelocityZ());
+		SmartDashboard.putNumber("accelerometer getWorldLinearAccelX", RobotMap.Gyro1.getWorldLinearAccelX());
+		SmartDashboard.putNumber("accelerometer getWorldLinearAccelY", RobotMap.Gyro1.getWorldLinearAccelY());
+		SmartDashboard.putNumber("accelerometer getWorldLinearAccelZ", RobotMap.Gyro1.getWorldLinearAccelZ());
+		SmartDashboard.putNumber("accelerometer getRate", RobotMap.Gyro1.getRate());
+		SmartDashboard.putNumber("talons velocity right", RobotMap.Right2.getSelectedSensorVelocity(0));
+		SmartDashboard.putNumber("talons velocity left", RobotMap.Left2.getSelectedSensorVelocity(0));
+		
+		
 		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 		SmartDashboard.putNumber("GyroThisOne", RobotMap.Gyro1.getAngle());
 		
