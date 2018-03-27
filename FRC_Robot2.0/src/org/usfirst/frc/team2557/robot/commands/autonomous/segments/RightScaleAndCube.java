@@ -7,6 +7,7 @@ import org.usfirst.frc.team2557.robot.commands.drive.MotionProfileTurnCommand;
 import org.usfirst.frc.team2557.robot.commands.drive.TurnByAngleCommand;
 import org.usfirst.frc.team2557.robot.commands.intake.IntakeAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.lift.LiftAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.solenoid.SolenoidAutoCommand;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
@@ -27,7 +28,9 @@ public class RightScaleAndCube extends CommandGroup {
 		addSequential(new MotionProfileCommand(RobotMap.drive9));
 		addSequential(new IntakeAutoCommand(1, -0.4));
 		
+		addParallel(new SolenoidAutoCommand());
 		addSequential(new TurnByAngleCommand(100.0));
+		addSequential(new SolenoidAutoCommand());
 		addSequential(new LiftAutoCommand(250));
 //		addSequential(new WaitForChildren());
 		addParallel(new IntakeAutoCommand(3, 0.6));
@@ -35,8 +38,11 @@ public class RightScaleAndCube extends CommandGroup {
 		addSequential(new WaitCommand(0.25));
 		addSequential(new LiftAutoCommand(2000));
 		addParallel(new LiftAutoCommand(37500));
+		addParallel(new SolenoidAutoCommand());
 		addSequential(new TurnByAngleCommand(-125.0));
 		addSequential(new WaitForChildren());
+		addSequential(new SolenoidAutoCommand());
+		
 		
 		
 		addSequential(new MotionProfileCommand(RobotMap.drive16));
