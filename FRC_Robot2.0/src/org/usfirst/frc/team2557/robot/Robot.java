@@ -8,11 +8,12 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.LeftSide_SwitchOnlyAut
 import org.usfirst.frc.team2557.robot.commands.autonomous.LeftSwitchPriorityAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.MidSwitchAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightEnd;
-import org.usfirst.frc.team2557.robot.commands.autonomous.RightScaleCrossoverTest;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightScalePriorityAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSide_ScaleOnlyAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSide_SwitchOnlyAutoCommand;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSwitchPriorityAutoCommand;
+import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScaleAndCube;
+import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScaleCrossoverTest;
 import org.usfirst.frc.team2557.robot.commands.drive.MotionProfileCommand;
 import org.usfirst.frc.team2557.robot.commands.drive.MotionProfileTurnCommand;
 import org.usfirst.frc.team2557.robot.commands.drive.PIDTurn;
@@ -84,13 +85,13 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		oi.OIInit();
 
+		m_chooser.addDefault("Right scale and cube", new RightScaleAndCube());
 		m_chooser.addObject("Forward test using Turning Profile", new MotionProfileTurnCommand(RobotMap.drive1));
 		m_chooser.addObject("Turns Right test using Turning Profile", new RightScaleCrossoverTest());
 		m_chooser.addObject("Turns Left test using Turning Profile", new MotionProfileTurnCommand(RobotMap.trajectory2));
-		
-		
 		m_chooser.addObject("PID Turn test", new PIDTurn(90.0));
-		m_chooser.addDefault("Forward Only", new ForwardAutoCommand());
+//		m_chooser.addDefault("Forward Only", new ForwardAutoCommand());
+		m_chooser.addObject("Forward Only", new ForwardAutoCommand());
 		m_chooser.addObject("Mid Switch", new MidSwitchAutoCommand());
 		m_chooser.addObject("Left Side Switch & Scale, Prioritise Switch, with crossover", new LeftSwitchPriorityAutoCommand());
 		m_chooser.addObject("Right Side Switch & Scale, Prioritise Switch with crossover", new RightSwitchPriorityAutoCommand());
@@ -197,6 +198,9 @@ public class Robot extends TimedRobot {
 		RobotMap.LiftMotor2.configPeakCurrentDuration(0, 0);
 		RobotMap.LiftMotor2.configPeakCurrentLimit(30, 0);
 		RobotMap.LiftMotor2.configContinuousCurrentLimit(30, 0);
+		
+		RobotMap.IntakeL.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+    	RobotMap.IntakeR.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
 		
     	RobotMap.Right1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
     	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
