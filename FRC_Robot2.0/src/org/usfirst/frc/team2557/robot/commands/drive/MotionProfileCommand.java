@@ -71,7 +71,7 @@ public class MotionProfileCommand extends Command {
     	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
     	RobotMap.Left1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
     	RobotMap.Left2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
-//    	this.end();
-    	this.cancel();
+    	this.end();
+//    	this.cancel();
     }
 }
