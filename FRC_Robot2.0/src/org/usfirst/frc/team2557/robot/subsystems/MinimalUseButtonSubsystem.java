@@ -44,7 +44,7 @@ public class MinimalUseButtonSubsystem extends Subsystem {
 			RobotMap.MecDrive.driveCartesian(0, -0.3, 0);
 		}else if(RobotMap.DS1.get() == DoubleSolenoid.Value.kReverse && OI.da.get()){
 			RobotMap.DiffDrive.arcadeDrive(-0.3, 0);
-		}else if(RobotMap.DS1.get() == DoubleSolenoid.Value.kReverse && OI.dy.get()){
+		}else if(RobotMap.DS1.get() == DoubleSolenoid.Value.kReverse && OI.backButton.get()){
 			
 		}
 //		if(RobotMap.DS1.get() == DoubleSolenoid.Value.kForward) {

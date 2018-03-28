@@ -36,6 +36,7 @@ public class OI {
 	public static JoystickButton dy;
 	
 	public static JoystickButton startButton;
+	public static JoystickButton backButton;
 	
 	public static Joystick Joystick2;
 	public static JoystickButton IntakeIn;
@@ -52,6 +53,8 @@ public class OI {
 		BackwardButton = new JoystickButton(Joystick1, 5);
 		
 		startButton = new JoystickButton(Joystick1, 8);
+		backButton = new JoystickButton(Joystick1, 7);
+		
 		startButton.whenPressed(new BrakingCommand(true));
 		startButton.whenReleased(new BrakingCommand(false));
 		

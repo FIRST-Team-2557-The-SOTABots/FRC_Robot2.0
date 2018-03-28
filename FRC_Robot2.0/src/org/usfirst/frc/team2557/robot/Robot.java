@@ -22,6 +22,7 @@ import org.usfirst.frc.team2557.robot.subsystems.IntakeSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.LiftSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.MinimalUseButtonSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.SolenoidSubsystem;
+import org.usfirst.frc.team2557.robot.subsystems.Spite;
 import org.usfirst.frc.team2557.robot.subsystems.WingSubsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -39,6 +40,7 @@ public class Robot extends TimedRobot {
 	public static LiftSubsystem LiftSubsystem;
 	public static IntakeSubsystem IntakeSubsystem;
 	public static MinimalUseButtonSubsystem MinimalUseButtonSubsystem;
+	public static Spite spite;
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -81,6 +83,7 @@ public class Robot extends TimedRobot {
 		LiftSubsystem = new LiftSubsystem();
 		IntakeSubsystem = new IntakeSubsystem();
 		MinimalUseButtonSubsystem = new MinimalUseButtonSubsystem();
+		spite = new Spite();
 		
 		oi = new OI();
 		oi.OIInit();
