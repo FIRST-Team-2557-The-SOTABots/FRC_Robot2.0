@@ -23,16 +23,16 @@ public class TurnByAngleMecanumCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-		if(RobotMap.Gyro1.getAngle() > angle + 10) {
-			Robot.DriveSubsystem.MecanumDrive(0, 0, .8);
-		}else if(RobotMap.Gyro1.getAngle() < angle - 10){
-			Robot.DriveSubsystem.MecanumDrive(0, 0, .8);
+		if(RobotMap.Gyro1.getAngle() > angle) {
+			Robot.DriveSubsystem.MecanumDrive(0, 0, .7);
+		}else if(RobotMap.Gyro1.getAngle() < angle){
+			Robot.DriveSubsystem.MecanumDrive(0, 0, -.7);
 		}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Math.abs(RobotMap.Gyro1.getAngle()-angle) < 10.0){
+    	if(Math.abs(RobotMap.Gyro1.getAngle()-angle) < 1.0){
     		return true;
     	}
         return false;

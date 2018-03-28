@@ -17,6 +17,7 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScaleCro
 import org.usfirst.frc.team2557.robot.commands.drive.MotionProfileCommand;
 import org.usfirst.frc.team2557.robot.commands.drive.MotionProfileTurnCommand;
 import org.usfirst.frc.team2557.robot.commands.drive.PIDTurn;
+import org.usfirst.frc.team2557.robot.commands.drive.UselessForward;
 import org.usfirst.frc.team2557.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.IntakeSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.LiftSubsystem;
@@ -81,6 +82,7 @@ public class Robot extends TimedRobot {
 		LiftSubsystem = new LiftSubsystem();
 		IntakeSubsystem = new IntakeSubsystem();
 		MinimalUseButtonSubsystem = new MinimalUseButtonSubsystem();
+		
 		
 		oi = new OI();
 		oi.OIInit();
@@ -219,7 +221,6 @@ public class Robot extends TimedRobot {
 	 */	
 	@Override
 	public void teleopPeriodic() {
-		
 		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 		SmartDashboard.putNumber("GyroThisOne", RobotMap.Gyro1.getAngle());
 		

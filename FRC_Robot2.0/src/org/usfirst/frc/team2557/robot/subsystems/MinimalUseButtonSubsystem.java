@@ -34,18 +34,19 @@ public class MinimalUseButtonSubsystem extends Subsystem {
 		}
 	}
 
+	
 	public void uselessForward(){
-		
+		SmartDashboard.putString("Moo", "I am a duck");
 		if(RobotMap.DS1.get() == DoubleSolenoid.Value.kForward && OI.dy.get()){
+			RobotMap.MecDrive.driveCartesian(0, 1, 0);
+		}else if(RobotMap.DS1.get() == DoubleSolenoid.Value.kReverse && OI.dy.get()){
+			RobotMap.DiffDrive.arcadeDrive(1, 0);
+		}else if(RobotMap.DS1.get() == DoubleSolenoid.Value.kForward && OI.dx.get()){
 			RobotMap.MecDrive.driveCartesian(0, 0.3, 0);
-		}else if(RobotMap.DS1.get() == DoubleSolenoid.Value.kReverse && OI.dy.get()){
+			SmartDashboard.putNumber("WE ARE PRESSIG X IN MEC WE HOPE", 1000000);
+		}else if(RobotMap.DS1.get() == DoubleSolenoid.Value.kReverse && OI.dx.get()){
 			RobotMap.DiffDrive.arcadeDrive(0.3, 0);
-		}else if(RobotMap.DS1.get() == DoubleSolenoid.Value.kForward && OI.da.get()){
-			RobotMap.MecDrive.driveCartesian(0, -0.3, 0);
-		}else if(RobotMap.DS1.get() == DoubleSolenoid.Value.kReverse && OI.da.get()){
-			RobotMap.DiffDrive.arcadeDrive(-0.3, 0);
-		}else if(RobotMap.DS1.get() == DoubleSolenoid.Value.kReverse && OI.dy.get()){
-			
+			SmartDashboard.putNumber("WE ARE PRESSIG X IN COL WE HOPE", 1000000);
 		}
 //		if(RobotMap.DS1.get() == DoubleSolenoid.Value.kForward) {
 //			mec = true;
