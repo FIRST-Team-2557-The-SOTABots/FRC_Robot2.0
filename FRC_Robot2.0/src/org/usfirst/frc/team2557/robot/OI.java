@@ -8,6 +8,7 @@
 package org.usfirst.frc.team2557.robot;
 
 
+import org.usfirst.frc.team2557.robot.commands.drive.BrakingCommand;
 import org.usfirst.frc.team2557.robot.commands.intake.IntakeCommand;
 import org.usfirst.frc.team2557.robot.commands.solenoid.RiseCommandLeft;
 import org.usfirst.frc.team2557.robot.commands.solenoid.RiseCommandRight;
@@ -34,6 +35,9 @@ public class OI {
 	public static JoystickButton dx;
 	public static JoystickButton dy;
 	
+	public static JoystickButton startButton;
+	public static JoystickButton backButton;
+	
 	public static Joystick Joystick2;
 	public static JoystickButton IntakeIn;
 	public static JoystickButton IntakeOut;
@@ -47,6 +51,12 @@ public class OI {
 		Joystick1 = new Joystick(0);
 		ForwardButton = new JoystickButton(Joystick1, 6);
 		BackwardButton = new JoystickButton(Joystick1, 5);
+		
+		startButton = new JoystickButton(Joystick1, 8);
+		startButton.whenPressed(new BrakingCommand(true));
+		startButton.whenReleased(new BrakingCommand(false));
+		
+		startButton = new JoystickButton(Joystick1, 7);
 		
 		ForwardButton.whenPressed(new SolenoidCommand());
 		BackwardButton.whenPressed(new SolenoidCommand());
@@ -65,6 +75,8 @@ public class OI {
 		db = new JoystickButton(Joystick1, 2);
 		dx = new JoystickButton(Joystick1, 3);
 		dy = new JoystickButton(Joystick1, 4);
+		
+		
 			
 		forwardButton = new JoystickButton(Joystick2, 8);
 		backwardButton = new JoystickButton(Joystick2, 7);

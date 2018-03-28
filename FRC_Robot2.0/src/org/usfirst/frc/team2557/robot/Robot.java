@@ -21,6 +21,7 @@ import org.usfirst.frc.team2557.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.IntakeSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.LiftSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.MinimalUseButtonSubsystem;
+import org.usfirst.frc.team2557.robot.subsystems.MinimalUseTwoSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.SolenoidSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.WingSubsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -39,6 +40,7 @@ public class Robot extends TimedRobot {
 	public static LiftSubsystem LiftSubsystem;
 	public static IntakeSubsystem IntakeSubsystem;
 	public static MinimalUseButtonSubsystem MinimalUseButtonSubsystem;
+	public static MinimalUseTwoSubsystem MinimalUseTwoSubsystem;
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -81,6 +83,7 @@ public class Robot extends TimedRobot {
 		LiftSubsystem = new LiftSubsystem();
 		IntakeSubsystem = new IntakeSubsystem();
 		MinimalUseButtonSubsystem = new MinimalUseButtonSubsystem();
+		MinimalUseTwoSubsystem = new MinimalUseTwoSubsystem();
 		
 		oi = new OI();
 		oi.OIInit();
@@ -110,7 +113,6 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void disabledInit() {
-
 	}
 
 	@Override
