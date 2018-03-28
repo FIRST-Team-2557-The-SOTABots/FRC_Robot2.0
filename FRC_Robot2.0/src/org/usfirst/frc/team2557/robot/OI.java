@@ -56,7 +56,8 @@ public class OI {
 		startButton.whenPressed(new BrakingCommand(true));
 		startButton.whenReleased(new BrakingCommand(false));
 		
-		startButton = new JoystickButton(Joystick1, 7);
+		backButton = new JoystickButton(Joystick1, 7);
+		
 		
 		ForwardButton.whenPressed(new SolenoidCommand());
 		BackwardButton.whenPressed(new SolenoidCommand());
@@ -76,8 +77,6 @@ public class OI {
 		dx = new JoystickButton(Joystick1, 3);
 		dy = new JoystickButton(Joystick1, 4);
 		
-		
-			
 		forwardButton = new JoystickButton(Joystick2, 8);
 		backwardButton = new JoystickButton(Joystick2, 7);
 		forwardButton.whenPressed(new RiseCommandRight());
@@ -85,8 +84,5 @@ public class OI {
 		
 		IntakeIn.whileHeld(new IntakeCommand());
 		IntakeOut.whileHeld(new IntakeCommand());
-		
-		rightBumper.whenPressed(new WingCommandRight());
-		leftBumper.whenPressed(new WingCommandLeft());
 	}
 }

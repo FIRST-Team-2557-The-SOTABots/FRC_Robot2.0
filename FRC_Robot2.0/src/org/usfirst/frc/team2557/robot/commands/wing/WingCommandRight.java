@@ -5,17 +5,17 @@ import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**r
  *
  */
 public class WingCommandRight extends Command {
-	int done;
+	boolean done;
 
 	public WingCommandRight() {
-		requires(Robot.WingSubsystem);
-		
-		done = 1;
+//		requires(Robot.WingSubsystem);
+		done = false;
 	}
 
 	// Called just before this Command runs the first time
@@ -24,41 +24,16 @@ public class WingCommandRight extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+//		SmartDashboard.putBoolean("done wings right", done);
 		if(OI.rightBumper.get()){
-			if(done == 1){
 				RobotMap.rightWing.setPosition(0.5);
-			}
-//			RobotMap.rightWing.setAngle(90.0);
-			done--;
+				done = true;
 		}
-		//		if(OI.leftBumper.get() == true){
-		//			RobotMap.leftWing.setAngle(90.0);
-		//		}
-		//		if(OI.rightWingPiston.get() == true){
-		//			RobotMap.a.set(true);
-		//			RobotMap.b.set(true);
-		//		}
-		//		}else{
-		//			RobotMap.a.set(false);
-		//			RobotMap.b.set(false);
-		//		}
-		//		if(OI.leftWingPiston.get() == true){
-		//			RobotMap.c.set(true);
-		//			RobotMap.d.set(true);
-		//		}
-		//		}else{
-		//			RobotMap.c.set(false);
-		//			RobotMap.d.set(false);
-		//		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-//		if(RobotMap.rightWing.getAngle() == -90.0){
-//			return true;
-//		}
-		if(done == 0){
-			RobotMap.rightWing.setPosition(0.5);
+		if(done){
 			return true;
 		}
 		return false;

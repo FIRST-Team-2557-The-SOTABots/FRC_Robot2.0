@@ -6,9 +6,10 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScaleCro
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class LeftSwitchPriorityAutoCommand extends CommandGroup {
+public class LeftScalePriority extends CommandGroup {
 
-	public LeftSwitchPriorityAutoCommand() {
-		addSequential(new SwitchConditionalCommand(new LeftSwitch(), new ScaleConditionalCommand(new LeftScale(), new RightScaleCrossover(), false), false));
+	public LeftScalePriority() {
+		addSequential(new ScaleConditionalCommand(new LeftScale(), new SwitchConditionalCommand(new LeftSwitch(), new RightScaleCrossover(), false), false));
 	}
+
 }

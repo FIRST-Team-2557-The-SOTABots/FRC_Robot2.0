@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 /**
  *
  */
-public class ForwardAutoCommand extends CommandGroup {
+public class Forward extends CommandGroup {
 
-    public ForwardAutoCommand() {
+    public Forward() {
     	addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
     	addParallel(new LiftAutoCommand(13000));

@@ -4,9 +4,9 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.segments.LeftScale;
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScaleCrossover;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class LeftSide_ScaleOnlyAutoCommand extends CommandGroup {
+public class LeftScaleOnly extends CommandGroup {
 
-	public LeftSide_ScaleOnlyAutoCommand() {
+	public LeftScaleOnly() {
 		addSequential(new ScaleConditionalCommand(new LeftScale(),new RightScaleCrossover(), false));
 	}
 }
