@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class LiftInitAuto extends CommandGroup {
+public class LiftScaleInitAuto extends CommandGroup {
 
-    public LiftInitAuto() {
+    public LiftScaleInitAuto() {
     	
     	addSequential(new LiftAutoCommand(1000));
 		addSequential(new IntakeAutoCommand(0.75, 0.9));
