@@ -13,10 +13,7 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 public class LeftSwitchMid extends CommandGroup {
 
     public LeftSwitchMid() { 
-    	addSequential(new LiftAutoCommand(2000));
-		addSequential(new IntakeAutoCommand(0.75, 0.6));
-		addParallel(new LiftAutoCommand(13000));
-		
+    	addParallel(new LiftAutoInit(false));
 		addSequential(new MotionProfileCommand(RobotMap.drive3));
 		addSequential(new TurnByAngleCommand(-90));
 		addSequential(new MotionProfileCommand(RobotMap.drive4));

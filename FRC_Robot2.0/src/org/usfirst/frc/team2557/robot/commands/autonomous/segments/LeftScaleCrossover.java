@@ -12,7 +12,7 @@ public class LeftScaleCrossover extends CommandGroup {
 
     public LeftScaleCrossover() {
     	addSequential(new LiftAutoCommand(2000));
-		addSequential(new IntakeAutoCommand(0.75, 0.6));
+		addSequential(new IntakeAutoCommand(0.75, 0.9));
 		addParallel(new LiftAutoCommand(7500));
 		addSequential(new MotionProfileCommand(RobotMap.drive10));
 		addSequential(new TurnByAngleCommand(-90));
@@ -22,6 +22,6 @@ public class LeftScaleCrossover extends CommandGroup {
 		addSequential(new TurnByAngleCommand(95.0));
 		addSequential(new MotionProfileCommand(RobotMap.drive13));
 //		addSequential(new TurnByAngleCommand(10.0));
-		addSequential(new IntakeAutoCommand(3, -0.4));
+		addSequential(new IntakeAutoCommand(3, -0.8));
     }
 }

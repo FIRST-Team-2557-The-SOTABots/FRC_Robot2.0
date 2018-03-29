@@ -19,6 +19,6 @@ public class LeftSwitchCrossover extends CommandGroup {
 		addSequential(new MotionProfileCommand(RobotMap.drive11));
 		addSequential(new WaitForChildren());
 		addSequential(new TurnByAngleCommand(-90.0));
-		addSequential(new IntakeAutoCommand(3, -0.4));
+		addSequential(new IntakeAutoCommand(3, -0.8));
     }
 }

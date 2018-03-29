@@ -153,19 +153,19 @@ public class RobotMap {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-//		Waypoint[] points4 = new Waypoint[] {
-//				// in feet
-//				new Waypoint(-8.0, 0, 0),
-//				new Waypoint(0, 0, 0)
-//		};
-//		drive4 = Pathfinder.generate(points4, config);
-//		File drive4file = new File("/home/lvuser/Trajectories/drive4.t");
-//		try {
-//			drive4file.createNewFile();
-//			Pathfinder.writeToFile(drive4file, drive4);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		Waypoint[] points4 = new Waypoint[] {
+				// in feet
+				new Waypoint(-7.5, 0, 0),
+				new Waypoint(0, 0, 0)
+		};
+		drive4 = Pathfinder.generate(points4, config);
+		File drive4file = new File("/home/lvuser/Trajectories/drive4.t");
+		try {
+			drive4file.createNewFile();
+			Pathfinder.writeToFile(drive4file, drive4);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 //		Waypoint[] points5 = new Waypoint[] {
 //				// in feet
 //				new Waypoint(-4.5, 0, 0),
@@ -192,19 +192,19 @@ public class RobotMap {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-		Waypoint[] points8 = new Waypoint[] {
-				// in feet
-				new Waypoint(-23.5, 0, 0),
-				new Waypoint(0, 0, 0)
-		};
-		drive8 = Pathfinder.generate(points8, config);
-		File drive8file = new File("/home/lvuser/Trajectories/drive8.t");
-		try {
-			drive8file.createNewFile();
-			Pathfinder.writeToFile(drive8file, drive8);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		Waypoint[] points8 = new Waypoint[] {
+//				// in feet
+//				new Waypoint(-23.5, 0, 0),
+//				new Waypoint(0, 0, 0)
+//		};
+//		drive8 = Pathfinder.generate(points8, config);
+//		File drive8file = new File("/home/lvuser/Trajectories/drive8.t");
+//		try {
+//			drive8file.createNewFile();
+//			Pathfinder.writeToFile(drive8file, drive8);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 //		Waypoint[] points9 = new Waypoint[] {
 //				// in feet
 //				new Waypoint(-0.5, 0, 0),
@@ -218,19 +218,19 @@ public class RobotMap {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-//		Waypoint[] points10 = new Waypoint[] {
-//				// in feet
-//				new Waypoint(-19.0, 0, 0),
-//				new Waypoint(0, 0, 0)
-//		};
-//		drive10 = Pathfinder.generate(points10, configFaster);
-//		File drive10file = new File("/home/lvuser/Trajectories/drive10.t");
-//		try {
-//			drive10file.createNewFile();
-//			Pathfinder.writeToFile(drive10file, drive10);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		Waypoint[] points10 = new Waypoint[] {
+				// in feet
+				new Waypoint(-19.0, 0, 0),
+				new Waypoint(0, 0, 0)
+		};
+		drive10 = Pathfinder.generate(points10, configFaster);
+		File drive10file = new File("/home/lvuser/Trajectories/drive10.t");
+		try {
+			drive10file.createNewFile();
+			Pathfinder.writeToFile(drive10file, drive10);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 //		Waypoint[] points11 = new Waypoint[] {
 //				// in feet
 //				new Waypoint(-11.5, 0, 0),
@@ -270,19 +270,19 @@ public class RobotMap {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-//		Waypoint[] points14 = new Waypoint[] {
-//				// in feet
-//				new Waypoint(-4.0, 0, 0),
-//				new Waypoint(0, 0, 0)
-//		};
-//		drive14 = Pathfinder.generate(points14, config);
-//		File drive14file = new File("/home/lvuser/Trajectories/drive14.t");
-//		try {
-//			drive14file.createNewFile();
-//			Pathfinder.writeToFile(drive14file, drive14);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		Waypoint[] points14 = new Waypoint[] {
+				// in feet
+				new Waypoint(-7.0, 0, 0),
+				new Waypoint(0, 0, 0)
+		};
+		drive14 = Pathfinder.generate(points14, config);
+		File drive14file = new File("/home/lvuser/Trajectories/drive14.t");
+		try {
+			drive14file.createNewFile();
+			Pathfinder.writeToFile(drive14file, drive14);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		Waypoint[] points15 = new Waypoint[] {
 				// in feet
 				new Waypoint(-4.0, 0, 0),
@@ -309,7 +309,6 @@ public class RobotMap {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-		
 //		Waypoint[] points17 = new Waypoint[] {
 //				new Waypoint(-18.0, .5, 0),
 //				new Waypoint(-2.0, 2.0, 0),
@@ -367,6 +366,6 @@ public class RobotMap {
 		rightWing = new Servo(0);
 
 		// CTRE Modules
-		pdp = new PowerDistributionPanel(10);		
+		pdp = new PowerDistributionPanel(10);
 	}
 }
