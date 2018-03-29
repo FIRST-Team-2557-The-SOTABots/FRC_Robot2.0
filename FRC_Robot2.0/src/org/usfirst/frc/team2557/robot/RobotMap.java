@@ -100,10 +100,10 @@ public class RobotMap {
 				Trajectory.Config configFaster = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 10.0, 10.0, 1000000.0);
 
 //		Waypoint[] points = new Waypoint[] {
-//				new Waypoint(-14.5, 4, 0),
-//				new Waypoint(-4, 4, 0),
-//				new Waypoint(0, 0, Pathfinder.d2r(93)),
-//				new Waypoint(0, -14.5, Pathfinder.d2r(93)),
+//				new Waypoint(-14.5, -4, 0),
+//				new Waypoint(-4, -4, 0),
+//				new Waypoint(0, 0, Pathfinder.d2r(-93)),
+//				new Waypoint(0, 14.5, Pathfinder.d2r(-93)),
 //		};
 //		trajectory = Pathfinder.generate(points, config);
 //		File file = new File("/home/lvuser/Trajectories/trajectory.t");
@@ -246,7 +246,7 @@ public class RobotMap {
 //		}
 //		Waypoint[] points12 = new Waypoint[] {
 //				// in feet
-//				new Waypoint(-14.0, 0, 0),
+//				new Waypoint(-13.5, 0, 0),
 //				new Waypoint(0, 0, 0)
 //		};
 //		drive12 = Pathfinder.generate(points12, configFaster);
@@ -259,7 +259,7 @@ public class RobotMap {
 //		}		
 //		Waypoint[] points13 = new Waypoint[] {
 //				// in feet
-//				new Waypoint(-2.0, 0, 0),
+//				new Waypoint(-3.0, 0, 0),
 //				new Waypoint(0.0, 0, 0)
 //		};
 //		drive13 = Pathfinder.generate(points13, config);
@@ -283,19 +283,19 @@ public class RobotMap {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-//		Waypoint[] points15 = new Waypoint[] {
-//				// in feet
-//				new Waypoint(-6.65, 0, 0),
-//				new Waypoint(0, 0, 0)
-//		};
-//		drive15 = Pathfinder.generate(points15, config);
-//		File drive15file = new File("/home/lvuser/Trajectories/drive15.t");
-//		try {
-//			drive15file.createNewFile();
-//			Pathfinder.writeToFile(drive15file, drive15);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		Waypoint[] points15 = new Waypoint[] {
+				// in feet
+				new Waypoint(-4.0, 0, 0),
+				new Waypoint(0, 0, 0)
+		};
+		drive15 = Pathfinder.generate(points15, config);
+		File drive15file = new File("/home/lvuser/Trajectories/drive15.t");
+		try {
+			drive15file.createNewFile();
+			Pathfinder.writeToFile(drive15file, drive15);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 //		Waypoint[] points16 = new Waypoint[] {
 //				// in feet
 //				new Waypoint(4.5, 0, 0),

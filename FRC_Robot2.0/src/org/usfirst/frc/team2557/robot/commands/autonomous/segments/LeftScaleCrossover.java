@@ -16,7 +16,7 @@ public class LeftScaleCrossover extends CommandGroup {
 		addParallel(new LiftAutoCommand(7500));
 		addSequential(new MotionProfileCommand(RobotMap.drive10));
 		addSequential(new TurnByAngleCommand(-90));
-		addParallel(new LiftAutoCommand(30000));
+		addParallel(new LiftAutoCommand(37500));
 		addSequential(new MotionProfileCommand(RobotMap.drive12));
 		addSequential(new WaitForChildren());
 		addSequential(new TurnByAngleCommand(95.0));

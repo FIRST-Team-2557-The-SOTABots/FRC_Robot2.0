@@ -88,7 +88,7 @@ public class Robot extends TimedRobot {
 		m_chooser.addDefault("Forward Only", new Forward());
 		m_chooser.addObject("Right scale and cube", new RightScaleAndCube());
 		m_chooser.addObject("Forward test using Turning Profile", new MotionProfileTurnCommand(RobotMap.drive1));
-		m_chooser.addObject("Turns Right test using Turning Profile", new RightScaleCrossoverTest());
+		m_chooser.addObject("Right scale crossover test using Turning Profile", new RightScaleCrossoverTest());
 		m_chooser.addObject("Turns Left test using Turning Profile", new MotionProfileTurnCommand(RobotMap.trajectory2));
 		m_chooser.addObject("PID Turn test", new PIDTurn(90.0));
 		m_chooser.addObject("Mid Switch", new MidSwitch());

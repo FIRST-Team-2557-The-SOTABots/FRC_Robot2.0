@@ -22,20 +22,21 @@ public class RightScaleAndCube extends CommandGroup {
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
 		addParallel(new LiftAutoCommand(37500));
 		addSequential(new MotionProfileCommand(RobotMap.drive8));
+		addSequential(new TurnByAngleCommand(-35.0));
 		addSequential(new WaitForChildren());
-		addSequential(new TurnByAngleCommand(35.0));
-		addSequential(new MotionProfileCommand(RobotMap.drive9));
-		addSequential(new IntakeAutoCommand(1, -0.4));
 		
-		addSequential(new TurnByAngleCommand(100.0));
+		addSequential(new MotionProfileCommand(RobotMap.drive9));
+		addSequential(new IntakeAutoCommand(0.5, -0.4));
+		
+		addSequential(new TurnByAngleCommand(-100.0));
 		addSequential(new LiftAutoCommand(250));
 //		addSequential(new WaitForChildren());
-		addParallel(new IntakeAutoCommand(3, 0.6));
+		addParallel(new IntakeAutoCommand(2, 0.6));
 		addSequential(new MotionProfileCommand(RobotMap.drive15));
-		addSequential(new WaitCommand(0.25));
-		addSequential(new LiftAutoCommand(2000));
+//		addSequential(new WaitCommand(0.25));
+//		addSequential(new LiftAutoCommand(2000));
 		addParallel(new LiftAutoCommand(37500));
-		addSequential(new TurnByAngleCommand(-125.0));
+		addSequential(new TurnByAngleCommand(115.0));
 		addSequential(new WaitForChildren());
 		
 		

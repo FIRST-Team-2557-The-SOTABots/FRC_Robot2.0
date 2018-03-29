@@ -15,7 +15,7 @@ public class LiftSubsystem extends Subsystem {
 	}
 	
 	public void LiftWithAxis(){
-		double axis = OI.Joystick2.getRawAxis(1)*0.8;
+		double axis = OI.Joystick2.getRawAxis(1)*0.9;
 		
 		RobotMap.LiftMotor.set(-axis);
 		RobotMap.LiftMotor2.set(-axis);
