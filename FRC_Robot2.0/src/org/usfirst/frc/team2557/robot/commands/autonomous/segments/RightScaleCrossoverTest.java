@@ -25,15 +25,9 @@ public class RightScaleCrossoverTest extends CommandGroup {
 		addParallel(new LiftAutoCommand(7500)); // 37500
 		addSequential(new MotionProfileTurnCommand(RobotMap.trajectory));
 		
-//		addParallel(new IntakeAutoCommand(0.75, 0.9));
-//		addParallel(new LiftAutoCommand(0));
-//		addSequential(new WaitForChildren());
-		
 		addParallel(new LiftAutoCommand(38000));
 		addSequential(new TurnByAngleCommand(-100.0));
 		addSequential(new WaitForChildren());
-		
-//		addSequential(new MotionProfileTurnCommand(RobotMap.trajectoryShort));
 		
 		addSequential(new MotionProfileCommand(RobotMap.drive14));
 //		addSequential(new TurnByAngleCommand(-5.0));

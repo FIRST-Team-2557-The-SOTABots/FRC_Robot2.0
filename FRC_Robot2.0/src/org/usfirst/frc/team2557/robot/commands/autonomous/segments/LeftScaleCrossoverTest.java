@@ -25,15 +25,9 @@ public class LeftScaleCrossoverTest extends CommandGroup {
 		addParallel(new LiftAutoCommand(7500)); // 37500
 		addSequential(new MotionProfileTurnCommand(RobotMap.trajectory2));
 		
-//		addParallel(new IntakeAutoCommand(0.75, 0.6));
-//		addParallel(new LiftAutoCommand(0));
-//		addSequential(new WaitForChildren());
-		
 		addParallel(new LiftAutoCommand(38000));
 		addSequential(new TurnByAngleCommand(-100.0));
 		addSequential(new WaitForChildren());
-		
-//		addSequential(new MotionProfileTurnCommand(RobotMap.trajectoryShort));
 		
 		addSequential(new MotionProfileCommand(RobotMap.drive14));
 //		addSequential(new TurnByAngleCommand(-5.0));

@@ -1,41 +1,31 @@
-package org.usfirst.frc.team2557.robot.commands.wing;
+package org.usfirst.frc.team2557.robot.commands.drive;
 
-import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.Robot;
-import org.usfirst.frc.team2557.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**r
- *
- */
-public class WingCommandRight extends Command {
-	boolean done;
+public class StrafeButtonsCommand extends Command {
+	double triggerLeft;
+	double triggerRight;
+	boolean active;
+	boolean set;
 
-	public WingCommandRight() {
-//		requires(Robot.WingSubsystem);
-		done = false;
+	public StrafeButtonsCommand() {
+		requires(Robot.StrafeButtonsSubsystem);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		active = false;
+		set = false;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-//		SmartDashboard.putBoolean("done wings right", done);
-		if(OI.rightBumper.get()){
-				RobotMap.rightWing.setPosition(0.5);
-				done = true;
-		}
+	   	Robot.StrafeButtonsSubsystem.minimalUseButtons();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if(done){
-			return true;
-		}
 		return false;
 	}
 

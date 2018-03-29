@@ -9,9 +9,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitForChildren;
 
 public class RightScale extends CommandGroup {
-
+	
     public RightScale() {
-    	
 		addSequential(new LiftAutoCommand(2000));
 		addSequential(new IntakeAutoCommand(0.75, 0.9));
 		addParallel(new LiftAutoCommand(37500));

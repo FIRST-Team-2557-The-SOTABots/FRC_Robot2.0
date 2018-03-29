@@ -2,7 +2,6 @@ package org.usfirst.frc.team2557.robot.subsystems;
 
 import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.RobotMap;
-import org.usfirst.frc.team2557.robot.commands.drive.MinimalUseButtonCommand;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -75,7 +74,6 @@ public class MinimalUseButtonSubsystem extends Subsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		//setDefaultCommand(new MySpecialCommand());
-		setDefaultCommand(new MinimalUseButtonCommand());
 	}
 }
 

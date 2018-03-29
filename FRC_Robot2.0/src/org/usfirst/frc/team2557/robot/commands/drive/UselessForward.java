@@ -13,7 +13,7 @@ public class UselessForward extends Command {
     public UselessForward() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.MinimalUseButtonSubsystem);
+    	requires(Robot.UselessForwardSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -22,8 +22,7 @@ public class UselessForward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("WE ARE EXECUTING MINIMAL USE BUTTONS", 1234567890);
-    	Robot.MinimalUseButtonSubsystem.uselessForward();
+    	Robot.UselessForwardSubsystem.uselessForward();
     }
 
     // Make this return true when this Command no longer needs to run execute()
