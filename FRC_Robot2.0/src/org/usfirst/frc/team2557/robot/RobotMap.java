@@ -122,7 +122,7 @@ public class RobotMap {
 //		trajectory2 = Pathfinder.generate(points0, config);
 //		File file2 = new File("/home/lvuser/Trajectories/trajectory2.t");
 //		try {
-//			file.createNewFile();
+//			file2.createNewFile();
 //			Pathfinder.writeToFile(file2, trajectory2);
 //		} catch (IOException e) {
 //			e.printStackTrace();
