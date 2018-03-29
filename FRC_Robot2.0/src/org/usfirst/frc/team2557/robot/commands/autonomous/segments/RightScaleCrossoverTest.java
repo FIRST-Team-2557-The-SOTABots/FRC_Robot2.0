@@ -17,7 +17,7 @@ public class RightScaleCrossoverTest extends CommandGroup {
 
     public RightScaleCrossoverTest() {
     	addSequential(new LiftAutoCommand(1000));
-		addSequential(new IntakeAutoCommand(0.75, 0.6));
+		addSequential(new IntakeAutoCommand(0.75, 0.9));
 		
 		RobotMap.IntakeL.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
     	RobotMap.IntakeR.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
@@ -25,7 +25,7 @@ public class RightScaleCrossoverTest extends CommandGroup {
 		addParallel(new LiftAutoCommand(7500)); // 37500
 		addSequential(new MotionProfileTurnCommand(RobotMap.trajectory));
 		
-//		addParallel(new IntakeAutoCommand(0.75, 0.6));
+//		addParallel(new IntakeAutoCommand(0.75, 0.9));
 //		addParallel(new LiftAutoCommand(0));
 //		addSequential(new WaitForChildren());
 		
@@ -37,6 +37,6 @@ public class RightScaleCrossoverTest extends CommandGroup {
 		
 		addSequential(new MotionProfileCommand(RobotMap.drive14));
 //		addSequential(new TurnByAngleCommand(-5.0));
-		addSequential(new IntakeAutoCommand(3, -0.4));
+		addSequential(new IntakeAutoCommand(3, -0.8));
     }
 }

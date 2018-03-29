@@ -13,12 +13,12 @@ public class RightScale extends CommandGroup {
     public RightScale() {
     	
 		addSequential(new LiftAutoCommand(2000));
-		addSequential(new IntakeAutoCommand(0.75, 0.6));
+		addSequential(new IntakeAutoCommand(0.75, 0.9));
 		addParallel(new LiftAutoCommand(37500));
 		addSequential(new MotionProfileCommand(RobotMap.drive8));
 		addSequential(new WaitForChildren());
 		addSequential(new TurnByAngleCommand(-30.0));
 		addSequential(new MotionProfileCommand(RobotMap.drive9));
-		addSequential(new IntakeAutoCommand(3, -0.4));
+		addSequential(new IntakeAutoCommand(3, -0.8));
     }
 }
