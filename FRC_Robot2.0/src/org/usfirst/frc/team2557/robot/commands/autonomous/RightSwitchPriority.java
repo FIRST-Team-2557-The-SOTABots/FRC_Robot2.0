@@ -9,6 +9,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RightSwitchPriority extends CommandGroup {
 
 	public RightSwitchPriority() {
-		addSequential(new SwitchConditionalCommand(new RightSwitch(), new ScaleConditionalCommand(new RightScale(), new LeftSwitchCrossover(), true), true));
+		addSequential(new SwitchConditional(new RightSwitch(), new ScaleConditional(new RightScale(), new LeftSwitchCrossover(), true), true));
 	}
 }

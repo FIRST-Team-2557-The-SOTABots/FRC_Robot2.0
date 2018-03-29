@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftScalePriority extends CommandGroup {
 
 	public LeftScalePriority() {
-		addSequential(new ScaleConditionalCommand(new LeftScale(), new SwitchConditionalCommand(new LeftSwitch(), new RightScaleCrossover(), false), false));
+		addSequential(new ScaleConditional(new LeftScale(), new SwitchConditional(new LeftSwitch(), new RightScaleCrossover(), false), false));
 	}
 
 }

@@ -9,6 +9,6 @@ public class RightScalePriority extends CommandGroup {
 
 	public RightScalePriority() {
 		
-		addSequential(new ScaleConditionalCommand(new RightScale(), new SwitchConditionalCommand(new RightSwitch(), new LeftScaleCrossover(), true), true));
+		addSequential(new ScaleConditional(new RightScale(), new SwitchConditional(new RightSwitch(), new LeftScaleCrossover(), true), true));
 	}
 }

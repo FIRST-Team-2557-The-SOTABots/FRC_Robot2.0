@@ -7,6 +7,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class MidSwitch extends CommandGroup {
 
 	public MidSwitch() {
-		addSequential(new SwitchConditionalCommand(new RightSwitchMid(), new LeftSwitchMid(), true));
+		addSequential(new SwitchConditional(new RightSwitchMid(), new LeftSwitchMid(), true));
 	}
 }

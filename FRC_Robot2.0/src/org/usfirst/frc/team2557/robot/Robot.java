@@ -21,8 +21,8 @@ import org.usfirst.frc.team2557.robot.commands.wing.WingCommandRight;
 import org.usfirst.frc.team2557.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.IntakeSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.LiftSubsystem;
-import org.usfirst.frc.team2557.robot.subsystems.MinimalUseButtonSubsystem;
-import org.usfirst.frc.team2557.robot.subsystems.MinimalUseTwoSubsystem;
+import org.usfirst.frc.team2557.robot.subsystems.StrafeButtonsSubsystem;
+import org.usfirst.frc.team2557.robot.subsystems.UselessForwardSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.SolenoidSubsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -36,11 +36,10 @@ public class Robot extends TimedRobot {
 
 	public static DriveSubsystem DriveSubsystem;
 	public static SolenoidSubsystem SolenoidSubsystem;
-//	public static WingSubsystem WingSubsystem;
 	public static LiftSubsystem LiftSubsystem;
 	public static IntakeSubsystem IntakeSubsystem;
-	public static MinimalUseButtonSubsystem MinimalUseButtonSubsystem;
-	public static MinimalUseTwoSubsystem MinimalUseTwoSubsystem;
+	public static StrafeButtonsSubsystem StrafeButtonsSubsystem;
+	public static UselessForwardSubsystem UselessForwardSubsystem;
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser;
@@ -49,10 +48,10 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Gyro Angle", RobotMap.Gyro1.getAngle());
 		SmartDashboard.putBoolean("S1", RobotMap.S1.get());
 		SmartDashboard.putBoolean("S2", RobotMap.S2.get());
-		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
-		SmartDashboard.putNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition());
-    	SmartDashboard.putNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition());
-		SmartDashboard.putBoolean("LiftHallEffect", RobotMap.liftHallEffect.get());
+		SmartDashboard.putNumber("Lift Encoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
+		SmartDashboard.putNumber("Encoder Count Left", RobotMap.Left2.getSensorCollection().getQuadraturePosition());
+    	SmartDashboard.putNumber("Encoder Count Right", RobotMap.Right2.getSensorCollection().getQuadraturePosition());
+		SmartDashboard.putBoolean("Lift Hall Effect", RobotMap.liftHallEffect.get());
 	}
 
 	/**
@@ -61,8 +60,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-//		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 10);
-		
 		RobotMap.init();
 		RobotMap.a.set(true);
 		RobotMap.b.set(false);
@@ -79,11 +76,10 @@ public class Robot extends TimedRobot {
 
 		DriveSubsystem = new DriveSubsystem();
 		SolenoidSubsystem = new SolenoidSubsystem();
-//		WingSubsystem = new WingSubsystem();
 		LiftSubsystem = new LiftSubsystem();
 		IntakeSubsystem = new IntakeSubsystem();
-		MinimalUseButtonSubsystem = new MinimalUseButtonSubsystem();
-		MinimalUseTwoSubsystem = new MinimalUseTwoSubsystem();
+		StrafeButtonsSubsystem = new StrafeButtonsSubsystem();
+		UselessForwardSubsystem = new UselessForwardSubsystem();
 		
 		oi = new OI();
 		oi.OIInit();
@@ -226,22 +222,20 @@ public class Robot extends TimedRobot {
 	 */	
 	@Override
 	public void teleopPeriodic() {
-		SmartDashboard.putNumber("accelerometer rawaccelX", RobotMap.Gyro1.getRawAccelX());
-		SmartDashboard.putNumber("accelerometer rawaccelY", RobotMap.Gyro1.getRawAccelY());
-		SmartDashboard.putNumber("accelerometer rawaccelZ", RobotMap.Gyro1.getRawAccelZ());
-		SmartDashboard.putNumber("accelerometer velocityX", RobotMap.Gyro1.getVelocityX());
-		SmartDashboard.putNumber("accelerometer velocityY", RobotMap.Gyro1.getVelocityY());
-		SmartDashboard.putNumber("accelerometer velocityZ", RobotMap.Gyro1.getVelocityZ());
-		SmartDashboard.putNumber("accelerometer getWorldLinearAccelX", RobotMap.Gyro1.getWorldLinearAccelX());
-		SmartDashboard.putNumber("accelerometer getWorldLinearAccelY", RobotMap.Gyro1.getWorldLinearAccelY());
-		SmartDashboard.putNumber("accelerometer getWorldLinearAccelZ", RobotMap.Gyro1.getWorldLinearAccelZ());
-		SmartDashboard.putNumber("accelerometer getRate", RobotMap.Gyro1.getRate());
-		SmartDashboard.putNumber("talons velocity right", RobotMap.Right2.getSelectedSensorVelocity(0));
-		SmartDashboard.putNumber("talons velocity left", RobotMap.Left2.getSelectedSensorVelocity(0));
-		
-		
-		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
-		SmartDashboard.putNumber("GyroThisOne", RobotMap.Gyro1.getAngle());
+//		SmartDashboard.putNumber("accelerometer rawaccelX", RobotMap.Gyro1.getRawAccelX());
+//		SmartDashboard.putNumber("accelerometer rawaccelY", RobotMap.Gyro1.getRawAccelY());
+//		SmartDashboard.putNumber("accelerometer rawaccelZ", RobotMap.Gyro1.getRawAccelZ());
+//		SmartDashboard.putNumber("accelerometer velocityX", RobotMap.Gyro1.getVelocityX());
+//		SmartDashboard.putNumber("accelerometer velocityY", RobotMap.Gyro1.getVelocityY());
+//		SmartDashboard.putNumber("accelerometer velocityZ", RobotMap.Gyro1.getVelocityZ());
+//		SmartDashboard.putNumber("accelerometer getWorldLinearAccelX", RobotMap.Gyro1.getWorldLinearAccelX());
+//		SmartDashboard.putNumber("accelerometer getWorldLinearAccelY", RobotMap.Gyro1.getWorldLinearAccelY());
+//		SmartDashboard.putNumber("accelerometer getWorldLinearAccelZ", RobotMap.Gyro1.getWorldLinearAccelZ());
+//		SmartDashboard.putNumber("accelerometer getRate", RobotMap.Gyro1.getRate());
+//		SmartDashboard.putNumber("talons velocity right", RobotMap.Right2.getSelectedSensorVelocity(0));
+//		SmartDashboard.putNumber("talons velocity left", RobotMap.Left2.getSelectedSensorVelocity(0));
+//		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
+//		SmartDashboard.putNumber("GyroThisOne", RobotMap.Gyro1.getAngle());
 		
 		Scheduler.getInstance().run();
 		updateSmartDashboard();

@@ -4,10 +4,10 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.ConditionalCommand;
 
-public class SwitchConditionalCommand extends ConditionalCommand {
+public class SwitchConditional extends ConditionalCommand {
 	boolean x;
 
-	public SwitchConditionalCommand(Command trueCommand, Command falseCommand, boolean rightSwitch) {
+	public SwitchConditional(Command trueCommand, Command falseCommand, boolean rightSwitch) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		super(trueCommand, falseCommand);

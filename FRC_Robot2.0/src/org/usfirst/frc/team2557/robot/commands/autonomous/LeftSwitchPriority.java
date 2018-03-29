@@ -10,6 +10,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftSwitchPriority extends CommandGroup {
 
 	public LeftSwitchPriority() {
-		addSequential(new SwitchConditionalCommand(new LeftSwitch(), new ScaleConditionalCommand(new LeftScale(), new RightSwitchCrossover(), false), false));
+		addSequential(new SwitchConditional(new LeftSwitch(), new ScaleConditional(new LeftScale(), new RightSwitchCrossover(), false), false));
 	}
 }

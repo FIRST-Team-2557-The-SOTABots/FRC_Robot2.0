@@ -7,6 +7,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftScaleOnly extends CommandGroup {
 
 	public LeftScaleOnly() {
-		addSequential(new ScaleConditionalCommand(new LeftScale(),new RightScaleCrossover(), false));
+		addSequential(new ScaleConditional(new LeftScale(),new RightScaleCrossover(), false));
 	}
 }

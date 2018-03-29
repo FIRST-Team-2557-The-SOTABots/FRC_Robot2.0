@@ -4,10 +4,10 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.ConditionalCommand;
 
-public class ScaleConditionalCommand extends ConditionalCommand {
+public class ScaleConditional extends ConditionalCommand {
 	boolean x;
 
-	public ScaleConditionalCommand(Command trueCommand, Command falseCommand, boolean rightSwitch) {
+	public ScaleConditional(Command trueCommand, Command falseCommand, boolean rightSwitch) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		super(trueCommand, falseCommand);
