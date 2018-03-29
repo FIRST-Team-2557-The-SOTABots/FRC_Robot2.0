@@ -24,13 +24,13 @@ public class LeftSwitchMid extends CommandGroup {
 		
 		addParallel(new LiftAutoCommand(250));
 		addSequential(new BackwardsEncoderDrive(1.0, 0, -2000.0));
-		addSequential(new TurnByAngleCommand(55));
-		addParallel(new IntakeAutoCommand(2.5, 0.8));
-		addSequential(new EncoderDistanceDriveCommand(-1.0, 0, 3500.0));
+		addSequential(new TurnByAngleCommand(58));
+		addParallel(new IntakeAutoCommand(2, 0.8));
+		addSequential(new EncoderDistanceDriveCommand(-1.0, 0, 2500.0));
 		
 		addParallel(new LiftAutoCommand(13000));
-		addSequential(new BackwardsEncoderDrive(1.0, 0, -3500.0));
-		addSequential(new TurnByAngleCommand(-55));
+		addSequential(new BackwardsEncoderDrive(1.0, 0, -2500.0));
+		addSequential(new TurnByAngleCommand(-58));
 		addSequential(new WaitForChildren());
 		
 		addSequential(new EncoderDistanceDriveCommand(-1.0, 0, 2000.0));

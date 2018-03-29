@@ -155,7 +155,7 @@ public class RobotMap {
 //		}
 		Waypoint[] points4 = new Waypoint[] {
 				// in feet
-				new Waypoint(-7.5, 0, 0),
+				new Waypoint(-8.0, 0, 0),
 				new Waypoint(0, 0, 0)
 		};
 		drive4 = Pathfinder.generate(points4, config);
