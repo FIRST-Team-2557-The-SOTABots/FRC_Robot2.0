@@ -97,7 +97,7 @@ public class RobotMap {
 
 		//		// could increase accel !!!... done
 		Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 8.5, 10.0, 1000000.0);
-				Trajectory.Config configSlow = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 5.0, 5.0, 1000000.0);
+				Trajectory.Config configFaster = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 10.0, 10.0, 1000000.0);
 
 //		Waypoint[] points = new Waypoint[] {
 //				new Waypoint(-14.5, 4, 0),
@@ -194,7 +194,7 @@ public class RobotMap {
 //		}
 		Waypoint[] points8 = new Waypoint[] {
 				// in feet
-				new Waypoint(-20.0, 0, 0),
+				new Waypoint(-23.5, 0, 0),
 				new Waypoint(0, 0, 0)
 		};
 		drive8 = Pathfinder.generate(points8, config);
@@ -220,10 +220,10 @@ public class RobotMap {
 //		}
 //		Waypoint[] points10 = new Waypoint[] {
 //				// in feet
-//				new Waypoint(-18.0, 0, 0),
+//				new Waypoint(-19.0, 0, 0),
 //				new Waypoint(0, 0, 0)
 //		};
-//		drive10 = Pathfinder.generate(points10, config);
+//		drive10 = Pathfinder.generate(points10, configFaster);
 //		File drive10file = new File("/home/lvuser/Trajectories/drive10.t");
 //		try {
 //			drive10file.createNewFile();
@@ -233,7 +233,7 @@ public class RobotMap {
 //		}
 //		Waypoint[] points11 = new Waypoint[] {
 //				// in feet
-//				new Waypoint(-12.0, 0, 0),
+//				new Waypoint(-11.5, 0, 0),
 //				new Waypoint(0, 0, 0)
 //		};
 //		drive11 = Pathfinder.generate(points11, config);
@@ -249,7 +249,7 @@ public class RobotMap {
 //				new Waypoint(-14.0, 0, 0),
 //				new Waypoint(0, 0, 0)
 //		};
-//		drive12 = Pathfinder.generate(points12, config);
+//		drive12 = Pathfinder.generate(points12, configFaster);
 //		File drive12file = new File("/home/lvuser/Trajectories/drive12.t");
 //		try {
 //			drive12file.createNewFile();
@@ -310,21 +310,21 @@ public class RobotMap {
 //			e.printStackTrace();
 //		}
 		
-		Waypoint[] points17 = new Waypoint[] {
-				new Waypoint(-18.0, .5, 0),
-				new Waypoint(-2.0, 2.0, 0),
-				//				new Waypoint(-4, 4, 0),
-				new Waypoint(0, 0, 0)
-				//				new Waypoint(1, -1, 0)
-		};
-		trajectory3 = Pathfinder.generate(points17, config);
-		File file17 = new File("/home/lvuser/Trajectories/trajectory3.t");
-		try {
-			file17.createNewFile();
-			Pathfinder.writeToFile(file17, trajectory3);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		Waypoint[] points17 = new Waypoint[] {
+//				new Waypoint(-18.0, .5, 0),
+//				new Waypoint(-2.0, 2.0, 0),
+//				//				new Waypoint(-4, 4, 0),
+//				new Waypoint(0, 0, 0)
+//				//				new Waypoint(1, -1, 0)
+//		};
+//		trajectory3 = Pathfinder.generate(points17, config);
+//		File file17 = new File("/home/lvuser/Trajectories/trajectory3.t");
+//		try {
+//			file17.createNewFile();
+//			Pathfinder.writeToFile(file17, trajectory3);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 
 		trajectory = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/trajectory.t"));
 		trajectory2 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/trajectory2.t"));
@@ -363,8 +363,8 @@ public class RobotMap {
 		liftHallEffect = new DigitalInput(1);
 
 		// Wing
-		leftWing = new Servo(0);
-		rightWing = new Servo(1);
+		leftWing = new Servo(1);
+		rightWing = new Servo(0);
 
 		// CTRE Modules
 		pdp = new PowerDistributionPanel(10);		

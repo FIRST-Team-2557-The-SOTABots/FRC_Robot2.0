@@ -4,9 +4,9 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.segments.LeftSwitchCro
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightSwitch;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class RightSide_SwitchOnlyAutoCommand extends CommandGroup {
+public class RightSwitchOnly extends CommandGroup {
 
-	public RightSide_SwitchOnlyAutoCommand() {
-		addSequential(new SwitchConditionalCommand(new RightSwitch(),new LeftSwitchCrossover(), true));
+	public RightSwitchOnly() {
+		addSequential(new SwitchConditional(new RightSwitch(),new LeftSwitchCrossover(), true));
 	}
 }

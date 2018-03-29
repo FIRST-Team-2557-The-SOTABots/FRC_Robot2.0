@@ -19,7 +19,7 @@ public class RightScaleCrossover extends CommandGroup {
 		addParallel(new LiftAutoCommand(30000));
 		addSequential(new MotionProfileCommand(RobotMap.drive12));
 		addSequential(new WaitForChildren());
-		addSequential(new TurnByAngleCommand(-90.0));
+		addSequential(new TurnByAngleCommand(-95.0));
 		addSequential(new MotionProfileCommand(RobotMap.drive13));
 //		addSequential(new TurnByAngleCommand(10.0));
 		addSequential(new IntakeAutoCommand(3, -0.4));

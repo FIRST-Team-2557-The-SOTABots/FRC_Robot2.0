@@ -5,10 +5,10 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScale;
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightSwitch;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class RightScalePriorityAutoCommand extends CommandGroup {
+public class RightScalePriority extends CommandGroup {
 
-	public RightScalePriorityAutoCommand() {
+	public RightScalePriority() {
 		
-		addSequential(new ScaleConditionalCommand(new RightScale(), new SwitchConditionalCommand(new RightSwitch(), new LeftScaleCrossover(), true), true));
+		addSequential(new ScaleConditional(new RightScale(), new SwitchConditional(new RightSwitch(), new LeftScaleCrossover(), true), true));
 	}
 }

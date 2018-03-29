@@ -4,9 +4,9 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.segments.LeftSwitchMid
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightSwitchMid;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class MidSwitchAutoCommand extends CommandGroup {
+public class MidSwitch extends CommandGroup {
 
-	public MidSwitchAutoCommand() {
-		addSequential(new SwitchConditionalCommand(new RightSwitchMid(), new LeftSwitchMid(), true));
+	public MidSwitch() {
+		addSequential(new SwitchConditional(new RightSwitchMid(), new LeftSwitchMid(), true));
 	}
 }
