@@ -21,8 +21,6 @@ public class LiftSubsystem extends Subsystem {
 		RobotMap.LiftMotor2.set(-axis);
 		
 		SmartDashboard.putNumber("This is Lifting", axis);
-		
-		
 	}
 
 	public void LiftAuto(double power) {
