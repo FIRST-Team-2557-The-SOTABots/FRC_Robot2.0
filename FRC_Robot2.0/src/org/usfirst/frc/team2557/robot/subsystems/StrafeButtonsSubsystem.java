@@ -30,7 +30,6 @@ public class StrafeButtonsSubsystem extends Subsystem {
 
 	public void initDefaultCommand() {
 		setDefaultCommand(new StrafeButtonsCommand());
-		//
 	}
 }
 
