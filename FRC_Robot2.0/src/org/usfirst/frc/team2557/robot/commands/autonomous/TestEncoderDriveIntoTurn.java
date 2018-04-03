@@ -19,29 +19,23 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 public class TestEncoderDriveIntoTurn extends CommandGroup {
 
 	public TestEncoderDriveIntoTurn() {
-////		addParallel(new LiftAutoInit(true));
+		//		addParallel(new LiftAutoInit(true));
 		addSequential(new EncoderDistanceDriveCommandNoStop(-1, 52500));
 		addSequential(new TurnByAngleMecanumCommand(-40));
-////		addSequential(new WaitForChildren());
+		//		addSequential(new WaitForChildren());
 		addSequential(new IntakeAutoCommand(.5, -0.8));
-//		
-////		addParallel(new LiftAutoCommand(250));
+		//		addParallel(new LiftAutoCommand(250));
 		addSequential(new TurnByAngleMecanumCommand(-100.0));
-////		addSequential(new WaitForChildren());
-//		
-		addParallel(new IntakeAutoCommand(2.5, 0.9));
+		//		addSequential(new WaitForChildren());
+//		addParallel(new IntakeAutoCommand(2.5, 0.9));
 		addSequential(new EncoderDistanceDriveCommand(-1, 0, 5000));
-		
-//		addSequential(new EncoderDistanceDriveCommand(0,0,0));
-		
-//		addSequential(new WaitCommand(3));
-		
-		
-		
-////		addParallel(new LiftAutoCommand(37500));
-//		addSequential(new TurnByAngleMecanumCommand(150.0));
-////		addSequential(new WaitForChildren());
-//		addSequential(new EncoderDistanceDriveCommand(-1, 0, 3000));
-//		addSequential(new IntakeAutoCommand(1, -0.8));
+		addSequential(new IntakeAutoCommand(2, 0.9));
+		//		addSequential(new EncoderDistanceDriveCommand(0,0,0));
+		addSequential(new WaitCommand(3));
+		//		addParallel(new LiftAutoCommand(37500));
+		addSequential(new TurnByAngleMecanumCommand(150.0));
+		//		addSequential(new WaitForChildren());
+		addSequential(new EncoderDistanceDriveCommand(-1, 0, 3000));
+		addSequential(new IntakeAutoCommand(1, -0.8));
 	}
 }
