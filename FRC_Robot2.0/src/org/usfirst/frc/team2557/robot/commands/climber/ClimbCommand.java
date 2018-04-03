@@ -1,12 +1,18 @@
-package org.usfirst.frc.team2557.robot.commands.solenoid;
+package org.usfirst.frc.team2557.robot.commands.climber;
 
+import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.Robot;
-import org.usfirst.frc.team2557.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RiseCommandRight extends Command {
-    public RiseCommandRight() {
-    	requires(Robot.SolenoidSubsystem);
+/**
+ *
+ */
+public class ClimbCommand extends Command {
+
+    public ClimbCommand() {
+        // Use requires() here to declare subsystem dependencies
+         requires(Robot.ClimberSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -15,26 +21,28 @@ public class RiseCommandRight extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(!RobotMap.a.get()){
-			RobotMap.a.set(true);
-			RobotMap.b.set(false);
-		}else{
-			RobotMap.b.set(true);
-			RobotMap.a.set(false);
-		}
+    	if(OI.rightBumper.get()){
+    		Robot.ClimberSubsystem.climb(0.8);
+    	}else if(OI.leftBumper.get()){
+    		Robot.ClimberSubsystem.climb(-0.8);
+    	}else{
+    		Robot.ClimberSubsystem.climb(0);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.ClimberSubsystem.climb(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	this.end();
     }
 }

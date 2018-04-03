@@ -26,6 +26,10 @@ public class RobotMap {
 	public static WPI_TalonSRX Left2;
 	public static WPI_TalonSRX Right1;
 	public static WPI_TalonSRX Right2;
+	
+	public static WPI_TalonSRX Climb1;
+	public static WPI_TalonSRX Climb2;
+	
 	public static SpeedControllerGroup Left;
 	public static SpeedControllerGroup Right;
 	public static AHRS Gyro1;
@@ -95,6 +99,9 @@ public class RobotMap {
 		DiffDrive.setSafetyEnabled(false);
 		MecDrive.setSafetyEnabled(false);
 		Gyro1 = new AHRS(SPI.Port.kMXP);
+		
+//		Climb1 = new WPI_TalonSRX(60);
+//		Climb2 = new WPI_TalonSRX(61);
 
 		//		// could increase accel !!!... done
 		Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 8.5, 10.0, 1000000.0);
@@ -193,19 +200,19 @@ public class RobotMap {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-		Waypoint[] points8 = new Waypoint[] {
-				// in feet
-				new Waypoint(-24.0, 0, 0),
-				new Waypoint(0, 0, 0)
-		};
-		drive8 = Pathfinder.generate(points8, config);
-		File drive8file = new File("/home/lvuser/Trajectories/drive8.t");
-		try {
-			drive8file.createNewFile();
-			Pathfinder.writeToFile(drive8file, drive8);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		Waypoint[] points8 = new Waypoint[] {
+//				// in feet
+//				new Waypoint(-24.0, 0, 0),
+//				new Waypoint(0, 0, 0)
+//		};
+//		drive8 = Pathfinder.generate(points8, config);
+//		File drive8file = new File("/home/lvuser/Trajectories/drive8.t");
+//		try {
+//			drive8file.createNewFile();
+//			Pathfinder.writeToFile(drive8file, drive8);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 //		Waypoint[] points9 = new Waypoint[] {
 //				// in feet
 //				new Waypoint(-0.75, 0, 0),

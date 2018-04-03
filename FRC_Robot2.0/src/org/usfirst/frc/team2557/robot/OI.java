@@ -10,11 +10,8 @@ package org.usfirst.frc.team2557.robot;
 
 import org.usfirst.frc.team2557.robot.commands.drive.BrakingCommand;
 import org.usfirst.frc.team2557.robot.commands.intake.IntakeCommand;
-import org.usfirst.frc.team2557.robot.commands.solenoid.RiseCommandLeft;
-import org.usfirst.frc.team2557.robot.commands.solenoid.RiseCommandRight;
 import org.usfirst.frc.team2557.robot.commands.solenoid.SolenoidCommand;
-import org.usfirst.frc.team2557.robot.commands.wing.WingCommandLeft;
-import org.usfirst.frc.team2557.robot.commands.wing.WingCommandRight;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -79,8 +76,6 @@ public class OI {
 		
 		forwardButton = new JoystickButton(Joystick2, 8);
 		backwardButton = new JoystickButton(Joystick2, 7);
-		forwardButton.whenPressed(new RiseCommandRight());
-		backwardButton.whenPressed(new RiseCommandLeft());
 		
 		IntakeIn.whileHeld(new IntakeCommand());
 		IntakeOut.whileHeld(new IntakeCommand());

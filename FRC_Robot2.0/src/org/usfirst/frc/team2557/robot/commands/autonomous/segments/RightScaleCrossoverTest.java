@@ -16,13 +16,7 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 public class RightScaleCrossoverTest extends CommandGroup {
 
     public RightScaleCrossoverTest() {
-    	addSequential(new LiftAutoCommand(1000));
-		addSequential(new IntakeAutoCommand(0.75, 0.9));
-		
-//		RobotMap.IntakeL.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
-//    	RobotMap.IntakeR.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
-		
-		addParallel(new LiftAutoCommand(7500)); // 37500
+    	addParallel(new LiftAutoInit(false));
 		addSequential(new MotionProfileTurnCommand(RobotMap.trajectory));
 		
 		addParallel(new LiftAutoCommand(38000));

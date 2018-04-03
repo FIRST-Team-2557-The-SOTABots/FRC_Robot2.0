@@ -11,8 +11,7 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 public class LeftSwitchCrossover extends CommandGroup {
 
     public LeftSwitchCrossover() {
-    	addSequential(new LiftAutoCommand(1000));
-		addSequential(new IntakeAutoCommand(0.75, 0.6));
+    	addParallel(new LiftAutoInit(false));
 		addSequential(new MotionProfileCommand(RobotMap.drive10));
 		addSequential(new TurnByAngleCommand(-90));
 		addParallel(new LiftAutoCommand(16000));

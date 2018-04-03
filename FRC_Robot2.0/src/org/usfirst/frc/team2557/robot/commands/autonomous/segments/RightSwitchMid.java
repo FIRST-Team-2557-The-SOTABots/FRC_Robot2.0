@@ -15,9 +15,7 @@ import edu.wpi.first.wpilibj.command.WaitForChildren;
 public class RightSwitchMid extends CommandGroup {
 
     public RightSwitchMid() {
-    	addSequential(new LiftAutoCommand(1000));
-		addSequential(new IntakeAutoCommand(0.75, 0.8));
-    	addParallel(new LiftAutoCommand(13000));
+    	addParallel(new LiftAutoInit(false));
 		addSequential(new MotionProfileCommand(RobotMap.drive1));
 		addSequential(new IntakeAutoCommand(0.5, -0.4));
 		

@@ -16,12 +16,13 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.RightScaleOnly;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSwitchOnly;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSwitchPriority;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSwitchPriorityNoCrossover;
+import org.usfirst.frc.team2557.robot.commands.autonomous.TestEncoderDriveIntoTurn;
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScaleAndCube;
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScaleCrossoverTest;
+import org.usfirst.frc.team2557.robot.commands.drive.EncoderDistanceDriveCommandNoStop;
 import org.usfirst.frc.team2557.robot.commands.drive.MotionProfileTurnCommand;
 import org.usfirst.frc.team2557.robot.commands.drive.PIDTurn;
-import org.usfirst.frc.team2557.robot.commands.wing.WingCommandLeft;
-import org.usfirst.frc.team2557.robot.commands.wing.WingCommandRight;
+import org.usfirst.frc.team2557.robot.subsystems.ClimberSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.IntakeSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.LiftSubsystem;
@@ -44,6 +45,7 @@ public class Robot extends TimedRobot {
 	public static IntakeSubsystem IntakeSubsystem;
 	public static StrafeButtonsSubsystem StrafeButtonsSubsystem;
 	public static UselessForwardSubsystem UselessForwardSubsystem;
+	public static ClimberSubsystem ClimberSubsystem;
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser;
@@ -84,7 +86,7 @@ public class Robot extends TimedRobot {
 		IntakeSubsystem = new IntakeSubsystem();
 		StrafeButtonsSubsystem = new StrafeButtonsSubsystem();
 		UselessForwardSubsystem = new UselessForwardSubsystem();
-		
+//		ClimberSubsystem = new ClimberSubsystem();
 		
 		oi = new OI();
 		oi.OIInit();
@@ -92,7 +94,7 @@ public class Robot extends TimedRobot {
 		m_chooser = new SendableChooser<>();
 		m_chooser.addDefault("Forward Only", new Forward());
 		m_chooser.addObject("Right scale and cube", new RightScaleAndCube());
-//		m_chooser.addObject("Forward test using Turning Profile", new MotionProfileTurnCommand(RobotMap.drive1));
+		m_chooser.addObject("TestEncoderDriveIntoTurn", new TestEncoderDriveIntoTurn());
 		m_chooser.addObject("Right scale crossover test using Turning Profile", new RightScaleCrossoverTest());
 //		m_chooser.addObject("Turns Left test using Turning Profile", new MotionProfileTurnCommand(RobotMap.trajectory2));
 //		m_chooser.addObject("PID Turn test", new PIDTurn(90.0));
@@ -181,10 +183,6 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopInit() {
-		WingCommandRight r = new WingCommandRight();
-		WingCommandLeft l = new WingCommandLeft();
-		r.start();
-		l.start();
 		
 		RobotMap.Right2.enableCurrentLimit(true);
 		RobotMap.Right2.configPeakCurrentDuration(0, 0);
