@@ -34,7 +34,7 @@ public class MotionProfileCommand extends Command {
     	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
     	// max velocity 8.65 ft/s ? and kv = 1/max
     	
-    	follower.configurePIDVA(0.075, 0, 0.001, 1.0/10, 0.001); // real bot pidva
+    	follower.configurePIDVA(0.07, 0, 0.001, 1.0/10, 0.001); // real bot pidva
 //    	follower.configurePIDVA(1, 0, 0.01, 1.0/8.5, 0);
 //    	follower.configurePIDVA(0.01, 0, 0.015, 1.0/8.5, 0);
     	follower.configureEncoder(0, 3413, 1.0/3.0);

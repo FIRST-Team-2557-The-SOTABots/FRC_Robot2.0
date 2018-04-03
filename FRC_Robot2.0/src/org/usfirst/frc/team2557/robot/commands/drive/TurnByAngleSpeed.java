@@ -4,12 +4,14 @@ import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class TurnByAngleCommand extends Command {
+public class TurnByAngleSpeed extends Command {
 	double angle;
+	double speed;
 
-    public TurnByAngleCommand(double angle) {
+    public TurnByAngleSpeed(double angle, double speed) {
     	requires(Robot.DriveSubsystem);
     	this.angle = angle;
+    	this.speed = speed;
     }
 
     // Called just before this Command runs the first time
@@ -20,9 +22,9 @@ public class TurnByAngleCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 		if(RobotMap.Gyro1.getAngle() > angle) {
-			Robot.DriveSubsystem.DiffDrive(0, 1.0);
+			Robot.DriveSubsystem.DiffDrive(0, speed);
 		}else if(RobotMap.Gyro1.getAngle() < angle){
-			Robot.DriveSubsystem.DiffDrive(0, -1.0);
+			Robot.DriveSubsystem.DiffDrive(0, -speed);
 		}
     }
 

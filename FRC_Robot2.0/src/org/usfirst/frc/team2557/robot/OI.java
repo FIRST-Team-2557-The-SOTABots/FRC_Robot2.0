@@ -25,8 +25,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	
 	public static Joystick Joystick1;
-	public static JoystickButton ForwardButton;
-	public static JoystickButton BackwardButton;
+	public static JoystickButton MecButton;
+	public static JoystickButton CoulsonButton;
 	public static JoystickButton forwardButton;
 	public static JoystickButton backwardButton;
 	
@@ -49,8 +49,8 @@ public class OI {
 	
 	public void OIInit() {
 		Joystick1 = new Joystick(0);
-		ForwardButton = new JoystickButton(Joystick1, 6);
-		BackwardButton = new JoystickButton(Joystick1, 5);
+		MecButton = new JoystickButton(Joystick1, 6);
+		CoulsonButton = new JoystickButton(Joystick1, 5);
 		
 		startButton = new JoystickButton(Joystick1, 8);
 		startButton.whenPressed(new BrakingCommand(true));
@@ -59,8 +59,8 @@ public class OI {
 		backButton = new JoystickButton(Joystick1, 7);
 		
 		
-		ForwardButton.whenPressed(new SolenoidCommand());
-		BackwardButton.whenPressed(new SolenoidCommand());
+		MecButton.whenPressed(new SolenoidCommand());
+		CoulsonButton.whenPressed(new SolenoidCommand());
 		
 		Joystick2 = new Joystick(1);
 		IntakeIn = new JoystickButton(Joystick2, 2);

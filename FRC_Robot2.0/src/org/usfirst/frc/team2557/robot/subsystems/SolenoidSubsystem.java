@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class SolenoidSubsystem extends Subsystem {
 
 	public void SolenoidMethod1() {
-		if (OI.ForwardButton.get()){
+		if (OI.MecButton.get()){
 			RobotMap.DS1.set(Value.kForward);
-		}else if(OI.BackwardButton.get()) {
+		}else if(OI.CoulsonButton.get()) {
 			RobotMap.DS1.set(Value.kReverse);
 		}
 	}

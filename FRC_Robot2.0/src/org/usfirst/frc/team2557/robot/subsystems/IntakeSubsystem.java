@@ -63,12 +63,8 @@ public class IntakeSubsystem extends Subsystem {
 	
 	public void IntakeWithAxis(){
     	double axis = OI.Joystick2.getRawAxis(5);
-    	
-		double axisRight2 = OI.Joystick2.getRawAxis(3);		
-		double axisLeft2 = OI.Joystick2.getRawAxis(2);
 		
-		SmartDashboard.putNumber("TriggerLeft2", axisLeft2);
-		SmartDashboard.putNumber("TriggerRight2", axisRight2);
+		SmartDashboard.putNumber("TriggerLeft2", axis);
 		RobotMap.IntakeR.set(axis);
 		RobotMap.IntakeL.set(-axis);
 	}
