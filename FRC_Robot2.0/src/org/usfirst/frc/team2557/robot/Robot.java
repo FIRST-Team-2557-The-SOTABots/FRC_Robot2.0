@@ -86,7 +86,7 @@ public class Robot extends TimedRobot {
 		IntakeSubsystem = new IntakeSubsystem();
 		StrafeButtonsSubsystem = new StrafeButtonsSubsystem();
 		UselessForwardSubsystem = new UselessForwardSubsystem();
-//		ClimberSubsystem = new ClimberSubsystem();
+		ClimberSubsystem = new ClimberSubsystem();
 		
 		oi = new OI();
 		oi.OIInit();

@@ -1,9 +1,11 @@
 package org.usfirst.frc.team2557.robot.subsystems;
 
+import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.RobotMap;
 import org.usfirst.frc.team2557.robot.commands.climber.ClimbCommand;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -18,9 +20,13 @@ public class ClimberSubsystem extends Subsystem {
         setDefaultCommand(new ClimbCommand());
     }
     
-    public void climb(double speed){
-    	RobotMap.Climb1.set(speed);
-    	RobotMap.Climb2.set(speed);
-    }
+    public void climb(){
+		double axis = OI.Joystick2.getRawAxis(5);
+		
+		RobotMap.ClimbLeft.set(-axis*0.5);
+		RobotMap.ClimbRight.set(-axis*0.5);
+		
+		SmartDashboard.putNumber("This is Climbing", axis);
+	}
 }
 

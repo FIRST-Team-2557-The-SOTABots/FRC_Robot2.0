@@ -27,8 +27,8 @@ public class RobotMap {
 	public static WPI_TalonSRX Right1;
 	public static WPI_TalonSRX Right2;
 	
-	public static WPI_TalonSRX Climb1;
-	public static WPI_TalonSRX Climb2;
+	public static WPI_TalonSRX ClimbLeft;
+	public static WPI_TalonSRX ClimbRight;
 	
 	public static SpeedControllerGroup Left;
 	public static SpeedControllerGroup Right;
@@ -100,8 +100,8 @@ public class RobotMap {
 		MecDrive.setSafetyEnabled(false);
 		Gyro1 = new AHRS(SPI.Port.kMXP);
 		
-//		Climb1 = new WPI_TalonSRX(60);
-//		Climb2 = new WPI_TalonSRX(61);
+		ClimbLeft = new WPI_TalonSRX(12);
+		ClimbRight = new WPI_TalonSRX(13);
 
 		//		// could increase accel !!!... done
 		Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 8.5, 10.0, 1000000.0);
