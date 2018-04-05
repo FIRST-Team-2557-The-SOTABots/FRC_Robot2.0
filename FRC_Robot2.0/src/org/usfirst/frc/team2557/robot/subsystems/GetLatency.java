@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2557.robot.subsystems;
 
-import org.icmp4j.IcmpPingUtil;
+//import org.icmp4j.IcmpPingUtil;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,8 +16,12 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.nio.charset.*;
 
-import org.icmp4j.IcmpPingRequest;
-import org.icmp4j.IcmpPingResponse;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+
+//import org.icmp4j.IcmpPingRequest;
+//import org.icmp4j.IcmpPingResponse;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -114,9 +118,9 @@ public class GetLatency extends Subsystem {
 	
 	public void getDriverStation(){
 		SmartDashboard.putString("gotThere", "You made it!");
-		final IcmpPingRequest request = IcmpPingUtil.createIcmpPingRequest ();
+		//final IcmpPingRequest request = IcmpPingUtil.createIcmpPingRequest ();
 		// XXX Maybe call this after the address is set.
-		request.setHost (address);
+		//request.setHost (address);
 		
 		try{
 		Process p = Runtime.getRuntime().exec("/sbin/ifconfig eth0");  //| grep netmask | cut -f 2 -d 't' | cut -f 2 -d ' '
@@ -151,6 +155,14 @@ public class GetLatency extends Subsystem {
 							maskAddress = InputString.substring(indexOfMaskAddr + 5);
 							//maskAddress = maskAddress.substring(0, maskAddress.indexOf("\n"));
 						}
+						NetworkTableEntry addressTable;
+						NetworkTableEntry maskAddressTable;
+						
+						NetworkTableInstance inst = NetworkTableInstance.getDefault();
+						NetworkTable table = inst.getTable("datatable");
+						
+						addressTable = table.getEntry(address);
+						maskAddressTable = table.getEntry(maskAddress);
 					}
 					
 					InputString = new String();
@@ -167,6 +179,8 @@ public class GetLatency extends Subsystem {
 		}
 		String IPList = p.getOutputStream().toString();
 		logMessage(IPList);
+		
+		
 
 		
 		}
@@ -177,11 +191,11 @@ public class GetLatency extends Subsystem {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		final IcmpPingResponse response = IcmpPingUtil.executePingRequest (request);
-		
-		final String formattedResponse = IcmpPingUtil.formatResponse (response);
+//		final IcmpPingResponse response = IcmpPingUtil.executePingRequest (request);
+//		
+//		final String formattedResponse = IcmpPingUtil.formatResponse (response);
 
-		SmartDashboard.putString("firstResponse",formattedResponse);
+//		SmartDashboard.putString("firstResponse",formattedResponse);
 		
 		
         Runtime pingCheck = Runtime.getRuntime();

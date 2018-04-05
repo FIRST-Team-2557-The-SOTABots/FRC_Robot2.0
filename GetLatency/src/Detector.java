@@ -1,3 +1,4 @@
+package src;
 import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,9 +17,10 @@ public class Detector {
 
 		//final ProcessBuilder pb = new ProcessBuilder("java", "-version");
 		while(true){
+			long lStartTime = System.nanoTime();
 			
 			try {
-				Process p = Runtime.getRuntime().exec("ping youtube.com");
+				Process p = Runtime.getRuntime().exec(/*"ping -4 roboRIO-2557-FRC.local"*/"ping youtube.com");
 				System.out.println(p);
 				InputStream Latency = p.getInputStream();
 
@@ -61,14 +63,15 @@ public class Detector {
 				e.printStackTrace();
 			}
 
+			DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmm");
+			
+			Date date = new Date();
+			System.out.println(dateFormat.format(date));
+			
+			String stringAdd = "robot-ping" + dateFormat.format(date) + ".txt";
+			String superString = "C:\\Users\\Michael\\Desktop\\" + stringAdd;
+
 			try {
-				DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmm");
-				
-				Date date = new Date();
-				System.out.println(dateFormat.format(date));
-				
-				String stringAdd = "robot-ping" + dateFormat.format(date) + ".txt";
-				String superString = "C:\\Users\\Admin\\Desktop\\" + stringAdd;
 				logFile = new FileWriter(superString, true);
 
 				logFile.write(LatencyString + "\r\n");
@@ -78,9 +81,16 @@ public class Detector {
 				System.out.println(e);
 			}
 			
+			long lEndTime = System.nanoTime();
+			
+			long Final = lEndTime - lStartTime;
+			
+			System.out.println(Final);
+			
 			LatencyString = new String();
 			
-			Timer.Tie();
+			Timer.Tie(superString);
+			TimeDetector.writeToTimeFile();
 
 			//		String substring = LatencyString.substring(start + 1, end);
 			//		String[] split = substring.split("\\.");
