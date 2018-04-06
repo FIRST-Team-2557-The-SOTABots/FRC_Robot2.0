@@ -65,7 +65,7 @@ public class Timer {
 				try {
 					if(pingOutputFile == null){
 						String stringAdd = "robotPingSimple" + dateFormat.format(date) + ".txt";
-						pingOutputFile = "C:\\Users\\Michael\\Desktop\\" + stringAdd;
+						pingOutputFile = "C:\\Users\\Admin\\Desktop\\" + stringAdd;
 					}
 					logFile = new FileWriter(pingOutputFile, true);
 					logFile.write(address + "\r\n");

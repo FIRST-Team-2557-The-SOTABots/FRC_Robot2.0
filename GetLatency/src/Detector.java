@@ -12,16 +12,19 @@ public class Detector {
 	private static String LatencyString;
 	private static FileWriter logFile;
 	private static String superString;
+	public static long Final;
+	public static long lStartTime = 0;
 	public static void main (String[] args){
 
 		String InputString = new String();
 
 		//final ProcessBuilder pb = new ProcessBuilder("java", "-version");
 		while(true){
-			long lStartTime = System.nanoTime();
-			
+			if(lStartTime == 0){
+			lStartTime = System.currentTimeMillis();
+			}
 			try {
-				Process p = Runtime.getRuntime().exec(/*"ping -4 roboRIO-2557-FRC.local"*/"ping youtube.com");
+				Process p = Runtime.getRuntime().exec("ping -4 roboRIO-2557-FRC.local"/*"ping youtube.com"*/);
 				System.out.println(p);
 				InputStream Latency = p.getInputStream();
 
@@ -71,7 +74,7 @@ public class Detector {
 			
 			if (superString == null) {
 				String stringAdd = "robot-ping" + dateFormat.format(date) + ".txt";
-				superString = "C:\\Users\\Michael\\Desktop\\" + stringAdd;
+				superString = "C:\\Users\\Admin\\Desktop\\" + stringAdd;
 			}
 
 			try {
@@ -84,9 +87,9 @@ public class Detector {
 				System.out.println(e);
 			}
 			
-			long lEndTime = System.nanoTime();
+			long lEndTime = System.currentTimeMillis();
 			
-			long Final = lEndTime - lStartTime;
+			Final = lEndTime - lStartTime;
 			
 			System.out.println(Final);
 			

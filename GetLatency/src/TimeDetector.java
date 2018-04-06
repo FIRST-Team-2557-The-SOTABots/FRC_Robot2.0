@@ -18,8 +18,7 @@ public static void writeToTimeFile(){
 		String InputString = new String();
 
 		//final ProcessBuilder pb = new ProcessBuilder("java", "-version");
-			long lStartTime = System.nanoTime();
-			
+		
 
 
 			try {
@@ -31,18 +30,16 @@ public static void writeToTimeFile(){
 				if(superString == null){
 				
 				String stringAdd = "time-passed" + dateFormat.format(date) + ".txt";
-				superString = "C:\\Users\\Michael\\Desktop\\" + stringAdd;
+				superString = "C:\\Users\\Admin\\Desktop\\" + stringAdd;
 				
 				
 				}
 				logFile = new FileWriter(superString, true);
-				long lEndTime = System.nanoTime();
-				long lFinalTime;
-				lFinalTime = lEndTime - lStartTime;
+				
 				
 				
 
-				logFile.write(lFinalTime + "\r\n");
+				logFile.write(Detector.Final + "\r\n");
 				logFile.flush();
 				logFile.close();
 			} catch (IOException e) {
