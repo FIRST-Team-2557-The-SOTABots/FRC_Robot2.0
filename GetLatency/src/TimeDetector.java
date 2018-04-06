@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TimeDetector {
+private static String superString;	
 public static void writeToTimeFile(){
 	String LatencyString;
 	FileWriter logFile;
@@ -27,10 +28,14 @@ public static void writeToTimeFile(){
 				Date date = new Date();
 				System.out.println(dateFormat.format(date));
 				
-				String stringAdd = "time-passed" + dateFormat.format(date) + ".txt";
-				String superString = "C:\\Users\\Michael\\Desktop\\" + stringAdd;
-				logFile = new FileWriter(superString, true);
+				if(superString == null){
 				
+				String stringAdd = "time-passed" + dateFormat.format(date) + ".txt";
+				superString = "C:\\Users\\Michael\\Desktop\\" + stringAdd;
+				
+				
+				}
+				logFile = new FileWriter(superString, true);
 				long lEndTime = System.nanoTime();
 				long lFinalTime;
 				lFinalTime = lEndTime - lStartTime;

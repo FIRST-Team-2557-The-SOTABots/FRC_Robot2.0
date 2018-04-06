@@ -10,6 +10,7 @@ import java.util.Date;
 
 public class Timer {
 	private static FileWriter logFile;
+	private static String pingOutputFile;
 	public static void Tie(String superString) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmm");
 		Date date = new Date();
@@ -62,10 +63,11 @@ public class Timer {
 				}
 				
 				try {
-					String stringAdd = "robotPingSimple" + dateFormat.format(date) + ".txt";
-					String superString1 = "C:\\Users\\Michael\\Desktop\\" + stringAdd;
-					logFile = new FileWriter(superString1, true);
-
+					if(pingOutputFile == null){
+						String stringAdd = "robotPingSimple" + dateFormat.format(date) + ".txt";
+						pingOutputFile = "C:\\Users\\Michael\\Desktop\\" + stringAdd;
+					}
+					logFile = new FileWriter(pingOutputFile, true);
 					logFile.write(address + "\r\n");
 					logFile.flush();
 					logFile.close();

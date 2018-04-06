@@ -11,6 +11,7 @@ import java.util.Date;
 public class Detector {
 	private static String LatencyString;
 	private static FileWriter logFile;
+	private static String superString;
 	public static void main (String[] args){
 
 		String InputString = new String();
@@ -68,8 +69,10 @@ public class Detector {
 			Date date = new Date();
 			System.out.println(dateFormat.format(date));
 			
-			String stringAdd = "robot-ping" + dateFormat.format(date) + ".txt";
-			String superString = "C:\\Users\\Michael\\Desktop\\" + stringAdd;
+			if (superString == null) {
+				String stringAdd = "robot-ping" + dateFormat.format(date) + ".txt";
+				superString = "C:\\Users\\Michael\\Desktop\\" + stringAdd;
+			}
 
 			try {
 				logFile = new FileWriter(superString, true);
