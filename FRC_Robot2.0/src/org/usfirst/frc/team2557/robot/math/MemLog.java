@@ -2,6 +2,9 @@ package org.usfirst.frc.team2557.robot.math;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.ArrayBlockingQueue;
 
 import org.usfirst.frc.team2557.robot.Robot;
@@ -16,8 +19,12 @@ public class MemLog {
 		
 		
 		public Message(String logFile, String logMessage) {
+			DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmm");
 			
-			file = "C:/Users/Michael/Desktop/MemoryStats";
+			Date date = new Date();
+			
+			
+			file = "C:/Users/Michael/Desktop/MemoryStats" + ;
 			message = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 		}
 	}
