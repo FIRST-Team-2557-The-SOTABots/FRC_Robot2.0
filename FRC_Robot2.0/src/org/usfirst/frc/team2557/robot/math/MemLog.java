@@ -13,6 +13,7 @@ public class MemLog {
 
 	/* Helper class to hold file name log message pairs (tuple). */
 	private class Message {
+		public String superString;
 		public String file;
 		public long message;
 		
@@ -22,9 +23,13 @@ public class MemLog {
 			DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmm");
 			
 			Date date = new Date();
+			if (superString == null) {
+				String stringAdd = "robot-ping" + dateFormat.format(date) + ".txt";
+				superString = "C:\\Users\\Michael\\Desktop\\" + stringAdd;
+			}
 			
 			
-			file = "C:/Users/Michael/Desktop/MemoryStats" + ;
+			file = "C:/Users/Michael/Desktop/MemoryStats" + superString;
 			message = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 		}
 	}
