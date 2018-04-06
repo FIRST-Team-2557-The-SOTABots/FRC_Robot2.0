@@ -150,8 +150,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 //		RobotMap.euler.autoInit();
 //		Robot.chassis.resetDriveStraight();
-		RobotMap.FLdrive.getSensorCollection().setQuadraturePosition(0, 10);
-		RobotMap.BRdrive.getSensorCollection().setQuadraturePosition(0, 10);
+//		RobotMap.FLdrive.getSensorCollection().setQuadraturePosition(0, 10);
+//		RobotMap.BRdrive.getSensorCollection().setQuadraturePosition(0, 10);
 //		RobotMap.navX.reset();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -183,8 +183,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		RobotMap.euler.update();
-		SmartDashboard.putNumber("Left Encoder: ", RobotMap.FLdrive.getSensorCollection().getQuadraturePosition());
-		SmartDashboard.putNumber("Right Encoder: ", RobotMap.BRdrive.getSensorCollection().getQuadraturePosition());
+		//SmartDashboard.putNumber("Left Encoder: ", RobotMap.FLdrive.getSensorCollection().getQuadraturePosition());
+		//SmartDashboard.putNumber("Right Encoder: ", RobotMap.BRdrive.getSensorCollection().getQuadraturePosition());
 		SmartDashboard.putNumber("NavX Angle is: ",RobotMap.navX.getAngle());
 		SmartDashboard.putNumber("DriveStraight Angle is: ",Robot.chassis.getDriveStraightAngle());
 		

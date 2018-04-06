@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2557.robot.subsystems;
 
-import org.icmp4j.IcmpPingUtil;
+//import org.icmp4j.IcmpPingUtil;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.nio.charset.*;
 
-import org.icmp4j.IcmpPingRequest;
-import org.icmp4j.IcmpPingResponse;
+//import org.icmp4j.IcmpPingRequest;
+//import org.icmp4j.IcmpPingResponse;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -112,78 +112,78 @@ public class GetLatency extends Subsystem {
 
 	
 	public void getDriverStation(){
-		SmartDashboard.putString("gotThere", "You made it!");
-		final IcmpPingRequest request = IcmpPingUtil.createIcmpPingRequest ();
-		// XXX Maybe call this after the address is set.
-		request.setHost (address);
-		
-		try{
-		Process p = Runtime.getRuntime().exec("/sbin/ifconfig eth0");  //| grep netmask | cut -f 2 -d 't' | cut -f 2 -d ' '
-		
-		if (p.waitFor(1, TimeUnit.SECONDS) == true) {
-			InputStream inputStream = p.getInputStream();
-			
-			int currentChar = inputStream.read();
-			String InputString = new String();
-			
-			while (currentChar >= 0) {
-				if ((char)currentChar != '\n') {
-					InputString += (char) currentChar;
-
-				}
-				else{
-					int indexOfAddr = InputString.indexOf("inet addr:");//InputString.contains("inet addr:")
-					if (indexOfAddr >= 0) {
-						//address = InputString.substring(indexOfAddr);
-						address = InputString.substring(InputString.indexOf(":") + 1);
-						address = address.substring(0, address.indexOf(" "));
-
-
-						int indexOfMaskAddr = InputString.indexOf("Mask:");
-						if(indexOfMaskAddr >= 0){
-							// InputString.indexOf("k:") gives the index of the "k" - add 2 to get past
-							// the colon.
-							maskAddress = InputString.substring(InputString.indexOf("k:") + 2);
-							maskAddress = maskAddress.substring(0, maskAddress.indexOf(" "));
-						}
-					} else {
-						InputString = new String();
-					}
-
-
-				}
-				System.out.print((char)currentChar);
-				currentChar = inputStream.read();
-			}
-			System.out.println();
-			System.out.println("found address " + address);
-			System.out.println("Found mask address " + maskAddress);
-		}
-		String IPList = p.getOutputStream().toString();
-		logMessage(IPList);
-		}
-		
-		}
-		catch(IOException e){
-			 System.out.println("exception happened - here's what I know: ");
-	            e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		final IcmpPingResponse response = IcmpPingUtil.executePingRequest (request);
-		
-		final String formattedResponse = IcmpPingUtil.formatResponse (response);
-
-		SmartDashboard.putString("firstResponse",formattedResponse);
-		
-		
-        Runtime pingCheck = Runtime.getRuntime();
-        SmartDashboard.putNumber("Free memory in JVM before Garbage Collection = ", pingCheck.freeMemory());
-        pingCheck.gc();
-        SmartDashboard.putNumber("Free memory in JVM after Garbage Collection = ",   pingCheck.freeMemory());
-     }
-     
+//		SmartDashboard.putString("gotThere", "You made it!");
+//		final IcmpPingRequest request = IcmpPingUtil.createIcmpPingRequest ();
+//		// XXX Maybe call this after the address is set.
+//		request.setHost (address);
+//		
+//		try{
+//		Process p = Runtime.getRuntime().exec("/sbin/ifconfig eth0");  //| grep netmask | cut -f 2 -d 't' | cut -f 2 -d ' '
+//		
+//		if (p.waitFor(1, TimeUnit.SECONDS) == true) {
+//			InputStream inputStream = p.getInputStream();
+//			
+//			int currentChar = inputStream.read();
+//			String InputString = new String();
+//			
+//			while (currentChar >= 0) {
+//				if ((char)currentChar != '\n') {
+//					InputString += (char) currentChar;
+//
+//				}
+//				else{
+//					int indexOfAddr = InputString.indexOf("inet addr:");//InputString.contains("inet addr:")
+//					if (indexOfAddr >= 0) {
+//						//address = InputString.substring(indexOfAddr);
+//						address = InputString.substring(InputString.indexOf(":") + 1);
+//						address = address.substring(0, address.indexOf(" "));
+//
+//
+//						int indexOfMaskAddr = InputString.indexOf("Mask:");
+//						if(indexOfMaskAddr >= 0){
+//							// InputString.indexOf("k:") gives the index of the "k" - add 2 to get past
+//							// the colon.
+//							maskAddress = InputString.substring(InputString.indexOf("k:") + 2);
+//							maskAddress = maskAddress.substring(0, maskAddress.indexOf(" "));
+//						}
+//					} else {
+//						InputString = new String();
+//					}
+//
+//
+//				}
+//				System.out.print((char)currentChar);
+//				currentChar = inputStream.read();
+//			}
+//			System.out.println();
+//			System.out.println("found address " + address);
+//			System.out.println("Found mask address " + maskAddress);
+//		}
+//		String IPList = p.getOutputStream().toString();
+//		logMessage(IPList);
+//		}
+//		
+//		}
+//		catch(IOException e){
+//			 System.out.println("exception happened - here's what I know: ");
+//	            e.printStackTrace();
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		final IcmpPingResponse response = IcmpPingUtil.executePingRequest (request);
+//		
+//		final String formattedResponse = IcmpPingUtil.formatResponse (response);
+//
+//		SmartDashboard.putString("firstResponse",formattedResponse);
+//		
+//		
+//        Runtime pingCheck = Runtime.getRuntime();
+//        SmartDashboard.putNumber("Free memory in JVM before Garbage Collection = ", pingCheck.freeMemory());
+//        pingCheck.gc();
+//        SmartDashboard.putNumber("Free memory in JVM after Garbage Collection = ",   pingCheck.freeMemory());
+    }
+    
 	
 	
 	
