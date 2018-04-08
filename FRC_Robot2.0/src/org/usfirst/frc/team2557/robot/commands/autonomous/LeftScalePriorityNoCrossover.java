@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftScalePriorityNoCrossover extends CommandGroup {
 
     public LeftScalePriorityNoCrossover() {
-    	addSequential(new ScaleConditional(new LeftScale(), new SwitchConditional(new LeftSwitch(), new LeftEnd(), false), false));
+    	addSequential(new ScaleConditional(new LeftScale(), new SwitchConditional(new LeftSwitch(), new Forward(), false), false));
     	
     }
 }

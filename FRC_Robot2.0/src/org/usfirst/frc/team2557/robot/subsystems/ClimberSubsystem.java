@@ -23,8 +23,8 @@ public class ClimberSubsystem extends Subsystem {
     public void climb(){
 		double axis = OI.Joystick2.getRawAxis(5);
 		
-		RobotMap.ClimbLeft.set(-axis*0.5);
-		RobotMap.ClimbRight.set(-axis*0.5);
+		RobotMap.ClimbLeft.set(-axis*0.8);
+		RobotMap.ClimbRight.set(-axis*0.8);
 		
 		SmartDashboard.putNumber("This is Climbing", axis);
 	}

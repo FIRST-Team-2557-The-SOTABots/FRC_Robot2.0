@@ -137,7 +137,7 @@ public class RobotMap {
 //		}
 //		Waypoint[] points1 = new Waypoint[] {
 //				// in feet
-//				new Waypoint(-7.0, 0, 0),
+//				new Waypoint(-7.5, 0, 0),
 //				new Waypoint(0, 0, 0)
 //		};
 //		drive1 = Pathfinder.generate(points1, config);
@@ -163,7 +163,7 @@ public class RobotMap {
 //		}
 //		Waypoint[] points4 = new Waypoint[] {
 //				// in feet
-//				new Waypoint(-7.0, 0, 0),
+//				new Waypoint(-8.0, 0, 0),
 //				new Waypoint(0, 0, 0)
 //		};
 //		drive4 = Pathfinder.generate(points4, config);
@@ -176,7 +176,7 @@ public class RobotMap {
 //		}
 //		Waypoint[] points5 = new Waypoint[] {
 //				// in feet
-//				new Waypoint(-4.5, 0, 0),
+//				new Waypoint(-5.0, 0, 0),
 //				new Waypoint(0, 0, 0)
 //		};
 //		drive5 = Pathfinder.generate(points5, config);
@@ -189,7 +189,7 @@ public class RobotMap {
 //		}
 //		Waypoint[] points6 = new Waypoint[] {
 //				// in feet
-//				new Waypoint(-11.5, 0, 0),
+//				new Waypoint(-10.5, 0, 0),
 //				new Waypoint(0, 0, 0)
 //		};
 //		drive6 = Pathfinder.generate(points6, config);
@@ -200,22 +200,22 @@ public class RobotMap {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-//		Waypoint[] points8 = new Waypoint[] {
-//				// in feet
-//				new Waypoint(-24.0, 0, 0),
-//				new Waypoint(0, 0, 0)
-//		};
-//		drive8 = Pathfinder.generate(points8, config);
-//		File drive8file = new File("/home/lvuser/Trajectories/drive8.t");
-//		try {
-//			drive8file.createNewFile();
-//			Pathfinder.writeToFile(drive8file, drive8);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		Waypoint[] points8 = new Waypoint[] {
+				// in feet
+				new Waypoint(-25.0, 0, 0),
+				new Waypoint(0, 0, 0)
+		};
+		drive8 = Pathfinder.generate(points8, config);
+		File drive8file = new File("/home/lvuser/Trajectories/drive8.t");
+		try {
+			drive8file.createNewFile();
+			Pathfinder.writeToFile(drive8file, drive8);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 //		Waypoint[] points9 = new Waypoint[] {
 //				// in feet
-//				new Waypoint(-0.75, 0, 0),
+//				new Waypoint(-1.5, 0, 0),
 //				new Waypoint(0, 0, 0)
 //		};
 //		drive9 = Pathfinder.generate(points9, config);
@@ -228,7 +228,7 @@ public class RobotMap {
 //		}
 //		Waypoint[] points10 = new Waypoint[] {
 //				// in feet
-//				new Waypoint(-19.0, 0, 0),
+//				new Waypoint(-18.0, 0, 0),
 //				new Waypoint(0, 0, 0)
 //		};
 //		drive10 = Pathfinder.generate(points10, configFaster);

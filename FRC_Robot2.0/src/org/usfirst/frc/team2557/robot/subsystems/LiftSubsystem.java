@@ -17,12 +17,10 @@ public class LiftSubsystem extends Subsystem {
 	public void LiftWithAxis(){
 		double axis = OI.Joystick2.getRawAxis(1);
 		
-		RobotMap.LiftMotor.set(-axis);
-		RobotMap.LiftMotor2.set(-axis);
+		RobotMap.LiftMotor.set(-axis * 0.9);
+		RobotMap.LiftMotor2.set(-axis * 0.9);
 		
 		SmartDashboard.putNumber("This is Lifting", axis);
-		
-		
 	}
 
 	public void LiftAuto(double power) {

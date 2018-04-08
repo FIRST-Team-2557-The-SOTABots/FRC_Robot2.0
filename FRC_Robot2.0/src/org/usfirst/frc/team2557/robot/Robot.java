@@ -6,6 +6,7 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.LeftScalePriority;
 import org.usfirst.frc.team2557.robot.commands.autonomous.LeftScalePriorityNoCrossover;
 import org.usfirst.frc.team2557.robot.commands.autonomous.LeftScaleOnly;
 import org.usfirst.frc.team2557.robot.commands.autonomous.LeftSwitchOnly;
+import org.usfirst.frc.team2557.robot.commands.autonomous.LeftSwitchOrBaseline;
 import org.usfirst.frc.team2557.robot.commands.autonomous.LeftSwitchPriority;
 import org.usfirst.frc.team2557.robot.commands.autonomous.LeftSwitchPriorityNoCrossover;
 import org.usfirst.frc.team2557.robot.commands.autonomous.MidSwitch;
@@ -14,10 +15,10 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.RightScalePriority;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightScalePriorityNoCrossover;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightScaleOnly;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSwitchOnly;
+import org.usfirst.frc.team2557.robot.commands.autonomous.RightSwitchOrBaseline;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSwitchPriority;
 import org.usfirst.frc.team2557.robot.commands.autonomous.RightSwitchPriorityNoCrossover;
-import org.usfirst.frc.team2557.robot.commands.autonomous.TestEncoderDriveIntoTurn;
-import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScaleAndCube;
+import org.usfirst.frc.team2557.robot.commands.autonomous.RightScaleAndCube;
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScaleCrossoverTest;
 import org.usfirst.frc.team2557.robot.commands.drive.EncoderDistanceDriveCommandNoStop;
 import org.usfirst.frc.team2557.robot.commands.drive.MotionProfileTurnCommand;
@@ -94,7 +95,6 @@ public class Robot extends TimedRobot {
 		m_chooser = new SendableChooser<>();
 		m_chooser.addDefault("Forward Only", new Forward());
 		m_chooser.addObject("Right scale and cube", new RightScaleAndCube());
-		m_chooser.addObject("TestEncoderDriveIntoTurn", new TestEncoderDriveIntoTurn());
 		m_chooser.addObject("Right scale crossover test using Turning Profile", new RightScaleCrossoverTest());
 //		m_chooser.addObject("Turns Left test using Turning Profile", new MotionProfileTurnCommand(RobotMap.trajectory2));
 //		m_chooser.addObject("PID Turn test", new PIDTurn(90.0));
@@ -113,6 +113,8 @@ public class Robot extends TimedRobot {
 		m_chooser.addObject("Left side scale priority no crossover", new LeftScalePriorityNoCrossover());
 		m_chooser.addObject("Right side switch priority no crossover", new RightSwitchPriorityNoCrossover());
 		m_chooser.addObject("Left side switch priority no crossover", new LeftSwitchPriorityNoCrossover());
+		m_chooser.addObject("Right switch or baseline", new RightSwitchOrBaseline());
+		m_chooser.addObject("Left switch or baseline", new LeftSwitchOrBaseline());
 		m_chooser.addObject("Do Nothing", null);
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}

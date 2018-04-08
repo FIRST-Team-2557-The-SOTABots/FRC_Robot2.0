@@ -14,7 +14,7 @@ public class RightScaleCrossover extends CommandGroup {
     public RightScaleCrossover() {
     	addParallel(new LiftAutoInit(false));
 		addSequential(new MotionProfileCommand(RobotMap.drive10));
-		addSequential(new TurnByAngleMecanumCommand(100));
+		addSequential(new TurnByAngleMecanumCommand(90));
 		addParallel(new LiftAutoCommand(37500));
 		addSequential(new MotionProfileCommand(RobotMap.drive18));
 		addSequential(new WaitForChildren());
