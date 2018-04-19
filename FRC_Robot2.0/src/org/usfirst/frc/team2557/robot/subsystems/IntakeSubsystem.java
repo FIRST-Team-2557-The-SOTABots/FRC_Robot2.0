@@ -38,9 +38,9 @@ public class IntakeSubsystem extends Subsystem {
 			RobotMap.S2.set(false);
 			RobotMap.S1.set(true);
 			//			RobotMap.S2.set(true);
-		}else if(axisRight > 0.8){
-			RobotMap.IntakeR.set(.15);
-			RobotMap.IntakeL.set(-.15);
+		}else if(axisRight > 0.2){
+			RobotMap.IntakeR.set(axisRight * 0.5);
+			RobotMap.IntakeL.set(-axisRight * 0.5);
 			RobotMap.S2.set(false);
 			RobotMap.S1.set(true);
 		}else if(OI.db.get()){

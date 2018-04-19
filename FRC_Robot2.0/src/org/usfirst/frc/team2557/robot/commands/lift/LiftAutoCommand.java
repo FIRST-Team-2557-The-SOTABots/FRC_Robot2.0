@@ -33,7 +33,7 @@ public class LiftAutoCommand extends Command {
 		}, new PIDOutput(){
 			@Override
 			public void pidWrite(double output) {
-				Robot.LiftSubsystem.liftInAuto(output*0.5);
+				Robot.LiftSubsystem.liftInAuto(output*0.8);
 			}
 		});
 		this.target = target;
