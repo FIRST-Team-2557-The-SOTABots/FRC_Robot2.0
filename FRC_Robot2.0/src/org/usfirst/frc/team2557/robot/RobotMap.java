@@ -200,19 +200,19 @@ public class RobotMap {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-		Waypoint[] points8 = new Waypoint[] {
-				// in feet
-				new Waypoint(-25.0, 0, 0),
-				new Waypoint(0, 0, 0)
-		};
-		drive8 = Pathfinder.generate(points8, config);
-		File drive8file = new File("/home/lvuser/Trajectories/drive8.t");
-		try {
-			drive8file.createNewFile();
-			Pathfinder.writeToFile(drive8file, drive8);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		Waypoint[] points8 = new Waypoint[] {
+//				// in feet
+//				new Waypoint(-23.0, 0, 0),
+//				new Waypoint(0, 0, 0)
+//		};
+//		drive8 = Pathfinder.generate(points8, config);
+//		File drive8file = new File("/home/lvuser/Trajectories/drive8.t");
+//		try {
+//			drive8file.createNewFile();
+//			Pathfinder.writeToFile(drive8file, drive8);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 //		Waypoint[] points9 = new Waypoint[] {
 //				// in feet
 //				new Waypoint(-1.5, 0, 0),
