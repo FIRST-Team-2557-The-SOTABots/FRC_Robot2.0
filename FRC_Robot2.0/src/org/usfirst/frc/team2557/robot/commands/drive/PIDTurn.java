@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2557.robot.commands.drive;
 
+import org.usfirst.frc.team2557.robot.OI;
 import org.usfirst.frc.team2557.robot.Robot;
 import org.usfirst.frc.team2557.robot.RobotMap;
 
@@ -7,16 +8,19 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class PIDTurn extends Command {
 	double angle;
 	PIDController pid;
-	
+	boolean mec;
+
 	public PIDTurn(double angle){
+		this.setTimeout(2.0);
 		this.angle = angle;
-		pid = new PIDController(0.0175, 0.000, 0, new PIDSource(){
+		pid = new PIDController(0.04, 0.00, 0.00, new PIDSource(){
 			@Override
 			public void setPIDSourceType(PIDSourceType pidSource) {
 			}
@@ -36,20 +40,23 @@ public class PIDTurn extends Command {
 				Robot.DriveSubsystem.DiffDrive(0, -output);
 				SmartDashboard.putNumber("output for pid turn", -output);
 			}
-		});
+		}, 0.02);
 		requires(Robot.DriveSubsystem);
-//		pid.setContinuous(true);
-		pid.setOutputRange(-1, 1);
-		pid.setAbsoluteTolerance(1.0);
+		//		pid.setContinuous(true);
+		pid.setOutputRange(-0.7, 0.7);
+		pid.setAbsoluteTolerance(2.0);
 	}
-	
+
 	protected void initialize(){
 		RobotMap.Gyro1.reset();
 		pid.reset();
 		pid.setSetpoint(angle);
 	}
-	
+
 	protected void execute(){
+		if(RobotMap.DS1.get() == Value.kReverse){
+			RobotMap.DS1.set(Value.kForward);
+		}
 		SmartDashboard.putNumber("pid gyro", RobotMap.Gyro1.getAngle());
 		pid.enable();
 		SmartDashboard.putNumber("pid turn error", pid.getError());
@@ -57,14 +64,21 @@ public class PIDTurn extends Command {
 
 	@Override
 	protected boolean isFinished() {
-		return pid.onTarget();
+		if(pid.onTarget() || this.isTimedOut()){
+			System.out.format("error on turn: %6.3f\n", pid.getError());
+			return true;
+		}
+		return false;
 	}
-	
+
 	protected void end(){
+		if(RobotMap.DS1.get() == Value.kForward){
+			RobotMap.DS1.set(Value.kReverse);
+		}
 		Robot.DriveSubsystem.DiffDrive(0.0, 0.0);
 		pid.disable();
 	}
-	
+
 	protected void interrupted(){
 		this.end();
 	}
