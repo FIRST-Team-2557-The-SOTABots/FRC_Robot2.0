@@ -51,6 +51,7 @@ public class PIDTurn extends Command {
 		RobotMap.Gyro1.reset();
 		pid.reset();
 		pid.setSetpoint(angle);
+		pid.enable();
 	}
 
 	protected void execute(){
@@ -58,7 +59,6 @@ public class PIDTurn extends Command {
 			RobotMap.DS1.set(Value.kForward);
 		}
 		SmartDashboard.putNumber("pid gyro", RobotMap.Gyro1.getAngle());
-		pid.enable();
 		SmartDashboard.putNumber("pid turn error", pid.getError());
 	}
 
@@ -80,6 +80,7 @@ public class PIDTurn extends Command {
 	}
 
 	protected void interrupted(){
+		pid.disable();
 		this.end();
 	}
 }

@@ -45,11 +45,11 @@ public class LiftAutoCommand extends Command {
 	protected void initialize() {
 		pidcontroller.reset();
 		pidcontroller.setSetpoint(target);
+		pidcontroller.enable();
 	}
 	
 	protected void execute(){
 		SmartDashboard.putNumber("LiftCommandAuto encoder position", -RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
-		pidcontroller.enable();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -66,6 +66,7 @@ public class LiftAutoCommand extends Command {
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+		pidcontroller.disable();
 		this.end();
 //		this.
 	}
