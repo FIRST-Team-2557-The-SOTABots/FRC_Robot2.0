@@ -22,7 +22,6 @@ import org.usfirst.frc.team2557.robot.commands.autonomous.RightScaleAndCube;
 import org.usfirst.frc.team2557.robot.commands.autonomous.segments.RightScaleCrossoverTest;
 import org.usfirst.frc.team2557.robot.commands.drive.EncoderDistanceDriveCommandNoStop;
 import org.usfirst.frc.team2557.robot.commands.drive.MotionProfileTurnCommand;
-import org.usfirst.frc.team2557.robot.commands.drive.PIDTurn;
 import org.usfirst.frc.team2557.robot.subsystems.ClimberSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team2557.robot.subsystems.IntakeSubsystem;

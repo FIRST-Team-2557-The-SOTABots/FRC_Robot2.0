@@ -4,7 +4,6 @@ import org.usfirst.frc.team2557.robot.RobotMap;
 import org.usfirst.frc.team2557.robot.commands.drive.BackwardsEncoderDrive;
 import org.usfirst.frc.team2557.robot.commands.drive.EncoderDistanceDriveCommand;
 import org.usfirst.frc.team2557.robot.commands.drive.MotionProfileCommand;
-import org.usfirst.frc.team2557.robot.commands.drive.PIDTurn;
 import org.usfirst.frc.team2557.robot.commands.drive.TurnByAngleCommand;
 import org.usfirst.frc.team2557.robot.commands.drive.TurnByAngleMecanumCommand;
 import org.usfirst.frc.team2557.robot.commands.intake.IntakeAutoCommand;
@@ -22,7 +21,7 @@ public class LeftScale extends CommandGroup {
 		addSequential(new MotionProfileCommand(RobotMap.drive8));
 		addSequential(new WaitForChildren());
 		addParallel(new IntakeAutoCommand(1, 0.2));
-		addSequential(new PIDTurn(35));
+		addSequential(new TurnByAngleMecanumCommand(35));
 //		addSequential(new MotionProfileCommand(RobotMap.drive9));
 //		addSequential(new WaitCommand(1));
 //		addSequential(new EncoderDistanceDriveCommand(-1, 0, 500));
@@ -30,17 +29,17 @@ public class LeftScale extends CommandGroup {
 //		addSequential(new BackwardsEncoderDrive(1, 0, 3000));
 
 //		addParallel(new LiftAutoCommand(250));
-		addSequential(new PIDTurn(122.0));
-		addSequential(new LiftAutoCommand(250));
+		addSequential(new TurnByAngleMecanumCommand(90.0));
+		addSequential(new LiftAutoCommand(1500));
 		addSequential(new WaitForChildren());
 		addParallel(new IntakeTimedCommand(2.5, 0.6));
-		addSequential(new EncoderDistanceDriveCommand(-1, 0, 5500));
+		addSequential(new EncoderDistanceDriveCommand(-1, 0, 8000));
 //		addSequential(new IntakeAutoCommand(2, 0.9));
 //		addSequential(new WaitCommand(2));
 		addParallel(new LiftAutoCommand(37500));
-		addSequential(new TurnByAngleMecanumCommand(-148.0));
+		addSequential(new TurnByAngleMecanumCommand(-120.0));
 		addSequential(new WaitForChildren());
-		addSequential(new EncoderDistanceDriveCommand(-1, 0, 2500));
+		addSequential(new EncoderDistanceDriveCommand(-1, 0, 3000));
 		addSequential(new IntakeAutoCommand(1, -0.3));
     }
 }
