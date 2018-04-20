@@ -14,7 +14,7 @@ public class LiftAutoInit extends CommandGroup {
 		addSequential(new LiftAutoCommand(1000));
 		addSequential(new IntakeAutoCommand(0.75, 0.6));
 		if(scale){
-			addParallel(new LiftAutoCommand(38000));
+			addParallel(new LiftAutoCommand(37500));
 		}else{
 			addParallel(new LiftAutoCommand(13000));
 		}

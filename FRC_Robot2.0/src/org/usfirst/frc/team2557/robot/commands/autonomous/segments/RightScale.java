@@ -27,17 +27,19 @@ public class RightScale extends CommandGroup {
 //		addSequential(new BackwardsEncoderDrive(1, 0, 3000));
 
 	
-		addSequential(new TurnByAngleMecanumCommand(-90.0));
-		addSequential(new LiftAutoCommand(1500));
+		addSequential(new TurnByAngleMecanumCommand(-75.0));
+		addSequential(new LiftAutoCommand(2500));
 		addSequential(new WaitForChildren());
 		addParallel(new IntakeTimedCommand(2.5, 0.6));
-		addSequential(new EncoderDistanceDriveCommand(-1, 0, 8000));
+		addSequential(new EncoderDistanceDriveCommand(-1, 0, 9750));
+		addSequential(new WaitCommand(0.5));
 //		addSequential(new IntakeAutoCommand(2, 0.9));
-//		addSequential(new WaitCommand(2));
-		addParallel(new LiftAutoCommand(37500));
-		addSequential(new TurnByAngleMecanumCommand(120.0));
+		addSequential(new WaitCommand(0.5));
 		addSequential(new WaitForChildren());
-		addSequential(new EncoderDistanceDriveCommand(-1, 0, 3000));
+		addParallel(new LiftAutoCommand(37500));
+		addSequential(new TurnByAngleMecanumCommand(145.0));
+		addSequential(new WaitForChildren());
+		addSequential(new EncoderDistanceDriveCommand(-1, 0, 4500));
 		addSequential(new IntakeAutoCommand(1, -0.3));
     }
 }
