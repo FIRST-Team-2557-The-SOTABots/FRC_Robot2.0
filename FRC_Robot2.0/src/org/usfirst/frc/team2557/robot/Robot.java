@@ -39,8 +39,8 @@ public class Robot extends TimedRobot {
 	
 	private void updateSmartDashboard() {
 		SmartDashboard.putNumber("Gyro Angle", RobotMap.Gyro1.getAngle());
-		SmartDashboard.putBoolean("S1", RobotMap.S1.get());
-		SmartDashboard.putBoolean("S2", RobotMap.S2.get());
+		SmartDashboard.putBoolean("S4", RobotMap.S1.get());
+		SmartDashboard.putBoolean("S23", RobotMap.S2.get());
 		SmartDashboard.putNumber("liftEncoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
 		SmartDashboard.putNumber("EncoderCountLeft", RobotMap.Left2.getSensorCollection().getQuadraturePosition());
     	SmartDashboard.putNumber("EncoderCountRight", RobotMap.Right2.getSensorCollection().getQuadraturePosition());
