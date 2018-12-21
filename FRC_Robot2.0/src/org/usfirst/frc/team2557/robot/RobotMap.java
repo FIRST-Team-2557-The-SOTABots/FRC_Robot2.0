@@ -2,7 +2,7 @@ package org.usfirst.frc.team2557.robot;
 
 import java.io.File;
 import java.io.IOException;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+//import com.ctre.phoenix.motorcontrol.can.Talon;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import jaci.pathfinder.Pathfinder;
@@ -22,13 +23,13 @@ import jaci.pathfinder.Waypoint;
 public class RobotMap {
 
 	// Drive
-	public static WPI_TalonSRX Left1;
-	public static WPI_TalonSRX Left2;
-	public static WPI_TalonSRX Right1;
-	public static WPI_TalonSRX Right2;
+	public static Talon Left1;
+	public static Talon Left2;
+	public static Talon Right1;
+	public static Talon Right2;
 	
-	public static WPI_TalonSRX ClimbLeft;
-	public static WPI_TalonSRX ClimbRight;
+	public static Talon ClimbLeft;
+	public static Talon ClimbRight;
 	
 	public static SpeedControllerGroup Left;
 	public static SpeedControllerGroup Right;
@@ -37,8 +38,8 @@ public class RobotMap {
 	public static MecanumDrive MecDrive;
 
 	// Intake
-	public static WPI_TalonSRX IntakeR;
-	public static WPI_TalonSRX IntakeL;
+	public static Talon IntakeR;
+	public static Talon IntakeL;
 	public static AnalogInput Ultrasonic;
 
 	// Solenoid
@@ -48,8 +49,8 @@ public class RobotMap {
 	public static Solenoid S2;
 
 	// Lift
-	public static WPI_TalonSRX LiftMotor;
-	public static WPI_TalonSRX LiftMotor2;
+	public static Talon LiftMotor;
+	public static Talon LiftMotor2;
 	public static DigitalInput liftHallEffect;
 
 	// Wing
@@ -86,12 +87,12 @@ public class RobotMap {
 
 	public static void init() {
 		// Drive
-		Left1 = new WPI_TalonSRX(1);
-		Left2 = new WPI_TalonSRX(7);
-		Right1 = new WPI_TalonSRX(3);
-		Right2 = new WPI_TalonSRX(2);
-		LiftMotor = new WPI_TalonSRX(5);
-		LiftMotor2 = new WPI_TalonSRX(11);
+		Left1 = new Talon(1);
+		Left2 = new Talon(7);
+		Right1 = new Talon(3);
+		Right2 = new Talon(2);
+		LiftMotor = new Talon(5);
+		LiftMotor2 = new Talon(11);
 		Left = new SpeedControllerGroup(Left1, Left2);
 		Right = new SpeedControllerGroup(Right1, Right2);
 		DiffDrive = new DifferentialDrive(Left, Right);
@@ -100,8 +101,8 @@ public class RobotMap {
 		MecDrive.setSafetyEnabled(false);
 		Gyro1 = new AHRS(SPI.Port.kMXP);
 		
-		ClimbLeft = new WPI_TalonSRX(12);
-		ClimbRight = new WPI_TalonSRX(13);
+		ClimbLeft = new Talon(12);
+		ClimbRight = new Talon(13);
 
 		//		// could increase accel !!!... done
 		Trajectory.Config config = new Trajectory.Config(Trajectory.FitMethod.HERMITE_CUBIC, Trajectory.Config.SAMPLES_HIGH, 0.02, 8.5, 10.0, 1000000.0);
@@ -367,8 +368,8 @@ public class RobotMap {
 		trajectory3 = Pathfinder.readFromFile(new File("/home/lvuser/Trajectories/trajectory3.t"));
 
 		// Intake
-		IntakeR = new WPI_TalonSRX(4);
-		IntakeL = new WPI_TalonSRX(6);
+		IntakeR = new Talon(4);
+		IntakeL = new Talon(6);
 		Ultrasonic = new AnalogInput(0);		
 
 		// Solenoid

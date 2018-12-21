@@ -17,8 +17,8 @@ public class BackwardsEncoderDrive extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	RobotMap.Gyro1.reset();
-    	RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
-    	RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
+    	RobotMap.Left2.setPosition(0);
+    	RobotMap.Right2.setPosition(0);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -28,7 +28,7 @@ public class BackwardsEncoderDrive extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if((-RobotMap.Left2.getSensorCollection().getQuadraturePosition() < distance) && (RobotMap.Right2.getSensorCollection().getQuadraturePosition() < distance)) {
+    	if((-RobotMap.Left2.getPosition() < distance) && (RobotMap.Right2.getPosition() < distance)) {
     		return true;
     	}
         return false;

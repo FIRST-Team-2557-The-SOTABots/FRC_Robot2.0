@@ -41,8 +41,8 @@ public class MotionProfileTurnCommand extends Command {
 		t.start();
 		followerLeft.reset();
 		followerRight.reset();
-		RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
-		RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
+		RobotMap.Right2.setPosition(0);
+		RobotMap.Left2.setPosition(0);
 		// max velocity 8.65 ft/s ? and kv = 1/max
 		followerLeft.configurePIDVA(1.0, 0, 0, 1.0/8.5, 0);
 		followerLeft.configureEncoder(0, 3413, 1.0/3.0);

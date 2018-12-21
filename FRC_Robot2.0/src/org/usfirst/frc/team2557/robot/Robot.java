@@ -55,9 +55,9 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Gyro Angle", RobotMap.Gyro1.getAngle());
 		SmartDashboard.putBoolean("S1", RobotMap.S1.get());
 		SmartDashboard.putBoolean("S2", RobotMap.S2.get());
-		SmartDashboard.putNumber("Lift Encoder", RobotMap.LiftMotor.getSensorCollection().getQuadraturePosition());
-		SmartDashboard.putNumber("Encoder Count Left", RobotMap.Left2.getSensorCollection().getQuadraturePosition());
-    	SmartDashboard.putNumber("Encoder Count Right", RobotMap.Right2.getSensorCollection().getQuadraturePosition());
+		SmartDashboard.putNumber("Lift Encoder", RobotMap.LiftMotor.getPosition());
+		SmartDashboard.putNumber("Encoder Count Left", RobotMap.Left2.getPosition());
+    	SmartDashboard.putNumber("Encoder Count Right", RobotMap.Right2.getPosition());
 		SmartDashboard.putBoolean("Lift Hall Effect", RobotMap.liftHallEffect.get());
 	}
 
@@ -76,8 +76,8 @@ public class Robot extends TimedRobot {
 		RobotMap.rightWing.setAngle(180.0);
 		RobotMap.leftWing.setAngle(0.0);
 
-		RobotMap.Left2.getSensorCollection().setQuadraturePosition(0, 10);
-		RobotMap.Right2.getSensorCollection().setQuadraturePosition(0, 10);
+		RobotMap.Left2.setPosition(0);
+		RobotMap.Right2.setPosition(0);
 		
 		RobotMap.DS1.set(Value.kReverse);
 
@@ -131,30 +131,30 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void autonomousInit() {
-		RobotMap.Right2.enableCurrentLimit(true);
-		RobotMap.Right2.configPeakCurrentDuration(0, 0);
-		RobotMap.Right2.configPeakCurrentLimit(30, 0);
-		RobotMap.Right2.configContinuousCurrentLimit(30, 0);
-		RobotMap.Left2.enableCurrentLimit(true);
-		RobotMap.Left2.configPeakCurrentDuration(0, 0);
-		RobotMap.Left2.configPeakCurrentLimit(30, 0);
-		RobotMap.Left2.configContinuousCurrentLimit(30, 0);
-		RobotMap.Left1.enableCurrentLimit(true);
-		RobotMap.Left1.configPeakCurrentDuration(0, 0);
-		RobotMap.Left1.configPeakCurrentLimit(30, 0);
-		RobotMap.Left1.configContinuousCurrentLimit(30, 0);
-		RobotMap.Right1.enableCurrentLimit(true);
-		RobotMap.Right1.configPeakCurrentDuration(0, 0);
-		RobotMap.Right1.configPeakCurrentLimit(30, 0);
-		RobotMap.Right1.configContinuousCurrentLimit(30, 0);
-		RobotMap.LiftMotor.enableCurrentLimit(true);
-		RobotMap.LiftMotor.configPeakCurrentDuration(0, 0);
-		RobotMap.LiftMotor.configPeakCurrentLimit(30, 0);
-		RobotMap.LiftMotor.configContinuousCurrentLimit(30, 0);
-		RobotMap.LiftMotor2.enableCurrentLimit(true);
-		RobotMap.LiftMotor2.configPeakCurrentDuration(0, 0);
-		RobotMap.LiftMotor2.configPeakCurrentLimit(30, 0);
-		RobotMap.LiftMotor2.configContinuousCurrentLimit(30, 0);
+//		RobotMap.Right2.enableCurrentLimit(true);
+//		RobotMap.Right2.configPeakCurrentDuration(0, 0);
+//		RobotMap.Right2.configPeakCurrentLimit(30, 0);
+//		RobotMap.Right2.configContinuousCurrentLimit(30, 0);
+//		RobotMap.Left2.enableCurrentLimit(true);
+//		RobotMap.Left2.configPeakCurrentDuration(0, 0);
+//		RobotMap.Left2.configPeakCurrentLimit(30, 0);
+//		RobotMap.Left2.configContinuousCurrentLimit(30, 0);
+//		RobotMap.Left1.enableCurrentLimit(true);
+//		RobotMap.Left1.configPeakCurrentDuration(0, 0);
+//		RobotMap.Left1.configPeakCurrentLimit(30, 0);
+//		RobotMap.Left1.configContinuousCurrentLimit(30, 0);
+//		RobotMap.Right1.enableCurrentLimit(true);
+//		RobotMap.Right1.configPeakCurrentDuration(0, 0);
+//		RobotMap.Right1.configPeakCurrentLimit(30, 0);
+//		RobotMap.Right1.configContinuousCurrentLimit(30, 0);
+//		RobotMap.LiftMotor.enableCurrentLimit(true);
+//		RobotMap.LiftMotor.configPeakCurrentDuration(0, 0);
+//		RobotMap.LiftMotor.configPeakCurrentLimit(30, 0);
+//		RobotMap.LiftMotor.configContinuousCurrentLimit(30, 0);
+//		RobotMap.LiftMotor2.enableCurrentLimit(true);
+//		RobotMap.LiftMotor2.configPeakCurrentDuration(0, 0);
+//		RobotMap.LiftMotor2.configPeakCurrentLimit(30, 0);
+//		RobotMap.LiftMotor2.configContinuousCurrentLimit(30, 0);
 		
 //		RobotMap.Right1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
 //    	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Brake);
@@ -164,7 +164,7 @@ public class Robot extends TimedRobot {
 		RobotMap.leftWing.setAngle(0.0);
 		// Reset the lift encoder to zero
 		// LIFT ***MUST*** BE AT THE BOTTOM AT THE START OF AUTO!!!!!!
-		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 10);
+//		RobotMap.LiftMotor.getSensorCollection().setQuadraturePosition(0, 10);
 		
 		m_autonomousCommand = m_chooser.getSelected();
 		
@@ -186,46 +186,46 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopInit() {
 		
-		RobotMap.Right2.enableCurrentLimit(true);
-		RobotMap.Right2.configPeakCurrentDuration(0, 0);
-		RobotMap.Right2.configPeakCurrentLimit(30, 0);
-		RobotMap.Right2.configContinuousCurrentLimit(30, 0);
-		RobotMap.Left2.enableCurrentLimit(true);
-		RobotMap.Left2.configPeakCurrentDuration(0, 0);
-		RobotMap.Left2.configPeakCurrentLimit(30, 0);
-		RobotMap.Left2.configContinuousCurrentLimit(30, 0);
-		RobotMap.Left1.enableCurrentLimit(true);
-		RobotMap.Left1.configPeakCurrentDuration(0, 0);
-		RobotMap.Left1.configPeakCurrentLimit(30, 0);
-		RobotMap.Left1.configContinuousCurrentLimit(30, 0);
-		RobotMap.Right1.enableCurrentLimit(true);
-		RobotMap.Right1.configPeakCurrentDuration(0, 0);
-		RobotMap.Right1.configPeakCurrentLimit(30, 0);
-		RobotMap.Right1.configContinuousCurrentLimit(30, 0);
-		RobotMap.LiftMotor.enableCurrentLimit(true);
-		RobotMap.LiftMotor.configPeakCurrentDuration(0, 0);
-		RobotMap.LiftMotor.configPeakCurrentLimit(30, 0);
-		RobotMap.LiftMotor.configContinuousCurrentLimit(30, 0);
-		RobotMap.LiftMotor2.enableCurrentLimit(true);
-		RobotMap.LiftMotor2.configPeakCurrentDuration(0, 0);
-		RobotMap.LiftMotor2.configPeakCurrentLimit(30, 0);
-		RobotMap.LiftMotor2.configContinuousCurrentLimit(30, 0);
-		RobotMap.IntakeR.enableCurrentLimit(true);
-		RobotMap.IntakeR.configPeakCurrentDuration(0, 0);
-		RobotMap.IntakeR.configPeakCurrentLimit(25, 0);
-		RobotMap.IntakeR.configContinuousCurrentLimit(25, 0);
-		RobotMap.IntakeL.enableCurrentLimit(true);
-		RobotMap.IntakeL.configPeakCurrentDuration(0, 0);
-		RobotMap.IntakeL.configPeakCurrentLimit(25, 0);
-		RobotMap.IntakeL.configContinuousCurrentLimit(25, 0);
-		
-		RobotMap.IntakeL.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
-    	RobotMap.IntakeR.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
-		
-    	RobotMap.Right1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
-    	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
-    	RobotMap.Left1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
-    	RobotMap.Left2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+//		RobotMap.Right2.enableCurrentLimit(true);
+//		RobotMap.Right2.configPeakCurrentDuration(0, 0);
+//		RobotMap.Right2.configPeakCurrentLimit(30, 0);
+//		RobotMap.Right2.configContinuousCurrentLimit(30, 0);
+//		RobotMap.Left2.enableCurrentLimit(true);
+//		RobotMap.Left2.configPeakCurrentDuration(0, 0);
+//		RobotMap.Left2.configPeakCurrentLimit(30, 0);
+//		RobotMap.Left2.configContinuousCurrentLimit(30, 0);
+//		RobotMap.Left1.enableCurrentLimit(true);
+//		RobotMap.Left1.configPeakCurrentDuration(0, 0);
+//		RobotMap.Left1.configPeakCurrentLimit(30, 0);
+//		RobotMap.Left1.configContinuousCurrentLimit(30, 0);
+//		RobotMap.Right1.enableCurrentLimit(true);
+//		RobotMap.Right1.configPeakCurrentDuration(0, 0);
+//		RobotMap.Right1.configPeakCurrentLimit(30, 0);
+//		RobotMap.Right1.configContinuousCurrentLimit(30, 0);
+//		RobotMap.LiftMotor.enableCurrentLimit(true);
+//		RobotMap.LiftMotor.configPeakCurrentDuration(0, 0);
+//		RobotMap.LiftMotor.configPeakCurrentLimit(30, 0);
+//		RobotMap.LiftMotor.configContinuousCurrentLimit(30, 0);
+//		RobotMap.LiftMotor2.enableCurrentLimit(true);
+//		RobotMap.LiftMotor2.configPeakCurrentDuration(0, 0);
+//		RobotMap.LiftMotor2.configPeakCurrentLimit(30, 0);
+//		RobotMap.LiftMotor2.configContinuousCurrentLimit(30, 0);
+//		RobotMap.IntakeR.enableCurrentLimit(true);
+//		RobotMap.IntakeR.configPeakCurrentDuration(0, 0);
+//		RobotMap.IntakeR.configPeakCurrentLimit(25, 0);
+//		RobotMap.IntakeR.configContinuousCurrentLimit(25, 0);
+//		RobotMap.IntakeL.enableCurrentLimit(true);
+//		RobotMap.IntakeL.configPeakCurrentDuration(0, 0);
+//		RobotMap.IntakeL.configPeakCurrentLimit(25, 0);
+//		RobotMap.IntakeL.configContinuousCurrentLimit(25, 0);
+//		
+//		RobotMap.IntakeL.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+//    	RobotMap.IntakeR.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+//		
+//    	RobotMap.Right1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+//    	RobotMap.Right2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+//    	RobotMap.Left1.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
+//    	RobotMap.Left2.setNeutralMode(com.ctre.phoenix.motorcontrol.NeutralMode.Coast);
 		RobotMap.rightWing.setAngle(180.0);
 		RobotMap.leftWing.setAngle(0.0);
 		// Stop the auto command, if there was one
